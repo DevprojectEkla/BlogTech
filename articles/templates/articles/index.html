@@ -1,0 +1,30 @@
+{% extends 'common/home.html' %}
+
+{% block content %}
+
+{% for article in articles %}
+<section id="intro">
+    <div class="container-lg">
+        <div class="row justify-content-center">
+            <div class="text-center">
+                <a class="lead text-decoration-none text-black" href="{% url 'article' article.slug %}">
+                    <h2>{{article.title}}</h2>
+                    <h6>publié le {{article.date}}</h6>
+                </a>
+                <div class="row justify-content-center">
+                    <a class="lead text-decoration-none text-black" href="{% url 'article' article.slug %}">
+                        <img class= "col-sm-6 shadow border rounded  border-4 img-fluid"
+                             src="{{ article.image.url}}" alt="{{article.title}}">
+                    </a>
+                        <div class="lead my-4 text muted"> <a class="lead text-decoration-none text-black" href="{% url 'article' article.slug %}">
+                            <h2  class="btn btn-outline-info col-sm-4 "> Lire le résumé de l'article </h2>
+                            </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %}
+{% endblock %}

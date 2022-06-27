@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div>
+  <form method="POST" action="">
+  {% csrf_token %}
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-4">
+        {{form.as_p}}
+
+        <input class="btn btn-outline-success text-center" type="submit" value="S'inscrire"></div>
+
+      </div>
+    </div>
+
+
+
+
+  </form>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+<section>
+    <div class="container text-center">
+        <div class="row justify-content-center ">
+           <div class="text-center col-10">
+               <h1 class="display-1 fw-bold mb-4"> Bienvenue sur mon BLOG</h1>
+           </div>
+
+            <div>
+                <img class=" shadow-lg col-sm-6 border border-5 border-secondary rounded img-fluid" src="{% static '/img/photoMoi2.jpg' %}" alt="photo de moi" ></div>
+                <h5 class="text-muted fst-light"> Ça c'est moi</h5>
+        </div>
+    </div>
+    <div>
+            <h3 class=" font-weight-light text-primary p-4 border-start border-5 col-11 ms-4">  Je voudrais partager mon expérience avec vous:</h3>
+    </div>
+<div>
+<p class="lead p-4 border-start border-dark border-5 col-11 ms-4"> Il était une fois un moine bénédictin qui s'ennuyait ferme dans son monastère.
+ On ne lui proposait aucun travail intéressant mettant en jeu ses supercompétences d'ingénieur généraliste.
+ Alors un beau jour, il prit les choses en mains. Il décida d'abord de reprendre le contrôle sur son ordinateur qui était
+bloqué par des droits d'administrateur. Et très vite il se mit à apprendre la programmation en commençant avec Python.</p>
+</div>
+    <div class="row p-4">
+
+    <img class="col-sm-6 rounded shadow img-fluid" src="{% static '/img/pycharmCrypto.png' %}" alt="pycharm" >
+    <h3 class="col-sm-6 lead text-justify"> En fait j'ai eu l'idée de me mettre à Python
+        quand j'ai compris qu'un véritable hacker devait être capable d'écrire soi-même des
+        scripts en fonction de ses besoins.
+    </h3>
+        </div>
+    <div class="row justify-content-center text-center">
+    <a href="{% url 'main' %}login" class="btn btn-lg col-sm-5 btn-info text-center my-2"> Inscrivez-vous et/ou connectez-vous pour lire la suite. </a>
+</div>
+
+</section>
+
+
+
+
+
+{% endblock %}
+

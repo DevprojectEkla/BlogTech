@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="row text-center">
+<h1 class="login-text">Se connecter</h1>
+<form method = "POST">
+  {% csrf_token %}
+  <div class="row justify-content-center">
+  <p class="col-sm-6">
+    <!--<label for="username"> Nom d'utilisateur: </label>-->
+    <input id="username" type="text" name="username" placeholder="Username">
+  </p>
+    </div>
+  <p>
+     <!--<label for="password"> Mot de Passe:  </label>-->
+    <input id="password" type="password" name="password" placeholder="password">
+  </p>
+  <button class= "btn btn-outline-success" type="submit"> Connexion </button>
+</form>
+  </div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'main.html'  %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center">
+<h1 class="text-start"> {{article.title}}</h1>
+<img class=" figure col-6 img-thumbnail mb-5" src="{{article.image.url}}" alt="image de l'article {{article.slug}}">
+
+<div class="col-6 justify-content-start"><p class="lead border-start border-4 p-2"> {{article.text}}</p> </div>
+
+    </div>
+ </div>
+
+ {% if all_article_comments %}
+    <div class="container card my-4 border border-3 border-success shadow w-50 ">
+        <div class="card-body">
+            <h5 class="card-title bg-success text-white text-center w-50 justify-content-center"> Commentaires des lecteurs</h5>
+                {% for comment in all_article_comments  %}
+                    <div class="justify-content-sm-start  text-dark ">
+                        <div class="card-text col-sm-6 ">
+                               Posté par:  <span class="fw-bold">{{comment.user}}</span>
+                          le: <span class="fw-bold"> {{comment.date}}</span>
+                        <h5 class="col-sm-auto text-justify text-primary p-2">
+                         {{comment.text}}</h5>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+                {% endif %}
+
+<section>
+
+    <div class="container text-center">
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="col-auto btn btn-outline-primary mt-3 mb-2" action="">
+                <label class="lead" for="commentaire">Ajouter un commentaire:</label>
+            </div>
+
+            <div class="input-group row justify-content-center" >
+                <div class="container col-4 mb-2"><div class="input-group-prepend ">
+                    <span class="input-group-text fw-bold">{{user.username}}</span>
+                </div>
+                <div><textarea class="form-control "
+                               aria-label="With textarea"
+                               id="commentaire",
+                               name="commentaire",
+                               placeholder="votre commentaire ici..."
+                               max-length="255"
+                               rows="5"
+                               cols="30"
+
+                      ></textarea>
+                </div>
+                </div>
+
+            <p><input class="btn btn-outline-success" type="submit" value="publier le commentaire"
+                      action="/lire-article/{{article.slug}}/submit"></p>
+        </form>
+    </div>
+</section>
+{% block commentaire %}
+{% endblock %}
+
+<div class="container mt-4">
+    <div class="row justify-content-center"></div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination pagination-lg justify-content-center">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="row text-center">
+
+<h1 class="login-text">S'inscrire</h1>
+<form method = "POST">
+  {% csrf_token %}
+  <div class="row justify-content-center">
+  <p class="col-sm-6">
+    <label for="username"> Nom d'utilisateur: </label>
+    <input id="username" type="text" name="username">
+  </p></div>
+  <p>
+    <label for="password"> Mot de Passe: </label>
+    <input id="password" type="password" name="password">
+  </p>
+  <button class="btn btn-outline-success" type="submit"> S'inscrire: </button>
+</form>
+
+  </div>
+{% endblock %}
