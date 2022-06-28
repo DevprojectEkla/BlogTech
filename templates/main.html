@@ -63,7 +63,7 @@
                 <div><a class="btn btn-sm text-light mx-1" href="{% url 'logout' %}">Déconnexion</a></div>
 
             {% if user.cart %}
-            <a class="btn btn-sm " href="{% url 'cart' %}">Voir Panier({{ user.cart.orders.count }})</a>
+            <a class="btn btn-sm text-white" href="{% url 'cart' %}">Voir Panier({{ user.cart.orders.count }})</a>
             {% endif %}
         {% endif %}
       <form class="d-flex" role="search">
@@ -109,11 +109,6 @@
     {% endif %}
 
 <div class="row text-center">
-
-
-
-
-
 
 </section>
 
