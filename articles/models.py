@@ -12,7 +12,10 @@ class Article(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date = models.DateTimeField('date de publication')
     slug = models.SlugField(max_length=128)
-    image = models.ImageField(upload_to='media', blank=True, null=True)
+    # image = models.ImageField(upload_to='media', blank=True, null=True) avec heroku les images uploadée sont suppr
+    # à chaque nouvelle session à moins de payer un addon spécifique. Je change donc mon modèle pour que cette variable
+    # pointe vers un nom de fichier static directement inclus dans mon application. Ces images-là ne sont pas suppr.
+    image = models.CharField(max_length=255, blank=True, null=True)
     intro = models.TextField(blank=True)
     text = models.TextField(blank=True, null=True)
     comments = models.IntegerField(default=0)

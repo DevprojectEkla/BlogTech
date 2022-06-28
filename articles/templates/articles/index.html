@@ -1,6 +1,7 @@
 {% extends 'common/home.html' %}
 
 {% block content %}
+{% load static %}
 
 {% for article in articles %}
 <section id="intro">
@@ -13,8 +14,11 @@
                 </a>
                 <div class="row justify-content-center">
                     <a class="lead text-decoration-none text-black" href="{% url 'article' article.slug %}">
+                        <!--<img class= "col-sm-6 shadow border rounded  border-4 img-fluid"
+                             src="{{ article.image.url}}" alt="{{article.title}}"> heroku me supprime les images
+                             uploadées je les passe donc en statique-->
                         <img class= "col-sm-6 shadow border rounded  border-4 img-fluid"
-                             src="{{ article.image.url}}" alt="{{article.title}}">
+                             src="{% static '' %}{{article.image}}" alt="{{article.title}}">
                     </a>
                         <div class="lead my-4 text muted"> <a class="lead text-decoration-none text-black" href="{% url 'article' article.slug %}">
                             <h2  class="btn btn-outline-info col-sm-4 "> Lire le résumé de l'article </h2>

@@ -1,6 +1,6 @@
 {% extends 'main.html' %}
 {% block content %}
-
+{% load static %}
 <div class="container">
     <div class="row justify-content-center">
         <h2 class=" col-10 lead display-3 border-start shadow border-dark rounded border-5 text-center my-5 ">
@@ -8,7 +8,9 @@
             <div class="lead text-muted"> publié le: {{article.date}}</div>
         </h2>
         <div class="text-center" >
-            <img class="col-sm-8 rounded img-fluid " src="{{ article.image.url}}" alt="{{article.title}}">
+            <!--<img class="col-sm-8 rounded img-fluid " src="{{ article.image.url}}" alt="{{article.title}}">-->
+            <img class="col-sm-8 rounded img-fluid " src="{% static '' %}{{article.image}}" alt="{{article.title}}">
+
         </div>
         <h3 class="offset-lg-1">Résumé:</h3> <p class="lead offset-lg-1">{{article.intro}}</p>
         <p class="lead offset-lg-1 text-truncate">{{article.text}}</p>
