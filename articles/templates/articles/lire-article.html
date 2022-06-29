@@ -17,7 +17,11 @@
 
 
 <div class="col-6 justify-content-start"><p class="lead border-start border-4 p-2"> {{article.text}}</p> </div>
-
+{% if user.is_superuser %}
+<div class="text-center">
+<a class="btn btn-outline-danger my-2" href="{% url 'edit-post' article.slug %}">Editer cet article</a>
+    </div>
+{% endif %}
     </div>
  </div>
 
@@ -79,7 +83,7 @@
     <div class="row justify-content-center"></div>
 <nav aria-label="Page navigation example">
   <ul class="pagination pagination-lg justify-content-center">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="{% url 'articles-index' %}">Previous</a></li>
     <li class="page-item"><a class="page-link" href="#">1</a></li>
     <li class="page-item"><a class="page-link" href="#">2</a></li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>

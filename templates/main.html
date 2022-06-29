@@ -24,23 +24,26 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'home'%}">Home</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'home'%}">Page d'Accueil</a>
         </li>
+          {% if user.is_superuser %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'main'%}admin">Admin</a>
         </li>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#"
              id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            Actions administrateurs
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="{% url 'new-post' %}">Nouveau Post</a></li>
+            <li><a class="dropdown-item" href="#">Nouveau Produit</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="">Editer le Post</a></li>
           </ul>
         </li>
+          {% endif %}
         <li class="nav-item">
           <a class="nav-link disabled">Disabled</a>
         </li>
@@ -63,12 +66,12 @@
                 <div><a class="btn btn-sm text-light mx-1" href="{% url 'logout' %}">Déconnexion</a></div>
 
             {% if user.cart %}
-            <a class="btn btn-sm text-white" href="{% url 'cart' %}">Voir Panier({{ user.cart.orders.count }})</a>
+            <a class="btn btn-sm text-white mx-1" href="{% url 'cart' %}">Voir Panier({{ user.cart.orders.count }})</a>
             {% endif %}
         {% endif %}
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Recherche">
+        <button class="btn btn-outline-success" type="submit">Chercher</button>
       </form>
     </div>
   </div>
@@ -115,6 +118,12 @@
 
 <section>
     {% block content %}
+
+    {% endblock %}
+</section>
+
+<section>
+    {% block edit-post %}
 
     {% endblock %}
 </section>
