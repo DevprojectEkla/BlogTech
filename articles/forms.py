@@ -18,8 +18,5 @@ class EditForm(ModelForm):
         fields = '__all__'
 
 
-    def edit(self,fields='text'):
-      self.fields = fields
-
 
 

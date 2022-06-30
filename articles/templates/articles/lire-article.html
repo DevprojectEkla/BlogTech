@@ -19,7 +19,9 @@
 <div class="col-6 justify-content-start"><p class="lead border-start border-4 p-2"> {{article.text}}</p> </div>
 {% if user.is_superuser %}
 <div class="text-center">
-<a class="btn btn-outline-danger my-2" href="{% url 'edit-post' article.slug %}">Editer cet article</a>
+<a class="btn btn-outline-warning my-2" href="{% url 'edit-post' article.slug %}">Editer cet article</a>
+
+        <a class="btn btn-outline-danger col-auto my-2" action="article.delete()">Supprimer cet article</a>
     </div>
 {% endif %}
     </div>
@@ -73,7 +75,7 @@
 
             <p><input class="btn btn-outline-success" type="submit" value="publier le commentaire"
                       action="/lire-article/{{article.slug}}/submit"></p>
-        </form>
+        </div></form>
     </div>
 </section>
 {% block commentaire %}
