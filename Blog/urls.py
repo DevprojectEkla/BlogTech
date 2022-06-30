@@ -20,7 +20,7 @@ from django.template.defaulttags import url
 from django.urls import path
 
 import store.views
-from articles.views import article_detail, lire_article, articles_index, new_post, edit_post
+from articles.views import article_detail, lire_article, articles_index, new_post, edit_post, ArticleDeleteView
 from store.views import index, product_detail, add_to_cart, cart, delete_cart, base
 from Blog import settings
 from accounts.views import signup, logout_user, login_user, signup_form
@@ -49,6 +49,7 @@ urlpatterns = [
     path('article/lire-article/<str:slug>', lire_article, name="lire-article"),
     path('articles/new-post/', new_post, name="new-post"),
     path('articles/edit-post/<str:slug>', edit_post, name="edit-post"),
+    path('articles/delete-post/<str:slug>', ArticleDeleteView.as_view(), name="del-post"),
 
 
 ] + static(settings.MEDIA_URL,document_root= settings.MEDIA_ROOT)

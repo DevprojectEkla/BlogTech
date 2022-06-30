@@ -7,10 +7,17 @@ from django.views.generic import TemplateView
 from articles.models import Article
 #from common.models import Presentation
 
-
+# en utilisant des classes au lieu de fonction il suffit de passer des attributs aux noms standardisés
+# pour obtenir le même résultat que la fonction opère à l'aide de fonction django. Ici template_name
+# permet de spécifier le template que doit renvoyer la view sans écrire return render(request, "xxx.html")
+# si on respecte la norme de nomination des templates (app/model_viewtype.html, ici common/home.html, dans ce
+# cas la variable template_name n'est même plus nécessaire.)
 class MainView(TemplateView):
     template_name = 'main.html'
-    request = request
+    # on peut spécifier un modele ici:
+    # model = NomduModel (un model doit être créé dans le fichier models.py
+    # si on fait cela dans la page html on peut utiliset le mot object au lieu du nom du model comme variable de context
+    # sans avoir à passer de context comme on le fait avec une fonction
 
 
 def homepage(request):

@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 # Create your views here.
 from django.urls import reverse
 from django.utils.datetime_safe import datetime
+from django.views.generic import DeleteView, UpdateView
 
 from articles.forms import PostForm, EditForm
 from articles.models import Article, Comment
@@ -117,3 +118,17 @@ def edit_post(request, slug):
                 form.save()
                 return render(request, 'articles/detail.html', context)
     return render(request, 'articles/edit-post.html', context)
+
+
+""" ici on va utiliser les class de Django plutôt que les fonctions"""
+
+class ArticleUpdateView(UpdateView):
+    pass
+
+class ArticleDeleteView(DeleteView):
+
+    model = Article
+    success_url = '/'
+
+    def get_absolute_url(self):
+        return reverse('articles-index')
