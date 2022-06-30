@@ -5,6 +5,7 @@ from django.template.defaulttags import url
 from django.views.generic import TemplateView
 
 from articles.models import Article
+#from common.models import Presentation
 
 
 class MainView(TemplateView):
@@ -18,4 +19,10 @@ def homepage(request):
     # article = get_object_or_404(Article,slug=4)
     # slug = article.slug    #
     # context = {"article": article, "slug": slug}
-    return render(request, 'common/home.html')  # , context)
+    # les 2 lignes du dessous, j'ai voulu créer un modèle Presentation pour insérer mon texte dans la page home.html
+    # pour ne pas surcharger mon fichier .html avec du texte... mais peut-être que cela présente d'autres inconvénients
+    # comme pour la mise en forme de ce texte avec des tags html et des styles CSS. Peut-être faudrait-il créer un
+    # ou plusieurs modèles de mise en page (titre, paragraphe1, paragraphe2, mot-clé1,mot-clé2,etc. img de § etc.
+    # contenu = Presentation.objects.all
+    # context = {'contenu': contenu}
+    return render(request, 'common/home.html') #  , context)

@@ -7,34 +7,107 @@
         <div class="row justify-content-center ">
            <div class="text-center col-10">
                <h1 class="display-2 fw-bold mb-5"> Bienvenue sur mon <span class="badge bg-info" >BLOG TECH</span></h1>
-           </div>
+</div>
 
             <div>
                 <img class=" shadow-lg col-sm-6 border border-5 border-secondary rounded img-fluid"
-                     src="{% static '/img/HSV.jpg' %}" alt="photo de moi" ></div>
-                <h5 class="text-muted fst-light w-50"> Sur ce blog, par mesure de sécurité et
+                     src="{% static '/img/HSV.jpg' %}" alt="photo de moi" >
+
+                    <h5 class="container text-center text-muted fst-light w-50 mb-3"> Sur ce blog, par mesure de sécurité et
                     pour préserver mon anonymat,
                     je serai Ekla HSV (<span class="text-decoration-underline">H</span>omme
                     <span class="text-decoration-underline">S</span>ans
                     <span class="text-decoration-underline">V</span>isage)</h5>
-        </div>
-    </div>
+            </div>
+
+            <div id="demo" class="carousel slide col-6 mb-2 text-secondary" data-bs-ride="carousel"> Technologies que j'utilise pour ce site
+                <div class="carousel-inner ">
+                    <div class="carousel-item active" data-bs-interval="2000">
+                        <img src="{% static 'img/logoPython2.jpg' %}" alt="Carrousel slide 1" class="d-block offset-3">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img src="{% static 'img/logo-django.jpg' %}" alt="Carrousel slide " class="d-block offset-4">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img src="{% static 'img/bootstrap2.jpg' %}" alt="Carrousel slide 2" class="d-block offset-4">
+                    </div>
+
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img src="{% static 'img/pycharm.jpg' %}" alt="Carrousel slide 5" class="d-block offset-5">
+                    </div>
+
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img src="{% static 'img/github.png' %}" alt="Carrousel slide 4" class="d-block offset-4">
+                    </div>
+
+                     <div class="carousel-item" data-bs-interval="2000">
+                        <img src="{% static 'img/heroku.png' %}" alt="Carrousel slide 6" class="d-block offset-5">
+                    </div>
+                </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="demo" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+                </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="demo" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+</div>
+            </div>
+           </div>
+   </div>
     <div>
-            <h3 class=" font-weight-light text-primary p-4 border-start border-5 col-11 ms-4">  Je voudrais partager mon expérience avec vous:</h3>
+            <h3 class=" font-weight-light text-primary p-4 border-start border-5 col-11 ms-4">  Salut à tous:</h3>
     </div>
-<div>
-<p class="lead p-4 border-start border-dark border-5 col-11 ms-4"> Après la fin de mes études et une reconversion dans
-    un secteur assez étranger au monde de l'industrie, j'ai senti le désir de mener en privé une petite activité
-    technique. L'informatique et le développement en particulier est un univers iéal pour qui veut employer des
-    compétences techniques sans le soutien (en infrastructure, en matériel etc.) que pourrait apporter une grosse
-    entreprise.
-    Ayant reçu une formation d'ingénieur généraliste avec une spécialisation mécanique, j'ai vite compris que dans
-    le nouveau secteur où je me trouvais mes compétences n'auraient pas beaucoup d'utilité.
-    Le problème c'est que mon nouveau mode de vie m'interdisait tout usage privé d'un ordinateur et, au départ
-    en tout cas, je n'avais pas les droits d'administrateur sur l'ordinateur mis à mon usage.
-    C'est la curiosité qui me décida d'abord à reprendre le contrôle sur un ordinateur qui était
-    bloqué par des droits d'administrateur très contraignant.
-    Et très vite je me suis mis à apprendre la programmation en commençant avec Python.</p>
+
+    <div class="ms-4 border-start border-5" >
+
+<p class="lead col-11 ms-1"> Ce blog est encore en chantier. J'apprends tout juste
+    la programmation d'application web avec  
+    <a class="fw-bold text-black text-decoration-none"
+       href="https://www.djangoproject.com/">django</a> <!--<img class="rounded shadow" src="{% static 'img/logo-django.jpg' %}" alt="">-->
+    et python et je fais un peu tout en même temps pour le plaisir.
+    C'est pénible pour un débutant de faire du back-end et de voir un truc complètement dégueu tourner en local,
+    même si c'est plaisant d'implémenter de nouvelles fonctionnalités.
+    <p class="lead  col-11 ms-1">En fait, je voulais aussi apprendre dans la foulée et sans plus attendre le front-end.
+       J'utilise ici <a class=" fw-bold text-black text-decoration-none" href="https://getbootstrap.com/">bootstrap</a> après avoir fait
+    quelques essais en CSS pur (ça va quand même beaucoup plus vite avec bootstrap mais il s'agit de comprendre aussi
+    ce qu'il se passe derrière tous ces frameworks).</p>
+        <p class="lead col-11 ms-1">Après avoir obtenu de premiers résultats satisfaisants, je ne voulais pas trop
+            attendre avant la phase de déploiement web, à quoi bon faire un site de A à Z si l'hébergement est une galère irréalisable
+    (j'ai des moyens très limités, en particulier je ne peux me payer aucun service en ligne et je travaille derrière un pare-feu
+    qui bloque certains sites d'informatique et de services web)?</p>
+    <p class="lead col-11 ms-1"> Mais ça va, <a href="https://www.youtube.com/watch?v=6DI_7Zja8Zc"> un petit tuto de 53 minutes </a> et le
+        déploiement sur <a href="https://www.heroku.com/" class="fw-bold text-black text-decoration-none"> heroku
+        </a> s'est bien passé, ça tourne !!!
+    Tous ceux qui programment un peu pour le plaisir sauront la joie et la satisfaction que je ressens à voir ce petit bébé
+    commencer à gazouiller sur internet, (même s'il n'y a qu'un père pour s'émerveiller des "areuh" "areuh" de son môme).
+
+    Bref, sur un vrai projet le déploiement du site est la dernière étape, ici je voulais d'emblée expérimenter cette
+    phase quand même
+    beaucoup plus palpitante que de voir simplement tourner son appli' en local.
+    J'ai plein de fonctionnalité à ajouter et le contenu n'est pour l'instant qu'une sorte de vitrine
+    qui donne un premier aperçu de l'orientation du site,
+    et des thèmes que j'imaginerai aborder avec vous. Les articles sont pour l'instant à peine ébauchés. C'est un peu
+        comme une maison en construction, vous avez (presque) toutes les pièces mais il y a encore des choses à faire
+        dans tous les coins (éléctricité, tuyauterie, carrelage et peinture). Bonne visite !</p>
+        </div>
+        <div>
+            <h3 class=" font-weight-light text-primary p-4 border-start border-5 col-11 ms-4">  Un petit mot de présentation
+                </h3>
+<div class="ms-4 border-start border-5">
+        <p class="lead">Après la fin de mes études d'ingénieur généraliste avec une spécialisation mécanique suivie
+            d'une "reconversion" dans
+    un secteur assez étranger au monde de l'industrie, j'ai senti le besoin de me mettre à un projet un peu stimulant,
+            impliquant l'apprentissage de nouvelles
+            technologies et un minimum de compétences scientifiques (logique, résolution de problèmes, etc.).
+            Le développement informatique est l'idéal pour ça.
+    Le problème, c'est que mon nouveau mode de vie m'interdit l'usage privé de l'ordinateur mis à ma disposition et, au départ
+    en tout cas, je n'avais pas les droits d'administrateur sur cette machine.
+    C'est la curiosité qui m'a décidé d'abord à reprendre le contrôle sur cet ordinateur. Au fond, comment faire quand
+            on est ingénieur et que l'on vous file un ordi où tout est bloqué ? Ni une, ni deux,
+    je me suis plongé dans le monde fascinant du hacking. Et très vite, au cours de mes recherches sur le sujet,
+            l'idée d'apprendre un langage de programmation a germé .</p>
 </div>
     <div class="row p-4">
 
@@ -43,7 +116,7 @@
         quand j'ai compris qu'un véritable hacker devait être capable d'écrire soi-même des
         scripts en fonction de ses besoins.
         {% if user.is_authenticated %}
-        Alors tout de suite je m'y suis mis. Mais d'abord si vous voulez savoir pourquoi je vous parle de hacking
+        Alors tout de suite je m'y suis mis. Si vous voulez savoir la suite de ma petite histoire de hacker
         lisez mon article <a href="{% url 'lire-article' slug=4 %}">Comment j'ai hacké le domaine de mon entreprise</a>
         {% endif %}
     </h3>
