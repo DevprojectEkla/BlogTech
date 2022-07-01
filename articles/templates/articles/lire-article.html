@@ -7,16 +7,15 @@
 <h1 class="text-start"> {{article.title}}</h1>
 <!--<img class=" figure col-6 img-thumbnail mb-5" src="{{article.image.url}}" alt="image de l'article {{article.slug}}">
  cette ligne vaut dans le cas où l'on a uploadé une image dans la database mais heroku supprime les images uploadés
-  par les utilisateurs (à moins de payer un addon) en attendant mieux je fais pointé la source vers une image statique
+  par les utilisateurs (à moins de payer un addon) en attendant mieux je fais pointer la source vers une image statique
   qui va avec l'application-->
         <script>
    var f_img={{ article.image }};
-
     </script>
-<img class=" figure col-6 img-thumbnail mb-5" src="{% static '' %}{{article.image}}" alt="image de l'article {{article.slug}}">
+<img class=" figure w-50 h-50 img-thumbnail mb-5" src="{% static '' %}{{article.image}}" alt="image:{{article.image}}">
 
 
-<div class="col-6 justify-content-start"><p class="lead border-start border-4 p-2"> {{article.text}}</p> </div>
+<div class="col-12 justify-content-start"><p class="lead border-start border-4 p-2"> {{article.text}}</p> </div>
 {% if user.is_superuser %}
 <div class="text-center">
 <a class="btn btn-outline-warning my-2" href="{% url 'edit-post' article.slug %}">Editer cet article</a>
@@ -52,7 +51,7 @@
         <form method="POST">
             {% csrf_token %}
 
-            <div class="col-auto btn btn-outline-primary mt-3 mb-2" action="">
+            <div class="col-auto btn btn-outline-primary mt-3 mb-2">
                 <label class="lead" for="commentaire">Ajouter un commentaire:</label>
             </div>
 
@@ -62,19 +61,16 @@
                 </div>
                 <div><textarea class="form-control "
                                aria-label="With textarea"
-                               id="commentaire",
-                               name="commentaire",
+                               id="commentaire"
+                               name="commentaire"
                                placeholder="votre commentaire ici..."
-                               max-length="255"
                                rows="5"
                                cols="30"
 
                       ></textarea>
                 </div>
                 </div>
-
-            <p><input class="btn btn-outline-success" type="submit" value="publier le commentaire"
-                      action="/lire-article/{{article.slug}}/submit"></p>
+            <p><input class="btn btn-outline-success" type="submit" value="publier le commentaire"></p>
         </div></form>
     </div>
 </section>
@@ -92,6 +88,5 @@
     <li class="page-item"><a class="page-link" href="#">Next</a></li>
   </ul>
 </nav>
-</div>
 </div>
 {% endblock %}

@@ -15,9 +15,10 @@ from articles.models import Article
 class MainView(TemplateView):
     template_name = 'main.html'
     # on peut spécifier un modele ici:
-    # model = NomduModel (un model doit être créé dans le fichier models.py
-    # si on fait cela dans la page html on peut utiliset le mot object au lieu du nom du model comme variable de context
-    # sans avoir à passer de context comme on le fait avec une fonction
+    # model = NomduModel (un model doit être créé dans le fichier models.py)
+    # quand on fait cela, dans la page html on peut utiliset le mot object au lieu du nom du model
+    # comme variable de context on a donc plus besoin de passer un context comme on le fait avec une fonction
+    # attention à bien préciser Mainview.as_view() quand on appelle la classe dans le fichier urls.py
 
 
 def homepage(request):

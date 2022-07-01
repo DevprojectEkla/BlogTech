@@ -1,48 +1,47 @@
-from django.http import HttpResponse
 from django.urls import reverse
-
 
 from store.models import Product, Cart, Order
 from django.shortcuts import render, get_object_or_404, redirect
 
 
 def base(request):
-    return render(request,'store/base.html')
+    return render(request, 'store/base.html')
 
 
 def index(request):
     products = Product.objects.all()
-    return render(request, 'store/index.html',context={"products":products})
+    return render(request, 'store/index.html', context={"products": products})
 
 
-def product_detail(request,slug):
+def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug)
-    return render(request, 'store/detail.html',context={"product": product} )
-
+    return render(request, 'store/detail.html', context={"product": product})
 
 
 def add_to_cart(request, slug):
     user = request.user
     product = get_object_or_404(Product, slug=slug)
-    cart, _ = Cart.objects.get_or_create(user=user)
+    new_cart, _ = Cart.objects.get_or_create(user=user)
     order, created = Order.objects.get_or_create(user=user, ordered=False, product=product)
     if created:
-        cart.orders.add(order)
-        cart.save()
+        new_cart.orders.add(order)
+        new_cart.save()
     else:
         order.quantity += 1
         order.save()
-    return redirect(reverse("product", kwargs={"slug":slug}))
+    return redirect(reverse("product", kwargs={"slug": slug}))
+
 
 def cart(request):
-    cart = get_object_or_404(Cart, user=request.user)
+    new_cart = get_object_or_404(Cart, user=request.user)
 
-    return render(request,'store/cart.html', context={"orders":cart.orders.all()})
+    return render(request, 'store/cart.html', context={"orders": new_cart.orders.all()})
+
 
 def delete_cart(request):
-    cart = request.user.cart
-    if cart:
-    # ou symbole walerus :=   " if cart:= request.user.cart:
-        cart.delete()
+    new_cart = request.user.cart
+    if new_cart:
+        # ou symbole walerus :=   " if cart:= request.user.cart:
+        new_cart.delete()
 
     return redirect('index')
