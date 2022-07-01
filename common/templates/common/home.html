@@ -22,12 +22,12 @@
 
             <div id="demo" class="carousel slide col-6 mb-2 text-secondary" data-bs-ride="carousel"> Technologies que j'utilise pour ce site
                 <div class="carousel-inner ">
-                    <div class="carousel-item active" data-bs-interval="2000">
-                        <img src="{% static 'img/logoPython2.jpg' %}" alt="Carrousel slide 1" class="d-block offset-3">
+                    <div class="carousel-item active" data-bs-interval="3000">
+                        <img src="{% static 'img/python-django3.png' %}" alt="Carrousel slide 1" class="d-block offset-5">
                     </div>
-                    <div class="carousel-item" data-bs-interval="2000">
+                    <!--<div class="carousel-item" data-bs-interval="2000">
                         <img src="{% static 'img/logo-django.jpg' %}" alt="Carrousel slide " class="d-block offset-4">
-                    </div>
+                    </div>-->
                     <div class="carousel-item" data-bs-interval="2000">
                         <img src="{% static 'img/bootstrap2.jpg' %}" alt="Carrousel slide 2" class="d-block offset-4">
                     </div>
@@ -37,11 +37,15 @@
                     </div>
 
                     <div class="carousel-item" data-bs-interval="2000">
-                        <img src="{% static 'img/github.png' %}" alt="Carrousel slide 4" class="d-block offset-4">
+                        <img src="{% static 'img/git.jpg' %}" alt="Carrousel slide 4" class="d-block offset-5">
+                    </div>
+
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img src="{% static 'img/logo-gunicorn.png' %}" alt="Carrousel slide 4" class="d-block offset-3">
                     </div>
 
                      <div class="carousel-item" data-bs-interval="2000">
-                        <img src="{% static 'img/heroku.png' %}" alt="Carrousel slide 6" class="d-block offset-5">
+                        <img src="{% static 'img/heroku2.png' %}" alt="Carrousel slide 6" class="d-block offset-5">
                     </div>
                 </div>
                   <button class="carousel-control-prev" type="button" data-bs-target="demo" data-bs-slide="prev">
@@ -55,7 +59,7 @@
 </div>
             </div>
            </div>
-   </div>
+
     <div>
             <h3 class=" font-weight-light text-primary p-4 border-start border-5 col-11 ms-4">  Salut à tous:</h3>
     </div>
@@ -87,9 +91,9 @@
     phase quand même
     beaucoup plus palpitante que de voir simplement tourner son appli' en local.
     J'ai plein de fonctionnalité à ajouter et le contenu n'est pour l'instant qu'une sorte de vitrine
-    qui donne un premier aperçu de l'orientation du site,
+    qui donne un premier aperçu de l'orientation du site
     et des thèmes que j'imaginerai aborder avec vous. Les articles sont pour l'instant à peine ébauchés. C'est un peu
-        comme une maison en construction, vous avez (presque) toutes les pièces mais il y a encore des choses à faire
+        comme une maison en construction, vous avez (presque) toutes les pièces, mais il y a encore des choses à faire
         dans tous les coins (éléctricité, tuyauterie, carrelage et peinture). Bonne visite !</p>
         </div>
         <div>
@@ -106,13 +110,14 @@
     en tout cas, je n'avais pas les droits d'administrateur sur cette machine.
     C'est la curiosité qui m'a décidé d'abord à reprendre le contrôle sur cet ordinateur. Au fond, comment faire quand
             on est ingénieur et que l'on vous file un ordi où tout est bloqué ? Ni une, ni deux,
-    je me suis plongé dans le monde fascinant du hacking. Et très vite, au cours de mes recherches sur le sujet,
+    je me suis plongé dans le monde fascinant des hackers. Et très vite, au cours de mes recherches sur le sujet,
             l'idée d'apprendre un langage de programmation a germé .</p>
 </div>
     <div class="row p-4">
 
     <img class="col-sm-6 rounded shadow img-fluid" src="{% static '/img/pycharmCrypto.png' %}" alt="pycharm" >
-    <h3 class="col-sm-6 lead text-justify {% if not user.is_authenticated %} text-truncate {% endif %} "> En fait j'ai eu l'idée de me mettre à Python
+    <h3 class="col-sm-6 lead text-justify {% if not user.is_authenticated %} text-truncate {% endif %} ">
+        En fait j'ai eu l'idée de me mettre à Python
         quand j'ai compris qu'un véritable hacker devait être capable d'écrire soi-même des
         scripts en fonction de ses besoins.
         {% if user.is_authenticated %}
@@ -126,7 +131,7 @@
     <a href="{% url 'main' %}login" class="btn btn-lg col-sm-5 btn-info text-center my-2"> Inscrivez-vous et/ou connectez-vous pour lire la suite. </a>
 </div>
     {% endif %}
-
+</div>
 </section>
 
 
