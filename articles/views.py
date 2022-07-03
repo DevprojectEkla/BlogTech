@@ -125,6 +125,7 @@ def edit_post(request, slug):
 class ArticleUpdateView(UpdateView):
     pass
 
+
 class ArticleDeleteView(DeleteView):
 
     model = Article

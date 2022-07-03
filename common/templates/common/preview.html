@@ -6,42 +6,67 @@
     <div class="container text-center">
         <div class="row justify-content-center ">
            <div class="text-center col-10">
-               <h1 class="display-2 fw-bold mb-5"> Bienvenue sur mon <span class="badge bg-info" >BLOG TECH</span></h1>
+               <h1 class="display-2 fw-bold mb-5"> {{ object.main_title }} </h1>
            </div>
 
             <div>
                 <img class=" shadow-lg col-sm-6 border border-5 border-secondary rounded img-fluid"
-                     src="{% static '/img/HSV.jpg' %}" alt="photo de moi" ></div>
-                <h5 class="text-muted fst-light w-50"> Sur ce blog, par mesure de sécurité et
-                    pour préserver mon anonymat,
-                    je serai Ekla HSV (<span class="text-decoration-underline">H</span>omme
-                    <span class="text-decoration-underline">S</span>ans
-                    <span class="text-decoration-underline">V</span>isage)</h5>
+                     src="{% static '' %}{{object.main_img_source}}" alt="photo de moi" >
+            </div>
+                <h5 class="text-muted fst-light w-50"> {{object.main_img_legend}}</h5>
         </div>
     </div>
+
+    <div id="demo" class="carousel slide col-auto mb-2 text-secondary text-center" data-bs-ride="carousel"> {{object.carousel_name}}
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="3000">
+                        <img src="{% static 'img/python-django3.png' %}" alt="Carrousel slide 1" class="text-center">
+                    </div>
+                    <!--<div class="carousel-item" data-bs-interval="2000">
+                        <img src="{% static 'img/logo-django.jpg' %}" alt="Carrousel slide " class="d-block offset-4">
+                    </div>-->
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img src="{% static 'img/bootstrap2.jpg' %}" alt="Carrousel slide 2" class="text-center">
+                    </div>
+
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img src="{% static 'img/pycharm.jpg' %}" alt="Carrousel slide 5" class="text-center">
+                    </div>
+
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img src="{% static 'img/git.jpg' %}" alt="Carrousel slide 4" class="text-center">
+                    </div>
+
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img src="{% static 'img/logo-gunicorn.png' %}" alt="Carrousel slide 4" class="text-center">
+                    </div>
+
+                     <div class="carousel-item" data-bs-interval="2000">
+                        <img src="{% static 'img/heroku2.png' %}" alt="Carrousel slide 6" class="text-center">
+                    </div>
+                </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="demo" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+                </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="demo" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+</div>
+            </div>
+           </div>
+
     <div>
-            <h3 class=" font-weight-light text-primary p-4 border-start border-5 col-11 ms-4">  Je voudrais partager mon expérience avec vous:</h3>
+            <h3 class=" font-weight-light text-primary p-4 border-start border-5 col-11 ms-4"> {{object.first_title_h3}} </h3>
     </div>
 <div>
-<p class="lead p-4 border-start border-dark border-5 col-11 ms-4"> Après la fin de mes études et une reconversion dans
-    un secteur assez étranger au monde de l'industrie, j'ai senti le désir de mener en privé une petite activité
-    technique. L'informatique et le développement en particulier est un univers iéal pour qui veut employer des
-    compétences techniques sans le soutien (en infrastructure, en matériel etc.) que pourrait apporter une grosse
-    entreprise.
-    Ayant reçu une formation d'ingénieur généraliste avec une spécialisation mécanique, j'ai vite compris que dans
-    le nouveau secteur où je me trouvais mes compétences n'auraient pas beaucoup d'utilité.
-    Le problème c'est que mon nouveau mode de vie m'interdisait tout usage privé d'un ordinateur et, au départ
-    en tout cas, je n'avais pas les droits d'administrateur sur l'ordinateur mis à mon usage.
-    C'est la curiosité qui me décida d'abord à reprendre le contrôle sur un ordinateur qui était
-    bloqué par des droits d'administrateur très contraignant.
-    Et très vite je me suis mis à apprendre la programmation en commençant avec Python.</p>
+<p class="lead p-4 border-start border-dark border-5 col-11 ms-4"> {{object.first_p}}</p>
 </div>
     <div class="row p-4">
 
-    <img class="col-sm-6 rounded shadow img-fluid" src="{% static '/img/pycharmCrypto.png' %}" alt="pycharm" >
-    <h3 class="col-sm-6 lead text-justify"> En fait j'ai eu l'idée de me mettre à Python
-        quand j'ai compris qu'un véritable hacker devait être capable d'écrire soi-même des
-        scripts en fonction de ses besoins.
+    <img class="col-sm-6 rounded shadow img-fluid" src="{% static '' %}{{object.second_img_source}}" alt="{{object.second_img_alt}}" >
+    <h3 class="col-sm-6 lead text-justify"> {{object.preview_text}}
     </h3>
         </div>
     <div class="row justify-content-center text-center">
@@ -51,10 +76,6 @@
     </div>
 
 </section>
-
-
-
-
 
 {% endblock %}
 

@@ -12,6 +12,9 @@ from articles.models import Article
 # permet de spécifier le template que doit renvoyer la view sans écrire return render(request, "xxx.html")
 # si on respecte la norme de nomination des templates (app/model_viewtype.html, ici common/home.html, dans ce
 # cas la variable template_name n'est même plus nécessaire.)
+from common.models import HomePage
+
+
 class MainView(TemplateView):
     template_name = 'main.html'
     # on peut spécifier un modele ici:
@@ -33,4 +36,16 @@ def homepage(request):
     # ou plusieurs modèles de mise en page (titre, paragraphe1, paragraphe2, mot-clé1,mot-clé2,etc. img de § etc.
     # contenu = Presentation.objects.all
     # context = {'contenu': contenu}
-    return render(request, 'common/home.html') #  , context)
+    return render(request, 'common/test.html') #  , context)
+
+
+class HomePageView(TemplateView):
+
+    template_name = 'common/preview.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['object'] = get_object_or_404(HomePage, name="blog tech")
+        return context
+
+

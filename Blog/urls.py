@@ -24,11 +24,11 @@ from articles.views import article_detail, lire_article, articles_index, new_pos
 from store.views import index, product_detail, add_to_cart, cart, delete_cart, base
 from Blog import settings
 from accounts.views import signup, logout_user, login_user, signup_form
-from common.views import homepage, MainView
+from common.views import homepage, MainView, HomePageView
 
 urlpatterns = [
     path('', MainView.as_view(), name='main'),
-    path('common/', homepage, name='home'),
+    path('common/', HomePageView.as_view(), name='home'),
     path('store/', base, name="base"),
     path('store/index', index, name="index"),
     path('admin/', admin.site.urls, name='admin'),

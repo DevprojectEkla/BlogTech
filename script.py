@@ -1,4 +1,4 @@
-{% extends 'main.html' %}
+html_content = """ {% extends 'main.html' %}
 
 {% block content %}
 {% load static %}
@@ -135,12 +135,7 @@
 </section>
 
 
-
-
-
-
 {% block text %}
+{% endblock %} 
 
-{% endblock %}
-{% endblock %}
-
+{% endblock %}"""
