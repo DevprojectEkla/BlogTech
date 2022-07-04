@@ -6,11 +6,11 @@
     <div class="container text-center">
         <div class="row justify-content-center ">
            <div class="text-center col-10">
-               <h1 class="display-2 fw-bold mb-5"> {{ object.main_title }} </h1>
+               <h1 id = "mytitle1" onMouseOver="ChangerCouleur(this.id)" class="display-2 fw-bold mb-5"> {{ object.main_title }} </h1>
            </div>
 
             <div>
-                <img class=" shadow-lg col-sm-6 border border-5 border-secondary rounded img-fluid"
+                <img id="main_image" class=" shadow-lg col-sm-6 border border-5 border-secondary rounded img-fluid"
                      src="{% static '' %}{{object.main_img_source}}" alt="photo de moi" >
             </div>
                 <h5 class="text-muted fst-light w-50"> {{object.main_img_legend}}</h5>
@@ -38,11 +38,11 @@
                     </div>
 
                     <div class="carousel-item" data-bs-interval="2000">
-                        <img src="{% static 'img/logo-gunicorn.png' %}" alt="Carrousel slide 4" class="text-center">
+                        <img src="{% static 'img/logo-gunicorn.png' %}" alt="Carrousel slide 6" class="text-center">
                     </div>
 
                      <div class="carousel-item" data-bs-interval="2000">
-                        <img src="{% static 'img/heroku2.png' %}" alt="Carrousel slide 6" class="text-center">
+                        <img src="{% static 'img/heroku2.png' %}" alt="Carrousel slide 7" class="text-center">
                     </div>
                 </div>
                   <button class="carousel-control-prev" type="button" data-bs-target="demo" data-bs-slide="prev">
@@ -58,7 +58,7 @@
            </div>
 
     <div>
-            <h3 class=" font-weight-light text-primary p-4 border-start border-5 col-11 ms-4"> {{object.first_title_h3}} </h3>
+            <h3 id="title1" class=" font-weight-light text-primary p-4 border-start border-5 col-11 ms-4"> {{object.first_title_h3}} </h3>
     </div>
 <div>
 <p class="lead p-4 border-start border-dark border-5 col-11 ms-4"> {{object.first_p}}</p>
@@ -75,12 +75,11 @@
     {% if user.is_authenticated %}
     <div> <h3 class="font-weight-light text-primary p-4 border-start border-5 col-11 ms-4"> {{ block1.title1 }}</h3>
         <div class="text-center "><img class=" col-sm-auto rounded shadow" src="{%static ''%}{{block1.image1}}" alt=""></div>
-         <script>let myHeading = document.querySelector('h1');
-        myHeading.textContent = 'HELLO JAVA SCRIPT';
+         <script src="{%static 'script.js' %}">
         </script>
     </div>
        <p class="lead p-4 border-start border-dark border-5 col-11 ms-4"> {{ block1.paragraph1 }}
-           <a href="{{block1.link3}}"> {{block1.link_text1}} </a></p>
+           <a class="" href="{{block1.link3}}"> {{block1.link_text1}} </a></p>
 
 
         {% endif %}
@@ -90,7 +89,7 @@
     {% endif %}
     </div>
     <div> <h3 class="font-weight-light text-primary p-4 border-start border-5 col-11 ms-4"> {{block1.title2}}
-        <div class="text-center"><img class="col-sm-auto rounded shadow " src="{% static '' %}{{block1.image2}}" alt=""></div>
+        <div class="text-center"><img id = "test" class="col-sm-auto rounded shadow " src="{% static '' %}{{block1.image2}}" alt=""></div>
 
     </h3> <p class="lead p-4 border-start border-dark border-5 col-11 ms-4" > {{block1.paragraph2}}</p></div>
 
