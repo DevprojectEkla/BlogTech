@@ -27,12 +27,21 @@ class HomePage(models.Model):
     preview_text = models.CharField(max_length=255, blank=True)
 
 
-class Block(models.Model):
+class NewBlock(models.Model):
     id = models.IntegerField(default=1, primary_key=True)
     name = models.CharField(max_length=255)
-    title = models.CharField(max_length=255)
-    paragraph = models.TextField(blank=True)
+    title1 = models.CharField(max_length=255, blank=True)
+    title2 = models.CharField(max_length=255, blank=True)
+    title3 = models.CharField(max_length=255, blank=True)
+    paragraph1 = models.TextField(blank=True)
+    paragraph2 = models.TextField(blank=True)
+    paragraph3 = models.TextField(blank=True)
     link1 = models.TextField(blank=True)
+    link_text1 =models.TextField(blank=True)
     link2 = models.TextField(blank=True)
+    link_text2 = models.TextField(blank=True)
     link3 = models.TextField(blank=True)
-    image = models.CharField(max_length=255, blank=True)
+    link_text3 = models.TextField(blank=True)
+    image1 = models.CharField(max_length=255, blank=True)
+    image2 = models.CharField(max_length=255, blank=True)
+    image3 = models.CharField(max_length=255, blank=True)

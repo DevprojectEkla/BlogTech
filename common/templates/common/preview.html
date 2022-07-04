@@ -63,17 +63,40 @@
 <div>
 <p class="lead p-4 border-start border-dark border-5 col-11 ms-4"> {{object.first_p}}</p>
 </div>
-    <div class="row p-4">
 
-    <img class="col-sm-6 rounded shadow img-fluid" src="{% static '' %}{{object.second_img_source}}" alt="{{object.second_img_alt}}" >
-    <h3 class="col-sm-6 lead text-justify"> {{object.preview_text}}
-    </h3>
+        <div class="text-center">
+    <img class="col-sm-auto rounded shadow" src="{% static '' %}{{object.second_img_source}}" alt="{{object.second_img_alt}}" >
+    </div>
+    <div class="row p-4">
+        <p class="lead p-4 border-start border-dark border-5 col-11 ms-4"> {{object.preview_text}}</p>
         </div>
+
+
+    {% if user.is_authenticated %}
+    <div> <h3 class="font-weight-light text-primary p-4 border-start border-5 col-11 ms-4"> {{ block1.title1 }}</h3>
+        <div class="text-center "><img class=" col-sm-auto rounded shadow" src="{%static ''%}{{block1.image1}}" alt=""></div>
+         <script>let myHeading = document.querySelector('h1');
+        myHeading.textContent = 'HELLO JAVA SCRIPT';
+        </script>
+    </div>
+       <p class="lead p-4 border-start border-dark border-5 col-11 ms-4"> {{ block1.paragraph1 }}
+           <a href="{{block1.link3}}"> {{block1.link_text1}} </a></p>
+
+
+        {% endif %}
     <div class="row justify-content-center text-center">
         {% if not user.is_authenticated %}
     <a href="{% url 'main' %}login" class="btn btn-lg col-sm-5 btn-info text-center my-2"> Inscrivez-vous et/ou connectez-vous pour lire la suite. </a>
     {% endif %}
     </div>
+    <div> <h3 class="font-weight-light text-primary p-4 border-start border-5 col-11 ms-4"> {{block1.title2}}
+        <div class="text-center"><img class="col-sm-auto rounded shadow " src="{% static '' %}{{block1.image2}}" alt=""></div>
+
+    </h3> <p class="lead p-4 border-start border-dark border-5 col-11 ms-4" > {{block1.paragraph2}}</p></div>
+
+    <div> <h3 class="font-weight-light text-primary p-4 border-start border-5 col-11 ms-4"> {{block1.title3}}
+
+    </h3> <p class="lead p-4 border-start border-dark border-5 col-11 ms-4" > {{block1.paragraph3}}</p></div>
 
 </section>
 
