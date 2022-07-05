@@ -38,6 +38,18 @@ myImage.addEventListener('click', function() {
     }
 });
 
+let balise = false;
 function ChangerCouleur(Identifiant){
 document.getElementById(Identifiant).style.color="red";
+balise = true;
+console.log(balise);
+};
+
+myH1.addEventListener('clik', function(){
+if (balise === true){ChangerCouleur(Identifiant);
+balise = false
+console.log(balise);;
 }
+
+})
+
