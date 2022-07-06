@@ -1,5 +1,5 @@
 {% extends 'main.html' %}
-
+{% load static %}
 {% block content %}
 
 <div>
@@ -20,6 +20,6 @@
 
   </form>
 </div>
-
+<script src="{% static 'myJS/signup.js'%}"></script>
 
 {% endblock %}

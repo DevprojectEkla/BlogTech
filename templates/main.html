@@ -11,7 +11,7 @@
       {% endif %}
 
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
-    <link href="{% static '/css/bootstrap.min.css'%}" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="{% static '/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   </head>
   <body> <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
@@ -82,7 +82,7 @@
 {% if not user.is_authenticated %}
   <h4 id="portail" class=" display-4 text-dark text-center"> Portail d'accès à mon site web</h4>
   {% endif %}
-    <script src="{% static 'js/bootstrap.bundle.min.js'%}" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
 
   </body>
 <section>
@@ -127,5 +127,5 @@
 
     {% endblock %}
 </section>
-
+<script src="{% static '/bootstrap/js/bootstrap.bundle.min.js'%}" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </html>

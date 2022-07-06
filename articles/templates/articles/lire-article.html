@@ -4,15 +4,12 @@
 
 <div class="container">
     <div class="row justify-content-center">
-<h1 class="text-start"> {{article.title}}</h1>
+<h1 class="col-12 lead display-4 border-start shadow border-dark rounded border-5 text-center pb-1"> {{article.title}}</h1>
 <!--<img class=" figure col-6 img-thumbnail mb-5" src="{{article.image.url}}" alt="image de l'article {{article.slug}}">
  cette ligne vaut dans le cas où l'on a uploadé une image dans la database mais heroku supprime les images uploadés
   par les utilisateurs (à moins de payer un addon) en attendant mieux je fais pointer la source vers une image statique
   qui va avec l'application-->
-        <script>
-   var f_img={{ article.image }};
-    </script>
-<img class=" figure w-50 h-50 img-thumbnail mb-5" src="{% static '' %}{{article.image}}" alt="image:{{article.image}}">
+<img class=" figure w-50 h-50 img-thumbnail mb-5 img-fluid" src="{% static '' %}{{article.image}}" alt="image:{{article.image}}">
 
 
 <div class="col-12 justify-content-start"><p class="lead border-start border-4 p-2"> {{article.text}}</p> </div>
