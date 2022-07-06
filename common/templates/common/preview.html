@@ -6,7 +6,7 @@
     <div class="container text-center">
         <div class="row justify-content-center ">
            <div class="text-center col-10">
-               <h1 id = "mytitle1" onMouseOver="ChangerCouleur(this.id)" class="display-2 fw-bold mb-5" >
+               <h1 id = "mytitle1" class="display-2 fw-bold mb-5" >
                    {{ object.main_title }} <span class="badge bg-info" >{{object.highlighted_text}}</span>
                    </h1>
            </div>
@@ -94,8 +94,9 @@
         <footer id="footer">
                 <div id="divbtt" class="invisible" >
                 <button type="button" id="btnbtt"
-                        action="onclick" class="btn btn-outline-dark text-center position-fixed bottom-0 end-50"
-                      data-toggle="button" aria-pressed="true" >Revenir en haut de la page</button>
+                        class="btn btn position-fixed bottom-0 end-50"
+                onclick="bgChange()">
+                    Revenir en haut de la page</button>
                 </div>
             </footer>
         {% endif %}
