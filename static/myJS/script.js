@@ -41,6 +41,18 @@ myImage.addEventListener('mouseover', function() {
     }
 });
 
+paragraphs = document.getElementsByTagName('p')
+console.log(paragraphs[1])
+for (i=0; i < paragraphs.length; i++){
+paragraphs[i].hidden = true;
+paragraphs[i].addEventListener('mouseover',function()
+{
+if (paragraphs[i].hidden = true){
+paragraphs[i].hidden = false;}
+})};
+
+
+
 let balise = true;
 function ChangerCouleur(Identifiant){
 var rndCol = 'rgba(' + random(255) + ',' + random(255) + ',' + random(255) + ',' + 1 + ')'
@@ -105,6 +117,32 @@ if (btnbtt){//cf.com plus haut, idem
     console.log(effect);
     });};
 console.log(effect);
-document.querySelector('p').click()
+document.querySelector('p').click();
 
+const text = document.getElementById("mytitle1");
+console.log(text);
+const strText = text.textContent;
+const splitText = strText.split("");
+console.log(splitText)
+text.textContent = "";
+for(i=0; i<splitText.length; i++){
+  text.innerHTML += "<span>"+ splitText[i] + "</span>"
+}
 
+let char = 0;
+let timer =  setInterval(onTick, 50);
+
+function onTick(){
+  const span = text.querySelectorAll('span')[char];
+  span.classList.add('fade');
+  char++
+  if (char === splitText.length){
+    complete();
+    return;
+  }
+}
+
+function complete(){
+  clearInterval(timer);
+  timer = null
+}
