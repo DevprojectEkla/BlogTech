@@ -3,21 +3,30 @@
 {% block content %}
 {% load static %}
 <section>
-    <div class="container text-center ">
-        <div class="row justify-content-center bg-dark">
-           <div class="text-center col-12">
-               <h1 id = "mytitle1" class="display-2 fw-bold mb-5 text-info" >{{ object.main_title }}
-           </div>
-
-            <div id="container_main_image" class="my-2 col-auto bg bg-info rounded invisible">
-                <img id="main_image" class=" shadow-lg rounded img-fluid"
-                     src="{% static '' %}{{object.main_img_source}}" alt="photo de moi">
-                
-            </div>
-                <h5 class="text-info fst-light "> {{object.main_img_legend}}</h5>
+    <div class="justify-content-center ">
+        <div id= main_container class="justify-content-center bg-dark">
+           <div class="col-12 text-center">
+               <h1 id = "mytitle1" class="display-2 fw-bold text-info" >{{ object.main_title }}</div>
+    
+            </div>            
+        
+        <div id=badge></div>    
+    <div id="d-flex" class="d-flex justify-content-center bg-dark op-0">
+        <div id="container_main_image" class="d-flex justify-content-center bg bg-info rounded op-0 "> 
+            <div class="d-flex bg-info col-sm-6"></div>           
+            <img id="main_image" class=" col-12 h-50 invisible rounded img-responsive text-center"
+                src="{% static '' %}{{object.main_img_source}}" alt="photo de moi">
+            <div class="d-flex bg-info col-sm-6"></div>   
         </div>
     </div>
-
+        <div><h5 id= "name" class="text-center text-info op-0"> {{object.main_img_legend}}</h5>
+        </div>  
+        </div>
+    
+    </div>
+    </div>
+    </section>
+    <section id="section2">
     <div id="demo" class="carousel slide col-auto mb-2 text-secondary text-center" data-bs-ride="carousel"> {{object.carousel_name}}
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="3000">
@@ -85,11 +94,13 @@
             <img id = "test" class="col-sm-auto rounded shadow " src="{% static '' %}{{block1.image2}}" alt="">
         </div>
 
-    </h3> <p class="lead p-4 border-start border-dark border-5 col-11 ms-4" > {{block1.paragraph2}}</p></div>
+        </h3> <p class="lead p-4 border-start border-dark border-5 col-11 ms-4" > {{block1.paragraph2}}</p>
+    
+    </div>
 
-    <div> <h3 class="font-weight-light text-primary p-4 border-start border-5 col-11 ms-4"> {{block1.title3}}
-
-    </h3> <p class="lead p-4 border-start border-dark border-5 col-11 ms-4" > {{block1.paragraph3}}</p></div>
+    <div> <h3 class="font-weight-light text-primary p-4 border-start border-5 col-11 ms-4"> {{block1.title3}}</h3> 
+        <p class="lead p-4 border-start border-dark border-5 col-11 ms-4" > {{block1.paragraph3}}</p>
+    </div>
         <footer id="footer">
                 <div id="divbtt" class="invisible" >
                 <button type="button" id="btnbtt"
@@ -97,7 +108,7 @@
                 onclick="bgChange()">
                     Revenir en haut de la page</button>
                 </div>
-            </footer>
+        </footer>
         {% endif %}
 
         {% if not user.is_authenticated %}
@@ -107,11 +118,11 @@
 
         </div>
     {% endif %}
-
+</section>
 
 <script src="{%static '/myJS/script.js' %}">
         </script>
-</section>
+
 
 <div class="slider"></div>
 

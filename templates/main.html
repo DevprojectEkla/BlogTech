@@ -78,12 +78,10 @@
 </nav>
 
 
-  <div class="row mt-5"> <img class="img-fluid" src="{% static '/img/banniere.png' %}" alt="" width="1920" height="250"> </div>
+  <div class="row mt-5"> <img class="img-fluid" src="{% static '/img/banniere.png' %}" alt=""> </div>
 {% if not user.is_authenticated %}
   <h4 id="portail" class=" display-4 text-dark text-center"> Portail d'accès à mon site web</h4>
   {% endif %}
-
-
   </body>
 <section>
     {% if user.is_authenticated %}
