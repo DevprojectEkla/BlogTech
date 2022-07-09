@@ -45,10 +45,13 @@ if (myImage) {
     if (myImage) {
       let mySrc = myImage.getAttribute('src');
       console.log(mySrc)
-      if (mySrc === '../static/img/HSV.jpg') {
-        myImage.setAttribute('src', '../static/img/HSV-matrix.jpg');
-      } else {        
-        myImage.setAttribute('src', '../static/img/HSV.jpg');
+      if (mySrc === '../static/img/techno.png') {
+        myImage.setAttribute('src', '../static/img/techno2.jpg');
+      }
+      else if (mySrc === '../static/img/techno2.jpg') {
+        myImage.setAttribute('src', '../static/img/info.jpg')
+      } else {
+        myImage.setAttribute('src', '../static/img/techno.png');
       }
     }
   })
@@ -139,7 +142,7 @@ for (i = 0; i < splitText.length; i++) {
   text.innerHTML += "<span>" + splitText[i] + "</span>"
 }
 const span_text = text.querySelectorAll('span')
-for (i = 0; i < span_text.length; i++) {  
+for (i = 0; i < span_text.length; i++) {
   const span = span_text[i]
   span.classList.add('op-0')
 
@@ -149,7 +152,7 @@ let badge_container = document.querySelector('#badge')
 badge_container.classList.add('container', 'justify-content-center')
 let badge = document.createElement('span');
 badge.textContent = "BLOG-TECH";
-badge.classList.add('badge','bg-info',"op-0")
+badge.classList.add('badge', 'bg-info', "op-0")
 text.appendChild(badge_container)
 badge_container.appendChild(badge)
 console.log(badge_container)
@@ -158,8 +161,8 @@ console.log(badge_container)
 // let block1 = document.create elem
 
 let char = 0;
-var rand = Math.random()*100;
-if (rand<80){rand = 100};
+var rand = Math.random() * 100;
+if (rand < 80) { rand = 100 };
 console.log(rand);
 //for the animation of my Title I call a setInterval function that repeats the function onTick each 300ms or so
 let timer = setInterval(onTick, rand);
@@ -172,6 +175,8 @@ const main_container = document.querySelector("#main_container");
 const img_container = document.querySelector('#container_main_image');
 const dflex = document.querySelector('#d-flex')
 const dflexAll = document.querySelectorAll('.d-flex')
+const dflex1 = document.querySelector('#dflex1')
+const dflex2 = document.querySelector('#dflex2')
 console.log(dflexAll)
 // Pour l'image HSV on veut lui assigner une largeur égale à la taille finale de l'animation, autrement
 // le container auquel elle est liée au départ aura une width de 100% et au moment de l'apparition de l'image
@@ -185,66 +190,137 @@ const myName = document.querySelector('#name');
 
 
 //Now i want a background  to set in place
-tl.fromTo(main_container,1,{opacity:0},{opacity:1}).fromTo(main_container, 1, { height: "0%" }, { height: "100%", ease: Bounce },"-=1")
-.fromTo(main_container, 1, { width: "0%" }, { width: "100%", ease: Bounce },"-=1");
+tl.fromTo(main_container, 1, { opacity: 0 }, { opacity: 1 }).fromTo(main_container, 1, { height: "0%" }, { height: "100%", ease: Bounce }, "-=1")
+  .fromTo(main_container, 1, { width: "0%" }, { width: "100%", ease: Bounce }, "-=1");
 
 //definition of onTick which is the function of setInterval above which is called repeatedly 
 //until every span of my text "Bienvenue sur mon" has appeared
 // ATTENTION: le coeur de la fonction est dans le else, chaque span est affiché
-function onTick() {console.log("onTick");rand = Math.random()*300;
-  if (char === splitText.length) {setTimeout(function(){badge.classList.remove("op-0");},300);
-  tl.fromTo(badge,3,{width:"0%"},{width:"30%"}).fromTo(badge, 3,{opacity:0},{opacity:1},"-=3")
-// here i want to delay a bit the animation on the img_container
-//setTimeout(function(){
-  delay_x(dflex,"op-0",2)
-  tl.fromTo(img_container,1,{opacity:0},{opacity:1})
-  .fromTo(img_container, 1, { height: "0%" }, { height: "100%", ease: Bounce },"-=1")
-  .fromTo(img_container, 1, { width: "0%" }, { width: "50%", ease: Bounce },"-=1");
-  delay_x(HSV,"invisible",1)
-  delay_x(img_container,"op-0",1);  
-//},300);
-// animation de la légende de l'image
-  delay_x(myName,"op-0",1);
-  tl.fromTo(myName, 4, {opacity:0},{opacity:1});    
+function onTick() {
+  console.log("onTick"); rand = Math.random() * 300;
+  if (char === splitText.length) {
+    setTimeout(function () { badge.classList.remove("op-0"); }, 300);
+    tl.fromTo(badge, 3, { width: "0%" }, { width: "30%" }).fromTo(badge, 3, { opacity: 0 }, { opacity: 1 }, "-=3")
+    // here i want to delay a bit the animation on the img_container
+    //setTimeout(function(){
+    delay_x(dflex, "op-0", 2)
+    tl.fromTo(img_container, 1, { opacity: 0 }, { opacity: 1 })
+      .fromTo(img_container, 1, { height: "0%" }, { height: "100%", ease: Bounce }, "-=1")
+      .fromTo(img_container, 1, { width: "0%" }, { width: "50%", ease: Bounce }, "-=1");
+    delay_x(HSV, "invisible", 1)
+    delay_x(img_container, "op-0", 1);
+    //},300);
+    // animation de la légende de l'image
+    delay_x(myName, "op-0", 1);
+    tl.fromTo(myName, 4, { opacity: 0 }, { opacity: 1 });
     complete();
     return;
   } else {
-  const span = text.querySelectorAll('span')[char];
-  setTimeout(function(){span.classList.replace('op-0', 'op-100')},100);
-  char++;}  
+    const span = text.querySelectorAll('span')[char];
+    setTimeout(function () { span.classList.replace('op-0', 'op-100') }, 100);
+    char++;
+  }
 };
 
 
 // cette fonction supprime une classe sur l'élément choisi avec un délai particulier pour l
-function delay_x(element_x,class_Name,dtime)
-{
-  setTimeout(function(){element_x.classList.remove(class_Name)},dtime);
-}
+function delay_x(element_x, class_Name, dtime) {
+  setTimeout(function () { element_x.classList.remove(class_Name) }, dtime);
+};
 
-function complete() 
-{
+function complete() {
   clearInterval(timer);
   timer = null
 };
 
+//TODO créer des boutons sur les parties bleues à côté de l'image
+var div_list1 = create_Taglist([],'div',4); //par défaut création de 4 élément 'div'
+var div_list2 = create_Taglist([],'div',4);
+var btn_list1 = create_Taglist([],'button',4);
+var btn_list2 = create_Taglist([],'button',4);
+
+// par défaut on ajoute les classes btn et btn-outline-info de Bootstrap
+add_class_to_element_list(div_list1,'col-lg-auto','mx-1');
+add_class_to_element_list(div_list2,'col-lg-auto','mx-1');
+add_class_to_element_list(btn_list1);
+add_class_to_element_list(btn_list1,"col-lg-auto","op-1");
+add_class_to_element_list(btn_list2);
+add_class_to_element_list(btn_list2,"col-lg-auto","op-1");
+
+for (i=0;i<4;i++)
+{
+  btn_list1[i].textContent='bouton'+String(i+1);
+};
+console.log(btn_list1)
+
+for (i=0;i<4;i++)
+{
+  btn_list2[i].textContent='bouton'+String(i+5);
+};
+console.log(btn_list1)
+// ajout des div aux classes dflex1 parentes
+// et des classes boutons aux div parentes
+
+
+append_children_el(div_list1,dflex1)
+append_children_el(div_list2,dflex2)
+append_children_list(btn_list1,div_list1)
+append_children_list(btn_list2,div_list2)
+
+
+// les fonctions utilisées plus haut, c'est kiffant de pouvoir les définir après :)
+function create_Taglist(list=[],tag="div",n=4) {
+  for (i = 0; i < n; i++) {
+    const el = document.createElement(tag);
+    list.push(el);    
+  };
+  return list;
+};
+
+function add_class_to_element_list(list=[],class1='btn',class2= 'btn-outline-dark')
+{
+for(i = 0; i < list.length; i++)
+{
+  list[i].classList.add(class1,class2);
+};
+return(list);
+};
+
+function append_children_list(list_child=[],list_parent=[])
+{
+for (i=0; i< Math.min(list_child.length,list_parent.length); i++)
+{
+  list_parent[i].appendChild(list_child[i]);
+};
+};
+
+function append_children_el(list_child=[],el)
+{
+for (i=0; i< list_child.length; i++)
+{
+  el.appendChild(list_child[i]);
+};
+};
+
+//programmation de l'événement wheel pour faire apparaitre les élément de la section2
+//on commence par rendre invisible toute la section2 de l'HTML
 const section2 = document.getElementById("section2");
 console.log(section2);
 console.log(section2.children);
-function mkinvisible() 
-{
-  for(i=0;i<section2.children.length;i++)
-  {
+function mkinvisible() {
+  for (i = 0; i < section2.children.length; i++) {
     section2.children[i].classList.add('invisible');
   }
 };
 mkinvisible()
 console.log(section2.children)
 
-window.addEventListener('wheel',mkvisible);
-function mkvisible(event) 
-{ const section2 = document.getElementById("section2");
-  for(i=0;i<section2.children.length;i++)
-  {const child = section2.children[i]; 
-  delay_x(child,'invisible',99);
+// on ajoute l'Evenementlistener à la window ici !!
+window.addEventListener('wheel', mkvisible);
+function mkvisible(event) {
+  const section2 = document.getElementById("section2");
+  for (i = 0; i < section2.children.length; i++) {
+    const child = section2.children[i];
+    delay_x(child, 'invisible', 99);
   }
 };

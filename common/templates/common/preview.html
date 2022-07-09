@@ -13,10 +13,10 @@
         <div id=badge></div>    
     <div id="d-flex" class="d-flex justify-content-center bg-dark op-0">
         <div id="container_main_image" class="d-flex justify-content-center bg bg-info rounded op-0 "> 
-            <div class="d-flex bg-info col-sm-6"></div>           
+            <div  id="dflex1" class="d-flex bg-info col-sm-6"></div>           
             <img id="main_image" class=" col-12 h-50 invisible rounded img-responsive text-center"
                 src="{% static '' %}{{object.main_img_source}}" alt="photo de moi">
-            <div class="d-flex bg-info col-sm-6"></div>   
+            <div  id="dflex2" class="d-flex bg-info col-sm-6"></div>   
         </div>
     </div>
         <div><h5 id= "name" class="text-center text-info op-0"> {{object.main_img_legend}}</h5>
@@ -29,16 +29,22 @@
     <section id="section2">
     <div id="demo" class="carousel slide col-auto mb-2 text-secondary text-center" data-bs-ride="carousel"> {{object.carousel_name}}
                 <div class="carousel-inner">
-                    <div class="carousel-item active" data-bs-interval="3000">
+                    <div class="carousel-item active" data-bs-interval="4000">
                         <img src="{% static 'img/python-django3.png' %}" alt="Carrousel slide 1" class="text-center">
                     </div>
                     <!--<div class="carousel-item" data-bs-interval="2000">
                         <img src="{% static 'img/logo-django.jpg' %}" alt="Carrousel slide " class="d-block offset-4">
                     </div>-->
+                
+                    <div class="carousel-item" data-bs-interval="3000">
+                            <img src="{% static 'img/javascript.jpg' %}" alt="Carrousel slide 2" class="text-center">
+                    </div>
                     <div class="carousel-item" data-bs-interval="2000">
                         <img src="{% static 'img/bootstrap2.jpg' %}" alt="Carrousel slide 2" class="text-center">
                     </div>
-
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img src="{% static 'img/vscode.jpg' %}" alt="Carrousel slide 5" class="text-center">
+                    </div>
                     <div class="carousel-item" data-bs-interval="2000">
                         <img src="{% static 'img/pycharm.jpg' %}" alt="Carrousel slide 5" class="text-center">
                     </div>
