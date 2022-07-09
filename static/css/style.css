@@ -6617,23 +6617,27 @@ textarea.form-control-lg {
   border-width: 5px !important;
 }
 
-.width-25 {
+.w-25 {
   width: 25% !important;
 }
 
-.width-50 {
+.w-30 {
+  width: 30% !important;
+}
+
+.w-50 {
   width: 50% !important;
 }
 
-.width-75 {
+.w-75 {
   width: 75% !important;
 }
 
-.width-100 {
+.w-100 {
   width: 100% !important;
 }
 
-.width-auto {
+.w-auto {
   width: auto !important;
 }
 
@@ -7576,6 +7580,42 @@ textarea.form-control-lg {
 
 .invisible {
   visibility: hidden !important;
+}
+
+.myfade-transition-values {
+  transition: transition-values !important;
+}
+
+.op-100 {
+  opacity: 1 !important;
+}
+
+.op-0 {
+  opacity: 0 !important;
+}
+
+.op-50 {
+  opacity: 0.5 !important;
+}
+
+.op-25 {
+  opacity: 0.25 !important;
+}
+
+.mycolor-white {
+  color: rgb(255, 255, 255) !important;
+}
+
+.mycolor-yellow {
+  color: rgb(255, 255, 0) !important;
+}
+
+.mycolor-pink {
+  color: pink !important;
+}
+
+.mycolor-purple {
+  color: purple !important;
 }
 
 @media (min-width: 576px) {

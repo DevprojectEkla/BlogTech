@@ -3,17 +3,18 @@
 {% block content %}
 {% load static %}
 <section>
-    <div class="container text-center">
-        <div class="row justify-content-center ">
-           <div class="text-center col-10">
-               <h1 id = "mytitle1" class="display-2 fw-bold mb-5" >{{ object.main_title }}<span class="badge bg-info" > {{object.highlighted_text}}</span></h1>
+    <div class="container text-center ">
+        <div class="row justify-content-center bg-dark">
+           <div class="text-center col-12">
+               <h1 id = "mytitle1" class="display-2 fw-bold mb-5 text-info" >{{ object.main_title }}
            </div>
 
-            <div>
-                <img id="main_image" class=" shadow-lg width-50 border border-5 border-secondary rounded img-fluid"
-                     src="{% static '' %}{{object.main_img_source}}" alt="photo de moi" >
+            <div id="container_main_image" class="my-2 col-auto bg bg-info rounded invisible">
+                <img id="main_image" class=" shadow-lg rounded img-fluid"
+                     src="{% static '' %}{{object.main_img_source}}" alt="photo de moi">
+                
             </div>
-                <h5 class="text-muted fst-light w-50"> {{object.main_img_legend}}</h5>
+                <h5 class="text-info fst-light "> {{object.main_img_legend}}</h5>
         </div>
     </div>
 
@@ -111,6 +112,8 @@
 <script src="{%static '/myJS/script.js' %}">
         </script>
 </section>
+
+<div class="slider"></div>
 
 {% endblock %}
 

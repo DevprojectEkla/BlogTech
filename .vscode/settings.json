@@ -7,13 +7,14 @@
          },
          {
              "extensionName": ".min.css",
-             "format": "expanded",
+             "format": "compressed",
              "savePath": "/static/css"
          }
      ],
      "liveSassCompile.settings.excludeList": [
         "**/node_modules/**",
         "**/.vscode/**",
+        "/static/scss/**"
 
      ],
      "liveSassCompile.settings.generateMap": true,

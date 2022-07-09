@@ -1,3 +1,15 @@
+$transition-values: (
+    "all": all,
+    "width": width,
+    "height": height,
+    "1s": 1s,
+    "50": .5s,
+    "2s":2s,
+    "delay-1s":1s,
+    "delay-2s":2s,
+    "linear": linear,
+    "ease": ease,
+  );
 
 @import "static/scss/functions";
 @import "static/scss/variables";
@@ -5,10 +17,53 @@
 
 $utilities:
   (
+    "span":(
+        class: "myfade", 
+        property: transition,
+        values: (&transition-values
+        //     "all": all,
+        //     "width": width,
+        //     "height": height,
+        //     "1s": 1s,
+        //     "50": .5s,
+        //     "2s":2s,
+        //     "delay-1s":1s,
+        //     "delay-2s":2s,
+        //     "linear": linear,
+        //     "ease": ease,
+            
+        
+        )
+
+    ),
+    "opacity":(
+        property: opacity,
+        class: op,
+        values:(
+            100:1,
+            0:0,
+            50:.5,
+           25:.25,
+        
+        )
+    ),
+    "text-color":(
+        property: color,
+        class:mycolor,
+        values:(
+            "white": rgb(255, 255, 255),
+            "yellow":rgb(255, 255, 0),
+            "pink":pink,
+            "purple":purple,
+
+        )
+    ),
     "width": (
         property:width,
+        class: w,
         values: (
             25:25%,
+            30:30%,
             50:50%,
             75:75%,
             100:100%,
@@ -16,4 +71,5 @@ $utilities:
         )
     )
 );
+
 @import "static/scss/bootstrap.scss";
