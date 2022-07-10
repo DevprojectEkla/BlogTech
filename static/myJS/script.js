@@ -227,7 +227,7 @@ function onTick() {
     //},300);
     // animation de la légende de l'image
     delay_x(myName, "op-0", 1);
-    tl.fromTo(myName, 4, { opacity: 0 }, { opacity: 1 });
+    tl.fromTo(myName, 2, { opacity: 0 }, { opacity: 1 });
     complete();
     return;
   } else {
@@ -283,7 +283,7 @@ append_children_list(btn_list1,div_list1)
 append_children_list(btn_list2,div_list2)
 
 
-// les fonctions utilisées plus haut, c'est kiffant de pouvoir les définir après :)
+//ci-dessous les fonctions utilisées plus haut, c'est kiffant de pouvoir les définir après :)
 function create_Taglist(list=[],tag="div",n=4) {
   for (i = 0; i < n; i++) {
     const el = document.createElement(tag);
@@ -322,13 +322,12 @@ for (i=0; i< list_child.length; i++)
 // On commence par rendre invisible toute la section2 de l'HTML:
 const section2 = document.getElementById("section2");
 var text_visible = false
-console.log('text_visible au départ'+String(text_visible))
+console.log('text_visible au départ '+String(text_visible))
 
 // création d'une fonction rendant invisible chaque élément de la section2
 function mkInvisible() {
   for (i = 0; i < section2.children.length; i++) {
-    section2.children[i].classList.add('invisible');
-    
+    section2.children[i].classList.add('invisible');    
   };
 };
 // appel de la fonction:
@@ -337,7 +336,7 @@ mkInvisible()
 
 // On aura besoin d'un effet d'animation pour faire apparaitre les éléments masqués:
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger); // it is ScrollTrigger here and scrollTrigger in the gsap.to()
 const tl4 = new TimelineMax()
 
 // On ajoute l'Enregistreur d'événement à l'objet window ici !! 
@@ -349,21 +348,60 @@ if (text_visible == false)
   for (i = 0; i < section2.children.length; i++) 
   {
     const child = section2.children[i];
+    console.log(section2.children[i]);
+    console.log(child.className);
     //TODO créer une fonction qui fait apparaître les éléments un par un 
     // à chaque cran de la molette de la souris (et pas tout en même temps)
-    window.addEventListener('wheel', mkvisible,child); 
-    console.log('element'+" "+String(child)+"-"+i+'visible')    
-    text_visible = false;   
-  };
-  
+    gsap.to(child,
+      {
+      duration:1,
+      scrollTrigger:
+        {
+          trigger: child,
+          container: "#section2",
+          start: "top 90%",
+          end: "top 50%",
+          markers: {fontSize: "2rem"},
+          toggleClass: "invisible",
+          //toggleActions:"none none none none",
+          //            onenter onLeave  onEnterback   onLeaveBack
+          onToggle: self =>  console.log(child.className),
+          //pinSpacing: false,
+          //pin: true          
+          
+        }
+      }
+      );
+      console.log(child.className)
+
+    
+  };  
 } 
 else 
 {
   console.log('Normalement le text est visible la valeur text_visible est: '+text_visible)
 };
-function mkvisible(event,el)
-  { console.log(event.deltaY)
+function mkvisible(el)
+  { 
     tl4.fromTo(el,.5,{opacity:0},{opacity:1, ease: Power2.easeInOut})
+    gsap.to("div", {scrollTrigger:"div"});
     // la fonction suivant est un setTimeout pour supprimer la class 'invisible'
     delay_x(el,'invisible',.5);
   };
+
+
+// exemple de gsap.to avec scrollTrigger
+// gsap.to
+// (
+//   target,
+//   {
+//   duration:3,
+//   scrollTrigger:
+//   {
+//     trigger: target, or other trigger,
+//     start: "top 30%", beggining of the animation,
+//     markers: true,
+//     toggleClass: "visible"
+//   }
+//   }
+//   )
