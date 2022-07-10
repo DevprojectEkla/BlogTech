@@ -32,13 +32,13 @@ let myHTML = document.querySelector('h3');
 if (myHTML) {
   myHTML.addEventListener('click', function () { alert('prout premier h3 tag') })
 };
-
+// premiers essais d'enregistreur d'évènements
 let myH1 = document.querySelector('h1');
 if (myH1) {
   myH1.addEventListener('click', function () { alert('prout premier h1 tag') })
 };
 
-// exemple encore à tester
+// Changement d'image sur le passage de la souris, exemple encore à tester
 let myImage = document.getElementById('main_image')
 if (myImage) {
   myImage.addEventListener('mouseover', function () {
@@ -59,13 +59,13 @@ if (myImage) {
 
 
 
-let balise = true;
+// premiers essais de script Java avec fonctions simple
 function ChangerCouleur(Identifiant) {
   var rndCol = 'rgba(' + random(255) + ',' + random(255) + ',' + random(255) + ',' + 1 + ')'
   document.getElementById(Identifiant).style.color = rndCol;
-  balise = true;
+  
 };
-
+var balise=true
 myTitle = document.getElementById("mytitle1")
 myTitle.addEventListener('mouseover', function () {
   if (balise === true) {
@@ -89,7 +89,8 @@ if (document.getElementById('no_auth')) {
   console.log(document.getElementById("footer"));
 };
 
-
+// création d'un bouton "to the Top" qui apparaît seulement en fin de défilement de la page,
+// et permet en cliquant dessus de remonter en haut de la page (adaptation d'un tuto).
 
 var divbtt = document.getElementById("divbtt"),
   btnbtt = document.getElementById("btnbtt"),
@@ -99,7 +100,7 @@ var divbtt = document.getElementById("divbtt"),
   offset = 100,
   isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1,
   scrollPos, docHeight;
-console.log(effect);
+// console.log(effect);
 docHeight = Math.max(body.scrollHeight, body.offsetHeight,
   docElem.clientHeight, docElem.scrollHeight, docElem.offsetHeight);
 
@@ -107,32 +108,46 @@ docHeight = Math.max(body.scrollHeight, body.offsetHeight,
 if (docHeight != 'undefined') {
   offset = docHeight * 0.95;
 }
-if (divbtt) {// le if c'est pour éviter des erreurs "uncaught" dans la console quand l'utilisateur n'est pas connecté et que
-  //le bouton n'est pas disponible pour cette fonction.
+if (divbtt) { // le if c'est pour éviter des erreurs "uncaught" 
+              // dans la console quand l'utilisateur n'est pas connecté et que
+              // le bouton n'est pas disponible pour cette fonction.
+  // si on a bient un élément div on crée un Enregistreur d'événement attaché à l'objet window              
   window.addEventListener("scroll", function (event) {
-    scrollPos = body.scrollTop || docElem.scrollTop;
+    scrollPos = body.scrollTop || docElem.scrollTop; // en fonction du navigateur web les objets 
+                                                    // et attributs sont différents.
     divbtt.className = (scrollPos > scrollMax * 0.95) ? "visible" : "invisible"
-  });
+  }); // synaxe équivalente à une condition if scrollpos> ...scrollMax alors appliquer divbtt.className ='visible'
+  // sinon (ou else) mettre 'invisible'.
 }
 
-if (btnbtt) {//cf.com plus haut, idem
-  var effect = btnbtt.getAttribute('aria-pressed');
+if (btnbtt) {//cf.com plus haut pour le if.
+  var effect = btnbtt.getAttribute('aria-pressed'); // cette ligne voulait
+  // préparer un code pour supprimer l'effet de bouton enfoncé, quand on revient 
+  // en haut et qu'on redescend en bas de la page
+  // le bouton bootstrap-outline apparait encore enfoncé (sauf si l'on clik ailleurs sur la page).
   btnbtt.addEventListener("click", function (event) {
-    bgChange();
+    //bgChange();
     event.preventDefault();
     if (isFirefox) {
       docElem.scrollTop = 0;
+      //document.querySelector('p').click();
     }
     else { body.scrollTop = 0; }
     btnbtt.setAttribute('class', 'btn position-fixed bottom-0 end-50');
-    console.log(effect);
+    // c'est ce qui fait apparaitre le bouton à sa position toujours fixé à la fenêtre (il défile en même temps
+    //que la page)
+    // console.log(effect);
   });
 };
-console.log(effect);
-document.querySelector('p').click();
 
-//effet sur le titre de la page d'accueil "Bienvenue sur mon" qui apparaît lettre par lettre
-const text = document.getElementById("mytitle1");
+//simulation d'un clik sur un élément paragraphe
+ //simulation d'un clik aléatoire
+
+
+// Nouveau code pour créer un effet sur le titre de la page d'accueil
+// "Bienvenue sur mon" qui apparaît lettre par lettre 
+ 
+ const text = document.getElementById("mytitle1");
 console.log(text);
 const strText = text.textContent;
 const splitText = strText.split("");
@@ -167,7 +182,7 @@ console.log(rand);
 //for the animation of my Title I call a setInterval function that repeats the function onTick each 300ms or so
 let timer = setInterval(onTick, rand);
 //defining timelineMax objects
-const tl = new TimelineMax();
+const tl  = new TimelineMax();
 const tl2 = new TimelineMax();
 const tl3 = new TimelineMax();
 //selecting my elements to animate
@@ -233,13 +248,13 @@ function complete() {
   timer = null
 };
 
-//TODO créer des boutons sur les parties bleues à côté de l'image
+//création des boutons sur les parties bleues à côté de l'image
 var div_list1 = create_Taglist([],'div',4); //par défaut création de 4 élément 'div'
 var div_list2 = create_Taglist([],'div',4);
 var btn_list1 = create_Taglist([],'button',4);
 var btn_list2 = create_Taglist([],'button',4);
 
-// par défaut on ajoute les classes btn et btn-outline-info de Bootstrap
+// par défaut on ajoute les classes btn et btn-dark de Bootstrap
 add_class_to_element_list(div_list1,'col-lg-auto','mx-1');
 add_class_to_element_list(div_list2,'col-lg-auto','mx-1');
 add_class_to_element_list(btn_list1);
@@ -277,7 +292,7 @@ function create_Taglist(list=[],tag="div",n=4) {
   return list;
 };
 
-function add_class_to_element_list(list=[],class1='btn',class2= 'btn-outline-dark')
+function add_class_to_element_list(list=[],class1='btn',class2= 'btn-dark')
 {
 for(i = 0; i < list.length; i++)
 {
@@ -302,25 +317,53 @@ for (i=0; i< list_child.length; i++)
 };
 };
 
-//programmation de l'événement wheel pour faire apparaitre les élément de la section2
-//on commence par rendre invisible toute la section2 de l'HTML
+//**Programmation de l'événement wheel pour faire apparaitre les élément de la section2
+
+// On commence par rendre invisible toute la section2 de l'HTML:
 const section2 = document.getElementById("section2");
-console.log(section2);
-console.log(section2.children);
-function mkinvisible() {
+var text_visible = false
+console.log('text_visible au départ'+String(text_visible))
+
+// création d'une fonction rendant invisible chaque élément de la section2
+function mkInvisible() {
   for (i = 0; i < section2.children.length; i++) {
     section2.children[i].classList.add('invisible');
-  }
+    
+  };
 };
-mkinvisible()
-console.log(section2.children)
+// appel de la fonction:
+mkInvisible()
+//console.log(section2.children)
 
-// on ajoute l'Evenementlistener à la window ici !!
-window.addEventListener('wheel', mkvisible);
-function mkvisible(event) {
-  const section2 = document.getElementById("section2");
-  for (i = 0; i < section2.children.length; i++) {
+// On aura besoin d'un effet d'animation pour faire apparaitre les éléments masqués:
+
+gsap.registerPlugin(ScrollTrigger);
+const tl4 = new TimelineMax()
+
+// On ajoute l'Enregistreur d'événement à l'objet window ici !! 
+// ATTENTION: l'événement de souris 'wheel' ne s'attage pas à un élément, 'mousewheel' oui 'but is deprecated'.
+if (text_visible == false)
+{
+  console.log("ok");
+  text_visible = true;
+  for (i = 0; i < section2.children.length; i++) 
+  {
     const child = section2.children[i];
-    delay_x(child, 'invisible', 99);
-  }
+    //TODO créer une fonction qui fait apparaître les éléments un par un 
+    // à chaque cran de la molette de la souris (et pas tout en même temps)
+    window.addEventListener('wheel', mkvisible,child); 
+    console.log('element'+" "+String(child)+"-"+i+'visible')    
+    text_visible = false;   
+  };
+  
+} 
+else 
+{
+  console.log('Normalement le text est visible la valeur text_visible est: '+text_visible)
 };
+function mkvisible(event,el)
+  { console.log(event.deltaY)
+    tl4.fromTo(el,.5,{opacity:0},{opacity:1, ease: Power2.easeInOut})
+    // la fonction suivant est un setTimeout pour supprimer la class 'invisible'
+    delay_x(el,'invisible',.5);
+  };
