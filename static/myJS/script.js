@@ -98,12 +98,13 @@ if (divbtt) { // le if c'est pour éviter des erreurs "uncaught"
     scrollPos = body.scrollTop || docElem.scrollTop; // en fonction du navigateur web les objets 
     // et attributs sont différents.
     divbtt.className = (scrollPos > scrollMax * 0.95) ? "visible" : "invisible"
+    if (!isFirefox){divbtt.className = (scrollPos > docHeight * 0.50) ? "visible" : "invisible"}
   }); // synaxe équivalente à une condition if scrollpos> ...scrollMax alors appliquer divbtt.className ='visible'
   // sinon (ou else) mettre 'invisible'.
 }
-
+console.log(btnbtt)
 if (btnbtt) {//cf.com plus haut pour le if.
-  var effect = btnbtt.getAttribute('aria-pressed'); // cette ligne voulait
+  //var effect = btnbtt.getAttribute('aria-pressed'); // cette ligne voulait
   // préparer un code pour supprimer l'effet de bouton enfoncé, quand on revient 
   // en haut et qu'on redescend en bas de la page
   // le bouton bootstrap-outline apparait encore enfoncé (sauf si l'on clik ailleurs sur la page).
@@ -112,10 +113,11 @@ if (btnbtt) {//cf.com plus haut pour le if.
     event.preventDefault();
     if (isFirefox) {
       docElem.scrollTop = 0;
+      btnbtt.classList.remove('active');
       //document.querySelector('p').click();
     }
-    else { body.scrollTop = 0; }
-    btnbtt.setAttribute('class', 'btn position-fixed bottom-0 end-50');
+    else { body.scrollTop = 0; }    
+    btnbtt.classList.remove('active');
     // c'est ce qui fait apparaitre le bouton à sa position toujours fixé à la fenêtre (il défile en même temps
     //que la page)
     // console.log(effect);
@@ -381,11 +383,11 @@ if (text_visible == false) {
           container: "#section2",
           start: "top 90%",
           end: "top 60%",
-          markers: { fontSize: "2rem" },
+          //markers: { fontSize: "2rem" },
           toggleClass: "invisible",
           //toggleActions:"none none none none",
           //            onenter onLeave  onEnterback   onLeaveBack
-          onToggle: self => console.log(child.className),
+          //onToggle: self => console.log(child.className),
           //pinSpacing: false,
           //pin: true          
 

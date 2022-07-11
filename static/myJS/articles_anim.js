@@ -1,5 +1,5 @@
 const elements = document.querySelectorAll('a');
-alert(elements)
+
 
 for(i =0; i< elements.length;i++){console.log(elements.NodeList)}
 gsap.to(child,
