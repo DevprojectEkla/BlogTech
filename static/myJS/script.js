@@ -184,7 +184,8 @@ let timer = setInterval(onTick, rand);
 //defining timelineMax objects
 const tl  = new TimelineMax();
 const tl2 = new TimelineMax();
-const tl3 = new TimelineMax();
+const tl3 = new TimelineMax({delay:5, onComplete:append_elements});
+const tl4 = new TimelineMax({delay:10});
 //selecting my elements to animate
 const main_container = document.querySelector("#main_container");
 const img_container = document.querySelector('#container_main_image');
@@ -193,13 +194,10 @@ const dflexAll = document.querySelectorAll('.d-flex')
 const dflex1 = document.querySelector('#dflex1')
 const dflex2 = document.querySelector('#dflex2')
 console.log(dflexAll)
-// Pour l'image HSV on veut lui assigner une largeur égale à la taille finale de l'animation, autrement
-// le container auquel elle est liée au départ aura une width de 100% et au moment de l'apparition de l'image
-// il sera réduit à 50% (comme le veut l'animation et les dimensions d'affichage requise pour cette image).
-// j'assigne donc ici à l'image une classe bootstrap w-50 qui veut dire width = 50% 
+// Pour l'image HSV j'assigne une classe 'invisible'
 // et je la supprime plus loin grâce la fonction delay_x() définie plus bas.
 const HSV = document.querySelector('#main_image');
-HSV.classList.add('invisible');
+//HSV.classList.add('invisible');
 // selection de la légende de la photo
 const myName = document.querySelector('#name');
 
@@ -210,27 +208,28 @@ tl.fromTo(main_container, 1, { opacity: 0 }, { opacity: 1 }).fromTo(main_contain
 
 //definition of onTick which is the function of setInterval above which is called repeatedly 
 //until every span of my text "Bienvenue sur mon" has appeared
-// ATTENTION: le coeur de la fonction est dans le else, chaque span est affiché
+// ATTENTION: le coeur de la fonction est dans le else où chaque span est affiché
 function onTick() {
   console.log("onTick"); rand = Math.random() * 300;
   if (char === splitText.length) {
     setTimeout(function () { badge.classList.remove("op-0"); }, 300);
-    tl.fromTo(badge, 3, { width: "0%" }, { width: "30%" }).fromTo(badge, 3, { opacity: 0 }, { opacity: 1 }, "-=3")
+    tl2.fromTo(badge, 3, { width: "0%" }, { width: "30%" }).fromTo(badge, 3, { opacity: 0 }, { opacity: 1 }, "-=3")
     // here i want to delay a bit the animation on the img_container
     //setTimeout(function(){
     delay_x(dflex, "op-0", 2)
-    tl.fromTo(img_container, 1, { opacity: 0 }, { opacity: 1 })
+    tl2.fromTo(img_container, 1, { opacity: 0 }, { opacity: 1 })
       .fromTo(img_container, 1, { height: "0%" }, { height: "100%", ease: Bounce }, "-=1")
       .fromTo(img_container, 1, { width: "0%" }, { width: "50%", ease: Bounce }, "-=1");
-    delay_x(HSV, "invisible", 1)
+    // delay_x ci-dessous va supprimer la class indiquée pour laisser apparaitre les éléments en question
+    //delay_x(HSV, "invisible", 1) devenu inutile quand j'ai réussi à faire disparaitre le conteneur.
     delay_x(img_container, "op-0", 1);
     //},300);
     // animation de la légende de l'image
     delay_x(myName, "op-0", 1);
-    tl.fromTo(myName, 2, { opacity: 0 }, { opacity: 1 });
+    tl3.fromTo(myName, 2, { opacity: 0 }, { opacity: 1 });
     complete();
     return;
-  } else {
+  } else {//c'est ici que l'animation du titre "Bienvenue..." lettre par lettre a lieu.
     const span = text.querySelectorAll('span')[char];
     setTimeout(function () { span.classList.replace('op-0', 'op-100') }, 100);
     char++;
@@ -258,9 +257,9 @@ var btn_list2 = create_Taglist([],'button',4);
 add_class_to_element_list(div_list1,'col-lg-auto','mx-1');
 add_class_to_element_list(div_list2,'col-lg-auto','mx-1');
 add_class_to_element_list(btn_list1);
-add_class_to_element_list(btn_list1,"col-lg-auto","op-1");
+add_class_to_element_list(btn_list1,"col-lg-auto","op-0");
 add_class_to_element_list(btn_list2);
-add_class_to_element_list(btn_list2,"col-lg-auto","op-1");
+add_class_to_element_list(btn_list2,"col-lg-auto","op-0");
 
 for (i=0;i<4;i++)
 {
@@ -273,14 +272,18 @@ for (i=0;i<4;i++)
   btn_list2[i].textContent='bouton'+String(i+5);
 };
 console.log(btn_list1)
-// ajout des div aux classes dflex1 parentes
-// et des classes boutons aux div parentes
 
-
+// Fonction qui accroche les éléments divs aux classes dflex1 parentes
+// et les éléments boutons aux div parentes: 
+//(ATTENTION: cette opération fait apparaître l'objet d-flex 
+// qui contient les div_list et les boutons créés)
+function append_elements(){
 append_children_el(div_list1,dflex1)
 append_children_el(div_list2,dflex2)
 append_children_list(btn_list1,div_list1)
 append_children_list(btn_list2,div_list2)
+};
+
 
 
 //ci-dessous les fonctions utilisées plus haut, c'est kiffant de pouvoir les définir après :)
@@ -337,7 +340,7 @@ mkInvisible()
 // On aura besoin d'un effet d'animation pour faire apparaitre les éléments masqués:
 
 gsap.registerPlugin(ScrollTrigger); // it is ScrollTrigger here and scrollTrigger in the gsap.to()
-const tl4 = new TimelineMax()
+const tl5 = new TimelineMax()
 
 // On ajoute l'Enregistreur d'événement à l'objet window ici !! 
 // ATTENTION: l'événement de souris 'wheel' ne s'attage pas à un élément, 'mousewheel' oui 'but is deprecated'.
@@ -360,7 +363,7 @@ if (text_visible == false)
           trigger: child,
           container: "#section2",
           start: "top 90%",
-          end: "top 50%",
+          end: "top 60%",
           markers: {fontSize: "2rem"},
           toggleClass: "invisible",
           //toggleActions:"none none none none",
@@ -383,7 +386,7 @@ else
 };
 function mkvisible(el)
   { 
-    tl4.fromTo(el,.5,{opacity:0},{opacity:1, ease: Power2.easeInOut})
+    tl5.fromTo(el,.5,{opacity:0},{opacity:1, ease: Power2.easeInOut})
     gsap.to("div", {scrollTrigger:"div"});
     // la fonction suivant est un setTimeout pour supprimer la class 'invisible'
     delay_x(el,'invisible',.5);
