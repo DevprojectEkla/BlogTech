@@ -93,13 +93,14 @@
         </div>
     <div> <h3 class="font-weight-light text-primary p-4 border-start border-5 col-11 ms-4"> {{block1.title3}}</h3> 
         <p class="lead p-4 border-start border-dark border-5 col-11 ms-4" > {{block1.paragraph3}}</p>
-       
+    {% block footer %}
     <div id="divbtt" class="invisible" >
                 <button type="button" id="btnbtt"
-                        class="btn btn-dark position-fixed bottom-0 end-50">
+                        class="btn btn-dark position-fixed bottom-0 start-50">
                     Revenir en haut de la page</button>
                 </div>
             </div> 
+    {% endblock %}
         
         {% endif %}
         
