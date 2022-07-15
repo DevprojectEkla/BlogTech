@@ -222,7 +222,7 @@ function onTick() {
 // box-shadow: 2px        2px         2px           1px           rgba(0, 0, 0, 0.2);
 
 main_img.addEventListener('mouseover',function(){
-TweenMax.fromTo(main_img,1,{boxShadow: "10px 5px 5px red"},{boxShadow: " 2px 2px 2px 1px rgba(0, 0, 0, 0.2)"});
+TweenMax.fromTo(main_img,1,{boxShadow: "10px 5px 5px rgba(255, 0, 0, 1)"},{boxShadow: "2px 2px 2px 1px rgba(0, 0, 0, 0.2)", zIndex:2});
 })
 
 
@@ -243,16 +243,13 @@ var div_list1 = create_Taglist([], 'div', 4); //par défaut création de 4 élé
 var div_list2 = create_Taglist([], 'div', 4);
 var btn_list1 = create_Taglist([], 'button', 4);
 var btn_list2 = create_Taglist([], 'button', 4);
-
+const class_btn = ["btn","btn-dark","btn-lg", "col-lg-auto", "op-1", "text-center", "responsive"]
+const class_div = ["col-lg-auto", "mx-1"]
 // par défaut on ajoute les classes btn et btn-dark de Bootstrap
-add_class_to_element_list(div_list1, 'col-lg-auto', 'mx-1');
-add_class_to_element_list(div_list2, 'col-lg-auto', 'mx-1');
-add_class_to_element_list(btn_list1);
-add_class_to_element_list(btn_list1, "col-lg-auto", "op-1");
-add_class_to_element_list(btn_list1, "text-center", "responsive");
-add_class_to_element_list(btn_list2);
-add_class_to_element_list(btn_list2, "col-lg-auto", "op-1");
-add_class_to_element_list(btn_list2, "text-center", "responsive");
+add_class_to_element_list(btn_list1.concat(btn_list2), class_btn);
+add_class_to_element_list(div_list1.concat(div_list2), class_div);
+
+
 
 //~CUSTOMIZATION DES BOUTTONS et ANIMATIONS:~
 
@@ -311,17 +308,17 @@ function tl4_append_elements() {
 btn_list = btn_list1.concat(btn_list2)
 addAnimation(btn_list);
 // Animation sur le bouton nouveauté:
-TweenMax.fromTo(btn_list1[0], 3, { rotation: 0, backgroundColor: "dark" },
+TweenMax.fromTo(btn_list1[0], 1, { rotation: 0, backgroundColor: "" },
   {
     rotation: 360,
-    backgroundColor: "#2a8000",
-    borderColor: "#ffff",
-    color: "rgba(200,150,0,1)"
+    backgroundColor: "#6610f2",
+    borderColor: "#0d496e",
+    color : "#FFFF"
   }).delay(6);
 function buttonRotation(btn, t, angle1 = 0, angle2 = 360)
 {
   TweenMax.fromTo(btn, 3, { rotation: 0 }, { rotation: 360 }).to(btn,2,{color: "#2a8000"} );
-};
+}
 
 function addAnimation(elements_list)
 {
@@ -350,9 +347,12 @@ function create_Taglist(list = [], tag = "div", n = 4) {
   return list;
 };
 
-function add_class_to_element_list(list = [], class1 = 'btn', class2 = 'btn-dark') {
-  for (i = 0; i < list.length; i++) {
-    list[i].classList.add(class1, class2);
+function add_class_to_element_list(list = [], class_list =['btn', 'btn-dark']){
+  for (i = 0; i < list.length; i++) { for (j=0; j < class_list.length; j++)
+    {
+      list[i].classList.add(class_list[j]);
+  }
+    
   };
   return (list);
 };
