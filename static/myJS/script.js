@@ -3,6 +3,7 @@
 //fonction qui est sensé placé le scroll en position top de la page
 // à chaque  refresh
 window.scrollTop = 0
+console.log(divbtt)
 // fonction basique
 function random(number) {
   return Math.floor(Math.random() * (number + 1));
@@ -62,14 +63,6 @@ function ChangerCouleur(Identifiant) {
 //     balise = false
 //     console.log(balise);;
 //   }
-
-// })
-
-// if (document.getElementById('no_auth')) {
-//   console.log(document.querySelector("#divbtt"));
-// } else {
-//   console.log(document.getElementById("footer"));
-// };
 
 // création d'un bouton "to the Top" qui apparaît seulement en fin de défilement de la page,
 // et permet en cliquant dessus de remonter en haut de la page (adaptation d'un tuto).
@@ -184,7 +177,7 @@ const dflex2 = document.querySelector('#dflex2')
 console.log(dflexAll)
 // Pour l'image HSV j'assigne une classe 'invisible'
 // et je la supprime plus loin grâce la fonction delay_x() définie plus bas.
-const image_principale = document.querySelector('#main_image');
+const main_img = document.querySelector('#main_image');
 //IMG.classList.add('invisible');
 // selection de la légende de la photo
 const myName = document.querySelector('#name');
@@ -223,6 +216,16 @@ function onTick() {
   }
 };
 
+// ~ Animation de l'image evenement 'mouseover' ~ 
+// syntaxe de la propriété CSS box-shadow:
+//  *          offset-x | offset-y | blur-radius | spread-radius | color */
+// box-shadow: 2px        2px         2px           1px           rgba(0, 0, 0, 0.2);
+
+main_img.addEventListener('mouseover',function(){
+TweenMax.fromTo(main_img,1,{boxShadow: "10px 5px 5px red"},{boxShadow: " 2px 2px 2px 1px rgba(0, 0, 0, 0.2)"});
+})
+
+
 
 // cette fonction supprime une classe sur l'élément choisi avec un délai particulier pour l
 function delay_x(element_x, class_Name, dtime) {
@@ -234,7 +237,8 @@ function complete() {
   timer = null
 };
 
-//création des boutons sur les parties bleues à côté de l'image
+//** Création des boutons animés de l'image centrale:
+
 var div_list1 = create_Taglist([], 'div', 4); //par défaut création de 4 élément 'div'
 var div_list2 = create_Taglist([], 'div', 4);
 var btn_list1 = create_Taglist([], 'button', 4);
@@ -283,7 +287,7 @@ function customize() {
 //  + animation d'un margin sur l'image
 function tl4_append_elements() {
   //animation de l'image
-  TweenMax.fromTo(image_principale, 3,
+  TweenMax.fromTo(main_img, 3,
     {
       marginTop: 0,
       marginBottom: 0
@@ -302,6 +306,38 @@ function tl4_append_elements() {
 
 
 };
+
+//~ ANIMATION MOUSEOVER SUR LES BOUTONS ~~
+btn_list = btn_list1.concat(btn_list2)
+addAnimation(btn_list);
+// Animation sur le bouton nouveauté:
+TweenMax.fromTo(btn_list1[0], 3, { rotation: 0, backgroundColor: "dark" },
+  {
+    rotation: 360,
+    backgroundColor: "#2a8000",
+    borderColor: "#ffff",
+    color: "rgba(200,150,0,1)"
+  }).delay(6);
+function buttonRotation(btn, t, angle1 = 0, angle2 = 360)
+{
+  TweenMax.fromTo(btn, 3, { rotation: 0 }, { rotation: 360 }).to(btn,2,{color: "#2a8000"} );
+};
+
+function addAnimation(elements_list)
+{
+  for (i in elements_list) { 
+    const el = elements_list[i] 
+    // attention à la syntaxe de JS pour récupérer la valeur d'un élément d'une liste par itération
+  el.addEventListener('mouseover',function () {
+    TweenMax.fromTo(el, 1, { rotation: 0 }, { rotation: 360 });
+  });
+  }
+}
+// myTitle.addEventListener('mouseover', function () {
+//   if (balise === true) {
+//     ChangerCouleur('mytitle1');
+
+
 
 
 //Il faudrait faire des classes de tout cela !!

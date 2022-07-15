@@ -18,7 +18,7 @@ $transition-values: (
 $utilities:
   (
     "span":(
-        class: "myfade", 
+        class: "myfade",
         property: transition,
         values: (&transition-values
         //     "all": all,
