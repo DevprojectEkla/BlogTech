@@ -28,7 +28,9 @@ from common.views import homepage, MainView, HomePageView
 
 urlpatterns = [
     path('', MainView.as_view(), name='main'),
+    
     path('common/', HomePageView.as_view(), name='home'),
+    
     path('store/', base, name="base"),
     path('store/index', index, name="index"),
     path('admin/', admin.site.urls, name='admin'),

@@ -241,8 +241,8 @@ function complete() {
 
 var div_list1 = create_Taglist([], 'div', 4); //par défaut création de 4 élément 'div'
 var div_list2 = create_Taglist([], 'div', 4);
-var btn_list1 = create_Taglist([], 'button', 4);
-var btn_list2 = create_Taglist([], 'button', 4);
+var btn_list1 = create_Taglist([], 'a', 4);
+var btn_list2 = create_Taglist([], 'a', 4);
 const class_btn = ["btn","btn-dark","btn-lg", "col-lg-auto", "op-1", "text-center", "responsive"]
 const class_div = ["col-lg-auto", "mx-1"]
 // par défaut on ajoute les classes btn et btn-dark de Bootstrap
@@ -262,7 +262,10 @@ function customize() {
     btni1.textContent = button_names[i]   //nom automatique: 'bouton'+String(i+1);
     // pour jouer sur la couleur (mais pas encore au point):
     //btni1.style.backgroundColor = 'rgba(' + 255 + ',' + 0 + ',' + random(400) + ',' + 1 + ')';
-
+    if (button_names[i] == "nouveautés")
+    {
+      btni1.href = "/articles/index"
+    };
     // les boutons de la d-flex2:
     const btni2 = btn_list2[i]
     btni2.textContent = button_names[i + 4];
