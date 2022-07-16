@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['devprojectmyfirstblog.herokuapp.com']
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 # Application definition
 

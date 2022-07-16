@@ -1,6 +1,7 @@
-from django.http import request
-from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect, request
+from django.shortcuts import redirect, render, get_object_or_404
 from django.template.defaulttags import url
+from django.template.loader import render_to_string
 
 from django.views.generic import TemplateView
 
@@ -13,6 +14,9 @@ from articles.models import Article
 # si on respecte la norme de nomination des templates (app/model_viewtype.html, ici common/home.html, dans ce
 # cas la variable template_name n'est même plus nécessaire.)
 from common.models import HomePage, NewBlock
+from .forms import ContactForm
+
+from django.core.mail import BadHeaderError, send_mail
 
 
 class MainView(TemplateView):
@@ -24,7 +28,7 @@ class MainView(TemplateView):
     # attention à bien préciser Mainview.as_view() quand on appelle la classe dans le fichier urls.py
 
 
-def homepage(request):
+# def homepage(request):
     # Ce qui suit en commentaire, c'est l'idée si l'on veut récupérer des variables du modèle Article dans cette view
     # mais pour faire ce que je voulais finalement je n'en ai pas eu besoin...
     # article = get_object_or_404(Article,slug=4)
@@ -36,7 +40,7 @@ def homepage(request):
     # ou plusieurs modèles de mise en page (titre, paragraphe1, paragraphe2, mot-clé1,mot-clé2,etc. img de § etc.
     # contenu = Presentation.objects.all
     # context = {'contenu': contenu}
-    return render(request, 'common/test.html') #  , context)
+    # return render(request, 'common/test.html') #  , context)
 
 
 class HomePageView(TemplateView):
@@ -51,4 +55,45 @@ class HomePageView(TemplateView):
         #context['block3'] = get_object_or_404(NewBlock, id=3)
         return context
 
+def contact_form(request):
+    form = ContactForm()
+    context = {'form': form}
 
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+
+        if form.is_valid():
+            print ("the form is valid")
+            return send_email(request)
+            
+    else:
+        form = ContactForm()
+        return render(request,'common/contact.html',context)
+
+def send_email(request):
+    print ('sending a mail')
+    # nom = request.POST.get('nom', '')
+    objet = request.POST.get('objet', '')
+    message = request.POST.get('Message', '')
+    email = request.POST.get('email', '')
+    html = render_to_string('common/emails/contact_form.html',{
+        'objet': objet,
+        'message': message,
+        'email' : email
+    })
+    if objet and message and email:
+        try:
+            print ('trying function send_mail')
+            send_mail(objet, message, email, ['admin@example.com'],html_message=html)
+        except BadHeaderError:
+            print ('failed function send_mail')
+            return HttpResponse('Invalid header found.')
+        return render(request,'common/thanks.html')
+    else:
+        print("echec")
+        # In reality we'd use a form class
+        # to get proper validation errors.
+        return HttpResponse('Make sure all fields are entered and valid.')
+
+class ThanksView(TemplateView):
+    template_name = 'common/thanks.html'

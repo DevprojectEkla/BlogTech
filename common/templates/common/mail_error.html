@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+{% block content %}
+<div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-4">
+            <h2> Désolé le message n'a pas pu être envoyé correctement</h2>
+            <h3> vérifiez que les champs respectifs ont été remplis correctement et réessayer.</h3>
+            <div class="row justify-content-center text-center">
+            <a href="{% url 'contact' %}"> <div class=" btn btn-outline-danger my-2">Réessayer</a></div>
+            <a href="{% url 'home' %}"> <div class=" btn btn-outline-danger my-2">Annuler</a></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

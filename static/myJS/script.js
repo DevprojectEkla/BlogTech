@@ -266,9 +266,14 @@ function customize() {
     {
       btni1.href = "/articles/index"
     };
+    
     // les boutons de la d-flex2:
     const btni2 = btn_list2[i]
     btni2.textContent = button_names[i + 4];
+    if (button_names[i+4] == "contactez-moi")
+    { 
+      btni2.href = "/common/contact"
+    };
     // pour jouer sur la couleur (mais pas encore au point):
     //btni2.style.backgroundColor = 'rgba(' + 255 + ',' + 0 + ',' + random(400) + ',' + 1 + ')';
     //Les Animations sur les boutons:
