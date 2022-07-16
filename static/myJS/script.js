@@ -249,8 +249,6 @@ const class_div = ["col-lg-auto", "mx-1"]
 add_class_to_element_list(btn_list1.concat(btn_list2), class_btn);
 add_class_to_element_list(div_list1.concat(div_list2), class_div);
 
-
-
 //~CUSTOMIZATION DES BOUTTONS et ANIMATIONS:~
 
 // la liste des noms à assigner à nos  boutons:
@@ -271,7 +269,7 @@ function customize() {
     // pour jouer sur la couleur (mais pas encore au point):
     //btni2.style.backgroundColor = 'rgba(' + 255 + ',' + 0 + ',' + random(400) + ',' + 1 + ')';
     //Les Animations sur les boutons:
-    TweenMax.fromTo(btn_list1, 3, { x: 0, rotation: 0 }, { x: "20vw", rotation: 360 })
+    TweenMax.fromTo(btn_list1, 3, { x: 0, rotation: 0 }, { x: "15vw", rotation: 360 })
     TweenMax.fromTo(btn_list2, 3, { x: 0, rotation: 0 }, { x: "-25vw", rotation: 360 })
   };
 };
@@ -315,9 +313,10 @@ TweenMax.fromTo(btn_list1[0], 1, { rotation: 0, backgroundColor: "" },
     borderColor: "#0d496e",
     color : "#FFFF"
   }).delay(6);
-function buttonRotation(btn, t, angle1 = 0, angle2 = 360)
+
+function Rotation(elem, t1, angle1 = 0, angle2 = 360)
 {
-  TweenMax.fromTo(btn, 3, { rotation: 0 }, { rotation: 360 }).to(btn,2,{color: "#2a8000"} );
+  TweenMax.fromTo(elem, t1, { rotation: angle1 }, { rotation: angle2 });
 }
 
 function addAnimation(elements_list)
