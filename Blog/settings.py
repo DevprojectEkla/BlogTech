@@ -28,7 +28,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['devprojectmyfirstblog.herokuapp.com']
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '77ac3a46ebd265'
+EMAIL_HOST_PASSWORD = '2a682bfb02283b'
+EMAIL_PORT = '25'
 
 
 # Application definition

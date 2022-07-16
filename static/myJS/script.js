@@ -332,8 +332,9 @@ function addAnimation(elements_list)
   for (i in elements_list) { 
     const el = elements_list[i] 
     // attention à la syntaxe de JS pour récupérer la valeur d'un élément d'une liste par itération
-  el.addEventListener('mouseover',function () {
-    TweenMax.fromTo(el, 1, { rotation: 0 }, { rotation: 360 });
+  el.addEventListener('mouseover',function () { 
+    var anim = TweenMax.fromTo(el, 1, { rotation: 0 }, { rotation: 360 });
+    // if (anim.isActive()){alert('actif');anim.delay(3);}
   });
   }
 }
