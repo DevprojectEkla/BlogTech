@@ -11,17 +11,17 @@ TweenMax.fromTo
       {
       
       opacity:0,
-      x:(-1)^(i+1)*300,      
+      x:(-1)**(i+1)*300,      
       },
       {
-        x:(-1)^(i+1)*-40,
+        x:(-1)**(i+1)*(-40),
         scrollTrigger:
         {
           trigger: container[i],
           container: "#section2",
-          start: "top 70%",
+          start: "top 50%",
           end: "300px 50%",
-          markers: {fontSize: "2rem"},
+          //markers: {fontSize: "2rem"},
           scrub:1, //or a number in second
           //toggleClass: "invisible",
           toggleActions:"restart none none none",
