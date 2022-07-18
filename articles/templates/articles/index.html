@@ -2,10 +2,11 @@
 
 {% block content %}
 {% load static %}
-<script src="{% static 'myJS/articles_anim.js' %}"></script>
-{% for article in articles %}
+
 <section id="intro">
-    <div class="container-lg">
+{% for article in articles %}
+
+    <div id="container{{article.slug}}" class="container-lg">
         <div class="row justify-content-center">
             <div class="text-center">
                 <a class="lead text-decoration-none text-black" href="{% url 'article' article.slug %}">
@@ -29,6 +30,8 @@
             </div>
         </div>
     </div>
-</section>
 {% endfor %}
+</section>
+<script src="{% static 'myJS/articles_anim.js' %}"></script>
+
 {% endblock %}

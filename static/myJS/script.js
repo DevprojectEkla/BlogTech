@@ -322,22 +322,25 @@ TweenMax.fromTo(btn_list1[0], 1, { rotation: 0, backgroundColor: "" },
     color : "#FFFF"
   }).delay(6);
 
-function Rotation(elem, t1, angle1 = 0, angle2 = 360)
+function Rotation(elem, t1, angle1 = 0, angle2 = 360,delay=0)
 {
-  TweenMax.fromTo(elem, t1, { rotation: angle1 }, { rotation: angle2 });
+  TweenMax.fromTo(elem, t1, { rotation: angle1 }, { rotation: angle2 }).delay(delay);
 }
 
-function addAnimation(elements_list)
+function addAnimation(elements_list,delay=0) 
 {
-  for (i in elements_list) { 
-    const el = elements_list[i] 
+  for (i in elements_list)
+  {
+    const el = elements_list[i]
     // attention à la syntaxe de JS pour récupérer la valeur d'un élément d'une liste par itération
-  el.addEventListener('mouseover',function () { 
-    var anim = TweenMax.fromTo(el, 1, { rotation: 0 }, { rotation: 360 });
-    // if (anim.isActive()){alert('actif');anim.delay(3);}
-  });
+    el.addEventListener('mouseover', function ()
+      { 
+        Rotation(el,1,0,360,0);
+      });    
+   
   }
 }
+    // if (anim.isActive()){alert('actif');anim.delay(3);}
 // myTitle.addEventListener('mouseover', function () {
 //   if (balise === true) {
 //     ChangerCouleur('mytitle1');
