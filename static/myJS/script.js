@@ -138,10 +138,10 @@ for (i = 0; i < span_text.length; i++) {
 };
 //creation d'un element bootstrap badge pour insérer le txt "BLOG TECH" à la suite de l'animation "Bienvenue...""
 let badge_container = document.querySelector('#badge');
-badge_container.classList.add('container', 'justify-content-center');
+badge_container.classList.add('col-sm-auto','justify-content-center');
 let badge = document.createElement('span');
-badge.textContent = "BLOG-TECH";
-badge.classList.add('badge', 'bg-info', "op-0");
+badge.innerHTML = "BLOG-TECH";
+badge.classList.add('btn', 'btn-info','btn-lg', "op-0", 'text-white','disabled','fs-2','fw-bold');
 text.appendChild(badge_container);
 badge_container.appendChild(badge);
 console.log(badge_container);
