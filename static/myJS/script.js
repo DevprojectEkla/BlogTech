@@ -277,8 +277,8 @@ function customize() {
     // pour jouer sur la couleur (mais pas encore au point):
     //btni2.style.backgroundColor = 'rgba(' + 255 + ',' + 0 + ',' + random(400) + ',' + 1 + ')';
     //Les Animations sur les boutons:
-    TweenMax.fromTo(btn_list1, 3, { x: 0, rotation: 0 }, { x: "15vw", rotation: 360 })
-    TweenMax.fromTo(btn_list2, 3, { x: 0, rotation: 0 }, { x: "-25vw", rotation: 360 })
+    TweenMax.fromTo(btn_list1, 3, { x: 0, rotation: 0 }, { x: "5vw", rotation: 360 })
+    TweenMax.fromTo(btn_list2, 3, { x: 0, rotation: 0 }, { x: "-30vw", rotation: 360 })
   };
 };
 

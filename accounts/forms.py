@@ -7,5 +7,5 @@ class SignupForm(ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
-        model = BlogVisitor
+        model = BlogVisitor()
         fields = ['last_name','first_name','email','username','password']
