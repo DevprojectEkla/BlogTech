@@ -19,13 +19,17 @@ def signup(request):
         password = request.POST.get("password")
         form = SignupForm(request.POST)
         if form.is_valid():
+            # form.save()
+        
+        # User = get_user_model()
+            user = User.objects.create_user(username=username, password=password)   
+            user = authenticate(username=username, password=password)
             form.save()
-            print(form.fields['username'])
-        user = User.objects.get(username=username, password=password)
-        login(request, user)
+        if user:
+            login(request, user)
         return redirect('main')
-    #return render(request, 'accounts/signup.html')
-    return render(request, 'accounts/signup_form.html', context)
+    return render(request, 'accounts/signup.html', context)
+    # return render(request, 'accounts/signup_form.html', context)
 
 
 def logout_user(request):
@@ -41,4 +45,6 @@ def login_user(request):
         if user:
             login(request, user)
             return redirect('home')
+        else:
+            print('authentication failed')
     return render(request, 'accounts/login.html')
