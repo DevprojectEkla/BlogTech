@@ -138,3 +138,5 @@ AUTH_USER_MODEL = "accounts.BlogVisitor"
 STATICFILES_DIRS = [BASE_DIR/'static']
 
 django_heroku.settings(locals())
+
+AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
