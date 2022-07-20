@@ -31,21 +31,22 @@ def signup(request):
             # User = get_user_model()
             # user = User.objects.create_user(username=username, password=password)
             # user = User.objects.get(username=username, password=password)
-            form.save()
+            form.save() # à partide de ce moment un modele BlogVisitor a été créé mais le mot
+            # de passe utilisateur est stocké en clair, il faut le récupérer en clair pour l'authentification
+            # mais il faut le hasher pour le sauvegarder dans la base de donnée.
             raw_password = password
-            password = make_password(password)
+            password = make_password(password) # fonction django pour hasher le mdp
             # print(password)
             # print(f'User.passwor:{User.password}')
-            user_model = BlogVisitor.objects.get(username=username)
-            print(f'username = {user_model.username}')
-            print(f'model = {user_model}')
-            user_model.password = password
-            user_model.save()
-            print(f'user_model.password = {user_model.password}')
-            print(f'username:{username}')
-            print(f'pass:{raw_password}')
-            user = authenticate(username=username, password=raw_password)
-            print(f'authentication={user}')
+            user_model = BlogVisitor.objects.get(username=username) # méthode pour récupérer une instance d'un modèle            
+            user_model.password = password # le mdp hashé est stocké dans la DB
+            user_model.save() # ne pas oublier de sauver pour que la valeur soit bien prise en compte        
+            user = authenticate(username=username, password=raw_password) # fonction django
+            # d'authentification, le mdp doit être en clair, c'est ce que l'utilisateur tape.
+            # à dire vrai ce n'est pas utile de faire cela ici puisque l'utilisateur vient juste
+            # de créer un compte, a priori les informations sont valides. Pourrait-il y avoir une 
+            # faille de sécurité à ce niveau là sans cela ?
+            
             if user:
                 login(request, user)
                 return redirect('main')

@@ -2,8 +2,11 @@
 
 {% block content %}
 {% load static %}
-
+<div class="row justify-content-center "> 
+<span class=" position-fixed col-sm-auto badge badge-lg bg-warning text-dark fs-50">Derouler</span>
+</div>
 <section id="intro">
+   
 {% for article in articles %}
 
     <div id="container{{article.slug}}" class="container-lg">
