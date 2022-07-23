@@ -3,7 +3,8 @@
 //fonction qui est sensé placé le scroll en position top de la page
 // à chaque  refresh
 window.scrollTop = 0
-console.log(divbtt)
+var slider = document.querySelector('#slider')
+console.log(slider)
 // fonction basique
 function random(number) {
   return Math.floor(Math.random() * (number + 1));

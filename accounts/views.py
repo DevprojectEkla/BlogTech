@@ -49,7 +49,7 @@ def signup(request):
             
             if user:
                 login(request, user)
-                return redirect('main')
+                return redirect('home')
     # return render(request, 'accounts/signup.html', context)
     return render(request, 'accounts/signup_form.html', context)
 

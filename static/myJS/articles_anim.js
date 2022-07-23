@@ -1,28 +1,35 @@
 var section = document.querySelector('#intro');
 var badge = document.querySelector('.badge')
-console.log(section);
-console.log(badge);
-console.log(section.children.length);
-console.log(section.children);
+// console.log(section);
+// console.log(badge);
+// console.log(section.children.length);
+// console.log(section.children);
 //for (i = 0; i<section.children.length; i++)
 container = section.children
 
+// === ANIMATION DU BOUTON " FAITES DEFILER" ====
 TweenMax.fromTo
   (badge,
     {
       opacity: 1,
       y: 15,
       x: -300,
+      scale:2,
 
     },
     {
       y: 100,
-      x: (0),
-      
+      x: (0),      
       opacity: 0,
-      duration: 10
+      scale:0,
+      duration: 5,
+      ease: Power2.easeOut
+
     }
-  )
+  );
+
+// === ANIMATION DU PREMIER ARTICLE  ====
+// nb: l'animation est différente à cause de la position des triggers Start et end
 
 TweenMax.fromTo
   (container[0],
@@ -54,7 +61,9 @@ TweenMax.fromTo
       opacity: 1,
       duration: 2
     }
-  )
+  );
+// === ANIMATION DES AUTRES ARTICLES  ====
+// nb: l'animation est différente à cause de la position des triggers start et end
 for (i = 1; i < section.children.length; i++) {
   TweenMax.fromTo
     (container[i],
@@ -86,4 +95,4 @@ for (i = 1; i < section.children.length; i++) {
       }
     )
     ;
-}
+};
