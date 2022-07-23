@@ -1,5 +1,6 @@
 var section = document.querySelector('#intro');
 var badge = document.querySelector('.badge')
+var scroll = document.querySelector('#scroll')
 // console.log(section);
 // console.log(badge);
 // console.log(section.children.length);
@@ -8,25 +9,32 @@ var badge = document.querySelector('.badge')
 container = section.children
 
 // === ANIMATION DU BOUTON " FAITES DEFILER" ====
-TweenMax.fromTo
-  (badge,
+
+var scrollAnimation = TweenMax.fromTo
+  (scroll,
     {
       opacity: 1,
-      y: 15,
-      x: -300,
+      y: 15,     
       scale:2,
 
     },
     {
-      y: 100,
-      x: (0),      
+      y: 500,
       opacity: 0,
-      scale:0,
+      scale:4,
       duration: 5,
-      ease: Power2.easeOut
+      ease: Power1.easeOut
 
     }
   );
+
+
+const body = document.body;
+const docElem = document.documentElement;
+var scrollPos = (body.scrollTop || docElem.scrollTop)
+console.log(scrollPos)
+if ( scrollPos == 0){console.log(scrollPos);scrollAnimation;};
+  
 
 // === ANIMATION DU PREMIER ARTICLE  ====
 // nb: l'animation est différente à cause de la position des triggers Start et end
