@@ -3,13 +3,19 @@ si on veut récupérer des variables de django dans le script JS
 on peut utiliser les condtions {% if %} {% endif %} et insérer dedans 
 un tag <script type="text/javascript"> var VARIABLE = false ou true </script>
 */
-
+//fonction focus:
+// const main_focus = document.getElementById("portail")
+// main_focus.focus({preventScroll:true})
 
 //location.reload()
 
 //fonction qui est sensé placé le scroll en position top de la page
-// à chaque  refresh
-window.scrollTop = 0
+// à chaque  refresh: ça y est ça fonctionne !!
+document.onreadystatechange = function () {
+  if (document.readyState == "complete") {//nb: il y a d'autres états comme 'interactive' ou 'load'
+    window.scrollTo(0,0);
+  }
+};
 // fonction basique
 function random(number) {
   return Math.floor(Math.random() * (number + 1));
@@ -129,8 +135,7 @@ if (btnbtt) {//cf.com plus haut pour le if.
 
 // Nouveau code pour créer un effet sur le titre de la page d'accueil
 // "Bienvenue sur mon" qui apparaît lettre par lettre 
-const main_focus = document.getElementById("portail")
-main_focus.focus()
+
 const text = document.getElementById("mytitle1");
 const strText = text.textContent;
 const splitText = strText.split("");
@@ -148,7 +153,7 @@ let badge_container = document.querySelector('#badge');
 badge_container.classList.add('col-sm-auto','justify-content-center');
 let badge = document.createElement('span');
 badge.innerHTML = "BLOG-TECH";
-badge.classList.add('btn', 'btn-info','btn-lg', "op-0", 'text-white','disabled','fs-2','fw-bold');
+badge.classList.add('btn', 'btn-indigo-500','btn-sm-auto','mb-2', "op-0", 'text-orange-400','disabled','fs-2','fw-bold');
 text.appendChild(badge_container);
 badge_container.appendChild(badge);
 // console.log(badge_container);
@@ -246,7 +251,8 @@ var div_list1 = create_Taglist([], 'div', 4); //par défaut création de 4 élé
 var div_list2 = create_Taglist([], 'div', 4);
 var btn_list1 = create_Taglist([], 'a', 4);
 var btn_list2 = create_Taglist([], 'a', 4);
-const class_btn = ["btn","btn-dark","btn-lg", "col-lg-auto", "op-1", "text-center", "responsive"]
+const btn_list = btn_list1.concat(btn_list2)
+const class_btn = ["btn","btn-purple-700","btn-lg", "col-lg-auto", "op-1", "text-center", "mt-2", "responsive"]
 const class_div = ["col-lg-auto", "mx-1"]
 // ** Création d'un message d'alerte si l'utilisateur n'est pas connecté **
 const auth_alert = document.createElement("div");
@@ -257,7 +263,7 @@ auth_alert.textContent = "Il faut être connecté pour lire les articles"
 
 // ** Bouton pour fermer la fenêtre d'alerte
 const close_btn = document.createElement('button');
-close_btn.classList.add("btn-close");
+close_btn.classList.add("btn-close");// il y a aussi "btn-close-white"
 close_btn.setAttribute("data-bs-dismiss","alert");
 close_btn.setAttribute("aria-label","Close");
 
@@ -276,9 +282,15 @@ redirect_link2.classList.add("badge","bg-success")
 redirect_link2.setAttribute('href','/login');
 
 
-// par défaut on ajoute les classes btn et btn-dark de Bootstrap
-add_class_to_element_list(btn_list1.concat(btn_list2), class_btn);
+// ajout des classes sur les boutons et les div
+add_class_to_element_list(btn_list, class_btn);
 add_class_to_element_list(div_list1.concat(div_list2), class_div);
+
+//on ajoute des ID pour les boutons en vue des animations:
+for (i=0; i<btn_list.length; i++)
+{
+  btn_list[i].setAttribute("id","all_buttons")
+};
 
 //~CUSTOMIZATION DES BOUTTONS et ANIMATIONS:~
 
@@ -395,8 +407,7 @@ function tl4_append_elements() {
 };
 
 //~ ANIMATION MOUSEOVER SUR LES BOUTONS ~~
-btn_list = btn_list1.concat(btn_list2)
-addAnimation(btn_list);
+addAnimation(btn_list, 0);
 // Animation sur le bouton nouveauté:
 TweenMax.fromTo(btn_list1[0], 1, { rotation: 0, backgroundColor: "" },
   {
@@ -411,19 +422,40 @@ function Rotation(elem, t1, angle1 = 0, angle2 = 360,delay=0)
   TweenMax.fromTo(elem, t1, { rotation: angle1 }, { rotation: angle2 }).delay(delay);
 }
 
+
+
 function addAnimation(elements_list,delay=0) 
 {
   for (i in elements_list)
   {
     const el = elements_list[i]
     // attention à la syntaxe de JS pour récupérer la valeur d'un élément d'une liste par itération
-    el.addEventListener('mouseover', function ()
-      { 
-        Rotation(el,1,0,360,0);
-      });    
-   
+    // el.addEventListener('mouseover', function ()
+    //   { 
+    //     Rotation(el,1,0,30,0);
+    //   });
+    // var rank_name = "btn"+i;
+    // var id_btn = '#'+rank_name
+    // el.setAttribute("id",rank_name)
+    
+    el.onmouseout = el.onmouseover = handler
+    function handler(event)
+    {var tweenRotation = TweenMax.fromTo(event.target, t1=.5, { rotation: angle1=0 }, { rotation: angle2=30,ease:Power2.easeInOut}).delay(0);
+      if (event.type == 'mouseenter')
+      {
+        console.log('test')        
+      }
+      if (event.type == 'mouseout')
+      {
+        
+        tweenRotation.delay(tweenRotation.duration()).reverse(2,false);
+      
+        //TweenMax.fromTo(event.target, t1=1, { rotation: angle_x }, { rotation: angle2=0 }).delay(.5);
+      }
+    }  
   }
 }
+
     // if (anim.isActive()){alert('actif');anim.delay(3);}
 // myTitle.addEventListener('mouseover', function () {
 //   if (balise === true) {
@@ -451,6 +483,8 @@ function add_class_to_element_list(list = [], class_list =['btn', 'btn-dark']){
   };
   return (list);
 };
+
+// Ajout d'un attribut à une liste d'élément:
 
 // cette fonction accroche une liste d'enfant à une liste correspondante de parents
 function append_children_list(list_child = [], list_parent = []) {

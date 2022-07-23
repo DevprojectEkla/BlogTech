@@ -1,3 +1,4 @@
+/* To customize bootstrap see the HowTo... .txt file*/
 $transition-values: (
     "all": all,
     "width": width,
@@ -13,10 +14,85 @@ $transition-values: (
 
 @import "static/scss/functions";
 @import "static/scss/variables";
+// Create your own map
+$custom-colors: (
+
+    "indigo": $indigo,
+    "indigo-100": $indigo-100,
+    "indigo-200": $indigo-200,
+    "indigo-300": $indigo-300,
+    "indigo-400": $indigo-400,
+    "indigo-500": $indigo-500,
+    "indigo-600": $indigo-600,
+    "indigo-700": $indigo-700,
+    "indigo-800": $indigo-800,
+    "indigo-900": $indigo-900,
+    
+    "red": $red,
+    "red-100": $red-100,
+    "red-200": $red-200,
+    "red-300": $red-300,
+    "red-400": $red-400,
+    "red-500": $red-500,
+    "red-600": $red-600,
+    "red-700": $red-700,
+    "red-800": $red-800,
+    "red-900": $red-900,
+    
+    "pink": $pink,
+    "pink-100":$pink-100,
+    "pink-200":$pink-200,
+    "pink-300":$pink-300,
+    "pink-400":$pink-400,
+    "pink-500":$pink-500,
+    "pink-600":$pink-600,
+    "pink-700":$pink-700,
+    "pink-800":$pink-800,
+    "pink-900":$pink-900,
+    
+    "purple":$purple,
+    "purple-100":$purple-100,
+    "purple-200":$purple-200,
+    "purple-300":$purple-300,
+    "purple-400":$purple-400,
+    "purple-500":$purple-500,
+    "purple-600":$purple-600,
+    "purple-700":$purple-700,
+    "purple-800":$purple-800,
+    "purple-900":$purple-900,
+    
+    "orange": $orange,  
+    "orange-100":$orange-100,
+    "orange-200":$orange-200,
+    "orange-300":$orange-300,
+    "orange-400":$orange-400,
+    "orange-500":$orange-500,
+    "orange-600":$orange-600,
+    "orange-700":$orange-700,
+    "orange-800":$orange-800,
+    "orange-900":$orange-900,
+    
+    "custom-color": #f5cd8d, 
+
+
+
+);
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
 @import "static/scss/utilities";
 
 $utilities:
-  (
+(    
+    "btn-close": (
+          position: absolute,
+          top: 200,
+          right: 0,
+          z-index: $stretched-link-z-index + 1,
+          padding: $alert-padding-y * 1.25 $alert-padding-x
+        ),
+
         "span":
         (
             class: "myfade",
