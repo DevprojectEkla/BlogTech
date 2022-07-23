@@ -8,8 +8,8 @@ var scroll = document.querySelector('#scroll')
 //for (i = 0; i<section.children.length; i++)
 container = section.children
 
+section.classList.replace("invisible","visible")
 // === ANIMATION DU BOUTON " FAITES DEFILER" ====
-
 var scrollAnimation = TweenMax.fromTo
   (scroll,
     {
@@ -40,43 +40,41 @@ if ( scrollPos == 0){console.log(scrollPos);scrollAnimation;};
 // nb: l'animation est différente à cause de la position des triggers Start et end
 
 TweenMax.fromTo
-  (container[0],
-    {
-
-      opacity: 0,
-      x: -300,
-
-    },
-    {
-      x: (0),
-
-      scrollTrigger:
+  (
+    container[0],
       {
-        trigger: container[0],
-        container: "#section2",
-        start: "top 30%",
-        end: "bottom 80%",
-        // markers: {fontSize: "2rem"},
-        scrub: .5, //or a number in second
-        //toggleClass: "invisible",
-        toggleActions: "restart none none none",
-        //            onenter onLeave  onEnterback   onLeaveBack
-        onToggle: self => console.log(container.className),
-        //pinSpacing: false,
-        //pin: true          
-
+        opacity: 0,
+        x: -300,
       },
-      opacity: 1,
-      duration: 2
-    }
+      {
+        x: 0,
+        scrollTrigger:
+        {
+          trigger: container[0],
+          container: "#section2",
+          start: "top 30%",
+          end: "bottom 80%",
+          // markers: {fontSize: "2rem"},
+          scrub: .5, //or a number in second
+          //toggleClass: "invisible",
+          toggleActions: "restart none none none",
+          //            onenter onLeave  onEnterback   onLeaveBack
+          onToggle: self => console.log(container.className),
+          //pinSpacing: false,
+          //pin: true        
+
+        },
+        opacity: 1,
+        duration: 2
+      }
   );
 // === ANIMATION DES AUTRES ARTICLES  ====
 // nb: l'animation est différente à cause de la position des triggers start et end
 for (i = 1; i < section.children.length; i++) {
   TweenMax.fromTo
-    (container[i],
+    (
+      container[i],
       {
-
         opacity: 0,
         x: (-1) ** (i + 1) * 300,
       },
@@ -96,7 +94,6 @@ for (i = 1; i < section.children.length; i++) {
           onToggle: self => console.log(container.className),
           //pinSpacing: false,
           //pin: true          
-
         },
         opacity: 1,
         duration: 3
