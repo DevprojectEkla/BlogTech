@@ -1,10 +1,15 @@
+/* ==== DJANGO VARIABLES ====
+si on veut récupérer des variables de django dans le script JS
+on peut utiliser les condtions {% if %} {% endif %} et insérer dedans 
+un tag <script type="text/javascript"> var VARIABLE = false ou true </script>
+*/
+
+
 //location.reload()
 
 //fonction qui est sensé placé le scroll en position top de la page
 // à chaque  refresh
 window.scrollTop = 0
-var slider = document.querySelector('#slider')
-console.log(slider)
 // fonction basique
 function random(number) {
   return Math.floor(Math.random() * (number + 1));
@@ -96,7 +101,7 @@ if (divbtt) { // le if c'est pour éviter des erreurs "uncaught"
   }); // synaxe équivalente à une condition if scrollpos> ...scrollMax alors appliquer divbtt.className ='visible'
   // sinon (ou else) mettre 'invisible'.
 }
-console.log(btnbtt)
+// console.log(btnbtt)
 if (btnbtt) {//cf.com plus haut pour le if.
   //var effect = btnbtt.getAttribute('aria-pressed'); // cette ligne voulait
   // préparer un code pour supprimer l'effet de bouton enfoncé, quand on revient 
@@ -124,7 +129,8 @@ if (btnbtt) {//cf.com plus haut pour le if.
 
 // Nouveau code pour créer un effet sur le titre de la page d'accueil
 // "Bienvenue sur mon" qui apparaît lettre par lettre 
-
+const main_focus = document.getElementById("portail")
+main_focus.focus()
 const text = document.getElementById("mytitle1");
 const strText = text.textContent;
 const splitText = strText.split("");
@@ -145,16 +151,12 @@ badge.innerHTML = "BLOG-TECH";
 badge.classList.add('btn', 'btn-info','btn-lg', "op-0", 'text-white','disabled','fs-2','fw-bold');
 text.appendChild(badge_container);
 badge_container.appendChild(badge);
-console.log(badge_container);
+// console.log(badge_container);
 
 //création de deux boites à mettre cote a cote de l'image pour pouvoir régler la largeur du fond...
 // let block1 = document.create elem
-
-let char = 0;
-var rand = Math.random() * 100;
-if (rand < 80) { rand = 100 };
-console.log(rand);
 //for the animation of my Title I call a setInterval function that repeats the function onTick each 300ms or so
+let char = 0;
 let timer = setInterval(onTick, 50);
 //defining timelineMax objects
 //tl is for the title's animation
@@ -175,7 +177,7 @@ const dflex = document.querySelector('#d-flex')
 const dflexAll = document.querySelectorAll('.d-flex')
 const dflex1 = document.querySelector('#dflex1')
 const dflex2 = document.querySelector('#dflex2')
-console.log(dflexAll)
+// console.log(dflexAll)
 // Pour l'image HSV j'assigne une classe 'invisible'
 // et je la supprime plus loin grâce la fonction delay_x() définie plus bas.
 const main_img = document.querySelector('#main_image');
@@ -246,6 +248,34 @@ var btn_list1 = create_Taglist([], 'a', 4);
 var btn_list2 = create_Taglist([], 'a', 4);
 const class_btn = ["btn","btn-dark","btn-lg", "col-lg-auto", "op-1", "text-center", "responsive"]
 const class_div = ["col-lg-auto", "mx-1"]
+// ** Création d'un message d'alerte si l'utilisateur n'est pas connecté **
+const auth_alert = document.createElement("div");
+auth_alert.classList.add("alert","alert-danger")
+auth_alert.setAttribute('role','alert');
+auth_alert.style.zIndex = 3;
+auth_alert.textContent = "Il faut être connecté pour lire les articles"
+
+// ** Bouton pour fermer la fenêtre d'alerte
+const close_btn = document.createElement('button');
+close_btn.classList.add("btn-close");
+close_btn.setAttribute("data-bs-dismiss","alert");
+close_btn.setAttribute("aria-label","Close");
+
+const div_link1 = document.createElement('div')
+const div_link2 = document.createElement('div')
+const redirect_link1 = document.createElement("a");
+const redirect_link2 = document.createElement("a");
+
+redirect_link1.style.zIndex = 3;
+redirect_link1.textContent = "Cliquez ici pour vous inscrire"
+redirect_link1.classList.add("badge","bg-warning")
+redirect_link1.setAttribute('href','/signup');
+redirect_link2.style.zIndex = 3;
+redirect_link2.textContent = "ou ici pour vous connecter"
+redirect_link2.classList.add("badge","bg-success")
+redirect_link2.setAttribute('href','/login');
+
+
 // par défaut on ajoute les classes btn et btn-dark de Bootstrap
 add_class_to_element_list(btn_list1.concat(btn_list2), class_btn);
 add_class_to_element_list(div_list1.concat(div_list2), class_div);
@@ -259,21 +289,74 @@ const button_names = ['nouveautés', 'info-geek', 'tutos', 'snippets', 'faire un
 // les boutons de la d-flex1:
 function customize() {
   for (i = 0; i < 4; i++) {
-    const btni1 = btn_list1[i]
+    const btni1 = btn_list1[i] // on associe à chaque bouton i de la liste 1 le nom btni1 
     btni1.textContent = button_names[i]   //nom automatique: 'bouton'+String(i+1);
     // pour jouer sur la couleur (mais pas encore au point):
     //btni1.style.backgroundColor = 'rgba(' + 255 + ',' + 0 + ',' + random(400) + ',' + 1 + ')';
     if (button_names[i] == "nouveautés")
-    {
-      btni1.href = "/articles/index"
+    { 
+      if (user_authenticated)
+      {
+        btni1.href = "/articles/index";
+      }
+      else 
+      {
+        btni1.addEventListener
+        (
+          'click',function()
+          { 
+            btni1.parentNode.appendChild(auth_alert);
+            auth_alert.appendChild(close_btn);
+            div_link1.appendChild(redirect_link1);
+            auth_alert.appendChild(div_link1);
+            div_link2.appendChild(redirect_link2);
+            auth_alert.appendChild(div_link2);
+            TweenMax.fromTo(auth_alert, .8, 
+              { opacity: 0,
+                x:(-500),
+                scale:0.5,
+              }, 
+              {
+                x: 0,
+                opacity: 1,
+                scale:1,                
+              }
+              );
+              TweenMax.fromTo(redirect_link1, .5, 
+                { opacity: 0,                  
+                  scale:0,
+                }, 
+                {                  
+                  opacity: 1,
+                  scale:1,                
+                }
+                ).delay(1);
+                TweenMax.fromTo(redirect_link2, .5, 
+                  { opacity: 0,
+                    x:150, 
+                    scale:0,
+                  }, 
+                  {                  
+                    opacity: 1,
+                    x:0,
+                    scale:1,                
+                  }
+                  ).delay(2)
+          }
+        );
+        //btni1.href = "/login";
+      }
+      
     };
+
+    
     
     // les boutons de la d-flex2:
     const btni2 = btn_list2[i]
     btni2.textContent = button_names[i + 4];
     if (button_names[i+4] == "contactez-moi")
     { 
-      btni2.href = "/common/contact"
+      btni2.href = "/common/contact";
     };
     // pour jouer sur la couleur (mais pas encore au point):
     //btni2.style.backgroundColor = 'rgba(' + 255 + ',' + 0 + ',' + random(400) + ',' + 1 + ')';
@@ -302,7 +385,7 @@ function tl4_append_elements() {
       ease: Bounce
     }
   );
-
+  customize();
   append_children_el(div_list1, dflex1);
   append_children_el(div_list2, dflex2);
   append_children_list(btn_list1, div_list1);
@@ -379,7 +462,6 @@ function append_children_list(list_child = [], list_parent = []) {
 
 // cette fonction accroche une liste d'enfant à un unique parent
 function append_children_el(list_child = [], el) {
-  customize();
   for (i = 0; i < list_child.length; i++) {
     const child = list_child[list_child.length - i - 1]
     //Animation d'apparition des boutons au moment de leur ancrage
@@ -393,7 +475,7 @@ function append_children_el(list_child = [], el) {
 // On commence par rendre invisible toute la section2 de l'HTML:
 const section2 = document.getElementById("section2");
 var text_visible = false
-console.log('text_visible au départ ' + String(text_visible))
+// console.log('text_visible au départ ' + String(text_visible))
 
 // création d'une fonction rendant invisible chaque élément de la section2
 function mkInvisible() {
@@ -414,13 +496,12 @@ const tl6 = new TimelineMax()
 // On ajoute l'Enregistreur d'événement à l'objet window ici !! 
 // ATTENTION: l'événement de souris 'wheel' ne s'attage pas à un élément, 'mousewheel' oui 'but is deprecated'.
 if (text_visible == false) {
-  console.log("ok");
   text_visible = true;
   for (i = 0; i < section2.children.length; i++) {
     const child = section2.children[i];
-    console.log(section2.children[i]);
-    console.log(child.className);
-    //TODO créer une fonction qui fait apparaître les éléments un par un 
+    // console.log(section2.children[i]);
+    // console.log(child.className);
+    //ANIMATION SCROLLTRIGGER: fonction qui fait apparaître les éléments un par un 
     // à chaque cran de la molette de la souris (et pas tout en même temps)
     gsap.to(child,
       {
@@ -442,12 +523,10 @@ if (text_visible == false) {
         }
       }
     );
-    console.log(child.className)
-
-
   };
 }
-else {
+else 
+{
   console.log('Normalement le text est visible la valeur text_visible est: ' + text_visible)
 };
 function mkvisible(el) {

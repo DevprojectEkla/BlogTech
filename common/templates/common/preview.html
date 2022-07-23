@@ -2,7 +2,9 @@
 
 {% block content %}
 {% load static %}
+
 <section>
+    
     <div class="justify-content-center ">
         <div id= main_container class="w-100 justify-content-center bg-dark">
            <div class="col-12 text-center">
@@ -73,12 +75,14 @@
         <p class="lead p-4 border-start border-dark border-5 col-11 ms-4"> {{object.preview_text}}</p>
         </div>
         {% if not user.is_authenticated %}
+        <script type="text/javascript"> var user_authenticated = false 
+        </script>
         <div id="signup" class="justify-content-center text-center">
             <a href="{% url 'main' %}login" class="btn btn-lg col-sm-5 btn-info text-center position-relative bottom-0 visible">
                 Inscrivez-vous et/ou connectez-vous pour lire la suite. </a>
         </div>
     {% endif %}
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated %}<script type="text/javascript"> var user_authenticated = true </script>
     <div> <h3 class="font-weight-light text-primary p-4 border-start border-5 col-11 ms-4"> {{ block1.title1 }}</h3>
         <div class="text-center "><img class=" col-sm-auto rounded shadow" src="{%static ''%}{{block1.image1}}" alt=""></div>
     </div>
@@ -106,6 +110,7 @@
         
 
 </section>
+
 
 <script src="{%static '/myJS/script.js' %}"></script>
 
