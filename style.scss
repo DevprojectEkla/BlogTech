@@ -6,16 +6,31 @@ $transition-values: (
     "1s": 1s,
     "50": .5s,
     "2s":2s,
+    "0.15s": .15s,
     "delay-1s":1s,
     "delay-2s":2s,
     "linear": linear,
     "ease": ease,
+    "ease-in-out": ease-in-out, 
+  );
+  
+  $position-values: (
+    0: 0,
+    5: 5%,
+    10: 10%,
+    15: 15%,
+    50: 50%,
+    100: 100%
   );
 
 @import "static/scss/functions";
 @import "static/scss/variables";
 // Create your own map
+
+
 $custom-colors: (
+
+    "primary": $orange,
 
     "indigo": $indigo,
     "indigo-100": $indigo-100,
@@ -78,13 +93,35 @@ $custom-colors: (
 
 );
 
+$theme-colors: (
+  "primary":    $orange,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+) !default;
+
 // Merge the maps
+
 $theme-colors: map-merge($theme-colors, $custom-colors);
+
+
 
 @import "static/scss/utilities";
 
 $utilities:
-(    
+(   "nav-link": (
+        
+    display: block,
+    padding: 0.5rem 1rem,
+    color: orange,
+    text-color: orange,
+    //text-decoration: none,
+    transition: color 0.15s ease-in-out background-color 0.15s ease-in-out border-color 0.15s ease-in-out,
+    ),
     "btn-close": (
           position: absolute,
           top: 200,
@@ -168,3 +205,88 @@ $utilities:
     );
 
 @import "static/scss/bootstrap.scss";
+
+.btn-myhover {    
+    @extend .btn-outline-primary;   
+    }
+.btn-myhover:hover {
+        color: white;
+        background-color: orange;
+        }
+.btn-myhover-box {
+    @extend .btn-myhover
+    }
+.btn-myhover-box:hover {
+        color: $indigo-500;
+        background-color: orange;
+        box-shadow: 5px 5px 5px $orange-500;
+        
+        }
+
+.btn-myhover-box-purple
+    {
+    background-color: $purple;
+    box-shadow: 5px 5px 5px $purple-500;
+    @extend .btn-myhover-box
+    }
+.btn-myhover-box-purple:hover
+    {
+    color: orange;
+    background-color: #6610f2;
+    }
+
+.mybox
+{
+    box-shadow: 5px 5px 5px orange; //(décalage-x de l'ombre, décalage-y, effet-blur, couleur)
+}
+
+.bg-mygradient1
+{
+    @extend .bg-gradient;
+    background: rgb(36,15,0);
+    background: linear-gradient(180deg, rgba(36,15,0,1) 0%, rgba(110,59,8,1) 7%, rgba(121,65,9,1) 8%, rgba(255,145,0,1) 95%);
+}
+
+.bg-mygradient2{
+    @extend .bg-gradient;
+    background: rgb(36,15,0);
+    background: linear-gradient(180deg, rgba(36,15,0,1) 0%, rgba(121,65,9,0.9725023798581933) 10%, rgba(115,62,8,1) 17%, rgba(110,59,8,1) 19%, rgba(118,64,8,1) 21%, rgba(255,145,0,1) 56%); 
+}
+.a {
+    color: orange ;
+    text-decoration: none;
+    }
+.a:hover {
+    color: orange;
+    
+    }
+
+.triangle-right
+{    
+        width: 0;
+        height: 0;
+        border-top: 25px solid transparent;
+        border-left: 50px solid $indigo-500;
+        border-bottom: 25 solid transparent;
+    }
+
+.myZ-index
+{
+    z-index: 1;
+}
+
+.myZ-index-2
+{
+    @extend .myZ-index;
+    z-index: 2;
+}
+.myZ-index-3
+{
+    @extend .myZ-index;
+    z-index: 3;
+}
+.myZ-index-4
+{
+    @extend .myZ-index;
+    z-index: 4;
+}

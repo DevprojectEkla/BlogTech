@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <div class="row text-center">
-<h1 class="login-text">Se connecter</h1>
+<h1 class="login-text text-orange-400">Se connecter</h1>
 <form method = "POST">
   {% csrf_token %}
   <div class="row justify-content-center">
@@ -15,7 +15,7 @@
      <!--<label for="password"> Mot de Passe:  </label>-->
     <input id="password" type="password" name="password" placeholder="password">
   </p>
-  <button class= "btn btn-outline-success" type="submit"> Connexion </button>
+  <button class= "btn btn-myhover-box" type="submit"> Connexion </button>
 </form>
 <a href="{% url 'signup' %}">pas encore inscrit?</a>
   </div>

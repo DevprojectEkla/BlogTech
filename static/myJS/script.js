@@ -11,6 +11,7 @@ un tag <script type="text/javascript"> var VARIABLE = false ou true </script>
 
 //fonction qui est sensé placé le scroll en position top de la page
 // à chaque  refresh: ça y est ça fonctionne !!
+var body = document.body
 document.onreadystatechange = function () {
   if (document.readyState == "complete") {//nb: il y a d'autres états comme 'interactive' ou 'load'
     window.scrollTo(0,0);
@@ -22,7 +23,7 @@ function random(number) {
 }
 function bgChange() {
   var rndCol = 'rgba(' + random(255) + ',' + random(255) + ',' + random(255) + ',' + .2 + ')';
-  document.body.style.backgroundColor = rndCol;
+  body.style.backgroundColor = rndCol;
 };
 // //syntaxe de l'add-eventListener
 // let myHTML = document.querySelector('h3');
@@ -34,6 +35,18 @@ function bgChange() {
 // if (myH1) {
 //   myH1.addEventListener('click', function () { alert('prout premier h1 tag') })
 // };
+
+/** ==============================
+ * Ajout des ombres aux images ***
+ * ===============================
+ */
+img_list = document.querySelectorAll('img')
+for (var i = 0; i < img_list.length; i++ )
+{
+  img_list[i].classList.add('rounded','border','border-orange', 'mybox')
+}
+
+  
 
 // Changement d'image sur le passage de la souris, exemple encore à tester
 // let myImage = document.getElementById('main_image')
@@ -81,7 +94,6 @@ function ChangerCouleur(Identifiant) {
 
 var divbtt = document.getElementById("divbtt"),
   btnbtt = document.getElementById("btnbtt"),
-  body = document.body,
   scrollMax = document.scrollingElement.scrollTopMax,
   docElem = document.documentElement,
   offset = 100,
@@ -190,6 +202,25 @@ const main_img = document.querySelector('#main_image');
 // selection de la légende de la photo
 const myName = document.querySelector('#name');
 
+/**==========================
+ * Ajout des triangles animés
+ * ==========================
+ **/
+ 
+
+// triangles_list1 = create_Taglist('div',25)
+// triangles_list2 = create_Taglist('div',25)
+// triangles = triangles_list1.concat(triangles_list2)
+// add_class_to_element_list(triangles,['triangle-right'])
+// append_children_el(triangles_list1, body);
+// append_children_el(triangles_list2, body);
+
+// for(i = 0; i< triangles.length; i++)
+// {
+
+// }
+
+
 
 //Now i want a black band background  to set in place
 tl.fromTo(main_container, 1, { opacity: 0 }, { opacity: 1 }).fromTo(main_container, 1, { height: "0%" }, { height: "100%", ease: Bounce }, "-=1")
@@ -230,7 +261,7 @@ function onTick() {
 // box-shadow: 2px        2px         2px           1px           rgba(0, 0, 0, 0.2);
 
 main_img.addEventListener('mouseover',function(){
-TweenMax.fromTo(main_img,1,{boxShadow: "10px 5px 5px rgba(255, 0, 0, 1)"},{boxShadow: "2px 2px 2px 1px rgba(0, 0, 0, 0.2)", zIndex:2});
+TweenMax.fromTo(main_img,.7,{boxShadow: "-10px 5px 2px rgba(50, 0, 0, 1)"},{boxShadow: "20px 2px 2px 1px rgba(20, 0, 0, 0.2)"});
 })
 
 
@@ -247,12 +278,12 @@ function complete() {
 
 //** Création des boutons animés de l'image centrale:
 
-var div_list1 = create_Taglist([], 'div', 4); //par défaut création de 4 élément 'div'
-var div_list2 = create_Taglist([], 'div', 4);
-var btn_list1 = create_Taglist([], 'a', 4);
-var btn_list2 = create_Taglist([], 'a', 4);
+var div_list1 = create_Taglist('div', 4); //par défaut création de 4 élément 'div'
+var div_list2 = create_Taglist('div', 4);
+var btn_list1 = create_Taglist('a', 4);
+var btn_list2 = create_Taglist('a', 4);
 const btn_list = btn_list1.concat(btn_list2)
-const class_btn = ["btn","btn-purple-700","btn-lg", "col-lg-auto", "op-1", "text-center", "mt-2", "responsive"]
+const class_btn = ["btn","btn-myhover-box-purple","btn-lg","myZ-index-3", "col-lg-auto", "op-1", "text-center", "mt-2", "responsive"]
 const class_div = ["col-lg-auto", "mx-1"]
 // ** Création d'un message d'alerte si l'utilisateur n'est pas connecté **
 const auth_alert = document.createElement("div");
@@ -299,25 +330,31 @@ const button_names = ['nouveautés', 'info-geek', 'tutos', 'snippets', 'faire un
   'vos réactions', 'contactez-moi', 'téléchargements']
 
 // les boutons de la d-flex1:
-function customize() {
-  for (i = 0; i < 4; i++) {
+function customize() 
+{
+  for (i = 0; i < 4; i++) 
+  {
+    
     const btni1 = btn_list1[i] // on associe à chaque bouton i de la liste 1 le nom btni1 
     btni1.textContent = button_names[i]   //nom automatique: 'bouton'+String(i+1);
+    if (button_names[i] == "nouveautés")
+      { 
+        btn_news = btni1 ;        
+      };
     // pour jouer sur la couleur (mais pas encore au point):
     //btni1.style.backgroundColor = 'rgba(' + 255 + ',' + 0 + ',' + random(400) + ',' + 1 + ')';
-    if (button_names[i] == "nouveautés")
-    { 
-      if (user_authenticated)
-      {
-        btni1.href = "/articles/index";
-      }
-      else 
-      {
-        btni1.addEventListener
+    if (user_authenticated)
+    {
+      btn_news.href = "/articles/index"
+      btni1.classList.add("disable")
+    }
+    else 
+    {// ajout d'une alert avec des liens vers signup ou login si user_is_authenticate= false
+        btn_news.addEventListener
         (
           'click',function()
           { 
-            btni1.parentNode.appendChild(auth_alert);
+            btn_news.parentNode.appendChild(auth_alert);
             auth_alert.appendChild(close_btn);
             div_link1.appendChild(redirect_link1);
             auth_alert.appendChild(div_link1);
@@ -357,7 +394,7 @@ function customize() {
           }
         );
         //btni1.href = "/login";
-      }
+      
       
     };
 
@@ -413,8 +450,8 @@ TweenMax.fromTo(btn_list1[0], 1, { rotation: 0, backgroundColor: "" },
   {
     rotation: 360,
     backgroundColor: "#6610f2",
-    borderColor: "#0d496e",
-    color : "#FFFF"
+    borderColor: "$orange",
+    color : "orange"
   }).delay(6);
 
 function Rotation(elem, t1, angle1 = 0, angle2 = 360,delay=0)
@@ -438,14 +475,21 @@ function addAnimation(elements_list,delay=0)
     // var id_btn = '#'+rank_name
     // el.setAttribute("id",rank_name)
     
+    /** === La branche random_animation est un essai encore infructueux de 
+     * générer une animation aléatoire pour chaque bouton ici n'est aléatoire que le sens
+     * de rotation (+ ou -) des boutons
+     * il faut trouver un moyen de créer une animation sans la déclencher:
+     * utiliser l'instanciation de la classe: const mytweentransformation = TweenMax()
+     */
     el.onmouseout = el.onmouseover = handler
     function handler(event)
-    {var tweenRotation = TweenMax.fromTo(event.target, t1=.5, { rotation: angle1=0 }, { rotation: angle2=30,ease:Power2.easeInOut}).delay(0);
-      if (event.type == 'mouseenter')
+    {var tweenRotation = TweenMax.fromTo(event.target, t1=.5, { rotation: angle1=0 }, { rotation: angle2=(-1)**(Math.ceil(Math.random()+1))*20, ease:Power2.easeInOut}).delay(0);
+      if (event.type == 'mouseenter')// cette condition ne sert à rien car l'animation de rotation
+      //se déclenche de toute façon à chaque event.
       {
         console.log('test')        
       }
-      if (event.type == 'mouseout')
+      if (event.type == 'mouseout') // celle-ci en revanche est nécessaire
       {
         
         tweenRotation.delay(tweenRotation.duration()).reverse(2,false);
@@ -466,7 +510,8 @@ function addAnimation(elements_list,delay=0)
 
 //Il faudrait faire des classes de tout cela !!
 //ci-dessous les fonctions utilisées plus haut, c'est kiffant de pouvoir les définir après :)
-function create_Taglist(list = [], tag = "div", n = 4) {
+function create_Taglist(tag = "div", n = 4) {
+  list = []
   for (i = 0; i < n; i++) {
     const el = document.createElement(tag);
     list.push(el);

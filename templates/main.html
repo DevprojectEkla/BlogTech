@@ -24,7 +24,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'home'%}">Page d'Accueil</a>
+          <a class="nav-link text-orange-400 active" aria-current="page" href="{% url 'home'%}">Page d'Accueil</a>
         </li>
           {% if user.is_superuser %}
         <li class="nav-item">
@@ -44,10 +44,14 @@
           </ul>
         </li>
           {% endif %}
+        
         <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+          {% if not user.is_authenticated %}
+          <a class="nav-link btn-myhover-box text-orange-700 disabled">Admin</a>
+          {% endif %}
         </li>
       </ul>
+      
         {% if user.is_authenticated %}
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-light"
@@ -71,7 +75,7 @@
         {% endif %}
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Recherche">
-        <button class="btn btn-outline-success" type="submit">Chercher</button>
+        <button class="btn btn-myhover-box" type="submit">Chercher</button>
       </form>
     </div>
   </div>
@@ -88,23 +92,23 @@
     <div class="row text-center">
         <div class="col-md-4">
 
-            <a class="btn offset-lg-3" href="{% url 'articles-index' %}">Mes dernières publications </a>
+            <a class="btn  btn-myhover-box my-2 offset-lg-3" href="{% url 'articles-index' %}">Mes dernières publications </a>
         </div>
         <div class="col-md-4">
-        <a class="btn " href="{% url 'index' %}"> Ma Boutique d'applications en ligne </a>
+        <a class="btn btn-myhover-box my-2" href="{% url 'index' %}"> Ma Boutique d'applications en ligne </a>
         </div>
         <div class="col-md-4 ">
-            <a class="btn" href="{% url 'home' %}"> Retourner à la page d'accueil</a>
+            <a class="btn  btn-myhover-box my-2" href="{% url 'home' %}"> Retourner à la page d'accueil</a>
         </div>
     </div>
     {% else %}
     <div class="text-center">
         <div>
-        <a class="btn btn-outline-orange-500 my-2 " href="{% url 'home' %}">Aperçu de mon blog</a>
+        <a class="btn btn-myhover-box my-2 " href="{% url 'home' %}">Aperçu de mon blog</a>
         </div>
         <div>
-            <a class="btn btn-outline-orange-500 mb-2" href="{% url 'signup' %}">S'inscrire</a>
-            <a class="btn btn-outline-orange-500 mb-2" href="{% url 'login' %}">Connexion</a>
+            <a class="btn btn-myhover-box mb-2" href="{% url 'signup' %}">S'inscrire</a>
+            <a class="btn btn-myhover-box mb-2" href="{% url 'login' %}">Connexion</a>
         </div>
         </div>
     {% endif %}
