@@ -13,7 +13,7 @@
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
     <link href="{% static '/css/style.min.css'%}" rel="stylesheet">
   </head>
-  <body class="bg bg-indigo-500"> <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <body class="bg bg-dark"> <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <img src="{% static '/img/favicon spirale.ico'%}" alt="" width="30" height="30">
@@ -82,7 +82,7 @@
 </nav>
 
 
-  <div class="row width-100 mt-5"> <img class="img-fluid" src="{% static '/img/banniere.png' %}" alt=""> </div>
+  <div class="row width-100 mt-5"> <img class="img-fluid mybox" src="{% static '/img/banniere.png' %}" alt=""> </div>
 {% if not user.is_authenticated %}
   <h4 id="portail" class=" display-4 text-orange-500 text-center"> Portail d'accès à mon site web</h4>
   {% endif %}

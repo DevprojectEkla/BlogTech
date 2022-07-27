@@ -1,22 +1,26 @@
+import * as theme from './color_theme.js'
+/* ==== IMPORTATION DES VARIABLES DE COULEUR POUR LES THEMES ====
+*/
+
 /* ==== DJANGO VARIABLES ====
 si on veut récupérer des variables de django dans le script JS
 on peut utiliser les condtions {% if %} {% endif %} et insérer dedans 
 un tag <script type="text/javascript"> var VARIABLE = false ou true </script>
 */
-//fonction focus:
-// const main_focus = document.getElementById("portail")
-// main_focus.focus({preventScroll:true})
 
-//location.reload()
+
+
 
 //fonction qui est sensé placé le scroll en position top de la page
 // à chaque  refresh: ça y est ça fonctionne !!
+
 var body = document.body
 document.onreadystatechange = function () {
   if (document.readyState == "complete") {//nb: il y a d'autres états comme 'interactive' ou 'load'
     window.scrollTo(0,0);
   }
 };
+
 // fonction basique
 function random(number) {
   return Math.floor(Math.random() * (number + 1));
@@ -25,47 +29,17 @@ function bgChange() {
   var rndCol = 'rgba(' + random(255) + ',' + random(255) + ',' + random(255) + ',' + .2 + ')';
   body.style.backgroundColor = rndCol;
 };
-// //syntaxe de l'add-eventListener
-// let myHTML = document.querySelector('h3');
-// if (myHTML) {
-//   myHTML.addEventListener('click', function () { alert('prout premier h3 tag') })
-// };
-// // premiers essais d'enregistreur d'évènements
-// let myH1 = document.querySelector('h1');
-// if (myH1) {
-//   myH1.addEventListener('click', function () { alert('prout premier h1 tag') })
-// };
 
 /** ==============================
  * Ajout des ombres aux images ***
  * ===============================
  */
-img_list = document.querySelectorAll('img')
+ let img_list; 
+ img_list = document.querySelectorAll('img')
 for (var i = 0; i < img_list.length; i++ )
 {
   img_list[i].classList.add('rounded','border','border-orange', 'mybox')
 }
-
-  
-
-// Changement d'image sur le passage de la souris, exemple encore à tester
-// let myImage = document.getElementById('main_image')
-// if (myImage) {
-//   myImage.addEventListener('mouseover', function () {
-//     if (myImage) {
-//       let mySrc = myImage.getAttribute('src');
-//       console.log(mySrc)
-//       if (mySrc === '../static/img/techno.png') {
-//         myImage.setAttribute('src', '../static/img/techno2.jpg');
-//       }
-//       else if (mySrc === '../static/img/techno2.jpg') {
-//         myImage.setAttribute('src', '../static/img/info.jpg')
-//       } else {
-//         myImage.setAttribute('src', '../static/img/techno.png');
-//       }
-//     }
-//   })
-// };
 
 // premiers essais de script Java avec fonctions simple
 function ChangerCouleur(Identifiant) {
@@ -73,21 +47,6 @@ function ChangerCouleur(Identifiant) {
   document.getElementById(Identifiant).style.color = rndCol;
 
 };
-// var balise=true
-// myTitle = document.getElementById("mytitle1")
-// myTitle.addEventListener('mouseover', function () {
-//   if (balise === true) {
-//     ChangerCouleur('mytitle1');
-
-//   }
-// });
-
-// myH1.addEventListener('clik', function () {
-//   if (balise === true) {
-//     ChangerCouleur(Identifiant);
-//     balise = false
-//     console.log(balise);;
-//   }
 
 // création d'un bouton "to the Top" qui apparaît seulement en fin de défilement de la page,
 // et permet en cliquant dessus de remonter en haut de la page (adaptation d'un tuto).
@@ -131,19 +90,12 @@ if (btnbtt) {//cf.com plus haut pour le if.
     if (isFirefox) {
       docElem.scrollTop = 0;
       btnbtt.classList.remove('active');
-      //document.querySelector('p').click();
     }
     else { body.scrollTop = 0; }    
     btnbtt.classList.remove('active');
-    // c'est ce qui fait apparaitre le bouton à sa position toujours fixé à la fenêtre (il défile en même temps
-    //que la page)
-    // console.log(effect);
+    
   });
 };
-
-//simulation d'un clik sur un élément paragraphe
-//simulation d'un clik aléatoire
-
 
 // Nouveau code pour créer un effet sur le titre de la page d'accueil
 // "Bienvenue sur mon" qui apparaît lettre par lettre 
@@ -160,19 +112,20 @@ for (i = 0; i < span_text.length; i++) {
   const span = span_text[i]
   span.classList.add('op-0')
 };
-//creation d'un element bootstrap badge pour insérer le txt "BLOG TECH" à la suite de l'animation "Bienvenue...""
+//creation d'un element bootstrap badge pour insérer
+// le txt "BLOG TECH" à la suite de l'animation "Bienvenue...""
 let badge_container = document.querySelector('#badge');
 badge_container.classList.add('col-sm-auto','justify-content-center');
 let badge = document.createElement('span');
 badge.innerHTML = "BLOG-TECH";
-badge.classList.add('btn', 'btn-indigo-500','btn-sm-auto','mb-2', "op-0", 'text-orange-400','disabled','fs-2','fw-bold');
+badge.classList.add('btn', 'btn-myhover-box','btn-lg-auto','mb-5', "op-0", 'text-orange-400','disabled','fs-2','fw-bold');
 text.appendChild(badge_container);
 badge_container.appendChild(badge);
 // console.log(badge_container);
 
 //création de deux boites à mettre cote a cote de l'image pour pouvoir régler la largeur du fond...
-// let block1 = document.create elem
-//for the animation of my Title I call a setInterval function that repeats the function onTick each 300ms or so
+//for the animation of my Title I call a setInterval function that repeats the function onTick() 
+//each 300ms or so
 let char = 0;
 let timer = setInterval(onTick, 50);
 //defining timelineMax objects
@@ -255,16 +208,16 @@ function onTick() {
   }
 };
 
-// ~ Animation de l'image evenement 'mouseover' ~ 
-// syntaxe de la propriété CSS box-shadow:
-//  *          offset-x | offset-y | blur-radius | spread-radius | color */
-// box-shadow: 2px        2px         2px           1px           rgba(0, 0, 0, 0.2);
+/**  ============== Animation de l'image evenement 'mouseover' =====================
+* une simple animation au passage de la souris: l'ombre de l'image s'affiche
+* ================= syntaxe de la propriété CSS box-shadow:=========================
+*          offset-x | offset-y | blur-radius | spread-radius | color 
+* box-shadow: 2px        2px         2px           1px           rgba(0, 0, 0, 0.2);
+====================================================================================*/
 
 main_img.addEventListener('mouseover',function(){
 TweenMax.fromTo(main_img,.7,{boxShadow: "-10px 5px 2px rgba(50, 0, 0, 1)"},{boxShadow: "20px 2px 2px 1px rgba(20, 0, 0, 0.2)"});
 })
-
-
 
 // cette fonction supprime une classe sur l'élément choisi avec un délai particulier pour l
 function delay_x(element_x, class_Name, dtime) {
@@ -276,25 +229,29 @@ function complete() {
   timer = null
 };
 
-//** Création des boutons animés de l'image centrale:
-
+/*===============================================================================
+*========== Création des boutons animés de l'image centrale:=====================
+*================================================================================
+*/
+let btn_list1;
+let btn_list2;
 var div_list1 = create_Taglist('div', 4); //par défaut création de 4 élément 'div'
 var div_list2 = create_Taglist('div', 4);
-var btn_list1 = create_Taglist('a', 4);
-var btn_list2 = create_Taglist('a', 4);
+btn_list1 = create_Taglist('a', 4);
+btn_list2 = create_Taglist('a', 4);
 const btn_list = btn_list1.concat(btn_list2)
-const class_btn = ["btn","btn-myhover-box-purple","btn-lg","myZ-index-3", "col-lg-auto", "op-1", "text-center", "mt-2", "responsive"]
+const class_btn = ["btn","btn-myhover-box","btn-lg","myZ-index-3", "col-lg-auto", "op-1", "text-center", "mt-2", "responsive"]
 const class_div = ["col-lg-auto", "mx-1"]
 // ** Création d'un message d'alerte si l'utilisateur n'est pas connecté **
 const auth_alert = document.createElement("div");
-auth_alert.classList.add("alert","alert-danger")
+auth_alert.classList.add("alert","alert-indigo-600")
 auth_alert.setAttribute('role','alert');
 auth_alert.style.zIndex = 3;
 auth_alert.textContent = "Il faut être connecté pour lire les articles"
 
-// ** Bouton pour fermer la fenêtre d'alerte
+// ** Bouton close pour fermer la fenêtre d'alerte
 const close_btn = document.createElement('button');
-close_btn.classList.add("btn-close");// il y a aussi "btn-close-white"
+close_btn.classList.add("btn-close", "btn-myhover-box");// il y a aussi "btn-close-white"
 close_btn.setAttribute("data-bs-dismiss","alert");
 close_btn.setAttribute("aria-label","Close");
 
@@ -305,11 +262,11 @@ const redirect_link2 = document.createElement("a");
 
 redirect_link1.style.zIndex = 3;
 redirect_link1.textContent = "Cliquez ici pour vous inscrire"
-redirect_link1.classList.add("badge","bg-warning")
+redirect_link1.classList.add("mybadge","bg",theme.bg_color2_600,"mybox-indigo", "text-decoration-none",theme.text_color1,"border","border-orange-600")
 redirect_link1.setAttribute('href','/signup');
 redirect_link2.style.zIndex = 3;
 redirect_link2.textContent = "ou ici pour vous connecter"
-redirect_link2.classList.add("badge","bg-success")
+redirect_link2.classList.add("badge","bg",theme.bg_color1_600,"mybox-indigo","text-decoration-none",theme.text_color2_600, "border","border-indigo-600")
 redirect_link2.setAttribute('href','/login');
 
 
@@ -323,8 +280,10 @@ for (i=0; i<btn_list.length; i++)
   btn_list[i].setAttribute("id","all_buttons")
 };
 
-//~CUSTOMIZATION DES BOUTTONS et ANIMATIONS:~
-
+/*================================================
+* =======CUSTOMIZATION DES BOUTTONS et ANIMATIONS:
+* ================================================
+*/
 // la liste des noms à assigner à nos  boutons:
 const button_names = ['nouveautés', 'info-geek', 'tutos', 'snippets', 'faire un don',
   'vos réactions', 'contactez-moi', 'téléchargements']
@@ -334,8 +293,9 @@ function customize()
 {
   for (i = 0; i < 4; i++) 
   {
-    
-    const btni1 = btn_list1[i] // on associe à chaque bouton i de la liste 1 le nom btni1 
+    let btn_news;
+    let btni1;
+    btni1 = btn_list1[i] // on associe à chaque bouton i de la liste 1 le nom btni1 
     btni1.textContent = button_names[i]   //nom automatique: 'bouton'+String(i+1);
     if (button_names[i] == "nouveautés")
       { 
@@ -396,13 +356,12 @@ function customize()
         //btni1.href = "/login";
       
       
-    };
-
-    
-    
+    };    
+    // suite de la boucle FOR
     // les boutons de la d-flex2:
     const btni2 = btn_list2[i]
     btni2.textContent = button_names[i + 4];
+    
     if (button_names[i+4] == "contactez-moi")
     { 
       btni2.href = "/common/contact";
@@ -500,18 +459,10 @@ function addAnimation(elements_list,delay=0)
   }
 }
 
-    // if (anim.isActive()){alert('actif');anim.delay(3);}
-// myTitle.addEventListener('mouseover', function () {
-//   if (balise === true) {
-//     ChangerCouleur('mytitle1');
-
-
-
-
 //Il faudrait faire des classes de tout cela !!
 //ci-dessous les fonctions utilisées plus haut, c'est kiffant de pouvoir les définir après :)
 function create_Taglist(tag = "div", n = 4) {
-  list = []
+  let list = [];
   for (i = 0; i < n; i++) {
     const el = document.createElement(tag);
     list.push(el);
@@ -519,7 +470,7 @@ function create_Taglist(tag = "div", n = 4) {
   return list;
 };
 
-function add_class_to_element_list(list = [], class_list =['btn', 'btn-dark']){
+function add_class_to_element_list(list = [], class_list =['btn', 'btn-dark']){let j;
   for (i = 0; i < list.length; i++) { for (j=0; j < class_list.length; j++)
     {
       list[i].classList.add(class_list[j]);
@@ -614,7 +565,6 @@ function mkvisible(el) {
   // la fonction suivant est un setTimeout pour supprimer la class 'invisible'
   delay_x(el, 'invisible', .5);
 };
-
 
 // exemple de gsap.to avec scrollTrigger
 // gsap.to

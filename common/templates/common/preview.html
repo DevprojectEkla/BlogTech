@@ -6,19 +6,19 @@
 <section>
     
     <div class="justify-content-center ">
-        <div id= main_container class="w-100 justify-content-center bg-orange bg-mygradient1">
+        <div id= main_container class="w-100 justify-content-center bg-dark bg-mygradient1">
            <div class="col-12 text-center">
-               <h1 id = "mytitle1" class="display-2 fw-bold text-indigo-500" >{{ object.main_title }}</div>
+               <h1 id = "mytitle1" class="display-2 fw-bold text-orange-500" >{{ object.main_title }}</div>
     
         </div>            
         
         <div id=badge></div>    
-        <div id="d-flex" class="d-flex justify-content-center bg-orange bg-mygradient2 op-0">
-            <div id="container_main_image" class="d-flex justify-content-center bg bg-orange bg-mygradient2 rounded op-0 "> 
-                <div  id="dflex1" class="d-flex bg-orange bg-mygradient2 col-sm-6"></div>           
+        <div id="d-flex" class="d-flex justify-content-center bg-dark bg-mygradient2 op-0">
+            <div id="container_main_image" class="d-flex justify-content-center bg bg-dark bg-mygradient2 rounded op-0 "> 
+                <div  id="dflex1" class="d-flex bg-dark bg-mygradient2 col-sm-6"></div>           
                 <img id="main_image" class=" col-12 h-50 rounded img-responsive text-center"
                         src="{% static '' %}{{object.main_img_source}}" alt="images informatiques">
-                <div  id="dflex2" class="d-flex bg-orange bg-mygradient2 col-sm-6"></div>   
+                <div  id="dflex2" class="d-flex bg-dark bg-mygradient2 col-sm-6"></div>   
             </div>
         </div>
         <div><h5 id= "name" class="text-center text-info op-0"> {{object.main_img_legend}}</h5>
@@ -111,8 +111,10 @@
 
 </section>
 
+<script type = "module" src="{%static '/myJS/script.js' %}"></script>
+<script type = "module" src="{%static '/myJS/color_theme.js' %}"></script>
+<script type = "module" src="{%static '/myJS/all_imports.js' %}"></script>
 
-<script src="{%static '/myJS/script.js' %}"></script>
 
 
 <div class="slider"></div>

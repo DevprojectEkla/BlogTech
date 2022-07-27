@@ -121,14 +121,7 @@ $utilities:
     text-color: orange,
     //text-decoration: none,
     transition: color 0.15s ease-in-out background-color 0.15s ease-in-out border-color 0.15s ease-in-out,
-    ),
-    "btn-close": (
-          position: absolute,
-          top: 200,
-          right: 0,
-          z-index: $stretched-link-z-index + 1,
-          padding: $alert-padding-y * 1.25 $alert-padding-x
-        ),
+    ),   
 
         "span":
         (
@@ -216,6 +209,13 @@ $utilities:
 .btn-myhover-box {
     @extend .btn-myhover
     }
+
+// .mybtn-close
+// {
+//     @extend .btn-close ;
+
+// }
+
 .btn-myhover-box:hover {
         color: $indigo-500;
         background-color: orange;
@@ -231,13 +231,32 @@ $utilities:
     }
 .btn-myhover-box-purple:hover
     {
-    color: orange;
+    color: $orange;
+    border-color: white;
     background-color: #6610f2;
+    box-shadow: 5px 5px 5px $purple-500;
     }
+
+.mybadge
+{
+    @extend .badge;
+}
+
+.mybadge:hover
+{
+    color:$indigo-600;
+    background-color: $orange-600;
+    border-color: $orange-900;
+    
+}
 
 .mybox
 {
     box-shadow: 5px 5px 5px orange; //(décalage-x de l'ombre, décalage-y, effet-blur, couleur)
+}
+.mybox-indigo
+{   @extend .mybox;
+    box-shadow: 5px 5px 5px $indigo-600; //(décalage-x de l'ombre, décalage-y, effet-blur, couleur)
 }
 
 .bg-mygradient1
@@ -289,4 +308,10 @@ $utilities:
 {
     @extend .myZ-index;
     z-index: 4;
+}
+
+.myAlert
+{
+    @extend .alert;
+
 }

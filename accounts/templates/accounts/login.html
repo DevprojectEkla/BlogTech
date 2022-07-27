@@ -8,7 +8,7 @@
   <div class="row justify-content-center">
   <p class="col-sm-6">
     <!--<label for="username"> Nom d'utilisateur: </label>-->
-    <input id="username" type="text" name="username" placeholder="Username">
+    <input id="username" class="" type="text" name="username" placeholder="Username">
   </p>
     </div>
   <p>
@@ -17,7 +17,7 @@
   </p>
   <button class= "btn btn-myhover-box" type="submit"> Connexion </button>
 </form>
-<a href="{% url 'signup' %}">pas encore inscrit?</a>
+<a class="text-orange-500 text-decoration-none" href="{% url 'signup' %}">pas encore inscrit?</a>
   </div>
 <script src="{% static '/myJS/login.js' %}"> </script>
 {% endblock %}

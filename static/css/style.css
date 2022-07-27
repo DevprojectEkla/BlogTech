@@ -7317,7 +7317,7 @@ textarea.form-control-lg {
   border-bottom-right-radius: 0.2rem;
 }
 
-.badge {
+.badge, .mybadge {
   display: inline-block;
   padding: 0.35em 0.65em;
   font-size: 0.75em;
@@ -7329,16 +7329,16 @@ textarea.form-control-lg {
   vertical-align: baseline;
   border-radius: 0.25rem;
 }
-.badge:empty {
+.badge:empty, .mybadge:empty {
   display: none;
 }
 
-.btn .badge {
+.btn .badge, .btn .mybadge {
   position: relative;
   top: -1px;
 }
 
-.alert {
+.alert, .myAlert {
   position: relative;
   padding: 1rem 1rem;
   margin-bottom: 1rem;
@@ -14984,12 +14984,24 @@ textarea.form-control-lg {
 }
 
 .btn-myhover-box-purple:hover {
-  color: orange;
+  color: #fd7e14;
+  border-color: white;
   background-color: #6610f2;
+  box-shadow: 5px 5px 5px #6f42c1;
 }
 
-.mybox {
+.mybadge:hover {
+  color: #520dc2;
+  background-color: #ca6510;
+  border-color: #331904;
+}
+
+.mybox, .mybox-indigo {
   box-shadow: 5px 5px 5px orange;
+}
+
+.mybox-indigo {
+  box-shadow: 5px 5px 5px #520dc2;
 }
 
 .bg-mygradient1 {
