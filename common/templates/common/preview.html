@@ -8,7 +8,7 @@
     <div class="justify-content-center ">
         <div id= main_container class="w-100 justify-content-center bg-dark bg-mygradient1">
            <div class="col-12 text-center">
-               <h1 id = "mytitle1" class="display-2 fw-bold text-orange-500" >{{ object.main_title }}</div>
+               <h1 id = "mytitle1" class="" >{{ object.main_title }}</div>
     
         </div>            
         
@@ -21,7 +21,7 @@
                 <div  id="dflex2" class="d-flex bg-dark bg-mygradient2 col-sm-6"></div>   
             </div>
         </div>
-        <div><h5 id= "name" class="text-center text-info op-0"> {{object.main_img_legend}}</h5>
+        <div><h5 id= "name" class=""> {{object.main_img_legend}}</h5>
         </div>  
     </div>
     </section>
@@ -63,16 +63,16 @@
             </div>
         </div>  
         <div>
-                <h3 id="title1" class=" font-weight-light text-orange-400 p-4 border-start border-5 col-11 ms-4"> {{object.first_title_h3}} </h3>
+                <h3 id="title1" class=" "> {{object.first_title_h3}} </h3>
         </div>
             <div>
-            <p class="lead text-white p-4 border-start border-orange-500 border-5 col-11 ms-4"> {{object.first_p}}</p>
+            <p class=""> {{object.first_p}}</p>
             </div>
         <div class="text-center">
     <img class="col-sm-auto rounded " src="{% static '' %}{{object.second_img_source}}" alt="{{object.second_img_alt}}" >
     </div>
     <div class="row p-4">
-        <p class="lead text-white p-4 border-start border-orange-500 border-5 col-11 ms-4"> {{object.preview_text}}</p>
+        <p class=""> {{object.preview_text}}</p>
         </div>
         {% if not user.is_authenticated %}
         <script type="text/javascript"> var user_authenticated = false 
@@ -83,20 +83,20 @@
         </div>
     {% endif %}
     {% if user.is_authenticated %}<script type="text/javascript"> var user_authenticated = true </script>
-    <div> <h3 class="font-weight-light text-orange-400 p-4 border-start border-5 col-11 ms-4"> {{ block1.title1 }}</h3>
+    <div> <h3 class=""> {{ block1.title1 }}</h3>
         <div class="text-center "><img class=" col-sm-auto rounded " src="{%static ''%}{{block1.image1}}" alt=""></div>
     </div>
-       <p class="lead text-white p-4 border-start border-orange-500 border-5 col-11 ms-4"> {{ block1.paragraph1 }}
+       <p class=""> {{ block1.paragraph1 }}
            <a class="" href="{{block1.link3}}"> {{block1.link_text1}} </a></p>
 
-    <div> <h3 class="font-weight-light text-orange-400 p-4 border-start border-5 col-11 ms-4"> {{block1.title2}}
+    <div> <h3 class=""> {{block1.title2}}
         <div class="text-center">
             <img id = "test" class="col-sm-auto rounded" src="{% static '' %}{{block1.image2}}" alt="">
         </div>
-        </h3> <p class="lead text-white p-4 border-start border-orange-500 border-5 col-11 ms-4" > {{block1.paragraph2}}</p>
+        </h3> <p class="" > {{block1.paragraph2}}</p>
         </div>
-    <div> <h3 class="font-weight-light text-orange-400 p-4 border-start border-5 col-11 ms-4"> {{block1.title3}}</h3> 
-        <p class="lead text-white p-4 border-start border-orange-500 border-5 col-11 ms-4" > {{block1.paragraph3}}</p>
+    <div> <h3 class=""> {{block1.title3}}</h3> 
+        <p class="" > {{block1.paragraph3}}</p>
     {% block footer %}
     <div id="divbtt" class="invisible" >
                 <button type="button" id="btnbtt"
@@ -113,7 +113,6 @@
 
 <script type = "module" src="{%static '/myJS/script.js' %}"></script>
 <script type = "module" src="{%static '/myJS/color_theme.js' %}"></script>
-<script type = "module" src="{%static '/myJS/all_imports.js' %}"></script>
 
 
 

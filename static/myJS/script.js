@@ -1,4 +1,4 @@
-import * as theme from './color_theme.js'
+import theme from './color_theme.js'
 /* ==== IMPORTATION DES VARIABLES DE COULEUR POUR LES THEMES ====
 */
 
@@ -7,9 +7,6 @@ si on veut récupérer des variables de django dans le script JS
 on peut utiliser les condtions {% if %} {% endif %} et insérer dedans 
 un tag <script type="text/javascript"> var VARIABLE = false ou true </script>
 */
-
-
-
 
 //fonction qui est sensé placé le scroll en position top de la page
 // à chaque  refresh: ça y est ça fonctionne !!
@@ -29,6 +26,19 @@ function bgChange() {
   var rndCol = 'rgba(' + random(255) + ',' + random(255) + ',' + random(255) + ',' + .2 + ')';
   body.style.backgroundColor = rndCol;
 };
+
+/** ===========================================
+ * Ajout des thémes de couleur aux éléments ***
+ * ============================================
+ */
+
+add_class_to_element_list(theme.h1_list,theme.class_list_h1)
+add_class_to_element_list(theme.h2_list,theme.class_list_h2)
+add_class_to_element_list(theme.h3_list,theme.class_list_h3)
+add_class_to_element_list(theme.h4_list,theme.class_list_h4)
+add_class_to_element_list(theme.h5_list,theme.class_list_h5)
+add_class_to_element_list(theme.p_list, theme.class_list_p)
+
 
 /** ==============================
  * Ajout des ombres aux images ***
@@ -130,16 +140,21 @@ let char = 0;
 let timer = setInterval(onTick, 50);
 //defining timelineMax objects
 //tl is for the title's animation
-const tl = new TimelineMax();
+let tl;
+tl = new TimelineMax();
 //tl2 is for the container d-flex of my main_img
-const tl2 = new TimelineMax();
+let tl2;
+tl2 = new TimelineMax();
 //tl3 is the animation of the legend of the main_img and trigger the 
 // function to attach my buttons in this area, (AND ONLY NOW: very important part
 // otherwise a tiny width of a dark row appears, waiting for the animation to start)
-const tl3 = new TimelineMax({ delay: 3, onComplete: tl4_append_elements });
+let tl3;
+tl3 = new TimelineMax({ delay: 3, onComplete: tl4_append_elements });
 //tl4 is for the button to start appearing one by one.
-const tl4 = new TimelineMax({ delay: 0 });
-const tl5 = new TimelineMax();
+let tl4;
+tl4 = new TimelineMax({ delay: 0 });
+let tl5;
+tl5 = new TimelineMax();
 //selecting my elements to animate
 const main_container = document.querySelector("#main_container");
 const img_container = document.querySelector('#container_main_image');
@@ -153,13 +168,12 @@ const dflex2 = document.querySelector('#dflex2')
 const main_img = document.querySelector('#main_image');
 //IMG.classList.add('invisible');
 // selection de la légende de la photo
-const myName = document.querySelector('#name');
+const my_legend = document.querySelector('#name');
 
 /**==========================
  * Ajout des triangles animés
  * ==========================
- **/
- 
+ **/ 
 
 // triangles_list1 = create_Taglist('div',25)
 // triangles_list2 = create_Taglist('div',25)
@@ -197,8 +211,8 @@ function onTick() {
     delay_x(img_container, "op-0", 1);
     //},300);
     // animation de la légende de l'image
-    delay_x(myName, "op-0", 1);
-    tl3.fromTo(myName, .08, { opacity: 0 }, { opacity: 1, ease: Power2.easeInOut });
+    delay_x(my_legend, "op-0", 1);
+    tl3.fromTo(my_legend, .08, { opacity: 0 }, { opacity: 1, ease: Power2.easeInOut });
     complete();
     return;
   } else {//c'est ici que l'animation du titre "Bienvenue..." lettre par lettre a lieu.
@@ -290,10 +304,10 @@ const button_names = ['nouveautés', 'info-geek', 'tutos', 'snippets', 'faire un
 
 // les boutons de la d-flex1:
 function customize() 
-{
+{let btn_news;
   for (i = 0; i < 4; i++) 
   {
-    let btn_news;
+    
     let btni1;
     btni1 = btn_list1[i] // on associe à chaque bouton i de la liste 1 le nom btni1 
     btni1.textContent = button_names[i]   //nom automatique: 'bouton'+String(i+1);
@@ -413,6 +427,10 @@ TweenMax.fromTo(btn_list1[0], 1, { rotation: 0, backgroundColor: "" },
     color : "orange"
   }).delay(6);
 
+let angle1;
+let angle2;
+let rotation;
+let delay;
 function Rotation(elem, t1, angle1 = 0, angle2 = 360,delay=0)
 {
   TweenMax.fromTo(elem, t1, { rotation: angle1 }, { rotation: angle2 }).delay(delay);
@@ -442,7 +460,7 @@ function addAnimation(elements_list,delay=0)
      */
     el.onmouseout = el.onmouseover = handler
     function handler(event)
-    {var tweenRotation = TweenMax.fromTo(event.target, t1=.5, { rotation: angle1=0 }, { rotation: angle2=(-1)**(Math.ceil(Math.random()+1))*20, ease:Power2.easeInOut}).delay(0);
+    {let t1; var tweenRotation = TweenMax.fromTo(event.target, t1=.5, { rotation: angle1=0 }, { rotation: angle2=(-1)**(Math.ceil(Math.random()+1))*20, ease:Power2.easeInOut}).delay(0);
       if (event.type == 'mouseenter')// cette condition ne sert à rien car l'animation de rotation
       //se déclenche de toute façon à chaque event.
       {
@@ -521,7 +539,8 @@ mkInvisible()
 if (tl3.isActive()) { alert('timeline is ACTIVE') };
 
 gsap.registerPlugin(ScrollTrigger); // it is ScrollTrigger here and scrollTrigger in the gsap.to()
-const tl6 = new TimelineMax()
+let tl6;
+tl6 = new TimelineMax()
 
 // On ajoute l'Enregistreur d'événement à l'objet window ici !! 
 // ATTENTION: l'événement de souris 'wheel' ne s'attage pas à un élément, 'mousewheel' oui 'but is deprecated'.
