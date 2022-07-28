@@ -1,6 +1,10 @@
-import theme from './color_theme.js'
+
 /* ==== IMPORTATION DES VARIABLES DE COULEUR POUR LES THEMES ====
 */
+import theme from './color_theme.js'
+
+let theme_btn;
+theme_btn = theme.theme_btn
 
 /* ==== DJANGO VARIABLES ====
 si on veut récupérer des variables de django dans le script JS
@@ -48,7 +52,7 @@ add_class_to_element_list(theme.p_list, theme.class_list_p)
  img_list = document.querySelectorAll('img')
 for (var i = 0; i < img_list.length; i++ )
 {
-  img_list[i].classList.add('rounded','border','border-orange', 'mybox')
+  img_list[i].classList.add('rounded','border',theme.border_color1, theme.mybox_color1)
 }
 
 // premiers essais de script Java avec fonctions simple
@@ -128,7 +132,7 @@ let badge_container = document.querySelector('#badge');
 badge_container.classList.add('col-sm-auto','justify-content-center');
 let badge = document.createElement('span');
 badge.innerHTML = "BLOG-TECH";
-badge.classList.add('btn', 'btn-myhover-box','btn-lg-auto','mb-5', "op-0", 'text-orange-400','disabled','fs-2','fw-bold');
+badge.classList.add('btn', theme_btn,'btn-lg-auto','mb-5', "op-0", theme.text_color1,'disabled','fs-2','fw-bold');
 text.appendChild(badge_container);
 badge_container.appendChild(badge);
 // console.log(badge_container);
@@ -209,10 +213,14 @@ function onTick() {
     // delay_x ci-dessous va supprimer la class indiquée pour laisser apparaitre les éléments en question
     //delay_x(IMG, "invisible", 1) devenu inutile quand j'ai réussi à faire disparaitre le conteneur.
     delay_x(img_container, "op-0", 1);
+    delay_x(dflex1, "op-0", 1);
+    delay_x(dflex2, "op-0", 1);
+    
     //},300);
     // animation de la légende de l'image
     delay_x(my_legend, "op-0", 1);
-    tl3.fromTo(my_legend, .08, { opacity: 0 }, { opacity: 1, ease: Power2.easeInOut });
+    delay_x(btn_style, "op-0", 3);
+    tl3.fromTo([my_legend,btn_style], .8, { opacity: 0 }, { opacity: 1, ease: Power2.easeInOut });
     complete();
     return;
   } else {//c'est ici que l'animation du titre "Bienvenue..." lettre par lettre a lieu.
@@ -249,16 +257,20 @@ function complete() {
 */
 let btn_list1;
 let btn_list2;
+let class_btn;
+let class_div;
+
+
 var div_list1 = create_Taglist('div', 4); //par défaut création de 4 élément 'div'
 var div_list2 = create_Taglist('div', 4);
 btn_list1 = create_Taglist('a', 4);
 btn_list2 = create_Taglist('a', 4);
 const btn_list = btn_list1.concat(btn_list2)
-const class_btn = ["btn","btn-myhover-box","btn-lg","myZ-index-3", "col-lg-auto", "op-1", "text-center", "mt-2", "responsive"]
-const class_div = ["col-lg-auto", "mx-1"]
+class_btn = ["btn",theme_btn,"btn-lg","myZ-index-3", "col-lg-auto", "op-1", "text-center", "mt-2", "responsive"]
+class_div = ["col-lg-auto", "mx-1"]
 // ** Création d'un message d'alerte si l'utilisateur n'est pas connecté **
 const auth_alert = document.createElement("div");
-auth_alert.classList.add("alert","alert-indigo-600")
+auth_alert.classList.add("alert","alert-"+theme.color2)
 auth_alert.setAttribute('role','alert');
 auth_alert.style.zIndex = 3;
 auth_alert.textContent = "Il faut être connecté pour lire les articles"
@@ -276,17 +288,78 @@ const redirect_link2 = document.createElement("a");
 
 redirect_link1.style.zIndex = 3;
 redirect_link1.textContent = "Cliquez ici pour vous inscrire"
-redirect_link1.classList.add("mybadge","bg",theme.bg_color2_600,"mybox-indigo", "text-decoration-none",theme.text_color1,"border","border-orange-600")
+redirect_link1.classList.add("mybadge","bg",theme.bg_color2_600, theme.mybox_color2, "text-decoration-none",theme.text_color1,"border", theme.border_color2)
 redirect_link1.setAttribute('href','/signup');
 redirect_link2.style.zIndex = 3;
 redirect_link2.textContent = "ou ici pour vous connecter"
-redirect_link2.classList.add("badge","bg",theme.bg_color1_600,"mybox-indigo","text-decoration-none",theme.text_color2_600, "border","border-indigo-600")
+redirect_link2.classList.add("badge","bg",theme.bg_color1_600,theme.mybox_color2,"text-decoration-none",theme.text_color2_600, "border",theme.border_color2)
 redirect_link2.setAttribute('href','/login');
+
+//ajout des classes sur les différents éléments:
+let class_d_flex_main;
+let class_d_flex;
+class_d_flex_main = ['d-flex', 'justify-content-center', theme.bg_color0, theme.bg_gradient2, 'op-0']
+add_class_to_element_list([dflex],class_d_flex_main)
+class_d_flex = ['d-flex', 'col-sm-6', theme.bg_color0, theme.bg_color0, 'op-0']
+add_class_to_element_list([dflex1],class_d_flex)
+add_class_to_element_list([dflex2],class_d_flex)
+let class_img_container;
+class_img_container = ["d-flex", "justify-content-center", "bg", theme.bg_color0, theme.bg_gradient2, "rounded", "op-0"]
+add_class_to_element_list([img_container],class_img_container)
+let class_main_container;
+class_main_container = ["w-100", "justify-content-center","text-center", "bg", theme.bg_color0, theme.bg_gradient1]
+add_class_to_element_list([main_container],class_main_container)
 
 
 // ajout des classes sur les boutons et les div
 add_class_to_element_list(btn_list, class_btn);
 add_class_to_element_list(div_list1.concat(div_list2), class_div);
+
+///BOUTON CHANGE STYLE:
+
+let btn_style;
+let class_btn_style;
+let div_btn_style;
+div_btn_style = document.querySelector('#div_legend');
+
+append_children_el([div_btn_style],main_container);
+class_btn_style = ['btn',theme_btn,'my-2','op-0'];
+btn_style = document.createElement('button');
+btn_style.textContent = 'Changer le style';
+add_class_to_element_list([btn_style], class_btn_style);
+append_children_el([btn_style],div_btn_style);
+add_class_to_element_list(btn_list, class_btn);
+
+btn_style.addEventListener('click',function()
+{ if(theme_btn == theme.btn_box)
+  {
+    theme_btn = theme.btn_box_secondary
+  }
+  else
+  {
+    theme_btn = theme.btn_box
+  }
+  if (theme.theme_primary)
+  {
+    theme.color0 = theme.purple;
+    theme.color1 = theme.red;
+    theme.color2 = theme.indigo;
+    theme.bg_color = theme.dark;
+    theme.theme_primary = false
+    
+  }
+  else
+  {
+    theme.color0    = theme.purple;
+    theme.color1    = theme.orange;
+    theme.color2    = theme.indigo;
+    theme.bg_color  = theme.dark;
+    theme.theme_primary = true
+  }
+  //location.reload()
+  
+});
+
 
 //on ajoute des ID pour les boutons en vue des animations:
 for (i=0; i<btn_list.length; i++)

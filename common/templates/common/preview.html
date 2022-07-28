@@ -6,22 +6,22 @@
 <section>
     
     <div class="justify-content-center ">
-        <div id= main_container class="w-100 justify-content-center bg-dark bg-mygradient1">
+        <div id= main_container class="">
            <div class="col-12 text-center">
                <h1 id = "mytitle1" class="" >{{ object.main_title }}</div>
     
         </div>            
         
         <div id=badge></div>    
-        <div id="d-flex" class="d-flex justify-content-center bg-dark bg-mygradient2 op-0">
-            <div id="container_main_image" class="d-flex justify-content-center bg bg-dark bg-mygradient2 rounded op-0 "> 
-                <div  id="dflex1" class="d-flex bg-dark bg-mygradient2 col-sm-6"></div>           
+        <div id="d-flex" class="">
+            <div id="container_main_image" class=""> 
+                <div  id="dflex1" class=""></div>           
                 <img id="main_image" class=" col-12 h-50 rounded img-responsive text-center"
                         src="{% static '' %}{{object.main_img_source}}" alt="images informatiques">
-                <div  id="dflex2" class="d-flex bg-dark bg-mygradient2 col-sm-6"></div>   
+                <div  id="dflex2" class=""></div>   
             </div>
         </div>
-        <div><h5 id= "name" class=""> {{object.main_img_legend}}</h5>
+        <div id="div_legend"> <h5 id= "name" class=""> {{object.main_img_legend}}</h5>
         </div>  
     </div>
     </section>
@@ -91,7 +91,7 @@
 
     <div> <h3 class=""> {{block1.title2}}
         <div class="text-center">
-            <img id = "test" class="col-sm-auto rounded" src="{% static '' %}{{block1.image2}}" alt="">
+            <img id = "" class="col-sm-auto rounded" src="{% static '' %}{{block1.image2}}" alt="">
         </div>
         </h3> <p class="" > {{block1.paragraph2}}</p>
         </div>

@@ -13,14 +13,18 @@ def signup_form(request):
     context = {}
     return render(request,'accounts/signup_form.html',context)
 
-
 def signup(request):
     form = SignupForm()
     context = {'form': form}
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
-        form = SignupForm(request.POST)
+        print(request.POST)
+        print(username)
+        print(password)
+        form = SignupForm(request.POST)        
+        
+        print(form.is_valid())
         if form.is_valid():
             print("valide")            
             # print(form.data['password'])
@@ -34,8 +38,7 @@ def signup(request):
             form.save() # à partide de ce moment un modele BlogVisitor a été créé mais le mot
             # de passe utilisateur est stocké en clair, il faut le récupérer en clair pour l'authentification
             # mais il faut le hasher pour le sauvegarder dans la base de donnée.
-            raw_password = password
-            password = make_password(password) # fonction django pour hasher le mdp
+             # fonction django pour hasher le mdp
             # print(password)
             # print(f'User.passwor:{User.password}')
             user_model = BlogVisitor.objects.get(username=username) # méthode pour récupérer une instance d'un modèle            

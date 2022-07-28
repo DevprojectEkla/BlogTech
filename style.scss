@@ -1,4 +1,67 @@
 /* To customize bootstrap see the HowTo... .txt file*/
+
+@import "static/scss/functions";
+$theme_bg             : black ;
+
+$primary        : orange;
+$primary-100: tint-color($primary, 80%) ;
+$primary-200: tint-color($primary, 60%) ;
+$primary-300: tint-color($primary, 40%) ;
+$primary-400: tint-color($primary, 20%) ;
+$primary-500: $primary                  ;
+$primary-600: shade-color($primary, 20%);
+$primary-700: shade-color($primary, 40%);
+$primary-800: shade-color($primary, 60%);
+$primary-900: shade-color($primary, 80%);
+$primary_text_hover   : $primary-200;
+$primary_text_box_hover: $primary-200;    
+$primary_box_bg     : $primary;
+$primary_shadow_bg : $primary-600;
+$primary_bg_500 : $primary_box_bg;
+
+$secondary      : red;
+
+$secondary-100: tint-color($secondary, 80%) ;
+$secondary-200: tint-color($secondary, 60%) ;
+$secondary-300: tint-color($secondary, 40%) ;
+$secondary-400: tint-color($secondary, 20%) ;
+$secondary-500: $secondary;
+$secondary-600: shade-color($secondary, 20%);
+$secondary-700: shade-color($secondary, 40%);
+$secondary-800: shade-color($secondary, 60%);
+$secondary-900: shade-color($secondary, 80%);
+
+$secondary_bg   : pink;
+$secondary_text_hover: $secondary;
+$secondary_text_box_hover: $secondary;
+$secondary_box_bg: $secondary_bg;
+$secondary_shadow_bg: $secondary-600;
+$secondary_bg_500 : $secondary_bg;
+
+$tertiary       : purple;
+$tertiary_text  : red;
+$tertiary_bg    : orange;
+
+
+$colors: (
+  "theme_bg":       $theme_bg,
+  "primary":        $primary,
+  "primary_text_hover":   $primary_text_hover,
+  "primary_box_bg":     $primary_box_bg,
+  "primary_shadow_bg": $primary_shadow_bg,
+  "secondary":              $secondary,  
+  "secondary_bg":           $secondary_bg,
+  "secondary_bg_500":       $secondary_bg_500,
+  "secondary_box_bg":        $secondary_box_bg,
+  "secondary_shadow_bg":        $secondary_shadow_bg,
+  "secondary_text_hover":   $secondary_text_hover,
+  "primary_text_box_hover":  $secondary_text_box_hover,
+  "tertiary":       $tertiary,
+  "tertiary_text":  $tertiary_text,
+  "tertiary_bg":    $tertiary_bg,
+  
+);
+
 $transition-values: (
     "all": all,
     "width": width,
@@ -23,14 +86,13 @@ $transition-values: (
     100: 100%
   );
 
-@import "static/scss/functions";
+
 @import "static/scss/variables";
 // Create your own map
 
 
 $custom-colors: (
 
-    "primary": $orange,
 
     "indigo": $indigo,
     "indigo-100": $indigo-100,
@@ -203,39 +265,38 @@ $utilities:
     @extend .btn-outline-primary;   
     }
 .btn-myhover:hover {
-        color: white;
-        background-color: orange;
+        color: $primary_text_hover;
+        background-color: $primary;
         }
 .btn-myhover-box {
     @extend .btn-myhover
     }
 
-// .mybtn-close
-// {
-//     @extend .btn-close ;
-
-// }
-
 .btn-myhover-box:hover {
-        color: $indigo-500;
-        background-color: orange;
-        box-shadow: 5px 5px 5px $orange-500;
+        color: $primary_text_box_hover;
+        background-color: $primary_box_bg;
+        box-shadow: 5px 5px 5px $primary_shadow_bg;
         
         }
 
-.btn-myhover-box-purple
-    {
-    background-color: $purple;
-    box-shadow: 5px 5px 5px $purple-500;
-    @extend .btn-myhover-box
+.btn-myhover-secondary {    
+    @extend .btn-outline-secondary;   
     }
-.btn-myhover-box-purple:hover
-    {
-    color: $orange;
-    border-color: white;
-    background-color: #6610f2;
-    box-shadow: 5px 5px 5px $purple-500;
+
+.btn-myhover-secondary:hover {
+        color: $secondary_text_hover;
+        background-color: $secondary_bg;
+        }
+
+.btn-myhover-secondary-box {
+    @extend .btn-myhover-secondary
     }
+
+.btn-myhover-secondary-box:hover {
+        color: $secondary_text_box_hover;
+        background-color: $secondary_box_bg;
+        box-shadow: 5px 5px 5px $secondary_shadow_bg;        
+        }
 
 .mybadge
 {
@@ -252,6 +313,10 @@ $utilities:
 
 .mybox
 {
+    box-shadow: 5px 5px 5px ; //(décalage-x de l'ombre, décalage-y, effet-blur, couleur)
+}
+.mybox-orange
+{   @extend .mybox;
     box-shadow: 5px 5px 5px orange; //(décalage-x de l'ombre, décalage-y, effet-blur, couleur)
 }
 .mybox-indigo
@@ -259,6 +324,10 @@ $utilities:
     box-shadow: 5px 5px 5px $indigo-600; //(décalage-x de l'ombre, décalage-y, effet-blur, couleur)
 }
 
+.mybox-red
+{   @extend .mybox;
+    box-shadow: 5px 5px 5px red;
+}
 .bg-mygradient1
 {
     @extend .bg-gradient;
