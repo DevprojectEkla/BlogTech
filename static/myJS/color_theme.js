@@ -102,12 +102,21 @@ const bg_gradient2 = "bg-mygradient2";
 const bg_color0 = "bg-" + bg_color
 const bg_color1 = "bg-" + color1
 const bg_color2 = "bg-" + color2
+
+const bg_color2_100 = "bg-" + color2 + "-100";
+const bg_color2_200 = "bg-" + color2 + "-200";
+const bg_color2_300 = "bg-" + color2 + "-300";
 const bg_color2_400 = "bg-" + color2 + "-400";
+const bg_color2_500 = "bg-" + color2 + "-500";
+const bg_color2_600 = "bg-" + color2 + "-600";
+
+const bg_color1_100 = "bg-" + color1 + "-100";
+const bg_color1_200 = "bg-" + color1 + "-200";
+const bg_color1_300 = "bg-" + color1 + "-300";
 const bg_color1_400 = "bg-" + color1 + "-400";
 const bg_color1_500 = "bg-" + color1 + "-500";
-const bg_color2_500 = "bg-" + color2 + "-500";
 const bg_color1_600 = "bg-" + color1 + "-600";
-const bg_color2_600 = "bg-" + color2 + "-600";
+
 
 const portail = document.querySelector('#portail')
 let btn_list;
@@ -215,8 +224,9 @@ const class_list_img = ["display-2", "fw-bold", img_color];
     btn_box, btn_box_secondary, btn_box_tertiary,
     
     bg_gradient1, bg_gradient2,
-    bg_color1, bg_color1_400, bg_color1_500, bg_color1_600,
-    bg_color2,bg_color2_400,bg_color2_500,bg_color2_600,
+    bg_color1, bg_color1_100, bg_color1_200, bg_color1_300, bg_color1_400, 
+    bg_color1_500, bg_color1_600,
+    bg_color2,bg_color2_100, bg_color2_200, bg_color2_300, bg_color2_400, bg_color2_500,bg_color2_600,
     
     text_color1, text_color1_100, text_color1_200, text_color1_300,text_color1_400, text_color1_500, text_color1_600,
     text_color2, text_color2_100, text_color2_200, text_color2_300,text_color2_400, text_color2_500, text_color2_600,
