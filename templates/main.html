@@ -67,7 +67,7 @@
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                 </div>
-                <div><a class="btn btn-sm text-light mx-1" href="{% url 'logout' %}">Déconnexion</a></div>
+                <div><a id="logout" class="btn btn-sm mx-1" href="{% url 'logout' %}">Déconnexion</a></div>
 
             {% if user.cart %}
             <a class="btn btn-sm text-white mx-1" href="{% url 'cart' %}">Voir Panier({{ user.cart.orders.count }})</a>
@@ -112,12 +112,22 @@
         </div>
         </div>
     {% endif %}
-    <script type = "module" src="{%static '/myJS/color_theme.js' %}"></script>
+<!--===================== SCRIPTS =====================
+=== 1. my script color_theme.js =======================
+=== 2. gsap link cdn to script gsap.min.min.js 
+=== 3. gsap link cdn to script ScrollTrigger.min.js 
+=== 4. : bootstrap =================================-->    
+<script type = "module" src="{%static '/myJS/color_theme.js' %}"></script>
+
 </section> 
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
 
 <script src="{% static '/js/bootstrap.bundle.min.js'%}" ></script>
+<!--=====================================================================
+================================= END OF SCRIPTS ========================
+=========================================================================-->
 
 <section>
     {% block content %}

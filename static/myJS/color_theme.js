@@ -179,11 +179,39 @@ const portail = document.querySelector('#portail')
 let btn_list;
 let i;
 
+
+/**================================== 
+ * STYLE POUR LES LIENS DE LA NAVBAR:
+ * ==================================
+ */
+let nav_link;
+nav_link = document.querySelectorAll('.nav-link')
+
+/** basic for loop function to add class style lists to elements  */
+let el_list;
+function add_class_to_element_list(el_list, class_list =['btn', 'btn-dark']){let i, j;
+    for (i = 0; i < el_list.length; i++) { for (j=0; j < class_list.length; j++)
+      {
+        el_list[i].classList.add(class_list[j]);
+    }
+      
+    };
+    return (el_list);
+  };
+
+  add_class_to_element_list(nav_link,[text_color1_400])
+
+
+let logout;
+logout = document.querySelector('#logout')
+logout.classList.add(text_color1_400)
+
+
 let footer = document.querySelector('footer')
 footer.classList.add(text_color1_400)
 
 btn_list = document.querySelectorAll('.btn')
-console.log(btn_list)
+
     for (i = 0; i < btn_list.length; i++)
     {
         btn_list[i].classList.add(theme_btn)
@@ -320,4 +348,5 @@ const class_list_img = ["display-2", "fw-bold", img_color];
     h1_list, h2_list, h3_list, h4_list, h5_list, p_list, img_list,
     
     class_list_h1, class_list_h2, class_list_h3, class_list_h4, class_list_h5, class_list_p, class_list_img,
+    add_class_to_element_list,
 } 

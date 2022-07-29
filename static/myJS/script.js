@@ -99,7 +99,7 @@ docElem.clientHeight, docElem.scrollHeight, docElem.offsetHeight);
 btnbtt.classList.add(theme.theme_btn)
 
 /** ====================================
- * CODE DE LA CONDITION DU BOUTON BTT 
+ * CODE DE LA CONDITION DU BOUTON BTT   
  * =====================================*/
 
 if (docHeight != 'undefined') {

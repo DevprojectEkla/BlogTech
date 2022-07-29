@@ -3,9 +3,9 @@
 {% load static %}
 <div class="container">
     <div class="row justify-content-center">
-        <h2 class="col-12 lead display-4 border-start shadow border-dark rounded border-5 text-center my-5 ">
+        <h2 class="col-12 lead display-4 border-start border-dark rounded border-5 text-center my-5 ">
             <div class="my-2">{{article.title}}</div>
-            <div class="lead text-muted"> publié le: {{article.date}}</div>
+            <div class="lead"> publié le: {{article.date}}</div>
         </h2>
         <div class="text-center" >
             <!--<img class="col-sm-8 rounded img-fluid " src="{{ article.image.url}}" alt="{{article.title}}">-->
@@ -19,11 +19,13 @@
 
 {% if user.is_authenticated %}
 <div class="text-center">
-<a class="btn btn-outline-info my-2" href="{% url 'lire-article' article.slug %}">Lire la suite cet article</a>
+<a id ="btn_lire" class="btn my-2" href="{% url 'lire-article' article.slug %}">Lire la suite cet article</a>
     </div>
 
 {% block article %}
 
+
 {% endblock %}
 {% endif %}
 {% endblock %}
+<script type = "module" src="{%static '/myJS/detail_article.js' %}"></script>
