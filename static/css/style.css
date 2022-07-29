@@ -14991,9 +14991,15 @@ textarea.form-control-lg {
   box-shadow: 5px 5px 5px #cc0000;
 }
 
+.mybadge {
+  color: #fd7e14;
+  background-color: #212529;
+  border-color: #653208;
+}
+
 .mybadge:hover {
-  color: #520dc2;
-  background-color: #ca6510;
+  color: #212529;
+  background-color: #fd7e14;
   border-color: #331904;
 }
 

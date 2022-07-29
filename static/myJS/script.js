@@ -1,15 +1,32 @@
+/* ==== DJANGO VARIABLES ====
+INFO GENERALES:
+si on veut récupérer des valeurs booléennes
+associées à des variables de django dans le script JS
+on peut utiliser la routine suivante dans le gabbarit:
+{% if {{variable_DJANGO}} %}
+<script type="text/javascript"> var MYVARIABLE = true (par ex.) </script>
+{% endif %}
+*/
+
 /* ==== IMPORTATION DES VARIABLES DE COULEUR POUR LES THEMES ====
 */
 import theme from './color_theme.js'
 
+/** AFFICHAGE DES COULEURS DE THEME DANS LA CONSOLE
+ * l'idée est qu'on voudrait que l'utilisateur
+ * puisse les configurer
+ */
+console.log('color0:%s',theme.color0)
+console.log('color1:%s',theme.color1)
+console.log('color2:%s',theme.color2)
+
+/** ==== CLASSE DE STYLE POUR LES BOUTONS ==========
+ *  ==== theme_btn est importée de notre module ====
+ * ===== THEME COLOR ===============================*/
 let theme_btn;
 theme_btn = theme.theme_btn
 
-/* ==== DJANGO VARIABLES ====
-si on veut récupérer des variables de django dans le script JS
-on peut utiliser les condtions {% if %} {% endif %} et insérer dedans 
-un tag <script type="text/javascript"> var VARIABLE = false ou true </script>
-*/
+
 
 //fonction qui est sensé placé le scroll en position top de la page
 // à chaque  refresh: ça y est ça fonctionne !!
@@ -21,8 +38,9 @@ document.onreadystatechange = function () {
   }
 };
 
-// fonction basique
-function random(number) {
+// fonctions basiques
+function random(number) 
+{
   return Math.floor(Math.random() * (number + 1));
 }
 function bgChange() {
@@ -47,8 +65,8 @@ add_class_to_element_list(theme.p_list, theme.class_list_p)
  * Ajout des ombres aux images ***
  * ===============================
  */
- let img_list; 
- img_list = document.querySelectorAll('img')
+let img_list; 
+img_list = document.querySelectorAll('img')
 for (var i = 0; i < img_list.length; i++ )
 {
   img_list[i].classList.add('rounded','border',theme.border_color1, theme.mybox_color1)
@@ -61,33 +79,46 @@ function ChangerCouleur(Identifiant) {
 
 };
 
-// création d'un bouton "to the Top" qui apparaît seulement en fin de défilement de la page,
-// et permet en cliquant dessus de remonter en haut de la page (adaptation d'un tuto).
-
+/**===================== BOUTON BACK TO THE TOP =================================================
+* création d'un bouton "back to the Top" qui apparaît seulement en fin de défilement de la page,
+* et permet en cliquant dessus de remonter en haut de la page (adaptation d'un tuto).
+=================================================================================================
+*/
+// DEFINITION DES VARIABLES
 var divbtt = document.getElementById("divbtt"),
-  btnbtt = document.getElementById("btnbtt"),
-  scrollMax = document.scrollingElement.scrollTopMax,
-  docElem = document.documentElement,
-  offset = 100,
-  isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1,
-  scrollPos, docHeight;
+btnbtt = document.getElementById("btnbtt"),
+scrollMax = document.scrollingElement.scrollTopMax,
+docElem = document.documentElement,
+offset = 100,
+isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1,
+scrollPos, docHeight;
 // console.log(effect);
 docHeight = Math.max(body.scrollHeight, body.offsetHeight,
-  docElem.clientHeight, docElem.scrollHeight, docElem.offsetHeight);
+docElem.clientHeight, docElem.scrollHeight, docElem.offsetHeight);
+// AJOUT DE LA CLASSE DE STYLE
+btnbtt.classList.add(theme.theme_btn)
 
+/** ====================================
+ * CODE DE LA CONDITION DU BOUTON BTT 
+ * =====================================*/
 
 if (docHeight != 'undefined') {
   offset = docHeight * 0.95;
 }
-if (divbtt) { // le if c'est pour éviter des erreurs "uncaught" 
+if (divbtt) 
+{ // le if c'est pour éviter des erreurs "uncaught" 
   // dans la console quand l'utilisateur n'est pas connecté et que
   // le bouton n'est pas disponible pour cette fonction.
   // si on a bient un élément div on crée un Enregistreur d'événement attaché à l'objet window              
-  window.addEventListener("scroll", function (event) {
+  window.addEventListener("scroll", function (event) 
+  {
     scrollPos = body.scrollTop || docElem.scrollTop; // en fonction du navigateur web les objets 
     // et attributs sont différents.
-    divbtt.className = (scrollPos > scrollMax * 0.95) ? "visible" : "invisible"
-    if (!isFirefox){divbtt.className = (scrollPos > docHeight * 0.50) ? "visible" : "invisible"}
+    divbtt.className = (scrollPos > scrollMax * 0.70) ? "visible" : "invisible"
+    if (!isFirefox)
+    {
+      divbtt.className = (scrollPos > docHeight * 0.50) ? "visible" : "invisible"
+    }
   }); // synaxe équivalente à une condition if scrollpos> ...scrollMax alors appliquer divbtt.className ='visible'
   // sinon (ou else) mettre 'invisible'.
 }
@@ -110,9 +141,12 @@ if (btnbtt) {//cf.com plus haut pour le if.
   });
 };
 
-// Nouveau code pour créer un effet sur le titre de la page d'accueil
-// "Bienvenue sur mon" qui apparaît lettre par lettre 
-
+/** =========================================================
+ *          ANIMATION TITRE BIENVENUE SUR MON BLOG
+ * ==========================================================
+ * code pour créer un effet sur le titre de la page d'accueil
+ *"Bienvenue sur mon" qui apparaît lettre par lettre 
+*/
 const text = document.getElementById("mytitle1");
 const strText = text.textContent;
 const splitText = strText.split("");
@@ -127,6 +161,8 @@ for (i = 0; i < span_text.length; i++) {
 };
 //creation d'un element bootstrap badge pour insérer
 // le txt "BLOG TECH" à la suite de l'animation "Bienvenue...""
+// NB: le badge est finalement devenu un bouton pour avoir la 
+// responsiveness
 let badge_container = document.querySelector('#badge');
 badge_container.classList.add('col-sm-auto','justify-content-center');
 let badge = document.createElement('span');
@@ -287,11 +323,11 @@ const redirect_link2 = document.createElement("a");
 
 redirect_link1.style.zIndex = 3;
 redirect_link1.textContent = "Cliquez ici pour vous inscrire"
-redirect_link1.classList.add("mybadge","bg",theme.bg_color2_600, theme.mybox_color2, "text-decoration-none",theme.text_color1,"border", theme.border_color2)
+redirect_link1.classList.add("mybadge","bg",theme.bg_color0_600, "text-decoration-none","border", theme.border_color2)
 redirect_link1.setAttribute('href','/signup');
 redirect_link2.style.zIndex = 3;
 redirect_link2.textContent = "ou ici pour vous connecter"
-redirect_link2.classList.add("badge","bg",theme.bg_color1_600,theme.mybox_color2,"text-decoration-none",theme.text_color2_600, "border",theme.border_color2)
+redirect_link2.classList.add("mybadge", "bg",theme.bg_color0_600,"text-decoration-none", "border",theme.border_color2)
 redirect_link2.setAttribute('href','/login');
 
 //ajout des classes sur les différents éléments:
@@ -314,8 +350,13 @@ add_class_to_element_list([main_container],class_main_container)
 add_class_to_element_list(btn_list, class_btn);
 add_class_to_element_list(div_list1.concat(div_list2), class_div);
 
-///BOUTON CHANGE STYLE:
-
+/** =========== BOUTON CHANGE STYLE: ==============
+ * Creation du bouton et ajout des classes de style
+ * // TODO: A finir d'implémenter pour la fonction
+ * changer le style.
+ * ================================================
+ */
+ 
 let btn_style;
 let class_btn_style;
 let div_btn_style;
@@ -328,6 +369,7 @@ btn_style.textContent = 'Changer le style';
 add_class_to_element_list([btn_style], class_btn_style);
 append_children_el([btn_style],div_btn_style);
 add_class_to_element_list(btn_list, class_btn);
+
 // theme.theme_primary = true;
 // btn_style.addEventListener('click',function()
 // { if(theme_btn == theme.btn_box)
@@ -361,9 +403,6 @@ add_class_to_element_list(btn_list, class_btn);
 console.log('color0:%s',theme.color0)
 console.log('color1:%s',theme.color1)
 console.log('color2:%s',theme.color2)
-
-
-
 //on ajoute des ID pour les boutons en vue des animations:
 for (i=0; i<btn_list.length; i++)
 {
@@ -378,7 +417,9 @@ for (i=0; i<btn_list.length; i++)
 const button_names = ['nouveautés', 'info-geek', 'tutos', 'snippets', 'faire un don',
   'vos réactions', 'contactez-moi', 'téléchargements']
 
-// les boutons de la d-flex1:
+/** ======= FONCTION CUSTOMIZE ============
+ * les boutons de la d-flex1:
+ * */ 
 function customize() 
 {let btn_news;
   for (i = 0; i < 4; i++) 
@@ -399,7 +440,10 @@ function customize()
       btni1.classList.add("disable")
     }
     else 
-    {// ajout d'une alert avec des liens vers signup ou login si user_is_authenticate= false
+    {/**================= BOUTON NOUVEAUTES =========================
+    * ajout d'une Alert bootstrap avec des liens vers signup ou login 
+    * si la variable django user_is_authenticated= false
+    =================================================================*/
         btn_news.addEventListener
         (
           'click',function()
@@ -447,8 +491,11 @@ function customize()
       
       
     };    
-    // suite de la boucle FOR
-    // les boutons de la d-flex2:
+    // *- suite de la boucle FOR -*
+    /**==========================  
+     * les boutons de la d-flex2: 
+     * ==========================
+     * */
     const btni2 = btn_list2[i]
     btni2.textContent = button_names[i + 4];
     

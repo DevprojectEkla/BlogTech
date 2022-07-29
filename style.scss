@@ -299,14 +299,16 @@ $utilities:
         }
 
 .mybadge
-{
+{   color:$orange-500;
+    background-color: $dark;
+    border-color: $orange-800;
     @extend .badge;
 }
 
 .mybadge:hover
 {
-    color:$indigo-600;
-    background-color: $orange-600;
+    color:$dark;
+    background-color: $orange-500;
     border-color: $orange-900;
     
 }

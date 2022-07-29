@@ -32,9 +32,9 @@ const white = "white";
 /**=============================CHOIX DES COULEURS PRINCIPALES DU THEME===================
  * utiliser de preference:
  * color0 pour le background
- * color1 pour le theme principale de text-color(tous les tags <h>) et bouton
- * color2 pour les paragraphes
- * color3 pas utile normalement */
+ * color1 pour le theme principale de text-color(tous les tags <h>, les borders)
+ * color2 pour les boutons
+ * color3 pas encore implémentée */
 
 var color0 = dark;
 var color1 = orange;
@@ -60,12 +60,33 @@ const mybox_color2 = "mybox-" + color2;
 const btn_box = "btn-myhover-box";
 const btn_box_secondary = "btn-myhover-secondary-box";
 const btn_box_tertiary = btn_box + "-tertiary";
-let theme_btn;
+
+/**=================================================== 
+ *== COULEUR DU BACKGROUND PRINCIPAL: BG_COLOR0 ======
+ =====================================================
+ */
+
 let bg_color0;
 bg_color0 = "bg-" + color0
 
-// changer ici le style des boutons en passant par ex. secondary
-if ((color1 == 'orange'&& bg_color0 == dark))
+const bg_color0_100 = "bg-" + color0 + "-100";
+const bg_color0_200 = "bg-" + color0 + "-200";
+const bg_color0_300 = "bg-" + color0 + "-300";
+const bg_color0_400 = "bg-" + color0 + "-400";
+const bg_color0_500 = "bg-" + color0 + "-500";
+const bg_color0_600 = "bg-" + color0 + "-600";
+const bg_color0_700 = "bg-" + color0 + "-700";
+const bg_color0_800 = "bg-" + color0 + "-800";
+const bg_color0_900 = "bg-" + color0 + "-900";
+
+
+/**  ================= DEFINITION DE LA COULEUR DES BOUTONS =================
+ * changer ici le style des boutons en passant par ex. secondary ============
+ * ==========================================================================
+*/
+
+let theme_btn;
+if ((color1 == 'orange'&& color0 == dark))
 {
     theme_btn = btn_box;
 } else
@@ -250,9 +271,10 @@ const class_list_img = ["display-2", "fw-bold", img_color];
 
 /** ========== EXPORTATION DES VARIABLES DE COULEUR ========
  * RAPPEL:
- * color 1: c'est la couleur principal pour les titres et les sous titres
+ * color 0: couleur du fond principal
+ * color 1: couleur principal pour les titres et les sous titres
  *          ainsi que pour la plupart des liens sur les boutons
- * color2: c'est la couleur complémentaire pour varier les effets
+ * color2: couleur complémentaire pour varier les effets
  */
  export default 
  {  blue, indigo, purple, pink , red, yellow, green,
@@ -275,15 +297,24 @@ const class_list_img = ["display-2", "fw-bold", img_color];
     
     btn_box, btn_box_secondary, btn_box_tertiary,
     
-    bg_gradient1, bg_gradient2, bg_color0,
-    bg_color1, bg_color1_100, bg_color1_200, bg_color1_300, bg_color1_400, 
+    bg_gradient1, bg_gradient2, 
+    
+    bg_color0,
+    bg_color0_100, bg_color0_200, bg_color0_300, bg_color0_400, bg_color0_500,
+    bg_color0_600, bg_color0_700, bg_color0_800, bg_color0_900,
+    
+    bg_color1,
+    bg_color1_100, bg_color1_200, bg_color1_300, bg_color1_400, 
     bg_color1_500, bg_color1_600,
     bg_color2,bg_color2_100, bg_color2_200, bg_color2_300, bg_color2_400,
     bg_color2_500,bg_color2_600,
     
-    text_color1, text_color1_100, text_color1_200, text_color1_300,text_color1_400,
+    text_color1,
+    text_color1_100, text_color1_200, text_color1_300,text_color1_400,
     text_color1_500, text_color1_600, text_color1_700, text_color1_800, text_color1_900,
-    text_color2, text_color2_100, text_color2_200, text_color2_300,text_color2_400,
+    
+    text_color2,
+    text_color2_100, text_color2_200, text_color2_300,text_color2_400,
     text_color2_500, text_color2_600,text_color2_700, text_color2_800, text_color2_900,
     
     h1_list, h2_list, h3_list, h4_list, h5_list, p_list, img_list,
