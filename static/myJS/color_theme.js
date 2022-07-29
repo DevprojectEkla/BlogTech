@@ -43,14 +43,28 @@ var color3 = dark;
 
 const border = "border";
 const border_color0 = "border-" + color0;
+
 const border_color1 = "border-" + color1;
-const border_color2 = "border-" + color2;
+const border_color1_100 = "border-" + color1 + "-100"
+const border_color1_200 = "border-" + color1 + "-200"
+const border_color1_300 = "border-" + color1 + "-300"
 const border_color1_400 = "border-" + color1 + "-400"
-const border_color2_400 = "border-" + color2 + "-400"
 const border_color1_500 = "border-" + color1 + "-500"
-const border_color2_500 = "border-" + color2 + "-500"
 const border_color1_600 = "border-" + color1 + "-600"
+const border_color1_700 = "border-" + color1 + "-700"
+const border_color1_800 = "border-" + color1 + "-800"
+const border_color1_900 = "border-" + color1 + "-900"
+
+const border_color2 = "border-" + color2;
+const border_color2_100 = "border-" + color2 + "-100"
+const border_color2_200 = "border-" + color2 + "-200"
+const border_color2_300 = "border-" + color2 + "-300"
+const border_color2_400 = "border-" + color2 + "-400"
+const border_color2_500 = "border-" + color2 + "-500"
 const border_color2_600 = "border-" + color2 + "-600"
+const border_color2_700 = "border-" + color2 + "-700"
+const border_color2_800 = "border-" + color2 + "-800"
+const border_color2_900 = "border-" + color2 + "-900"
 
 const mybox = "mybox";
 const mybox_color0 = "mybox-" + color0;
@@ -204,7 +218,11 @@ function add_class_to_element_list(el_list, class_list =['btn', 'btn-dark']){let
 
 let logout;
 logout = document.querySelector('#logout')
-logout.classList.add(text_color1_400)
+if (logout)
+{
+   logout.classList.add(text_color1_400)
+}
+
 
 
 let footer = document.querySelector('footer')
@@ -319,8 +337,17 @@ const class_list_img = ["display-2", "fw-bold", img_color];
 
     theme_primary, theme_btn,
     
-    border, border_color0, border_color1, border_color2,
-
+    border, border_color0, 
+    border_color1,
+    border_color1_100, border_color1_200, border_color1_300,
+    border_color1_400, border_color1_500, border_color1_600,
+    border_color1_700, border_color1_800, border_color1_900, 
+    
+    border_color2,
+    border_color2_100, border_color2_200, border_color2_300,     
+    border_color2_400, border_color2_500, border_color2_600,
+    border_color2_700, border_color2_800, border_color2_900,
+    
     mybox, mybox_color0, mybox_color1, mybox_color2,
     
     btn_box, btn_box_secondary, btn_box_tertiary,

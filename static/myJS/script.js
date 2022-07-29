@@ -208,6 +208,9 @@ const main_img = document.querySelector('#main_image');
 //IMG.classList.add('invisible');
 // selection de la légende de la photo
 const my_legend = document.querySelector('#name');
+let carousel_name;
+carousel_name = document.querySelector('#demo')
+carousel_name.classList.add('container','rounded',theme.text_color1_200,'my-5','bg',theme.bg_color2)
 
 /**==========================
  * Ajout des triangles animés
