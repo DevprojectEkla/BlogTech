@@ -6,25 +6,25 @@
  * tout à la main dans les différents gabbartis.=
  * ==============================================
  */
-const blue  = "#0d6efd";
-const indigo= "indigo";
-const purple= "purple";
-const pink  = "pink";
+const blue = "#0d6efd";
+const indigo = "indigo";
+const purple = "purple";
+const pink = "pink";
 const red = "red";
-const yellow= "#ffc107";
+const yellow = "#ffc107";
 const green = "#198754";
-const teal  = "#20c997";
-const cyan  = "#0dcaf0"; 
-const gray  = "#6c757d";
+const teal = "#20c997";
+const cyan = "#0dcaf0";
+const gray = "#6c757d";
 const gray_drk = "#343a40";
-const primary  = "#fd7e14";
-const secondary= "#6c757d";
-const success  = "#198754";
-const info     = "info";
-const warning  = "#ffc107";
-const danger   = "#dc3545";
-const light    = "#f8f9fa";
-const dark     = "dark";
+const primary = "#fd7e14";
+const secondary = "#6c757d";
+const success = "#198754";
+const info = "info";
+const warning = "#ffc107";
+const danger = "#dc3545";
+const light = "#f8f9fa";
+const dark = "dark";
 const orange = "orange";
 const white = "white";
 
@@ -100,11 +100,9 @@ const bg_color0_900 = "bg-" + color0 + "-900";
 */
 
 let theme_btn;
-if ((color1 == 'orange'&& color0 == dark))
-{
+if ((color1 == 'orange' && color0 == dark)) {
     theme_btn = btn_box;
-} else
-{
+} else {
     theme_btn = btn_box_secondary
 
 };
@@ -203,24 +201,24 @@ nav_link = document.querySelectorAll('.nav-link')
 
 /** basic for loop function to add class style lists to elements  */
 let el_list;
-function add_class_to_element_list(el_list, class_list =['btn', 'btn-dark']){let i, j;
-    for (i = 0; i < el_list.length; i++) { for (j=0; j < class_list.length; j++)
-      {
-        el_list[i].classList.add(class_list[j]);
-    }
-      
+function add_class_to_element_list(el_list, class_list = ['btn', 'btn-dark']) {
+    let i, j;
+    for (i = 0; i < el_list.length; i++) {
+        for (j = 0; j < class_list.length; j++) {
+            el_list[i].classList.add(class_list[j]);
+        }
+
     };
     return (el_list);
-  };
+};
 
-  add_class_to_element_list(nav_link,[text_color1_400])
+add_class_to_element_list(nav_link, [text_color1_400])
 
 
 let logout;
 logout = document.querySelector('#logout')
-if (logout)
-{
-   logout.classList.add(text_color1_400)
+if (logout) {
+    logout.classList.add(text_color1_400)
 }
 
 
@@ -230,19 +228,17 @@ footer.classList.add(text_color1_400)
 
 btn_list = document.querySelectorAll('.btn')
 
-    for (i = 0; i < btn_list.length; i++)
-    {
-        btn_list[i].classList.add(theme_btn)
-    }
+for (i = 0; i < btn_list.length; i++) {
+    btn_list[i].classList.add(theme_btn)
+}
 
-if (portail)
-{   
+if (portail) {
     let img;
     img = document.querySelector('#banniere');
     console.log(img)
     img.classList.add(mybox_color1);
     portail.classList.add("display-4", text_color1_500, "text-center")
-}   
+}
 
 /**===============COULEUR BACKGROUND PRINCIPAL======================*/
 const mybody = document.body
@@ -250,10 +246,9 @@ mybody.classList.add("bg", bg_color0, bg_gradient2)
 
 /**===============STYLE FAVICON======================*/
 const favicon = document.querySelector('#favicon')
-if (favicon)
-{
-    favicon.classList.add('rounded','border',border_color1, "myZindex-3", mybox_color1)
-    
+if (favicon) {
+    favicon.classList.add('rounded', 'border', border_color1, "myZindex-3", mybox_color1)
+
 }
 
 /** ============== DECLARATION DES VARIABLES POUR LES TAGS ================ */
@@ -270,7 +265,7 @@ const img_list = document.querySelectorAll('img')
 
 let theme_primary;
 theme_primary = true;
-console.log('theme primary:%s',theme_primary)
+console.log('theme primary:%s', theme_primary)
 
 // if  (!theme_primary)
 // {   
@@ -300,17 +295,21 @@ var h2_color = text_color1_500
 var h3_color = text_color1_400
 var h4_color = text_color1_500
 var h5_color = text_color1_500
-var p_color  = text_color1_200
+var p_color = text_color1_200
 var img_color = text_color1_500
 
 /** ============ CREATION DES CLASSLIST POUR NOS TAGS ==================== */
 
 const class_list_h1 = ["display-2", "fw-bold", h1_color];
 const class_list_h2 = ["display-2", "fw-bold", h2_color];
-const class_list_h3 = ["font-weight-light", "p-4", "border-start", "border-5", "col-11", "ms-4",h3_color];
+const class_list_h3 = [
+    "font-weight-light", "p-4", "border-start", "border-5",
+    "col-11", "ms-4", h3_color
+];
 const class_list_h4 = ["display-2", "fw-bold", h4_color];
 const class_list_h5 = ["text-center", "op-0", "fw-bold", h5_color];
-const class_list_p = ["lead", "p-4", "border-start", "border-5", border_color1_500, "col-11", "ms-4-2",p_color ];
+const class_list_p = ["lead", "p-4", "border-start", "border-5", border_color1_500,
+    "col-11", "ms-4-2", p_color];
 const class_list_img = ["display-2", "fw-bold", img_color];
 
 
@@ -322,58 +321,59 @@ const class_list_img = ["display-2", "fw-bold", img_color];
  *          ainsi que pour la plupart des liens sur les boutons
  * color2: couleur complémentaire pour varier les effets
  */
- export default 
- {  blue, indigo, purple, pink , red, yellow, green,
-    teal, cyan, gray, gray_drk, primary, secondary, success,
-    warning, danger,
-    info, light, dark, orange, white,
-    color1,color2, color0,
-    color1_100, color1_200, color1_300,
-    color2_100, color2_200, color2_300,
-    color1_400, color1_500, color1_600,
-    color2_400, color2_500, color2_600,
-    color1_700, color1_800, color1_900,
-    color2_700, color2_800, color2_900,
+export default
+    {
+        blue, indigo, purple, pink, red, yellow, green,
+        teal, cyan, gray, gray_drk, primary, secondary, success,
+        warning, danger,
+        info, light, dark, orange, white,
+        color1, color2, color0,
+        color1_100, color1_200, color1_300,
+        color2_100, color2_200, color2_300,
+        color1_400, color1_500, color1_600,
+        color2_400, color2_500, color2_600,
+        color1_700, color1_800, color1_900,
+        color2_700, color2_800, color2_900,
 
-    theme_primary, theme_btn,
-    
-    border, border_color0, 
-    border_color1,
-    border_color1_100, border_color1_200, border_color1_300,
-    border_color1_400, border_color1_500, border_color1_600,
-    border_color1_700, border_color1_800, border_color1_900, 
-    
-    border_color2,
-    border_color2_100, border_color2_200, border_color2_300,     
-    border_color2_400, border_color2_500, border_color2_600,
-    border_color2_700, border_color2_800, border_color2_900,
-    
-    mybox, mybox_color0, mybox_color1, mybox_color2,
-    
-    btn_box, btn_box_secondary, btn_box_tertiary,
-    
-    bg_gradient1, bg_gradient2, 
-    
-    bg_color0,
-    bg_color0_100, bg_color0_200, bg_color0_300, bg_color0_400, bg_color0_500,
-    bg_color0_600, bg_color0_700, bg_color0_800, bg_color0_900,
-    
-    bg_color1,
-    bg_color1_100, bg_color1_200, bg_color1_300, bg_color1_400, 
-    bg_color1_500, bg_color1_600,
-    bg_color2,bg_color2_100, bg_color2_200, bg_color2_300, bg_color2_400,
-    bg_color2_500,bg_color2_600,
-    
-    text_color1,
-    text_color1_100, text_color1_200, text_color1_300,text_color1_400,
-    text_color1_500, text_color1_600, text_color1_700, text_color1_800, text_color1_900,
-    
-    text_color2,
-    text_color2_100, text_color2_200, text_color2_300,text_color2_400,
-    text_color2_500, text_color2_600,text_color2_700, text_color2_800, text_color2_900,
-    
-    h1_list, h2_list, h3_list, h4_list, h5_list, p_list, img_list,
-    
-    class_list_h1, class_list_h2, class_list_h3, class_list_h4, class_list_h5, class_list_p, class_list_img,
-    add_class_to_element_list,
-} 
+        theme_primary, theme_btn,
+
+        border, border_color0,
+        border_color1,
+        border_color1_100, border_color1_200, border_color1_300,
+        border_color1_400, border_color1_500, border_color1_600,
+        border_color1_700, border_color1_800, border_color1_900,
+
+        border_color2,
+        border_color2_100, border_color2_200, border_color2_300,
+        border_color2_400, border_color2_500, border_color2_600,
+        border_color2_700, border_color2_800, border_color2_900,
+
+        mybox, mybox_color0, mybox_color1, mybox_color2,
+
+        btn_box, btn_box_secondary, btn_box_tertiary,
+
+        bg_gradient1, bg_gradient2,
+
+        bg_color0,
+        bg_color0_100, bg_color0_200, bg_color0_300, bg_color0_400, bg_color0_500,
+        bg_color0_600, bg_color0_700, bg_color0_800, bg_color0_900,
+
+        bg_color1,
+        bg_color1_100, bg_color1_200, bg_color1_300, bg_color1_400,
+        bg_color1_500, bg_color1_600,
+        bg_color2, bg_color2_100, bg_color2_200, bg_color2_300, bg_color2_400,
+        bg_color2_500, bg_color2_600,
+
+        text_color1,
+        text_color1_100, text_color1_200, text_color1_300, text_color1_400,
+        text_color1_500, text_color1_600, text_color1_700, text_color1_800, text_color1_900,
+
+        text_color2,
+        text_color2_100, text_color2_200, text_color2_300, text_color2_400,
+        text_color2_500, text_color2_600, text_color2_700, text_color2_800, text_color2_900,
+
+        h1_list, h2_list, h3_list, h4_list, h5_list, p_list, img_list,
+
+        class_list_h1, class_list_h2, class_list_h3, class_list_h4, class_list_h5, class_list_p, class_list_img,
+        add_class_to_element_list,
+    } 

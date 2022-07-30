@@ -4,15 +4,15 @@
 
 <div class="container">
     <div class="row justify-content-center">
-<h1 class="col-12 text-orange border-start border-white mybox rounded border-5 text-center pb-1"> {{article.title}}</h1>
+<h1 class="col-12  border-start rounded border-5 text-center pb-1"> {{article.title}}</h1>
 <!--<img class=" figure col-6 img-thumbnail mb-5" src="{{article.image.url}}" alt="image de l'article {{article.slug}}">
  cette ligne vaut dans le cas où l'on a uploadé une image dans la database mais heroku supprime les images uploadés
   par les utilisateurs (à moins de payer un addon) en attendant mieux je fais pointer la source vers une image statique
   qui va avec l'application-->
-<img class=" figure w-50 h-50 mybox rounded my-5 img-fluid" src="{% static '' %}{{article.image}}" alt="image:{{article.image}}">
+<img id="id_img" class=" figure w-50 h-50 rounded my-5 img-fluid" src="{% static '' %}{{article.image}}" alt="image:{{article.image}}">
 
 
-<div class="col-12 justify-content-start"><p class="text-white border-start border-4  border-orange-500 fs-40 p-2"> {{article.text}}</p> </div>
+<div class="col-12 justify-content-start"><p id="id_texte" class="border-start border-4 fs-40 p-2"> {{article.text}}</p> </div>
 {% if user.is_superuser %}
 <div class="text-center">
 <a class="btn btn-outline-warning my-2" href="{% url 'edit-post' article.slug %}">Editer cet article</a>
@@ -24,15 +24,15 @@
  </div>
 
  {% if all_article_comments %}
-    <div class="container card my-4 border border-3 border-orange-500 shadow w-50 ">
+    <div id="card_container" class="container card my-4 border border-3 border-orange-500 w-50 ">
         <div class="card-body">
-            <h5 class="card-title bg-success text-white text-center w-50 justify-content-center"> Commentaires des lecteurs</h5>
+            <h5 class="card-title text-center w-50 justify-content-center"> Commentaires des lecteurs</h5>
                 {% for comment in all_article_comments  %}
-                    <div class="justify-content-sm-start  text-dark ">
+                    <div class="justify-content-sm-start">
                         <div class="card-text col-sm-6 ">
                                Posté par:  <span class="fw-bold">{{comment.user}}</span>
                           le: <span class="fw-bold"> {{comment.date}}</span>
-                        <h5 class="col-sm-auto text-justify text-primary p-2">
+                        <h5 class="col-sm-auto text-justify p-2">
                          {{comment.text}}</h5>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                       ></textarea>
                 </div>
                 </div>
-            <p><input class="btn btn-myhover-box" type="submit" value="publier le commentaire"></p>
+            <p><input id="btn_publish" class="btn btn-myhover-box" type="submit" value="publier le commentaire"></p>
         </div></form>
     </div>
 </section>
@@ -86,4 +86,5 @@
   </ul>
 </nav>
 </div>
+<script type = "module" src="{%static '/myJS/lire_article.js' %}"></script>
 {% endblock %}
