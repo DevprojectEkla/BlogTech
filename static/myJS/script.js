@@ -320,7 +320,7 @@ class_btn = ["btn",theme_btn,"btn-lg","myZ-index-3", "col-lg-auto", "op-1", "tex
 class_div = ["col-lg-auto", "mx-1"]
 // ** Création d'un message d'alerte si l'utilisateur n'est pas connecté **
 const auth_alert = document.createElement("div");
-auth_alert.classList.add("alert","alert-"+theme.color2)
+auth_alert.classList.add("alert","alert-"+theme.color1_200)
 auth_alert.setAttribute('role','alert');
 auth_alert.style.zIndex = 3;
 auth_alert.textContent = "Il faut être connecté pour lire les articles"
