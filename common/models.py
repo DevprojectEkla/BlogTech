@@ -23,38 +23,51 @@ class HomePage(models.Model):
     carousel_name = models.CharField(max_length=255, blank=True)
     first_title_h3 = models.CharField(max_length=255, blank=True)
     first_p = models.TextField(blank=True)
+    first_link = models.CharField(max_length=255,blank=True)
+    second_link = models.CharField(max_length=255,blank=True)
     second_img_source = models.CharField(max_length=255, blank=True)
     second_img_alt = models.CharField(max_length=255, blank=True)
     preview_text = models.CharField(max_length=255, blank=True)
 
 
+
 class NewBlock(models.Model):
     id = models.IntegerField(default=1, primary_key=True)
     name = models.CharField(max_length=255)
+    
     title1 = models.CharField(max_length=255, blank=True)
     highlighted_text1 = models.CharField(max_length=255, blank=True)
+    
     title2 = models.CharField(max_length=255, blank=True)
     highlighted_text2 = models.CharField(max_length=255, blank=True)
+    
     title3 = models.CharField(max_length=255, blank=True)
     highlighted_text3 = models.CharField(max_length=255, blank=True)
+    
     paragraph1 = models.TextField(blank=True)
     text_effect1 = models.CharField(max_length=255, blank=True)
     text_effect12 = models.CharField(max_length=255, blank=True)
     text_effect13 = models.CharField(max_length=255, blank=True)
+    
     paragraph2 = models.TextField(blank=True)
     text_effect2 = models.CharField(max_length=255, blank=True)
     text_effect21 = models.CharField(max_length=255, blank=True)
     text_effect23 = models.CharField(max_length=255, blank=True)
+
     paragraph3 = models.TextField(blank=True)
     text_effect3 = models.CharField(max_length=255, blank=True)
     text_effect32 = models.CharField(max_length=255, blank=True)
     text_effect33 = models.CharField(max_length=255, blank=True)
+    
     link1 = models.TextField(blank=True)
     link_text1 =models.TextField(blank=True)
+    
     link2 = models.TextField(blank=True)
     link_text2 = models.TextField(blank=True)
+    
     link3 = models.TextField(blank=True)
     link_text3 = models.TextField(blank=True)
+    
     image1 = models.CharField(max_length=255, blank=True)
     image2 = models.CharField(max_length=255, blank=True)
     image3 = models.CharField(max_length=255, blank=True)

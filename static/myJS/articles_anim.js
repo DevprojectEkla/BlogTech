@@ -36,9 +36,11 @@ console.log(scrollPos)
 if ( scrollPos == 0){console.log(scrollPos);scrollAnimation;};
   
 
-// === ANIMATION DU PREMIER ARTICLE  ====
-// nb: l'animation est différente à cause de la position des triggers Start et end
-
+/**
+* ======================= ANIMATION DU PREMIER ARTICLE  ========================
+* NB: l'animation est différente à cause de la position des triggers Start et end
+* ===============================================================================
+*/
 TweenMax.fromTo
   (
     container[0],
