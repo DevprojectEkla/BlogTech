@@ -222,8 +222,11 @@ const main_img = document.querySelector('#main_image');
 const my_legend = document.querySelector('#name');
 let carousel_name;
 carousel_name = document.querySelector('#demo')
-carousel_name.classList.add('container','rounded',theme.text_color1_200,'my-5','bg',theme.bg_color2)
-
+carousel_name.classList.add('container','rounded',theme.text_color1_200,'my-5')
+let carousel_img_list;
+carousel_img_list = document.querySelectorAll('.carousel-item')
+console.log(carousel_img_list)
+add_class_to_element_list(carousel_img_list,['my-3'])
 /**==========================
  * Ajout des triangles animés
  * ==========================
