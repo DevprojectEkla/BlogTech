@@ -84,12 +84,7 @@ for (var i = 0; i < img_list.length; i++ )
   img_list[i].classList.add('rounded','border',theme.border_color1, theme.mybox_color1)
 }
 
-// premiers essais de script Java avec fonctions simple
-function ChangerCouleur(Identifiant) {
-  var rndCol = 'rgba(' + random(255) + ',' + random(255) + ',' + random(255) + ',' + 1 + ')'
-  document.getElementById(Identifiant).style.color = rndCol;
 
-};
 
 /**===================== BOUTON BACK TO THE TOP =================================================
 * création d'un bouton "back to the Top" qui apparaît seulement en fin de défilement de la page,
@@ -324,8 +319,8 @@ function onTick() {
 * box-shadow: 2px        2px         2px           1px           rgba(0, 0, 0, 0.2);
 ====================================================================================*/
 
-main_img.addEventListener('mouseover',function(){
-TweenMax.fromTo(main_img,.7,{boxShadow: "-10px 5px 2px rgba(50, 0, 0, 1)"},{boxShadow: "20px 2px 2px 1px rgba(20, 0, 0, 0.2)"});
+img_container.addEventListener('mouseover',function(){
+TweenMax.fromTo(img_container,.7,{boxShadow: "(5px 5px 2px rgba(50, 25, 25, 1)"},{boxShadow: "20px 2px 2px 1px rgba(20, 250, 0, 1)"});
 })
 
 // cette fonction supprime une classe sur l'élément choisi avec un délai particulier pour l

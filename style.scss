@@ -2,8 +2,8 @@
 
 @import "static/scss/functions";
 $theme_bg             : white ;
-
-$primary        :  red;
+$pagination-color: red;
+$primary        :  blue;
 $primary-100: tint-color($primary, 80%) ;
 $primary-200: tint-color($primary, 60%) ;
 $primary-300: tint-color($primary, 40%) ;
@@ -60,6 +60,7 @@ $colors: (
   "tertiary":       $tertiary,
   "tertiary_text":  $tertiary_text,
   "tertiary_bg":    $tertiary_bg,
+  "pagination-color": red,
     
   
 );

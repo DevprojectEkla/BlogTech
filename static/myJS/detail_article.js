@@ -29,6 +29,14 @@ titre_article.classList.add(theme.text_color1_600)
 let head_article, i;
 head_article = theme.h1_list
 theme.add_class_to_element_list(theme.h1_list, theme.class_list_h1.concat(['border-start', 'rounded', 'border-5', theme.border_color1_nuance1]))
+
+let btn_pagination_list;
+
+btn_pagination_list = document.querySelectorAll(".page-link")
+theme.changeColorElementList(btn_pagination_list,theme.color1)
+theme.add_class_to_element_list(btn_pagination_list,['btn',theme.theme_btn])
+
+
 /**========================================================
  *  =========ANIMATION DU TITRE DE L'ARTICLE===============
  * ========================================================
@@ -41,9 +49,11 @@ for (i=0; i < head_article.length; i++)
  *  =========ANIMATION SCROLL-TRIGGER =====================
  * ========================================================
  */
-
-theme.myscrollTrig(theme.img_list);
-theme.myscrollTrig(theme.p_list);
+let img_list, p_list;
+img_list = Array.from(theme.img_list)
+p_list = Array.from(theme.p_list)
+console.log(img_list)
+theme.myScrollTrig(img_list.splice(2).concat(p_list).concat(card_com));
 
 
 

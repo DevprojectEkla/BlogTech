@@ -230,6 +230,21 @@ nav_link = document.querySelectorAll('.nav-link')
  * ============================
  */
 
+// premiers essais de script Java avec fonctions simple
+function changeColorElement(el,color) {
+
+    el.style.color = color;
+  
+  };
+
+function changeColorElementList(el_list,color)
+{
+    for(i = 0; i < el_list.length; i++)
+    {
+        changeColorElement(el_list[i],color);
+    }
+}
+
 /** fonction d'animation de titre
  * ==============================
  */
@@ -276,7 +291,7 @@ nav_link = document.querySelectorAll('.nav-link')
  *  ============ Fonction Scroll-Trigger ==========
  * ================================================
 */
-function myscrollTrig(el_list)
+function myScrollTrig(el_list)
 {
     for(i=0; i< el_list.length; i++)
 {
@@ -508,5 +523,5 @@ export default
         h1_list, h2_list, h3_list, h4_list, h5_list, p_list, img_list, a_list,
 
         class_list_h1, class_list_h2, class_list_h3, class_list_h4, class_list_h5, class_list_p, class_list_a, class_list_img,
-        add_class_to_element_list, title_animation, myscrollTrig,
+        add_class_to_element_list, title_animation, myScrollTrig, changeColorElement, changeColorElementList,
     } 
