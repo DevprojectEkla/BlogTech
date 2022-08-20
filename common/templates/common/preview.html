@@ -26,42 +26,25 @@
     </section>
     <section id="section2">
         <div></div>
-        <div id="demo" class="carousel slide card-title w-25 text-center" data-bs-ride="carousel"> {{object.carousel_name}}
-            <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="4000">
+        <div id="demo" class="carousel slide card-title text-center" data-bs-ride="carousel"> {{object.carousel_name}}
+            <div id="carousel" class="carousel-inner"> <div class="carousel-item active" data-bs-interval="4000">
                         <img src="{% static 'img/python-django3.png' %}" alt="Carrousel slide 1" class="text-center">
-                </div>
-                    <!--<div class="carousel-item" data-bs-interval="2000">
-                        <img src="{% static 'img/logo-django.jpg' %}" alt="Carrousel slide " class="d-block offset-4">
-                    </div>-->
-                
-                <div class="carousel-item card-img-top" data-bs-interval="3000">
+                </div><div class="carousel-item card-img-top" data-bs-interval="3000">
                             <img src="{% static 'img/javascript.jpg' %}" alt="Carrousel slide 2" class="text-center">
-                </div>
-                <div class="carousel-item" data-bs-interval="2000">
+                </div><div class="carousel-item" data-bs-interval="2000">
                         <img src="{% static 'img/bootstrap2.jpg' %}" alt="Carrousel slide 2" class="text-center">
-                </div>
-                <div class="carousel-item" data-bs-interval="2000">
+                </div><div class="carousel-item" data-bs-interval="2000">
                         <img src="{% static 'img/vscode.jpg' %}" alt="Carrousel slide 5" class="text-center">
-                </div>
-                <div class="carousel-item" data-bs-interval="2000">
+                </div><div class="carousel-item" data-bs-interval="2000">
                         <img src="{% static 'img/pycharm.jpg' %}" alt="Carrousel slide 5" class="text-center">
-                </div>
-
-                <div class="carousel-item" data-bs-interval="2000">
+                </div><div class="carousel-item" data-bs-interval="2000">
                     <img src="{% static 'img/git.jpg' %}" alt="Carrousel slide 4" class="text-center">
-                </div>
-
-                <div class="carousel-item" data-bs-interval="2000">
-                    <img src="{% static 'img/logo-gunicorn.png' %}" alt="Carrousel slide 6" class="text-center">
-                </div>
-
-                <div class="carousel-item" data-bs-interval="2000">
+                </div><div class="carousel-item" data-bs-interval="2000">
+                    <img src="{% static 'img/logo-gunicorn.jpg' %}" alt="Carrousel slide 6" class="text-center">
+                </div><div class="carousel-item" data-bs-interval="2000">
                         <img src="{% static 'img/heroku2.png' %}" alt="Carrousel slide 7" class="text-center">
-                </div>
-            </div>
-        </div>  
-        <div>
+                </div></div>
+        </div>  <div>
                 <h3 id="title1" class=" "> {{object.first_title_h3}} </h3>
         </div>
             <div>
@@ -86,19 +69,10 @@
     {% if user.is_authenticated %}<script type="text/javascript"> var user_authenticated = true </script>
     <div> <h3 class=""> {{ block1.title1 }}</h3>
         <div class="text-center "><img class=" col-sm-auto rounded " src="{%static ''%}{{block1.image1}}" alt=""></div>
-    </div>
-       <p class=""> {{ block1.paragraph1 }}
-           <a class="a-color" href="{{block1.link3}}"> {{block1.link_text3}} </a></p>
-
-    <div> <h3 class=""> {{block1.title2}}
-        <div class="text-center">
-            <img id = "" class="col-sm-auto rounded" src="{% static '' %}{{block1.image2}}" alt="">
-        </div>
-        </h3> <p class="" > {{block1.paragraph2}}</p>
-        </div>
-    <div> <h3 class=""> {{block1.title3}}</h3> 
-        <p class="" > {{block1.paragraph3}}</p>
-           
+    </div><p class=""> {{ block1.paragraph1 }}<a class="a-color" href="{{block1.link3}}"> {{block1.link_text3}} </a></p>
+    <div> <h3 class=""> {{block1.title2}}<div class="text-center"><img id = "" class="col-sm-auto rounded" src="{% static '' %}{{block1.image2}}" alt="">
+        </div></h3> <p class="" > {{block1.paragraph2}}</p></div><div> <h3 class=""> {{block1.title3}}</h3> 
+        <p class="" > {{block1.paragraph3}}</p>           
         {% endif %}
         {% block footer %}
     <div id="divbtt" class="invisible" >

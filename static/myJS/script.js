@@ -319,9 +319,9 @@ function onTick() {
 * box-shadow: 2px        2px         2px           1px           rgba(0, 0, 0, 0.2);
 ====================================================================================*/
 
-img_container.addEventListener('mouseover',function(){
-TweenMax.fromTo(img_container,.7,{boxShadow: "(5px 5px 2px rgba(50, 25, 25, 1)"},{boxShadow: "20px 2px 2px 1px rgba(20, 250, 0, 1)"});
-})
+// img_container.addEventListener('mouseover',function(){
+// TweenMax.fromTo(img_container,.7,{boxShadow: "(5px 5px 2px rgba(50, 25, 25, 1)"},{boxShadow: "20px 2px 2px 1px rgba(20, 250, 0, 1)"});
+// })
 
 // cette fonction supprime une classe sur l'élément choisi avec un délai particulier pour l
 function delay_x(element_x, class_Name, dtime) {
@@ -728,40 +728,76 @@ tl6 = new TimelineMax()
 
 // On ajoute l'Enregistreur d'événement à l'objet window ici !! 
 // ATTENTION: l'événement de souris 'wheel' ne s'attage pas à un élément, 'mousewheel' oui 'but is deprecated'.
-if (text_visible == false) {
-  text_visible = true;
-  for (i = 0; i < section2.children.length; i++) {
-    const child = section2.children[i];
-    // console.log(section2.children[i]);
-    // console.log(child.className);
-    //ANIMATION SCROLLTRIGGER: fonction qui fait apparaître les éléments un par un 
-    // à chaque cran de la molette de la souris (et pas tout en même temps)
-    gsap.to(child,
-      {
-        duration: 1,
-        scrollTrigger:
-        {
-          trigger: child,
-          container: "#section2",
-          start: "top 90%",
-          end: "top 60%",
-          //markers: { fontSize: "2rem" },
-          toggleClass: "invisible",
-          //toggleActions:"none none none none",
-          //            onenter onLeave  onEnterback   onLeaveBack
-          //onToggle: self => console.log(child.className),
-          //pinSpacing: false,
-          //pin: true          
 
-        }
-      }
-    );
+  // do stuff here.
+
+  // il est mieux de travailler avec des array plutot que des object_list
+  // pour pouvoir utiliser les fonctions sur les array comme .pop(), .splice() etc.
+  // list.pop() dégage le dernier élément de la liste, la list est modifiée ipso facto
+  // ici on dégage 4 éléments indésirables de la liste de section.children,
+  // pour pouvoir créer notre animation sur les seuls objets qui nous intéressent.
+  // les elements en bas de page font chier il faut créer des scroll trigger
+  // avec des scrollstart et des startpoint differents....FAIT VRAIMENT CHIER!!!
+  let children_list, children_of_bottom, list_length;
+  children_list = Array.from(section2.children)
+  console.log(children_list)
+  if (user_authenticated)
+  {
+    list_length = 4
+  } else 
+  {
+    list_length = 7;
+    
   };
-}
-else 
-{
-  console.log('Normalement le text est visible la valeur text_visible est: ' + text_visible)
-};
+  console.log('list_length = '+list_length)
+  
+  for (i=0;i < list_length;i++)
+  {
+    children_list.pop()
+    console.log(children_list)
+  }
+  children_of_bottom = children_list.splice(children_list.length-2)
+  
+//ANIMATION SCROLLTRIGGER: fonction qui fait apparaître les éléments un par un 
+// à chaque cran de la molette de la souris (et pas tout en même temps)
+  function scrollTrig(el_list, start="-230 60%",
+  end="-275 50%",togclass="invisible",container="#section2",duration=1)
+  {
+    for (i = 0; i < el_list.length; i++) 
+    {
+    const child = el_list[i]; 
+    TweenMax.to
+    (child,
+        {
+          
+          scrollTrigger:
+          {
+            trigger: child,
+            container: container,
+            start: start,
+            end: end,
+            markers: { fontSize: "2rem" },
+            toggleClass: togclass,
+            // toggleActions: "reverse,reverse,reverse,restart",
+            //            onenter onLeave  onEnterback   onLeaveBack
+            onToggle: self => console.log(child.className),
+            onEnterBack: self => child.classList.add(togclass),
+            // onLeaveback: () => child.classList.add(togclass),
+            //pinSpacing: false,
+            //pin: true          
+            // onEnter: child.classList.add('invisible'),
+            // onLeaveBack: child.classList.remove('invisible'),  
+          },
+          
+        }
+      );
+    };
+    
+  }
+  
+scrollTrig(children_list);
+scrollTrig(children_of_bottom,"-350 60%","-395 50%");
+
 function mkvisible(el) {
   tl5.fromTo(el, .5, { opacity: 0 }, { opacity: 1, ease: Power2.easeInOut })
   gsap.to("div", { scrollTrigger: "div" });
