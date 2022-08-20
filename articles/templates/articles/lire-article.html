@@ -2,9 +2,9 @@
 {% load static %}
 {% block content %}
 
-<div class="container">
+<div id="container" class="container">
     <div class="row justify-content-center">
-<h1 class="col-12  border-start rounded border-5 text-center pb-1"> {{article.title}}</h1>
+<h1 class="col-12 text-center pb-1"> {{article.title}}</h1>
 <!--<img class=" figure col-6 img-thumbnail mb-5" src="{{article.image.url}}" alt="image de l'article {{article.slug}}">
  cette ligne vaut dans le cas où l'on a uploadé une image dans la database mais heroku supprime les images uploadés
   par les utilisateurs (à moins de payer un addon) en attendant mieux je fais pointer la source vers une image statique
@@ -66,8 +66,9 @@
 
                       ></textarea>
                 </div>
-                </div>
-            <p><input id="btn_publish" class="btn btn-myhover-box" type="submit" value="publier le commentaire"></p>
+                <input id="btn_publish" class="btn btn-myhover-box col-sm-auto my-2" type="submit" value="publier le commentaire">
+            </div>
+            
         </div></form>
     </div>
 </section>

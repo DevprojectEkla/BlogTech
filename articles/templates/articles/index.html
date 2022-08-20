@@ -3,7 +3,7 @@
 {% block content %}
 {% load static %}
 <div id= "scroll" class="row justify-content-center "> 
-    <i class="bi bi-mouse position-fixed col-sm-auto badge badge-lg backg-purple-light text-white fs-50"> Faites défiler </i>    
+    <i class="bi bi-mouse position-fixed col-sm-auto badge badge-sm"> Faites défiler </i>    
  <svg id="svg_mouse" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="" class="bi bi-mouse my-4" viewBox="0 0 16 16">
         <path d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm4 8a4 4 0 0 1-8 0V5a4 4 0 1 1 8 0v6zM8 0a5 5 0 0 0-5 5v6a5 5 0 0 0 10 0V5a5 5 0 0 0-5-5z"/>
       </svg>
@@ -29,7 +29,7 @@
                              src="{% static '' %}{{article.image}}" alt="{{article.title}}">
                     </a>
                         <div class=" my-4 "> <a class="" href="{% url 'article' article.slug %}">
-                            <button  class="btn col-sm-auto "> Lire le résumé de l'article </button>
+                            <button  class="btn col-sm-auto "> Lire l'article </button>
                             </div>
                     </a>
 

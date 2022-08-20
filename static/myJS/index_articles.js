@@ -4,11 +4,13 @@ var section = document.querySelector('#intro');
 var badge = document.querySelector('.badge');
 var scroll = document.querySelector('#scroll');
 var svg = document.querySelector('#svg_mouse');
+var svg_legend = document.querySelector('i')
 // var title = document.querySelectorAll('h2')
 // var subtitle = document.querySelectorAll('h5')
 theme.add_class_to_element_list(theme.h2_list,[theme.text_color1_500])
 theme.add_class_to_element_list(theme.h5_list,[theme.text_color1_400])
-svg.setAttribute('fill',theme.color1)
+svg.setAttribute('fill',theme.color1) //pour régler la couleur de l'icone en fonction du theme
+svg_legend.classList.add(theme.text_color1_nuance1)
 // console.log(section);
 // console.log(badge);
 // console.log(section.children.length);

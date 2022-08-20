@@ -58,7 +58,7 @@ const border_color1_600 = "border-" + color1 + "-600"
 const border_color1_700 = "border-" + color1 + "-700"
 const border_color1_800 = "border-" + color1 + "-800"
 const border_color1_900 = "border-" + color1 + "-900"
-const border_color1_nuance1 = "border"+ color1+ "-" + nuance1
+const border_color1_nuance1 = "border-"+ color1+ "-" + nuance1
 
 const border_color2 = "border-" + color2;
 const border_color2_100 = "border-" + color2 + "-100"
@@ -225,7 +225,99 @@ let i;
 let nav_link;
 nav_link = document.querySelectorAll('.nav-link')
 
-/** basic for loop function to add class style lists to elements  */
+/**============================
+ * Fonctions simples à exporter
+ * ============================
+ */
+
+/** fonction d'animation de titre
+ * ==============================
+ */
+ function title_animation(title_element,sep="",speed=50)
+ { let i;
+   let strTxt, splitTxt;
+   
+        strTxt = title_element.textContent;
+        splitTxt = strTxt.split(sep);
+        title_element.textContent = "";
+        for (i = 0; i < splitTxt.length; i++) 
+        {
+            if(sep=" ")
+        {
+            title_element.innerHTML += "<span>" + splitTxt[i] + "</span>"+" "
+        }else {
+            title_element.innerHTML += "<span>" + splitTxt[i] + "</span>"
+        };
+        };
+        const span_text = title_element.querySelectorAll('span')
+        for (i = 0; i < span_text.length; i++) {
+            const span = span_text[i]
+            span.classList.add('op-0')
+        };  
+        let timer; 
+        let char;
+        function onTick() 
+        {
+        const span = title_element.querySelectorAll('span')[char];
+        setTimeout(function () { span.classList.replace('op-0', 'op-100') }, 100);
+        char++;
+        if (char == splitTxt.length)
+        {
+            clearInterval(timer);
+            timer = null
+        }
+        
+        }
+        char = 0
+        timer = setInterval(onTick, speed)
+    }
+
+/**================================================
+ *  ============ Fonction Scroll-Trigger ==========
+ * ================================================
+*/
+function myscrollTrig(el_list)
+{
+    for(i=0; i< el_list.length; i++)
+{
+    TweenMax.fromTo
+    (
+      el_list[i],
+      {
+        opacity: 0,
+        x: (-1) ** (i + 1) * 300,
+      },
+      {
+        x: (-1) ** (i + 1) * (-40),
+        scrollTrigger:
+        {
+          trigger: el_list[i],
+          container: "container",
+          start: "top 60%",
+          end: "300px 50%",
+          //markers: {fontSize: "2rem"},
+          scrub: 1, //or a number in second
+          //toggleClass: "invisible",
+          toggleActions: "restart none none none",
+          //            onenter onLeave  onEnterback   onLeaveBack
+          onToggle: self => console.log(container.className),
+          //pinSpacing: false,
+          //pin: true          
+        },
+        opacity: 1,
+        duration: 3
+      }
+    )
+    ;
+
+}
+
+}
+
+
+/** =====================================================================
+ *  ===== basic for-loop function to add class style lists to elements===
+ * */
 let el_list;
 function add_class_to_element_list(el_list, class_list = ['btn', 'btn-dark']) {
     let i, j;
@@ -239,6 +331,8 @@ function add_class_to_element_list(el_list, class_list = ['btn', 'btn-dark']) {
 };
 
 add_class_to_element_list(nav_link, [text_color1_400])
+
+
 
 
 let logout;
@@ -414,5 +508,5 @@ export default
         h1_list, h2_list, h3_list, h4_list, h5_list, p_list, img_list, a_list,
 
         class_list_h1, class_list_h2, class_list_h3, class_list_h4, class_list_h5, class_list_p, class_list_a, class_list_img,
-        add_class_to_element_list,
+        add_class_to_element_list, title_animation, myscrollTrig,
     } 

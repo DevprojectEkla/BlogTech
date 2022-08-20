@@ -171,6 +171,39 @@ for (i = 0; i < span_text.length; i++) {
   const span = span_text[i]
   span.classList.add('op-0')
 };
+
+function title_animation(title_element,speed=50)
+{ let i;
+  let strTxt, splitTxt;
+  strTxt = title_element.textContent;
+  splitTxt = strTxt.split("");
+  title_element.textContent = "";
+  for (i = 0; i < splitTxt.length; i++) {
+    title_element.innerHTML += "<span>" + splitTxt[i] + "</span>"
+  };
+  const span_text = title_element.querySelectorAll('span')
+  for (i = 0; i < span_text.length; i++) {
+    const span = span_text[i]
+    span.classList.add('op-0')
+  };  
+ let timer; 
+ let char;
+ function onTick() 
+ {
+  const span = text.querySelectorAll('span')[char];
+  setTimeout(function () { span.classList.replace('op-0', 'op-100') }, 100);
+  char++;
+  if (char == splitTxt.length)
+  {
+    clearInterval(timer);
+    timer = null
+  }
+
+ }
+ char = 0
+ timer = setInterval(onTick, speed)
+
+}
 //creation d'un element bootstrap badge pour insérer
 // le txt "BLOG TECH" à la suite de l'animation "Bienvenue...""
 // NB: le badge est finalement devenu un bouton pour avoir la 

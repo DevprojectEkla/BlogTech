@@ -67,10 +67,10 @@
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                 </div>
-                <div><a id="logout" class="btn btn-sm mx-1" href="{% url 'logout' %}">Déconnexion</a></div>
+                <div><a id="logout" href="{% url 'logout' %}"> <button class="btn btn-sm mx-1">Déconnexion</button></a></div>
 
             {% if user.cart %}
-            <a class="btn btn-sm text-white mx-1" href="{% url 'cart' %}">Voir Panier({{ user.cart.orders.count }})</a>
+            <a class="btn btn-sm mx-1" href="{% url 'cart' %}">Voir Panier({{ user.cart.orders.count }})</a>
             {% endif %}
         {% endif %}
       <form class="d-flex" role="search">
