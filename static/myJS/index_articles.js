@@ -1,11 +1,20 @@
+import theme from "./color_theme.js";
+
 var section = document.querySelector('#intro');
-var badge = document.querySelector('.badge')
-var scroll = document.querySelector('#scroll')
+var badge = document.querySelector('.badge');
+var scroll = document.querySelector('#scroll');
+var svg = document.querySelector('#svg_mouse');
+// var title = document.querySelectorAll('h2')
+// var subtitle = document.querySelectorAll('h5')
+theme.add_class_to_element_list(theme.h2_list,[theme.text_color1_500])
+theme.add_class_to_element_list(theme.h5_list,[theme.text_color1_400])
+svg.setAttribute('fill',theme.color1)
 // console.log(section);
 // console.log(badge);
 // console.log(section.children.length);
 // console.log(section.children);
 //for (i = 0; i<section.children.length; i++)
+let container;
 container = section.children
 
 section.classList.replace("invisible","visible")
@@ -72,6 +81,7 @@ TweenMax.fromTo
   );
 // === ANIMATION DES AUTRES ARTICLES  ====
 // nb: l'animation est différente à cause de la position des triggers start et end
+let i; 
 for (i = 1; i < section.children.length; i++) {
   TweenMax.fromTo
     (

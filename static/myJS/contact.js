@@ -4,6 +4,13 @@ let usernameInput = document.getElementById('id_nom');
 console.log(usernameInput);
 usernameInput.focus()
 
+let titles;
+let class_titles;
+
+titles = theme.p_list;
+class_titles = ["my-2","btn",theme.theme_btn, theme.text_color1_600,]
+theme.add_class_to_element_list(titles,class_titles)
+
 let fields; let i;
 fields = document.querySelectorAll('input');
 console.log(fields);

@@ -15,21 +15,38 @@ else
 endif
 badd +1 static/myJS/script.js
 badd +1 static/myJS/color_theme.js
-badd +1 common/templates/common/preview.html
-badd +0 term://~/PycharmProjects/MyBlog//5016:cmd
+badd +53 common/templates/common/preview.html
+badd +1 term://~/PycharmProjects/MyBlog//7948:cmd
+badd +1 static/myJS/articles_anim.js
 argglobal
 %argdel
 set stal=2
 tabnew +setlocal\ bufhidden=wipe
+tabnew +setlocal\ bufhidden=wipe
 tabrewind
+edit common/templates/common/preview.html
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 53 - ((19 * winheight(0) + 18) / 37)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 53
+normal! 022|
+tabnext
 edit static/myJS/script.js
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
 wincmd _ | wincmd |
 split
 1wincmd k
@@ -43,27 +60,12 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 22 + 79) / 158)
-exe '2resize ' . ((&lines * 9 + 20) / 40)
-exe 'vert 2resize ' . ((&columns * 135 + 79) / 158)
-exe '3resize ' . ((&lines * 27 + 20) / 40)
-exe 'vert 3resize ' . ((&columns * 135 + 79) / 158)
+exe '1resize ' . ((&lines * 13 + 20) / 40)
+exe '2resize ' . ((&lines * 23 + 20) / 40)
 argglobal
-enew
-file NERD_tree_1
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal nofen
-wincmd w
-argglobal
-if bufexists(fnamemodify("term://~/PycharmProjects/MyBlog//5016:cmd", ":p")) | buffer term://~/PycharmProjects/MyBlog//5016:cmd | else | edit term://~/PycharmProjects/MyBlog//5016:cmd | endif
+if bufexists(fnamemodify("term://~/PycharmProjects/MyBlog//7948:cmd", ":p")) | buffer term://~/PycharmProjects/MyBlog//7948:cmd | else | edit term://~/PycharmProjects/MyBlog//7948:cmd | endif
 if &buftype ==# 'terminal'
-  silent file term://~/PycharmProjects/MyBlog//5016:cmd
+  silent file term://~/PycharmProjects/MyBlog//7948:cmd
 endif
 balt static/myJS/script.js
 setlocal fdm=manual
@@ -74,15 +76,16 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 57 - ((7 * winheight(0) + 4) / 9)
+let s:l = 6 - ((5 * winheight(0) + 6) / 13)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 57
+keepjumps 6
 normal! 0
+lcd ~/PycharmProjects/MyBlog
 wincmd w
 argglobal
-balt term://~/PycharmProjects/MyBlog//5016:cmd
+balt term://~/PycharmProjects/MyBlog//7948:cmd
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -93,50 +96,18 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 251 - ((17 * winheight(0) + 13) / 27)
+let s:l = 400 - ((11 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 251
-normal! 041|
+keepjumps 400
+normal! 04|
+lcd ~/PycharmProjects/MyBlog
 wincmd w
-exe 'vert 1resize ' . ((&columns * 22 + 79) / 158)
-exe '2resize ' . ((&lines * 9 + 20) / 40)
-exe 'vert 2resize ' . ((&columns * 135 + 79) / 158)
-exe '3resize ' . ((&lines * 27 + 20) / 40)
-exe 'vert 3resize ' . ((&columns * 135 + 79) / 158)
+exe '1resize ' . ((&lines * 13 + 20) / 40)
+exe '2resize ' . ((&lines * 23 + 20) / 40)
 tabnext
-edit common/templates/common/preview.html
-let s:save_splitbelow = &splitbelow
-let s:save_splitright = &splitright
-set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
-let &splitbelow = s:save_splitbelow
-let &splitright = s:save_splitright
-wincmd t
-let s:save_winminheight = &winminheight
-let s:save_winminwidth = &winminwidth
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-exe 'vert 1resize ' . ((&columns * 31 + 79) / 158)
-exe 'vert 2resize ' . ((&columns * 126 + 79) / 158)
-argglobal
-enew
-file NERD_tree_2
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal nofen
-wincmd w
+edit ~/PycharmProjects/MyBlog/static/myJS/articles_anim.js
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -148,15 +119,13 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 19 - ((18 * winheight(0) + 18) / 37)
+let s:l = 1 - ((0 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 19
-normal! 05|
-wincmd w
-exe 'vert 1resize ' . ((&columns * 31 + 79) / 158)
-exe 'vert 2resize ' . ((&columns * 126 + 79) / 158)
+keepjumps 1
+normal! 07|
+lcd ~/PycharmProjects/MyBlog
 tabnext 1
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
@@ -165,15 +134,12 @@ endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20
 let &shortmess = s:shortmess_save
-let &winminheight = s:save_winminheight
-let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

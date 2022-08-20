@@ -1,9 +1,9 @@
 /* To customize bootstrap see the HowTo... .txt file*/
 
 @import "static/scss/functions";
-$theme_bg             : black ;
+$theme_bg             : white ;
 
-$primary        : orange;
+$primary        :  red;
 $primary-100: tint-color($primary, 80%) ;
 $primary-200: tint-color($primary, 60%) ;
 $primary-300: tint-color($primary, 40%) ;
@@ -19,7 +19,7 @@ $primary_box_bg     : $primary;
 $primary_shadow_bg : $primary-600;
 $primary_bg_500 : $primary_box_bg;
 
-$secondary      : red;
+$secondary      : rgb(81, 0, 255);
 
 $secondary-100: tint-color($secondary, 80%) ;
 $secondary-200: tint-color($secondary, 60%) ;
@@ -43,6 +43,7 @@ $tertiary_text  : red;
 $tertiary_bg    : orange;
 
 
+
 $colors: (
   "theme_bg":       $theme_bg,
   "primary":        $primary,
@@ -59,6 +60,7 @@ $colors: (
   "tertiary":       $tertiary,
   "tertiary_text":  $tertiary_text,
   "tertiary_bg":    $tertiary_bg,
+    
   
 );
 
@@ -90,6 +92,33 @@ $transition-values: (
 @import "static/scss/variables";
 // Create your own map
 
+$red_bg:$red-300;
+$red_box_bg : red ;
+$red_shadow_bg: $red;
+$red_text_hover: $white ;
+$red_text_box_hover: $white ;
+$green_bg:$green-300;
+$green_box_bg : green ;
+$green_shadow_bg: $green;
+$green_text_hover: $white ;
+$green_text_box_hover: $white ;
+$pink_bg:$pink-300;
+$pink_box_bg : $pink ;
+$pink_shadow_bg: $pink;
+$pink_text_hover: $pink ;
+$pink_text_box_hover: $pink-800 ;
+$cyan_bg:$cyan-300;
+$cyan_box_bg : $cyan ;
+$cyan_shadow_bg: $cyan;
+$cyan_text_hover: $cyan ;
+$cyan_text_box_hover: $cyan-800 ;
+$blue_bg:$blue-300;
+$blue_box_bg : $blue ;
+$blue_shadow_bg: $blue;
+$blue_text_hover: $blue ;
+$blue_text_box_hover: $blue-800 ;
+
+$gray : $white;
 
 $custom-colors: (
 
@@ -104,6 +133,28 @@ $custom-colors: (
     "indigo-700": $indigo-700,
     "indigo-800": $indigo-800,
     "indigo-900": $indigo-900,
+    
+    "cyan": $cyan,
+    "cyan-100": $cyan-100,
+    "cyan-200": $cyan-200,
+    "cyan-300": $cyan-300,
+    "cyan-400": $cyan-400,
+    "cyan-500": $cyan-500,
+    "cyan-600": $cyan-600,
+    "cyan-700": $cyan-700,
+    "cyan-800": $cyan-800,
+    "cyan-900": $cyan-900,
+    
+    "blue": $blue,
+    "blue-100": $blue-100,
+    "blue-200": $blue-200,
+    "blue-300": $blue-300,
+    "blue-400": $blue-400,
+    "blue-500": $blue-500,
+    "blue-600": $blue-600,
+    "blue-700": $blue-700,
+    "blue-800": $blue-800,
+    "blue-900": $blue-900,
     
     "red": $red,
     "red-100": $red-100,
@@ -148,8 +199,55 @@ $custom-colors: (
     "orange-700":$orange-700,
     "orange-800":$orange-800,
     "orange-900":$orange-900,
+
+    "green":    $green,  
+    "green-100":$green-100,
+    "green-200":$green-200,
+    "green-300":$green-300,
+    "green-400":$green-400,
+    "green-500":$green-500,
+    "green-600":$green-600,
+    "green-700":$green-700,
+    "green-800":$green-800,
+    "green-900":$green-900,
+
+    "gray":    $gray,  
+    "gray-100":$gray-100,
+    "gray-200":$gray-200,
+    "gray-300":$gray-300,
+    "gray-400":$gray-400,
+    "gray-500":$gray-500,
+    "gray-600":$gray-600,
+    "gray-700":$gray-700,
+    "gray-800":$gray-800,
+    "gray-900":$gray-900,
     
     "custom-color": #f5cd8d, 
+
+    "red_text_box_hover" : $red_text_box_hover,
+    "red_text_hover"     : $red_text_hover,
+    "red_box_bg"         : $red_box_bg,
+    "red_shadow_bg"      : $red_shadow_bg,
+
+    "green_text_box_hover" : $green_text_box_hover,
+    "green_text_hover"     : $green_text_hover,
+    "green_box_bg"         : $green_box_bg,
+    "green_shadow_bg"      : $green_shadow_bg,
+    
+    "blue_text_box_hover" : $blue_text_box_hover,
+    "blue_text_hover"     : $blue_text_hover,
+    "blue_box_bg"         : $blue_box_bg,
+    "blue_shadow_bg"      : $blue_shadow_bg,
+    
+    "cyan_text_box_hover" : $cyan_text_box_hover,
+    "cyan_text_hover"     : $cyan_text_hover,
+    "cyan_box_bg"         : $cyan_box_bg,
+    "cyan_shadow_bg"      : $cyan_shadow_bg,
+
+    "pink_text_box_hover" : $pink_text_box_hover,
+    "pink_text_hover"     : $pink_text_hover,
+    "pink_box_bg"         : $pink_box_bg,
+    "pink_shadow_bg"      : $pink_shadow_bg,
 
 
 
@@ -175,7 +273,8 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "static/scss/utilities";
 
 $utilities:
-(   "nav-link": (
+(   
+    "nav-link": (
         
     display: block,
     padding: 0.5rem 1rem,
@@ -264,6 +363,7 @@ $utilities:
 .btn-myhover {    
     @extend .btn-outline-primary;   
     }
+
 .btn-myhover:hover {
         color: $primary_text_hover;
         background-color: $primary;
@@ -273,11 +373,112 @@ $utilities:
     }
 
 .btn-myhover-box:hover {
-        color: $primary_text_box_hover;
-        background-color: $primary_box_bg;
-        box-shadow: 5px 5px 5px $primary_shadow_bg;
+    color: $primary_text_box_hover;
+    background-color: $primary_box_bg;
+    box-shadow: 5px 5px 5px $primary_shadow_bg;
+    
+    }
+
+.btn-myhover-red {    
+    @extend .btn-outline-red;   
+    }
+.btn-myhover-red:hover {
+        color: $red_text_hover;
+        background-color: $red;
+        }
+
+.btn-myhover-box-red {
+    @extend .btn-myhover-red
+    }
+
+
+.btn-myhover-box-red:hover {
+        color: $red_text_box_hover;
+        background-color: $red_box_bg;
+        box-shadow: 5px 5px 5px $red_shadow_bg;
         
         }
+
+.btn-myhover-green {    
+    @extend .btn-outline-green;   
+    }
+
+.btn-myhover-green:hover {
+        color: $green_text_hover;
+        background-color: $green;
+        }
+
+.btn-myhover-box-green {
+    @extend .btn-myhover-green
+    }
+
+.btn-myhover-box-green:hover {
+        color: $green_text_box_hover;
+        background-color: $green_box_bg;
+        box-shadow: 5px 5px 5px $green_shadow_bg;
+        
+        }
+
+.btn-myhover-pink {    
+    @extend .btn-outline-pink;   
+    }
+.btn-myhover-pink:hover {
+        color: $pink_text_hover;
+        background-color: $pink;
+        }
+
+.btn-myhover-box-pink {
+    @extend .btn-myhover-pink
+    }
+
+
+.btn-myhover-box-pink:hover {
+        color: $pink_text_box_hover;
+        background-color: $pink_box_bg;
+        box-shadow: 5px 5px 5px $pink_shadow_bg;
+        
+        }
+.btn-myhover-cyan {    
+    @extend .btn-outline-cyan;   
+    }
+.btn-myhover-cyan:hover {
+        color: $cyan_text_hover;
+        background-color: $cyan;
+        }
+
+.btn-myhover-box-cyan {
+    @extend .btn-myhover-cyan
+    }
+
+
+.btn-myhover-box-cyan:hover {
+        color: $cyan_text_box_hover;
+        background-color: $cyan_box_bg;
+        box-shadow: 5px 5px 5px $cyan_shadow_bg;
+        
+        }
+
+.btn-myhover-blue {    
+    @extend .btn-outline-blue;   
+    }
+.btn-myhover-blue:hover {
+        color: $blue_text_hover;
+        background-color: $blue;
+        }
+
+.btn-myhover-box-blue {
+    @extend .btn-myhover-blue
+    }
+
+
+.btn-myhover-box-blue:hover {
+        color: $blue_text_box_hover;
+        background-color: $blue_box_bg;
+        box-shadow: 5px 5px 5px $blue_shadow_bg;
+        
+        }
+
+
 
 .btn-myhover-secondary {    
     @extend .btn-outline-secondary;   
@@ -299,17 +500,61 @@ $utilities:
         }
 
 .mybadge
-{   color:$orange-500;
-    background-color: $dark;
-    border-color: $orange-800;
+{   color:$primary;
+    background-color: $theme_bg;
+    border-color: $primary-800;
     @extend .badge;
 }
 
 .mybadge:hover
 {
-    color:$dark;
-    background-color: $orange-500;
-    border-color: $orange-900;
+    color:$theme_bg;
+    background-color: $primary-500;
+    border-color: $primary-900;
+    
+}
+.mybadge-blue
+{   color:$blue;
+    background-color: $blue_bg;
+    border-color: $blue-800;
+    @extend .badge;
+}
+
+.mybadge-blue:hover
+{
+    color:$blue_bg;
+    background-color: $blue-500;
+    border-color: $blue-900;
+    
+}
+
+.mybadge-cyan
+{   color:$cyan;
+    background-color: $cyan_bg;
+    border-color: $cyan-800;
+    @extend .badge;
+}
+
+.mybadge-cyan:hover
+{
+    color:$cyan_bg;
+    background-color: $cyan-500;
+    border-color: $cyan-900;
+    
+}
+
+.mybadge-pink
+{   color:$pink;
+    background-color: $pink_bg;
+    border-color: $pink-800;
+    @extend .badge;
+}
+
+.mybadge-pink:hover
+{
+    color:$pink_bg;
+    background-color: $pink-500;
+    border-color: $pink-900;
     
 }
 
@@ -326,10 +571,41 @@ $utilities:
     box-shadow: 5px 5px 5px $indigo-600; //(décalage-x de l'ombre, décalage-y, effet-blur, couleur)
 }
 
+.mybox-blue
+{   @extend .mybox;
+    box-shadow: 5px 5px 5px $blue-600; //(décalage-x de l'ombre, décalage-y, effet-blur, couleur)
+}
+
+.mybox-cyan
+{   @extend .mybox;
+    box-shadow: 5px 5px 5px $cyan-600; //(décalage-x de l'ombre, décalage-y, effet-blur, couleur)
+}
+
 .mybox-red
 {   @extend .mybox;
     box-shadow: 5px 5px 5px red;
 }
+
+.mybox-green
+{   @extend .mybox;
+    box-shadow: 5px 5px 5px green;
+}
+
+.mybox-white
+{   @extend .mybox;
+    box-shadow: 5px 5px 5px white;
+}
+
+.mybox-gray
+{   @extend .mybox;
+    box-shadow: 5px 5px 5px $gray-500;
+}
+
+.mybox-pink
+{   @extend .mybox;
+    box-shadow: 5px 5px 5px $pink-500;
+}
+
 .bg-mygradient1
 {
     @extend .bg-gradient;
@@ -342,12 +618,12 @@ $utilities:
     background: rgb(36,15,0);
     background: linear-gradient(180deg, rgba(36,15,0,1) 0%, rgba(121,65,9,0.9725023798581933) 10%, rgba(115,62,8,1) 17%, rgba(110,59,8,1) 19%, rgba(118,64,8,1) 21%, rgba(255,145,0,1) 56%); 
 }
-.a {
-    color: orange ;
+.a-color {
+    color: $pink;
     text-decoration: none;
     }
-.a:hover {
-    color: orange;
+.a-color:hover {
+    color: $pink;
     
     }
 
@@ -381,8 +657,26 @@ $utilities:
     z-index: 4;
 }
 
-.myAlert
-{
-    @extend .alert;
 
+
+.mybtn-close
+{
+    @extend .btn-close;
+
+  width: 1em;
+  height: 1em;
+  padding: 0.25em 0.25em;
+  color: #f345;
+  background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23f34'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+  border: 0;
+  border-color:rgb(81, 0, 255);
+  border-radius: 0.25rem;
+  opacity: 0.5; 
+
+}
+
+.mybtn-close:hover
+{
+
+color: cyan;
 }

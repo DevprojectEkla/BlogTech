@@ -3,7 +3,7 @@
 {% block content %}
 {% load static %}
 
-    
+   
     <div class="justify-content-center ">
         <div id= main_container class="">
            <div class="col-12 text-center">
@@ -20,7 +20,7 @@
                 <div  id="dflex2" class=""></div>   
             </div>
         </div>
-        <div id="div_legend"> <h5 id= "name" class=""> {{object.main_img_legend}}</h5>
+        <div id="div_legend"> <h5 id= "subtitle" class=""> {{object.main_img_legend}}</h5>
         </div>  
     </div>
     </section>
@@ -65,8 +65,8 @@
                 <h3 id="title1" class=" "> {{object.first_title_h3}} </h3>
         </div>
             <div>
-            <p class=""> {{object.first_p}} <a class="text-white" href="{{object.first_link}}">{{object.first_link}}</a></p>
-                <div class="text-white text-inline"> 
+            <p class=""> {{object.first_p}} <a class="a-color" href="{{object.first_link}}">{{object.first_link}}</a></p>
+                <div class="a-color text-inline"> 
                 </div>
              </div> 
         <div class="text-center">
@@ -88,7 +88,7 @@
         <div class="text-center "><img class=" col-sm-auto rounded " src="{%static ''%}{{block1.image1}}" alt=""></div>
     </div>
        <p class=""> {{ block1.paragraph1 }}
-           <a class="text-white" href="{{block1.link3}}"> {{block1.link_text3}} </a></p>
+           <a class="a-color" href="{{block1.link3}}"> {{block1.link_text3}} </a></p>
 
     <div> <h3 class=""> {{block1.title2}}
         <div class="text-center">
