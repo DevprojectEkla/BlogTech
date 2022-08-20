@@ -147,8 +147,8 @@ if (btnbtt) {//cf.com plus haut pour le if.
       docElem.scrollTop = 0;
       btnbtt.classList.remove('active');
     }
-    else { body.scrollTop = 0; }    
-    btnbtt.classList.remove('active');
+    else { body.scrollTop = 0;btnbtt.classList.remove('active'); }    
+    
     
   });
 };
@@ -179,7 +179,7 @@ let badge_container = document.querySelector('#badge');
 badge_container.classList.add('col-sm-auto','justify-content-center');
 let badge = document.createElement('span');
 badge.innerHTML = "BLOG-TECH";
-badge.classList.add('btn', theme_btn,'btn-lg-auto','mb-5', "op-0", theme.text_color1,'disabled','fs-2','fw-bold');
+badge.classList.add('btn', theme_btn,'btn-lg-auto','mb-5', "op-0", theme.text_color1_400,'disabled','fs-2','fw-bold');
 text.appendChild(badge_container);
 badge_container.appendChild(badge);
 // console.log(badge_container);
@@ -222,7 +222,7 @@ const main_img = document.querySelector('#main_image');
 const my_legend = document.querySelector('#name');
 let carousel_name;
 carousel_name = document.querySelector('#demo')
-carousel_name.classList.add('container','rounded',theme.text_color1_200,'my-5')
+carousel_name.classList.add('container','rounded',theme.p_color,'my-5')
 let carousel_img_list;
 carousel_img_list = document.querySelectorAll('.carousel-item')
 console.log(carousel_img_list)
@@ -330,9 +330,10 @@ auth_alert.textContent = "Il faut être connecté pour lire les articles"
 
 // ** Bouton close pour fermer la fenêtre d'alerte
 const close_btn = document.createElement('button');
-close_btn.classList.add("btn-close", "btn-myhover-box");// il y a aussi "btn-close-white"
+close_btn.classList.add("mybtn-close", theme.theme_btn);// il y a aussi "btn-close-white"
 close_btn.setAttribute("data-bs-dismiss","alert");
 close_btn.setAttribute("aria-label","Close");
+
 
 const div_link1 = document.createElement('div')
 const div_link2 = document.createElement('div')
@@ -341,11 +342,11 @@ const redirect_link2 = document.createElement("a");
 
 redirect_link1.style.zIndex = 3;
 redirect_link1.textContent = "Cliquez ici pour vous inscrire"
-redirect_link1.classList.add("mybadge","bg",theme.bg_color0_600, "text-decoration-none","border", theme.border_color2)
+redirect_link1.classList.add(theme.mybadge_color1,"bg",theme.bg_color0_600, "text-decoration-none","border", theme.border_color2)
 redirect_link1.setAttribute('href','/signup');
 redirect_link2.style.zIndex = 3;
 redirect_link2.textContent = "ou ici pour vous connecter"
-redirect_link2.classList.add("mybadge", "bg",theme.bg_color0_600,"text-decoration-none", "border",theme.border_color2)
+redirect_link2.classList.add(theme.mybadge_color1, "bg",theme.bg_color0_600,"text-decoration-none", "border",theme.border_color2)
 redirect_link2.setAttribute('href','/login');
 
 //ajout des classes sur les différents éléments:
@@ -397,7 +398,7 @@ add_class_to_element_list(btn_list, class_btn);
 //   else
 //   {
 //     theme_btn = theme.btn_box
-//   }
+//  
 //   if (theme.theme_primary)
 //   {
 //     theme.color0 = theme.purple;
@@ -432,7 +433,7 @@ for (i=0; i<btn_list.length; i++)
 * ================================================
 */
 // la liste des noms à assigner à nos  boutons:
-const button_names = ['nouveautés', 'info-geek', 'tutos', 'snippets', 'faire un don',
+const button_names = ['nouveautés', 'info-geek', 'tutos', 'échecs', 'faire un don',
   'vos réactions', 'contactez-moi', 'téléchargements']
 
 /** ======= FONCTION CUSTOMIZE ============
@@ -440,6 +441,7 @@ const button_names = ['nouveautés', 'info-geek', 'tutos', 'snippets', 'faire un
  * */ 
 function customize() 
 {let btn_news;
+let btn_chess;
   for (i = 0; i < 4; i++) 
   {
     
@@ -450,12 +452,20 @@ function customize()
       { 
         btn_news = btni1 ;        
       };
+    if(button_names[i] == "échecs")
+    {
+      btn_chess = btni1;
+    };
     // pour jouer sur la couleur (mais pas encore au point):
     //btni1.style.backgroundColor = 'rgba(' + 255 + ',' + 0 + ',' + random(400) + ',' + 1 + ')';
     if (user_authenticated)
     {
       btn_news.href = "/articles/index"
       btni1.classList.add("disable")
+      if (btn_chess)
+      {
+        btn_chess.href = "/chess/"
+      };
     }
     else 
     {/**================= BOUTON NOUVEAUTES =========================
@@ -563,9 +573,9 @@ addAnimation(btn_list, 0);
 TweenMax.fromTo(btn_list1[0], 1, { rotation: 0, backgroundColor: "" },
   {
     rotation: 360,
-    backgroundColor: "#6610f2",
-    borderColor: "$orange",
-    color : "orange"
+    backgroundColor: theme.color1_nuance1,
+    borderColor: theme.color1_800,
+    color : theme.color1_800
   }).delay(6);
 
 let angle1;

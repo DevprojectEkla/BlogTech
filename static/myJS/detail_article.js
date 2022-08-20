@@ -4,7 +4,7 @@ let p_el_list;
 p_el_list = document.querySelectorAll("p")
 console.log('myp_el_list:%s',p_el_list)
 let style_class_p ;
-style_class_p = [theme.text_color1_300]
+style_class_p = [theme.p_color]
 theme.add_class_to_element_list(p_el_list,style_class_p)
 
 let btn_lire;

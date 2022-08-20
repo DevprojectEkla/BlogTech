@@ -6,27 +6,27 @@
  * tout à la main dans les différents gabbartis.=
  * ==============================================
  */
-const blue = "#0d6efd";
+const blue = "blue";
 const indigo = "indigo";
 const purple = "purple";
 const pink = "pink";
 const red = "red";
-const yellow = "#ffc107";
-const green = "#198754";
-const teal = "#20c997";
-const cyan = "#0dcaf0";
-const gray = "#6c757d";
-const gray_drk = "#343a40";
-const primary = "#fd7e14";
-const secondary = "#6c757d";
-const success = "#198754";
+const yellow = "yellow";
+const teal = "teal";
+const cyan = "cyan";
+const gray_drk = "gray_drk";
+const primary = "primary";
+const secondary = "secondary";
+const success = "success";
 const info = "info";
-const warning = "#ffc107";
-const danger = "#dc3545";
-const light = "#f8f9fa";
+const warning = "warning";
+const danger = "danger";
 const dark = "dark";
 const orange = "orange";
+const light = "light";
 const white = "white";
+const green = "green";
+const gray  = "gray"; // le gris est une nuance obtenue à partir du blanc ici.
 
 
 /**=============================CHOIX DES COULEURS PRINCIPALES DU THEME===================
@@ -36,9 +36,13 @@ const white = "white";
  * color2 pour les boutons
  * color3 pas encore implémentée */
 
-var color0 = dark;
-var color1 = orange;
-var color2 = red;
+var color0 = white;
+var nuancebg = "300";
+var color1 = blue;
+var nuance1 = "500";
+var color2 = blue;
+var nuance2 = "500"
+
 var color3 = dark;
 
 const border = "border";
@@ -54,6 +58,7 @@ const border_color1_600 = "border-" + color1 + "-600"
 const border_color1_700 = "border-" + color1 + "-700"
 const border_color1_800 = "border-" + color1 + "-800"
 const border_color1_900 = "border-" + color1 + "-900"
+const border_color1_nuance1 = "border"+ color1+ "-" + nuance1
 
 const border_color2 = "border-" + color2;
 const border_color2_100 = "border-" + color2 + "-100"
@@ -65,13 +70,22 @@ const border_color2_600 = "border-" + color2 + "-600"
 const border_color2_700 = "border-" + color2 + "-700"
 const border_color2_800 = "border-" + color2 + "-800"
 const border_color2_900 = "border-" + color2 + "-900"
+const border_color1_nuance2 = "border"+ color2+ "-" + nuance2
 
 const mybox = "mybox";
 const mybox_color0 = "mybox-" + color0;
 const mybox_color1 = "mybox-" + color1;
 const mybox_color2 = "mybox-" + color2;
 
+const mybadge = "mybadge";
+const mybadge_color0 = "mybadge-" + color0;
+const mybadge_color1 = "mybadge-" + color1;
+const mybadge_color2 = "mybadge-" + color2;
+
 const btn_box = "btn-myhover-box";
+const btn_box_color0 = "btn-myhover-box-" + color0;
+const btn_box_color1 = "btn-myhover-box-" + color1;
+const btn_box_color2 = "btn-myhover-box-" + color2;
 const btn_box_secondary = "btn-myhover-secondary-box";
 const btn_box_tertiary = btn_box + "-tertiary";
 
@@ -83,6 +97,8 @@ const btn_box_tertiary = btn_box + "-tertiary";
 let bg_color0;
 bg_color0 = "bg-" + color0
 
+
+const bg_color_nuancebg = "bg-" + color0 + "-" + nuancebg;
 const bg_color0_100 = "bg-" + color0 + "-100";
 const bg_color0_200 = "bg-" + color0 + "-200";
 const bg_color0_300 = "bg-" + color0 + "-300";
@@ -93,6 +109,11 @@ const bg_color0_700 = "bg-" + color0 + "-700";
 const bg_color0_800 = "bg-" + color0 + "-800";
 const bg_color0_900 = "bg-" + color0 + "-900";
 
+// on ne veut pas d'un fond blanc mais une nuance de gris, pour du blanc il suffit de 
+// ne rien définir du tout !
+if(color0 == "gray"){
+    bg_color0 = bg_color0_600
+}
 
 /**  ================= DEFINITION DE LA COULEUR DES BOUTONS =================
  * changer ici le style des boutons en passant par ex. secondary ============
@@ -103,7 +124,7 @@ let theme_btn;
 if ((color1 == 'orange' && color0 == dark)) {
     theme_btn = btn_box;
 } else {
-    theme_btn = btn_box_secondary
+    theme_btn = btn_box_color2
 
 };
 
@@ -112,7 +133,7 @@ if ((color1 == 'orange' && color0 == dark)) {
  *  CONTRASTE POUR COLOR1
  * ======================
  **/
-
+const color1_nuance1 = color1 + "-" + "nuance1"
 const color1_100 = color1 + "-100"
 const color1_200 = color1 + "-200"
 const color1_300 = color1 + "-300"
@@ -127,7 +148,7 @@ const color1_900 = color1 + "-900"
  *  CONTRASTE POUR COLOR1
  * ======================
  **/
-
+const color2_nuance2 = color2 + "-" + nuance2
 const color2_100 = color2 + "-100"
 const color2_200 = color2 + "-200"
 const color2_300 = color2 + "-300"
@@ -141,8 +162,10 @@ const color2_900 = color2 + "-900"
 /** =========== VARIABLES TEXT-COLOR ================ */
 
 const text_color0 = "text-" + color0;
+const text_color0_nuancebg = "text-"+ color0 + "-" + nuancebg
 
 const text_color1 = "text-" + color1;
+const text_color1_nuance1 = "text-" + color1 + "-" + nuance1
 const text_color1_100 = "text-" + color1 + "-100"
 const text_color1_200 = "text-" + color1 + "-200"
 const text_color1_300 = "text-" + color1 + "-300"
@@ -154,6 +177,7 @@ const text_color1_800 = "text-" + color1 + "-800";
 const text_color1_900 = "text-" + color1 + "-900";
 
 const text_color2 = "text-" + color2;
+const text_color2_nuance2 = "text-" + color2 + "-" + nuance2
 const text_color2_100 = "text-" + color2 + "-100"
 const text_color2_200 = "text-" + color2 + "-200"
 const text_color2_300 = "text-" + color2 + "-300"
@@ -172,6 +196,7 @@ const bg_gradient2 = "bg-mygradient2";
 const bg_color1 = "bg-" + color1
 const bg_color2 = "bg-" + color2
 
+const bg_color2_nuancebg = "bg-" + color2 + "-" + nuancebg;
 const bg_color2_100 = "bg-" + color2 + "-100";
 const bg_color2_200 = "bg-" + color2 + "-200";
 const bg_color2_300 = "bg-" + color2 + "-300";
@@ -179,6 +204,7 @@ const bg_color2_400 = "bg-" + color2 + "-400";
 const bg_color2_500 = "bg-" + color2 + "-500";
 const bg_color2_600 = "bg-" + color2 + "-600";
 
+const bg_color1_nuancebg = "bg-" + color1 + "-" + nuancebg;
 const bg_color1_100 = "bg-" + color1 + "-100";
 const bg_color1_200 = "bg-" + color1 + "-200";
 const bg_color1_300 = "bg-" + color1 + "-300";
@@ -259,6 +285,7 @@ const h3_list = document.querySelectorAll('h3')
 const h4_list = document.querySelectorAll('h4')
 const h5_list = document.querySelectorAll('h5')
 const p_list = document.querySelectorAll('p')
+const a_list = document.querySelectorAll('a')
 const img_list = document.querySelectorAll('img')
 
 /** ========= ICI POUR CREER UNE FONCTION DE CHANGEMENT DE STYLE============*/
@@ -290,27 +317,34 @@ console.log('theme primary:%s', theme_primary)
  * certains titre à color2 ou color3 (cette dernière couleur n'est 
  * pas encore implémentée)
 */
-var h1_color = text_color1_500
-var h2_color = text_color1_500
-var h3_color = text_color1_400
-var h4_color = text_color1_500
-var h5_color = text_color1_500
-var p_color = text_color1_200
+var h1_color = text_color1_nuance1
+var h2_color = text_color1_nuance1
+var h3_color = text_color1_nuance1
+var h4_color = text_color1_nuance1
+var h5_color = text_color1_nuance1
+var p_color = text_color1_nuance1
+var a_color = text_color1_nuance1
+if (color0 == dark)
+{
+ p_color = text_color1_200
+};
 var img_color = text_color1_500
 
 /** ============ CREATION DES CLASSLIST POUR NOS TAGS ==================== */
 
+
 const class_list_h1 = ["display-2", "fw-bold", h1_color];
 const class_list_h2 = ["display-2", "fw-bold", h2_color];
 const class_list_h3 = [
-    "font-weight-light", "p-4", "border-start", "border-5",
+    "font-weight-light", "p-4", "border-start", "border-5", border_color1_500,
     "col-11", "ms-4", h3_color
 ];
 const class_list_h4 = ["display-2", "fw-bold", h4_color];
-const class_list_h5 = ["text-center", "op-0", "fw-bold", h5_color];
+const class_list_h5 = ["text-center", "fw-bold", h5_color];
 const class_list_p = ["lead", "p-4", "border-start", "border-5", border_color1_500,
     "col-11", "ms-4-2", p_color];
 const class_list_img = ["display-2", "fw-bold", img_color];
+const class_list_a = ["text-decoration-none", a_color];
 
 
 
@@ -337,8 +371,8 @@ export default
 
         theme_primary, theme_btn,
 
-        border, border_color0,
-        border_color1,
+        border, border_color0, 
+        border_color1, border_color1_nuance1 ,
         border_color1_100, border_color1_200, border_color1_300,
         border_color1_400, border_color1_500, border_color1_600,
         border_color1_700, border_color1_800, border_color1_900,
@@ -350,7 +384,10 @@ export default
 
         mybox, mybox_color0, mybox_color1, mybox_color2,
 
-        btn_box, btn_box_secondary, btn_box_tertiary,
+        mybadge, mybadge_color0, mybadge_color1, mybadge_color2,
+
+        btn_box, btn_box_secondary, btn_box_tertiary, btn_box_color0,
+        btn_box_color1, btn_box_color2,
 
         bg_gradient1, bg_gradient2,
 
@@ -364,7 +401,9 @@ export default
         bg_color2, bg_color2_100, bg_color2_200, bg_color2_300, bg_color2_400,
         bg_color2_500, bg_color2_600,
 
-        text_color1,
+        a_color, p_color, h1_color, h2_color, h3_color, h4_color, h5_color,
+
+        text_color1, text_color1_nuance1,
         text_color1_100, text_color1_200, text_color1_300, text_color1_400,
         text_color1_500, text_color1_600, text_color1_700, text_color1_800, text_color1_900,
 
@@ -372,8 +411,8 @@ export default
         text_color2_100, text_color2_200, text_color2_300, text_color2_400,
         text_color2_500, text_color2_600, text_color2_700, text_color2_800, text_color2_900,
 
-        h1_list, h2_list, h3_list, h4_list, h5_list, p_list, img_list,
+        h1_list, h2_list, h3_list, h4_list, h5_list, p_list, img_list, a_list,
 
-        class_list_h1, class_list_h2, class_list_h3, class_list_h4, class_list_h5, class_list_p, class_list_img,
+        class_list_h1, class_list_h2, class_list_h3, class_list_h4, class_list_h5, class_list_p, class_list_a, class_list_img,
         add_class_to_element_list,
     } 

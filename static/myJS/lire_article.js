@@ -4,12 +4,19 @@ let p_el_list;
 p_el_list = document.querySelectorAll("p")
 console.log('myp_el_list:%s',p_el_list)
 let style_class_p ;
-style_class_p = [theme.text_color1_300,theme.border_color1_500]
+style_class_p = [theme.p_color,theme.border_color1_500]
 theme.add_class_to_element_list(p_el_list,style_class_p)
 
 let btn_publish;
 btn_publish = document.querySelector('#btn_publish')
 btn_publish.classList.add(theme.theme_btn)
+
+let card_com;
+card_com = document.querySelector('#card_container')
+let card_class_list;
+card_class_list = ["container", "card", "my-4", "border", "border-3", theme.border_color1,"w-50"]
+theme.add_class_to_element_list([card_com], card_class_list);
+
 
 let img_article;
 img_article = document.querySelector('#id_img')

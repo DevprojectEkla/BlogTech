@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.http import HttpResponseRedirect
 from django.template.defaulttags import url
 from django.urls import path
+from chess.views import ChessView
 
 import store.views
 from articles.views import article_detail, lire_article, articles_index, new_post, edit_post, ArticleDeleteView
@@ -55,5 +56,6 @@ urlpatterns = [
     path('articles/edit-post/<str:slug>', edit_post, name="edit-post"),
     path('articles/delete-post/<str:slug>', ArticleDeleteView.as_view(), name="del-post"),
 
+    path('chess/', ChessView.as_view(), name="chess"),
 
 ] + static(settings.MEDIA_URL,document_root= settings.MEDIA_ROOT)
