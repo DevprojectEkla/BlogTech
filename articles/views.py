@@ -8,13 +8,7 @@ from django.views.generic import DeleteView, UpdateView
 from articles.forms import PostForm, EditForm
 from articles.models import Article, Comment
 
-
 def article_detail(request, slug):
-    article = get_object_or_404(Article, slug=slug)
-    return render(request, 'articles/detail.html', context={"article": article})
-
-
-def lire_article(request, slug):
     if request.method == "POST":
         print("add_comment function enable")
         new_comment = add_comment(request, slug)
@@ -23,13 +17,13 @@ def lire_article(request, slug):
         context = {"article": new_comment.article, "all_article_comments": all_article_comments,
                    "new_comment": new_comment}
 
-        return render(request, 'articles/lire-article.html', context)
+        return render(request, 'articles/detail.html', context={"article": article})
     else:
         print("lecture de l'article'")
         article = get_object_or_404(Article, slug=slug)
         all_article_comments = Comment.objects.filter(article=article)
         context = {"article": article, "all_article_comments": all_article_comments}
-        return render(request, 'articles/lire-article.html', context)
+        return render(request, 'articles/detail.html', context)
 
 
 def articles_index(request):
