@@ -28,6 +28,24 @@ const white = "white";
 const green = "green";
 const gray  = "gray"; // le gris est une nuance obtenue à partir du blanc ici.
 
+/**=============================== 
+ * récupérer des variables CSS 
+ * ==============================*/
+var r = document.querySelector(':root');
+
+// Create a function for getting a variable value
+function CSS_get(css_var='--blue') {
+  // Get the styles (properties and values) for the root
+  var rs = getComputedStyle(r);
+  // Alert the value of the --blue variable
+  return(rs.getPropertyValue(css_var));
+}
+
+// Create a function for setting a variable value
+function CSS_set(css_var='--blue',value) {
+  // Set the value of variable --blue to another value (in this case "lightblue")
+  r.style.setProperty('--blue', 'lightblue');
+}
 
 /**=============================CHOIX DES COULEURS PRINCIPALES DU THEME===================
  * utiliser de preference:
@@ -35,13 +53,13 @@ const gray  = "gray"; // le gris est une nuance obtenue à partir du blanc ici.
  * color1 pour le theme principale de text-color(tous les tags <h>, les borders)
  * color2 pour les boutons
  * color3 pas encore implémentée */
-
 var color0 = white;
 var nuancebg = "300";
 var color1 = blue;
 var nuance1 = "500";
 var color2 = blue;
 var nuance2 = "500"
+var color1_CSS = CSS_get('--bs-'+ color1 + "-" + nuance1)
 
 var color3 = dark;
 
@@ -465,12 +483,12 @@ const class_list_a = ["text-decoration-none", a_color];
  * color2: couleur complémentaire pour varier les effets
  */
 export default
-    {
+    {   r,
         blue, indigo, purple, pink, red, yellow, green,
         teal, cyan, gray, gray_drk, primary, secondary, success,
         warning, danger,
         info, light, dark, orange, white,
-        color1, color2, color0,
+        color1, color1_CSS, color2, color0,
         color1_100, color1_200, color1_300,
         color2_100, color2_200, color2_300,
         color1_400, color1_500, color1_600,

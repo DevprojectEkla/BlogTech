@@ -33,7 +33,9 @@ theme.add_class_to_element_list(theme.h1_list, theme.class_list_h1.concat(['bord
 let btn_pagination_list;
 
 btn_pagination_list = document.querySelectorAll(".page-link")
-theme.changeColorElementList(btn_pagination_list,theme.color1)
+console.log(theme.color1_CSS)
+console.log(theme.r)
+theme.changeColorElementList(btn_pagination_list,theme.color1_CSS)
 theme.add_class_to_element_list(btn_pagination_list,['btn',theme.theme_btn])
 
 

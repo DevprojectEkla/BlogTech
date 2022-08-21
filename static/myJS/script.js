@@ -26,7 +26,11 @@ console.log('color2:%s',theme.color2)
 let theme_btn;
 theme_btn = theme.theme_btn
 
-
+let navbar, navbar_class_list;
+navbar = document.querySelector('#id_navbar')
+navbar_class_list = ['bg', theme.bg_color1_200, 'navbar', 'navbar-expand-lg',
+'fixed-top'];
+add_class_to_element_list([navbar], navbar_class_list)
 
 //fonction qui est sensé placé le scroll en position top de la page
 // à chaque  refresh: ça y est ça fonctionne !!
@@ -289,8 +293,26 @@ function onTick() {
     // here i want to delay a bit the animation on the img_container
     //setTimeout(function(){
     delay_x(dflex, "op-0", 1)
-    tl2.fromTo(img_container, 1, { opacity: 0 }, { opacity: 1 })
-      .fromTo(img_container, 1, { height: "0%" }, { height: "100%", ease: Power2.easeInOut }, "-=1")
+    tl2.fromTo(img_container, 1, { opacity: 0 }, { opacity: 1,  scrollTrigger:
+            {
+                trigger: img_container,
+                container: img_container,
+                start: "top 50%",
+                end: "top 30%",
+                // markers: true, //{ fontSize: "2rem" },
+                scrub: true,
+                // toggleClass: "op-0",
+                // toggleActions: 'play, none, none, restart',
+                //            onenter onLeave  onEnterback   onLeaveBack
+                // onToggle: self => console.log(child.className),
+                // onEnterBack: self => child.classList.add(togclass),
+                // onLeaveback: () => child.classList.add(togclass),
+                //pinSpacing: false,
+                //pin: true          
+                // onEnter: child.classList.add('invisible'),
+                // onLeaveBack: child.classList.remove('invisible'),  
+          }})
+     .fromTo(img_container, 1, { height: "0%" }, { height: "100%", ease: Power2.easeInOut }, "-=1")
       .fromTo(img_container, 1, { width: "0%" }, { width: "50%", ease: Power2.easeInOut }, "-=1");
     // delay_x ci-dessous va supprimer la class indiquée pour laisser apparaitre les éléments en question
     //delay_x(IMG, "invisible", 1) devenu inutile quand j'ai réussi à faire disparaitre le conteneur.
@@ -795,8 +817,8 @@ tl6 = new TimelineMax()
     };
   }
   
-scrollTrig(children_list, "#section2", "-230 60%", "-275 50%", 1, true);
-scrollTrig(children_of_bottom, "#section2", "-350 75%", "-395 40%", 1, true);
+scrollTrig(children_list, "#section2", "-230 60%", "-275 50%", 1, false);
+scrollTrig(children_of_bottom, "#section2", "-350 75%", "-395 40%", 1, false);
 
 function mkvisible(el) {
   tl5.fromTo(el, .5, { opacity: 0 }, { opacity: 1, ease: Power2.easeInOut })
