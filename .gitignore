@@ -1,3 +1,8 @@
+# in case a file is already tracked and you want
+# to ignore it you have to remove it from git repo
+# tracking files: git rm --cached path/file
+# then commit this change and add the file to .gitignore.
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -5,6 +10,9 @@ __pycache__/
 
 # C extensions
 *.so
+
+#Pycharm Workspace
+.idea/
 
 # Distribution / packaging
 .Python
