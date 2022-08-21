@@ -710,13 +710,13 @@ var text_visible = false
 // console.log('text_visible au départ ' + String(text_visible))
 
 // création d'une fonction rendant invisible chaque élément de la section2
-function mkInvisible() {
-  for (i = 0; i < section2.children.length; i++) {
-    section2.children[i].classList.add('invisible');
+function mkInvisible(el_list) {
+  for (i = 0; i < el_list.length; i++) {
+    el_list[i].classList.add('op-0');
   };
 };
 // appel de la fonction:
-mkInvisible()
+// mkInvisible(section2.children)
 //console.log(section2.children)
 
 // On aura besoin d'un effet d'animation pour faire apparaitre les éléments masqués:
@@ -760,43 +760,43 @@ tl6 = new TimelineMax()
   
 //ANIMATION SCROLLTRIGGER: fonction qui fait apparaître les éléments un par un 
 // à chaque cran de la molette de la souris (et pas tout en même temps)
-  function scrollTrig(el_list, start="-230 60%",
-  end="-275 50%",togclass="invisible",container="#section2",duration=1)
+  function scrollTrig(el_list, container="#section2", start="-230 60%",
+  end="-275 50%",duration=1,markers=true)
   {
     for (i = 0; i < el_list.length; i++) 
     {
     const child = el_list[i]; 
-    TweenMax.to
+    TweenMax.fromTo
     (child,
-        {
-          
-          scrollTrigger:
-          {
-            trigger: child,
-            container: container,
-            start: start,
-            end: end,
-            markers: { fontSize: "2rem" },
-            toggleClass: togclass,
-            // toggleActions: "reverse,reverse,reverse,restart",
-            //            onenter onLeave  onEnterback   onLeaveBack
-            onToggle: self => console.log(child.className),
-            onEnterBack: self => child.classList.add(togclass),
-            // onLeaveback: () => child.classList.add(togclass),
-            //pinSpacing: false,
-            //pin: true          
-            // onEnter: child.classList.add('invisible'),
-            // onLeaveBack: child.classList.remove('invisible'),  
-          },
-          
-        }
+         {opacity: 0},
+         {
+            opacity: 1,
+            scrollTrigger:
+            {
+                trigger: child,
+                container: container,
+                start: start,
+                end: end,
+                markers: markers, //{ fontSize: "2rem" },
+                scrub: true,
+                // toggleClass: "op-0",
+                // toggleActions: 'play, none, none, restart',
+                //            onenter onLeave  onEnterback   onLeaveBack
+                // onToggle: self => console.log(child.className),
+                // onEnterBack: self => child.classList.add(togclass),
+                // onLeaveback: () => child.classList.add(togclass),
+                //pinSpacing: false,
+                //pin: true          
+                // onEnter: child.classList.add('invisible'),
+                // onLeaveBack: child.classList.remove('invisible'),  
+              },
+          }
       );
     };
-    
   }
   
-scrollTrig(children_list);
-scrollTrig(children_of_bottom,"-350 60%","-395 50%");
+scrollTrig(children_list, "#section2", "-230 60%", "-275 50%", 1, true);
+scrollTrig(children_of_bottom, "#section2", "-350 75%", "-395 40%", 1, true);
 
 function mkvisible(el) {
   tl5.fromTo(el, .5, { opacity: 0 }, { opacity: 1, ease: Power2.easeInOut })
