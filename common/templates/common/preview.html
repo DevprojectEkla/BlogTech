@@ -48,7 +48,7 @@
                 <h3 id="title1" class=" "> {{object.first_title_h3}} </h3>
         </div>
             <div>
-            <p class=""> {{object.first_p}} <a class="a-color" href="{{object.first_link}}">{{object.first_link}}</a></p>
+            <p class=""> {{object.first_p |safe |linebreaks }} <a class="a-color" href="{{object.first_link}}">{{object.first_link}}</a></p>
                 <div class="a-color text-inline"> 
                 </div>
              </div> 
@@ -56,7 +56,7 @@
     <img class="col-sm-auto rounded " src="{% static '' %}{{object.second_img_source}}" alt="{{object.second_img_alt}}" >
     </div>
     <div class="row p-4">
-        <p class=""> {{object.preview_text}}</p>
+        <p class=""> {{object.preview_text |escape | linebreaks}}</p>
         </div>
         {% if not user.is_authenticated %}
         <script type="text/javascript"> var user_authenticated = false 
@@ -67,12 +67,18 @@
         </div>
     {% endif %}
     {% if user.is_authenticated %}<script type="text/javascript"> var user_authenticated = true </script>
-    <div> <h3 class=""> {{ block1.title1 }}</h3>
-        <div class="text-center "><img class=" col-sm-auto rounded " src="{%static ''%}{{block1.image1}}" alt=""></div>
-    </div><p class=""> {{ block1.paragraph1 }}<a class="a-color" href="{{block1.link3}}"> {{block1.link_text3}} </a></p>
-    <div> <h3 class=""> {{block1.title2}}<div class="text-center"><img id = "" class="col-sm-auto rounded" src="{% static '' %}{{block1.image2}}" alt="">
-        </div></h3> <p class="" > {{block1.paragraph2}}</p></div><div> <h3 class=""> {{block1.title3}}</h3> 
-        <p class="" > {{block1.paragraph3}}</p>           
+    {% for block in blocks %}
+
+    <div> <h2> {{ block.date }} </h2>  </div>
+
+    <div> <h3 class=""> {{ block.title1 }}</h3>
+        <div class="text-center "><img class=" col-sm-auto rounded " src="{%static ''%}{{block.image1}}" alt=""></div>
+    </div><p class=""> {{ block.paragraph1 |escape | linebreaks }}<a class="a-color" href="{{block.link3}}"> {{block.link_text3}} </a></p>
+    <div> <h3 class=""> {{block.title2}}<div class="text-center"><img id = "" class="col-sm-auto rounded" src="{% static '' %}{{block.image2}}" alt="">
+        </div></h3> <p class="" > {{block.paragraph2 |escape | linebreaks  }}</p></div><div> <h3 class=""> {{block.title3}}</h3> 
+        <p class="" > {{block.paragraph3}}</p>           
+    {% endfor %}       
+
         {% endif %}
         {% block footer %}
     <div id="divbtt" class="invisible" >
@@ -80,7 +86,7 @@
                         class="btn position-fixed end-0 bottom-5">
                     Revenir en haut de la page</button>
                 </div>
-            </div> 
+            </div>
     {% endblock %}
         
 

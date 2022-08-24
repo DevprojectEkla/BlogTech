@@ -49,9 +49,19 @@ class HomePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['object'] = get_object_or_404(HomePage, name="blog tech")
-        context['block1'] = get_object_or_404(NewBlock, id=1)
-        #context['block2'] = get_object_or_404(NewBlock, id=2)
-        #context['block3'] = get_object_or_404(NewBlock, id=3)
+        context['blocks'] = NewBlock.objects.all()
+        #context['block2'] = get_object_or_404(NewBlock, id=2) 
+        #context['block3'] = get_object_or_404(NewBlock, id=3) textes_list = []
+        textes_list = []
+        for block in NewBlock.objects.all():
+            texte = block.paragraph1
+            textes_list.append(texte) 
+        print(f"pop_texte = {textes_list.pop()}")
+        print(f"liste de paragraph1 {textes_list}")
+        print(f'my beautiful texte :{textes_list[0]}')
+        
+
+
         return context
 
 def contact_form(request):

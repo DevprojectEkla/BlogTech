@@ -16,9 +16,9 @@ import theme from './color_theme.js'
  * l'idée est qu'on voudrait que l'utilisateur
  * puisse les configurer
  */
-console.log('color0:%s',theme.color0)
-console.log('color1:%s',theme.color1)
-console.log('color2:%s',theme.color2)
+// console.log('color0:%s',theme.color0)
+// console.log('color1:%s',theme.color1)
+// console.log('color2:%s',theme.color2)
 
 /** ==== CLASSE DE STYLE POUR LES BOUTONS ==========
  *  ==== theme_btn est importée de notre module ====
@@ -464,9 +464,9 @@ add_class_to_element_list(btn_list, class_btn);
 //   //location.reload()
   
 // });
-console.log('color0:%s',theme.color0)
-console.log('color1:%s',theme.color1)
-console.log('color2:%s',theme.color2)
+// console.log('color0:%s',theme.color0)
+// console.log('color1:%s',theme.color1)
+// console.log('color2:%s',theme.color2)
 //on ajoute des ID pour les boutons en vue des animations:
 for (i=0; i<btn_list.length; i++)
 {
@@ -756,7 +756,7 @@ tl6 = new TimelineMax()
   // avec des scrollstart et des startpoint differents....FAIT VRAIMENT CHIER!!!
   let children_list, children_of_bottom, list_length;
   children_list = Array.from(section2.children)
-  console.log(children_list)
+  // console.log(children_list)
   if (user_authenticated)
   {
     list_length = 4
@@ -765,12 +765,12 @@ tl6 = new TimelineMax()
     list_length = 7;
     
   };
-  console.log('list_length = '+list_length)
+  // console.log('list_length = '+list_length)
   
   for (i=0;i < list_length;i++)
   {
     children_list.pop()
-    console.log(children_list)
+    // console.log(children_list)
   }
   children_of_bottom = children_list.splice(children_list.length-2)
   
