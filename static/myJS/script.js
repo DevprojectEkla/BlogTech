@@ -26,12 +26,6 @@ console.log('color2:%s',theme.color2)
 let theme_btn;
 theme_btn = theme.theme_btn
 
-let navbar, navbar_class_list;
-navbar = document.querySelector('#id_navbar')
-navbar_class_list = ['bg', theme.bg_color1_200, 'navbar', 'navbar-expand-lg',
-'fixed-top'];
-add_class_to_element_list([navbar], navbar_class_list)
-
 //fonction qui est sensé placé le scroll en position top de la page
 // à chaque  refresh: ça y est ça fonctionne !!
 

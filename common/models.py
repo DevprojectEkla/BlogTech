@@ -34,6 +34,7 @@ class HomePage(models.Model):
 class NewBlock(models.Model):
     id = models.IntegerField(default=1, primary_key=True)
     name = models.CharField(max_length=255)
+    date = models.DateTimeField('date de publication')
     
     title1 = models.CharField(max_length=255, blank=True)
     highlighted_text1 = models.CharField(max_length=255, blank=True)
@@ -71,3 +72,10 @@ class NewBlock(models.Model):
     image1 = models.CharField(max_length=255, blank=True)
     image2 = models.CharField(max_length=255, blank=True)
     image3 = models.CharField(max_length=255, blank=True)
+    
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['-date']
+

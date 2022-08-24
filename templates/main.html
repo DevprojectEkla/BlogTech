@@ -103,11 +103,11 @@
     {% else %}
     <div class="text-center">
         <div>
-        <a class="btn btn-myhover-box my-2 " href="{% url 'home' %}">Aperçu de mon blog</a>
+        <a id="preview" class="btn btn-myhover-box my-2 " href="{% url 'home' %}">Aperçu de mon blog</a>
         </div>
         <div>
-            <a class="btn btn-myhover-box mb-2" href="{% url 'signup' %}">S'inscrire</a>
-            <a class="btn btn-myhover-box mb-2" href="{% url 'login' %}">Connexion</a>
+            <a id="signup" class="btn btn-myhover-box mb-2" href="{% url 'signup' %}">S'inscrire</a>
+            <a id="login" class="btn btn-myhover-box mb-2" href="{% url 'login' %}">Connexion</a>
         </div>
         </div>
     {% endif %}
@@ -117,6 +117,7 @@
 === 3. gsap link cdn to script ScrollTrigger.min.js 
 === 4. : bootstrap =================================-->    
 <script type = "module" src="{%static '/myJS/color_theme.js' %}"></script>
+<script type = "module" src="{%static '/myJS/main.js' %}"></script>
 
 
 

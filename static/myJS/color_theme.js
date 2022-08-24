@@ -229,6 +229,9 @@ const bg_color1_300 = "bg-" + color1 + "-300";
 const bg_color1_400 = "bg-" + color1 + "-400";
 const bg_color1_500 = "bg-" + color1 + "-500";
 const bg_color1_600 = "bg-" + color1 + "-600";
+const bg_color1_700 = "bg-" + color1 + "-700";
+const bg_color1_800 = "bg-" + color1 + "-800";
+const bg_color1_900 = "bg-" + color1 + "-900";
 
 /** ================== STYLE POUR LE PORTAIL DU SITE ===================== */
 const portail = document.querySelector('#portail')
@@ -242,6 +245,11 @@ let i;
  */
 let nav_link;
 nav_link = document.querySelectorAll('.nav-link')
+let navbar, navbar_class_list;
+navbar = document.querySelector('#id_navbar')
+navbar_class_list = ['bg', bg_color1_800, 'navbar', 'navbar-expand-lg',
+'fixed-top'];
+add_class_to_element_list([navbar], navbar_class_list)
 
 /**============================
  * Fonctions simples à exporter
