@@ -56,9 +56,6 @@ class HomePageView(TemplateView):
         for block in NewBlock.objects.all():
             texte = block.paragraph1
             textes_list.append(texte) 
-        print(f"pop_texte = {textes_list.pop()}")
-        print(f"liste de paragraph1 {textes_list}")
-        print(f'my beautiful texte :{textes_list[0]}')
         
 
 

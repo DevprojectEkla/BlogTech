@@ -57,18 +57,11 @@ add_class_to_element_list(theme.h3_list,theme.class_list_h3)
 add_class_to_element_list(theme.h4_list,theme.class_list_h4)
 add_class_to_element_list(theme.h5_list,theme.class_list_h5)
 add_class_to_element_list(theme.p_list, theme.class_list_p)
+/** =======================================================
+ * Tentative pour insérer des tags dans un texte brut pour
+ * obtenir un texte formaté html
+ * =========================================================*/
 
-let s_list;
-let link;
-for (i=0;i<theme.p_list.length;i++)
-{	
-	s_list = theme.p_list[i].textContent.split("<a>");//the second member of this list is our link
-	if(s_list[1])
-		{
-		link = s_list[1].anchor(name='link'+i); // string.anchor() returns an anchor tag of our string
-		theme.p_list[i].textContent = s_list[0]+" " + link +" "+ s_list[2] // and then we concat all over again.
-		}
-}
 
 
 /** ==============================

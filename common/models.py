@@ -28,7 +28,9 @@ class HomePage(models.Model):
     second_img_source = models.CharField(max_length=255, blank=True)
     second_img_alt = models.CharField(max_length=255, blank=True)
     preview_text = models.CharField(max_length=255, blank=True)
-
+    
+    def __str__(self):
+        return "HomePage 'blog en chantier'"
 
 
 class NewBlock(models.Model):
