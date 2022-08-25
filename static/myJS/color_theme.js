@@ -55,9 +55,9 @@ function CSS_set(css_var='--blue',value) {
  * color3 pas encore implémentée */
 var color0 = white;
 var nuancebg = "300";
-var color1 = blue;
+var color1 = orange;
 var nuance1 = "500";
-var color2 = blue;
+var color2 = orange;
 var nuance2 = "500"
 var color1_CSS = CSS_get('--bs-'+ color1 + "-" + nuance1)
 

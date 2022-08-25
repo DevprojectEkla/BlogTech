@@ -484,6 +484,25 @@ $utilities:
         
         }
 
+.btn-myhover-orange {    
+    @extend .btn-outline-orange;   
+    }                                                   
+.btn-myhover-orange:hover {
+        color: $orange_text_hover;
+        background-color: $orange;
+        }
+
+.btn-myhover-box-orange {
+    @extend .btn-myhover-orange
+    }
+
+
+.btn-myhover-box-orange:hover {
+        color: $orange_text_box_hover;
+        background-color: $orange_box_bg;
+        box-shadow: 5px 5px 5px $orange_shadow_bg;
+        
+        }
 
 
 .btn-myhover-secondary {    

@@ -342,6 +342,20 @@ function complete() {
   timer = null
 };
 
+/**========================================
+ * ======== BACKGROUND IMAGE ==============
+ * ========================================
+*/
+let main_div;
+main_div = document.querySelector("#main_div");
+main_div.style.backgroundImage = "url('../static/img/cybersecurite.jpg')";
+
+main_div.style.backgroundSize = "contain";
+// main_div.style.backgroundRepeat = "no-repeat";
+
+
+
+
 /*===============================================================================
 *========== Création des boutons animés de l'image centrale:=====================
 *================================================================================
@@ -390,16 +404,16 @@ redirect_link2.setAttribute('href','/login');
 //ajout des classes sur les différents éléments:
 let class_d_flex_main;
 let class_d_flex;
-class_d_flex_main = ['d-flex', 'justify-content-center','bg', theme.bg_color0, theme.bg_gradient1, 'op-0']
+class_d_flex_main = ['d-flex', 'justify-content-center', 'op-0']
 add_class_to_element_list([dflex],class_d_flex_main)
-class_d_flex = ['d-flex', 'col-sm-6', theme.bg_color0, theme.bg_color0, 'op-0']
+class_d_flex = ['d-flex', 'col-sm-6', 'op-0']
 add_class_to_element_list([dflex1],class_d_flex)
 add_class_to_element_list([dflex2],class_d_flex)
 let class_img_container;
-class_img_container = ["d-flex", "justify-content-center", "bg", theme.bg_color0, "rounded", "op-0"]
+class_img_container = ["d-flex", "justify-content-center", "rounded", "op-0"]
 add_class_to_element_list([img_container],class_img_container)
 let class_main_container;
-class_main_container = ["w-100", "justify-content-center","text-center", "bg", theme.bg_color0, theme.bg_gradient1]
+class_main_container = ["w-100", "justify-content-center","text-center"]
 add_class_to_element_list([main_container],class_main_container)
 
 
@@ -711,9 +725,9 @@ function append_children_el(list_child = [], el) {
 
 // On commence par rendre invisible toute la section2 de l'HTML:
 const section2 = document.getElementById("section2");
-if (section2){
-  section2.classList.add("bg", theme.bg_color0)
-}
+// if (section2){
+//   section2.classList.add("bg", theme.bg_color0)
+// }
 
 var text_visible = false
 // console.log('text_visible au départ ' + String(text_visible))
