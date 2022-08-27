@@ -1,14 +1,15 @@
 import theme from "./color_theme.js";
-
-var section = document.querySelector('#intro');
+var main_div = document.querySelector("#main_div")
+var section = document.getElementById('intro');
 var badge = document.querySelector('.badge');
 var scroll = document.querySelector('#scroll');
 var svg = document.querySelector('#svg_mouse');
 var svg_legend = document.querySelector('i')
 // var title = document.querySelectorAll('h2')
 // var subtitle = document.querySelectorAll('h5')
-theme.add_class_to_element_list(theme.h2_list,[theme.text_color1_500])
-theme.add_class_to_element_list(theme.h5_list,[theme.text_color1_400])
+theme.add_class_to_element_list(theme.h2_list,['bg',theme.text_color1_500,
+                                              'bg-primary','rounded'])
+theme.add_class_to_element_list(theme.h5_list,[theme.text_color1_900])
 svg.setAttribute('fill',theme.color1) //pour régler la couleur de l'icone en fonction du theme
 svg_legend.classList.add(theme.text_color1_nuance1)
 // console.log(section);
@@ -19,7 +20,20 @@ svg_legend.classList.add(theme.text_color1_nuance1)
 let container;
 container = section.children
 
+main_div.style.zIndex = "-4"; 
+main_div.style.backgroundImage = "url('../static/img/fond_div.svg')";
+main_div.style.Height = "auto";
+main_div.style.minWidth = "100%";
+main_div.style.backgroundRepeat = "no-repeat";
+
+
 section.classList.replace("invisible","visible")
+section.style.backgroundImage = "url('../static/img/background1.svg')"
+section.style.backgroundSize = "cover";
+section.style.backgroundPosition = "center";
+section.style.Height = "auto";
+section.style.minHeight = "100vh";
+
 // === ANIMATION DU BOUTON " FAITES DEFILER" ====
 var scrollAnimation = TweenMax.fromTo
   (scroll,

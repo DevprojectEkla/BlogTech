@@ -4,14 +4,13 @@
 {% load static %}
 
    
-    <div class="justify-content-center ">
         <div id= main_container class="">
-           <div class="col-12 text-center">
-               <h1 id = "mytitle1" class="" >{{ object.main_title }}</div>
-    
-        </div>            
-        
+    <div id="div_main_title" class="row justify-content-center">
+           <div class="text-center col-sm-auto rounded">
+               <h1 id = "mytitle1" class="" >{{ object.main_title }}</h1></div>
         <div id=badge></div>    
+        </div> 
+        
         <div id="d-flex" class="">
             <div id="container_main_image" class=""> 
                 <div  id="dflex1" class=""></div>           
@@ -20,8 +19,11 @@
                 <div  id="dflex2" class=""></div>   
             </div>
         </div>
-        <div id="div_legend"> <h5 id= "subtitle" class=""> {{object.main_img_legend}}</h5>
-        </div>  
+        <div class="row">
+
+         <div id="div_legend" class=""> <h5 id= "subtitle" class=""> {{object.main_img_legend}}</h5>
+        </div> 
+        </div> 
     </div>
     </section>
     <section id="section2">
@@ -48,7 +50,7 @@
                 <h3 id="title1" class=" "> {{object.first_title_h3}} </h3>
         </div>
             <div>
-            <p class=""> {{object.first_p}} <a class="a-color" href="{{object.first_link}}">{{object.first_link}}</a></p>
+            <div class="p"> {{object.first_p |safe |linebreaks }} <a class="a-color" href="{{object.first_link}}">{{object.first_link}}</a></div>
                 <div class="a-color text-inline"> 
                 </div>
              </div> 
@@ -56,7 +58,7 @@
     <img class="col-sm-auto rounded " src="{% static '' %}{{object.second_img_source}}" alt="{{object.second_img_alt}}" >
     </div>
     <div class="row p-4">
-        <p class=""> {{object.preview_text}}</p>
+        <div class="p"> {{object.preview_text |safe | linebreaks}}</div>
         </div>
         {% if not user.is_authenticated %}
         <script type="text/javascript"> var user_authenticated = false 
@@ -67,12 +69,25 @@
         </div>
     {% endif %}
     {% if user.is_authenticated %}<script type="text/javascript"> var user_authenticated = true </script>
-    <div> <h3 class=""> {{ block1.title1 }}</h3>
-        <div class="text-center "><img class=" col-sm-auto rounded " src="{%static ''%}{{block1.image1}}" alt=""></div>
-    </div><p class=""> {{ block1.paragraph1 }}<a class="a-color" href="{{block1.link3}}"> {{block1.link_text3}} </a></p>
-    <div> <h3 class=""> {{block1.title2}}<div class="text-center"><img id = "" class="col-sm-auto rounded" src="{% static '' %}{{block1.image2}}" alt="">
-        </div></h3> <p class="" > {{block1.paragraph2}}</p></div><div> <h3 class=""> {{block1.title3}}</h3> 
-        <p class="" > {{block1.paragraph3}}</p>           
+    {% for block in blocks %}
+    <div id="block_div" class="container">
+    <div class="text-center"> <h2> {{ block.date }} </h2>  </div>
+
+    <div> <h3 class=""> {{ block.title1 }}</h3>
+        <div class="text-center "><img class=" col-sm-auto rounded " src="{%static ''%}{{block.image1}}" alt=""></div>
+    </div><div class="p"> {{ block.paragraph1 |safe | linebreaks }}<a class="a-color" href="{{block.link3}}"> {{block.link_text3}} </a></div>
+    <div> <h3 class=""> {{block.title2}}<div class="text-center"></h3><div class="text-center"><img id = "" class="col-sm-auto rounded" src="{% static '' %}{{block.image2}}" alt=""> </div>
+            </div></h3> <div class="p" > {{block.paragraph2 |safe | linebreaks  }}</div>
+
+    </div>
+
+    <div> <h3 class=""> {{block.title3}}</h3>
+        <div class="text-center"><img id = "" class="col-sm-auto rounded" src="{% static '' %}{{block.image3}}" alt=""> </div> 
+    <div class="p" > {{block.paragraph3 |safe | linebreaks}}</div>
+
+    </div>            
+    {% endfor %}       
+    </div>
         {% endif %}
         {% block footer %}
     <div id="divbtt" class="invisible" >
@@ -80,7 +95,7 @@
                         class="btn position-fixed end-0 bottom-5">
                     Revenir en haut de la page</button>
                 </div>
-            </div> 
+            </div>
     {% endblock %}
         
 

@@ -16,9 +16,9 @@ import theme from './color_theme.js'
  * l'idée est qu'on voudrait que l'utilisateur
  * puisse les configurer
  */
-console.log('color0:%s',theme.color0)
-console.log('color1:%s',theme.color1)
-console.log('color2:%s',theme.color2)
+// console.log('color0:%s',theme.color0)
+// console.log('color1:%s',theme.color1)
+// console.log('color2:%s',theme.color2)
 
 /** ==== CLASSE DE STYLE POUR LES BOUTONS ==========
  *  ==== theme_btn est importée de notre module ====
@@ -50,25 +50,30 @@ function bgChange() {
  * Ajout des thémes de couleur aux éléments ***
  * ============================================
  */
+let portail, h1_element,test;
+portail = document.querySelector('#portail')
+if (portail){portail.remove()};
+let btn_preview;
+btn_preview = document.querySelector('#preview')
+if(btn_preview){btn_preview.innerText = 'retour au portail du site'
+btn_preview.setAttribute('href',"javascript:window.location=document.referrer")}
+//document.referrer permet de revenir en arrière et de raffraichir la page,
+//c'est mieux que le simple history.back() qui n'est qu'un retour statique à
+//partir de l'historique.
+for (i=0;i<theme.h1_list.length; i++){test = theme.h1_list[i]; console.log(test); if(test.innerText.indexOf('Portail')!=-1){console.log(true+" "+"contient portail"); theme.h1_list = [Array.from(theme.h1_list).pop()]}}; 
 
 add_class_to_element_list(theme.h1_list,theme.class_list_h1)
+
 add_class_to_element_list(theme.h2_list,theme.class_list_h2)
 add_class_to_element_list(theme.h3_list,theme.class_list_h3)
 add_class_to_element_list(theme.h4_list,theme.class_list_h4)
 add_class_to_element_list(theme.h5_list,theme.class_list_h5)
 add_class_to_element_list(theme.p_list, theme.class_list_p)
+/** =======================================================
+ * Tentative pour insérer des tags dans un texte brut pour
+ * obtenir un texte formaté html
+ * =========================================================*/
 
-let s_list;
-let link;
-for (i=0;i<theme.p_list.length;i++)
-{	
-	s_list = theme.p_list[i].textContent.split("<a>");//the second member of this list is our link
-	if(s_list[1])
-		{
-		link = s_list[1].anchor(name='link'+i); // string.anchor() returns an anchor tag of our string
-		theme.p_list[i].textContent = s_list[0]+" " + link +" "+ s_list[2] // and then we concat all over again.
-		}
-}
 
 
 /** ==============================
@@ -152,61 +157,19 @@ if (btnbtt) {//cf.com plus haut pour le if.
  * code pour créer un effet sur le titre de la page d'accueil
  *"Bienvenue sur mon" qui apparaît lettre par lettre 
 */
-const text = document.getElementById("mytitle1");
-const strText = text.textContent;
-const splitText = strText.split("");
-text.textContent = "";
-for (i = 0; i < splitText.length; i++) {
-  text.innerHTML += "<span>" + splitText[i] + "</span>"
-};
-const span_text = text.querySelectorAll('span')
-for (i = 0; i < span_text.length; i++) {
-  const span = span_text[i]
-  span.classList.add('op-0')
-};
+const main_title = document.getElementById("mytitle1");
+theme.title_animation(main_title);
 
-function title_animation(title_element,speed=50)
-{ let i;
-  let strTxt, splitTxt;
-  strTxt = title_element.textContent;
-  splitTxt = strTxt.split("");
-  title_element.textContent = "";
-  for (i = 0; i < splitTxt.length; i++) {
-    title_element.innerHTML += "<span>" + splitTxt[i] + "</span>"
-  };
-  const span_text = title_element.querySelectorAll('span')
-  for (i = 0; i < span_text.length; i++) {
-    const span = span_text[i]
-    span.classList.add('op-0')
-  };  
- let timer; 
- let char;
- function onTick() 
- {
-  const span = text.querySelectorAll('span')[char];
-  setTimeout(function () { span.classList.replace('op-0', 'op-100') }, 100);
-  char++;
-  if (char == splitTxt.length)
-  {
-    clearInterval(timer);
-    timer = null
-  }
-
- }
- char = 0
- timer = setInterval(onTick, speed)
-
-}
 //creation d'un element bootstrap badge pour insérer
 // le txt "BLOG TECH" à la suite de l'animation "Bienvenue...""
 // NB: le badge est finalement devenu un bouton pour avoir la 
 // responsiveness
 let badge_container = document.querySelector('#badge');
-badge_container.classList.add('col-sm-auto','justify-content-center');
+badge_container.classList.add('row','justify-content-center');
 let badge = document.createElement('span');
 badge.innerHTML = "BLOG-TECH";
-badge.classList.add('btn', theme_btn,'btn-lg-auto','mb-5', "op-0", theme.text_color1_400,'disabled','fs-2','fw-bold');
-text.appendChild(badge_container);
+badge.classList.add('btn', theme_btn,'btn-lg-auto','mb-5', theme.text_color1_800,'disabled','fs-2','fw-bold');
+main_title.appendChild(badge_container);
 badge_container.appendChild(badge);
 // console.log(badge_container);
 
@@ -214,11 +177,14 @@ badge_container.appendChild(badge);
 //for the animation of my Title I call a setInterval function that repeats the function onTick() 
 //each 300ms or so
 let char = 0;
-let timer = setInterval(onTick, 50);
+// let timer = setInterval(Animations, 50);
 //defining timelineMax objects
 //tl is for the title's animation
+let tl_title;
+// tl_title = new TimelineMax();
+// tl_title.from(main_title,1,{left:100});
 let tl;
-tl = new TimelineMax();
+tl = new TimelineMax({delay:1});
 //tl2 is for the container d-flex of my main_img
 let tl2;
 tl2 = new TimelineMax();
@@ -246,7 +212,7 @@ const main_img = document.querySelector('#main_image');
 //IMG.classList.add('invisible');
 // selection de la légende de la photo
 const my_legend = document.querySelector('#subtitle');
-my_legend.classList.add("op-0");
+my_legend.classList.add("op-0",'col-sm-auto');
 let carousel_name;
 carousel_name = document.querySelector('#demo')
 carousel_name.classList.add('container','rounded',theme.p_color,'my-5')
@@ -274,60 +240,12 @@ add_class_to_element_list(carousel_img_list,['my-3'])
 
 
 //Now i want a black band background  to set in place
-tl.fromTo(main_container, 1, { opacity: 0 }, { opacity: 1 }).fromTo(main_container, 1, { height: "0%" }, { height: "100%", ease: Bounce }, "-=1")
-  .fromTo(main_container, 1, { width: "0%" }, { width: "100%", ease: Bounce }, "-=1");
-
-//definition of onTick which is the function of setInterval above which is called repeatedly 
+// tl.fromTo(main_container, 1, { opacity: 0 }, { opacity: 1 }).fromTo(main_container, 1, { height: "0%" }, { height: "100%", ease: Bounce }, "-=1")
+      // here i want to delay a bit the animation on the img_container
+    //setTimeout(function(){
+//definition of onTick which is the function of setInterval )eabove which is called repeatedly 
 //until every span of my text "Bienvenue sur mon" has appeared
 // ATTENTION: le coeur de la fonction est dans le else où chaque span est affiché
-function onTick() {
-  if (char === splitText.length) {
-    setTimeout(function () { badge.classList.remove("op-0"); }, 300);
-    tl2.fromTo(badge, 1, { width: "0%" }, { width: "30%" }).fromTo(badge, 3, { opacity: 0 }, { opacity: 1 }, "-=3")
-    // here i want to delay a bit the animation on the img_container
-    //setTimeout(function(){
-    delay_x(dflex, "op-0", 1)
-    tl2.fromTo(img_container, 1, { opacity: 0 }, { opacity: 1,  scrollTrigger:
-            {
-                trigger: img_container,
-                container: img_container,
-                start: "top 50%",
-                end: "top 30%",
-                // markers: true, //{ fontSize: "2rem" },
-                scrub: true,
-                // toggleClass: "op-0",
-                // toggleActions: 'play, none, none, restart',
-                //            onenter onLeave  onEnterback   onLeaveBack
-                // onToggle: self => console.log(child.className),
-                // onEnterBack: self => child.classList.add(togclass),
-                // onLeaveback: () => child.classList.add(togclass),
-                //pinSpacing: false,
-                //pin: true          
-                // onEnter: child.classList.add('invisible'),
-                // onLeaveBack: child.classList.remove('invisible'),  
-          }})
-     .fromTo(img_container, 1, { height: "0%" }, { height: "100%", ease: Power2.easeInOut }, "-=1")
-      .fromTo(img_container, 1, { width: "0%" }, { width: "50%", ease: Power2.easeInOut }, "-=1");
-    // delay_x ci-dessous va supprimer la class indiquée pour laisser apparaitre les éléments en question
-    //delay_x(IMG, "invisible", 1) devenu inutile quand j'ai réussi à faire disparaitre le conteneur.
-    delay_x(img_container, "op-0", 1);
-    delay_x(dflex1, "op-0", 1);
-    delay_x(dflex2, "op-0", 1);
-    
-    //},300);
-    // animation de la légende de l'image
-    delay_x(my_legend, "op-0", 1);
-    delay_x(btn_style, "op-0", 3);
-    tl3.fromTo([my_legend,btn_style], .8, { opacity: 0 }, { opacity: 1, ease: Power2.easeInOut });
-    complete();
-    return;
-  } else {//c'est ici que l'animation du titre "Bienvenue..." lettre par lettre a lieu.
-    const span = text.querySelectorAll('span')[char];
-    setTimeout(function () { span.classList.replace('op-0', 'op-100') }, 100);
-    char++;
-  }
-};
-
 /**  ============== Animation de l'image evenement 'mouseover' =====================
 * une simple animation au passage de la souris: l'ombre de l'image s'affiche
 * ================= syntaxe de la propriété CSS box-shadow:=========================
@@ -340,14 +258,30 @@ function onTick() {
 // })
 
 // cette fonction supprime une classe sur l'élément choisi avec un délai particulier pour l
-function delay_x(element_x, class_Name, dtime) {
-  setTimeout(function () { element_x.classList.remove(class_Name) }, dtime);
+function delay_x(element_x, className, dtime) {
+  setTimeout(function () { element_x.classList.remove(className) }, dtime);
 };
+function removeClassOnDelay(el_list,className,dtime)
+{
+    for(i=0; i<el_list.length; i++)
+    {
+        delay_x(el_list[i], "op-0", 1);
+    }
+}
 
-function complete() {
-  clearInterval(timer);
-  timer = null
-};
+/**========================================
+ * ======== BACKGROUND IMAGE ==============
+ * ========================================
+*/
+let main_div;
+main_div = document.querySelector("#main_div");
+main_div.style.backgroundImage = "url('../static/img/cybersecurite.jpg')";
+
+main_div.style.backgroundSize = "contain";
+// main_div.style.backgroundRepeat = "no-repeat";
+
+
+
 
 /*===============================================================================
 *========== Création des boutons animés de l'image centrale:=====================
@@ -397,17 +331,19 @@ redirect_link2.setAttribute('href','/login');
 //ajout des classes sur les différents éléments:
 let class_d_flex_main;
 let class_d_flex;
-class_d_flex_main = ['d-flex', 'justify-content-center','bg', theme.bg_color0, theme.bg_gradient1, 'op-0']
+class_d_flex_main = ['d-flex', 'justify-content-center', 'op-0']
 add_class_to_element_list([dflex],class_d_flex_main)
-class_d_flex = ['d-flex', 'col-sm-6', theme.bg_color0, theme.bg_color0, 'op-0']
+class_d_flex = ['d-flex', 'col-sm-6', 'op-0']
 add_class_to_element_list([dflex1],class_d_flex)
 add_class_to_element_list([dflex2],class_d_flex)
 let class_img_container;
-class_img_container = ["d-flex", "justify-content-center", "bg", theme.bg_color0, "rounded", "op-0"]
+class_img_container = ["d-flex", "justify-content-center", "rounded", "op-0"]
 add_class_to_element_list([img_container],class_img_container)
 let class_main_container;
-class_main_container = ["w-100", "justify-content-center","text-center", "bg", theme.bg_color0, theme.bg_gradient1]
+class_main_container = ["w-100", "justify-content-center","text-center"]
 add_class_to_element_list([main_container],class_main_container)
+
+let class_div_main_title;
 
 
 // ajout des classes sur les boutons et les div
@@ -424,10 +360,11 @@ add_class_to_element_list(div_list1.concat(div_list2), class_div);
 let btn_style;
 let class_btn_style;
 let div_btn_style;
-div_btn_style = document.querySelector('#div_legend');
-
-append_children_el([div_btn_style],main_container);
-class_btn_style = ['btn',theme_btn,'my-2','op-0'];
+div_legend = document.querySelector('#div_legend');
+div_legend.classList.add('row','justify-content-center');
+div_btn_style = document.createElement('div')
+append_children_el([div_btn_style],div_legend);
+class_btn_style = ['col-sm-auto','btn',theme_btn,'my-2','op-0'];
 btn_style = document.createElement('button');
 btn_style.textContent = 'Changer le style';
 add_class_to_element_list([btn_style], class_btn_style);
@@ -464,9 +401,9 @@ add_class_to_element_list(btn_list, class_btn);
 //   //location.reload()
   
 // });
-console.log('color0:%s',theme.color0)
-console.log('color1:%s',theme.color1)
-console.log('color2:%s',theme.color2)
+// console.log('color0:%s',theme.color0)
+// console.log('color1:%s',theme.color1)
+// console.log('color2:%s',theme.color2)
 //on ajoute des ID pour les boutons en vue des animations:
 for (i=0; i<btn_list.length; i++)
 {
@@ -483,7 +420,61 @@ const button_names = ['nouveautés', 'info-geek', 'tutos', 'échecs', 'faire un 
 
 /** ======= FONCTION CUSTOMIZE ============
  * les boutons de la d-flex1:
- * */ 
+ * */
+function Animations() { delay_x(dflex,"op-0", 1);
+    
+        tl2.fromTo(main_container, 1, { width: "0%" }, { width: "100%", ease: Bounce }, "-=1")
+.fromTo(badge, 3, { width: "0%" }, { width: "30%" }).fromTo(badge, 3, { opacity: 0 }, { opacity: 1 }, "-=3")
+        .to(img_container, 1,  { opacity: 1,  scrollTrigger:
+            {
+                trigger: img_container,
+                container: img_container,
+                start: "top 50%",
+                end: "top 30%",
+                // markers: true, //{ fontSize: "2rem" },
+                scrub: true,
+                // toggleClass: "op-0",
+                // toggleActions: 'play, none, none, restart',
+                //            onenter onLeave  onEnterback   onLeaveBack
+                // onToggle: self => console.log(child.className),
+                // onEnterBack: self => child.classList.add(togclass),
+                // onLeaveback: () => child.classList.add(togclass),
+                //pinSpacing: false,
+                //pin: true          
+                // onEnter: child.classList.add('invisible'),
+                // onLeaveBack: child.classList.remove('invisible'),  
+          }})
+        .fromTo(img_container, 1, { height: "0%" }, { height: "100%", ease: Power2.easeInOut }, "-=1")
+        .fromTo(img_container, 1, { width: "0%" }, { width: "50%", ease: Power2.easeInOut }, "-=1");
+    // delay_x ci-dessous va supprimer la class indiquée pour laisser apparaitre les éléments en question
+    //delay_x(IMG, "invisible", 1) devenu inutile quand j'ai réussi à faire disparaitre le conteneur.
+    removeClassOnDelay([img_container, dflex1, dflex2], "op-0", 1);
+    
+    //},300);
+    // animation de la légende de l'image
+    
+    tl3.fromTo([my_legend,btn_style], { opacity: 0, y:"1000px"}, 
+        { 
+                       opacity: 1,
+            y:"0px",
+            scrollTrigger:
+            {
+                trigger: "#demo",
+                container: my_legend,
+                start: "top 10%",
+                end: "bottom 10%",
+                // markers: true,
+                scrub : true,
+                duration: 10,
+            }
+ }, 10
+    );
+    removeClassOnDelay([my_legend, btn_style], "op-0",5);
+
+};
+Animations();
+
+
 function customize() 
 {let btn_news;
 let btn_chess;
@@ -579,8 +570,8 @@ let btn_chess;
     // pour jouer sur la couleur (mais pas encore au point):
     //btni2.style.backgroundColor = 'rgba(' + 255 + ',' + 0 + ',' + random(400) + ',' + 1 + ')';
     //Les Animations sur les boutons:
-    TweenMax.fromTo(btn_list1, 3, { x: 0, rotation: 0 }, { x: "5vw", rotation: 360 })
-    TweenMax.fromTo(btn_list2, 3, { x: 0, rotation: 0 }, { x: "-30vw", rotation: 360 })
+    TweenMax.fromTo(btn_list1, 3, { x: 0, rotation: 0 }, { x: "5vw", rotation: 360})
+    TweenMax.fromTo(btn_list2, 3, { x: 0, rotation: 0 }, { x: "-30vw", rotation: 360})
   };
 };
 
@@ -718,9 +709,9 @@ function append_children_el(list_child = [], el) {
 
 // On commence par rendre invisible toute la section2 de l'HTML:
 const section2 = document.getElementById("section2");
-if (section2){
-  section2.classList.add("bg", theme.bg_color0)
-}
+// if (section2){
+//   section2.classList.add("bg", theme.bg_color0)
+// }
 
 var text_visible = false
 // console.log('text_visible au départ ' + String(text_visible))
@@ -756,7 +747,7 @@ tl6 = new TimelineMax()
   // avec des scrollstart et des startpoint differents....FAIT VRAIMENT CHIER!!!
   let children_list, children_of_bottom, list_length;
   children_list = Array.from(section2.children)
-  console.log(children_list)
+  // console.log(children_list)
   if (user_authenticated)
   {
     list_length = 4
@@ -765,12 +756,12 @@ tl6 = new TimelineMax()
     list_length = 7;
     
   };
-  console.log('list_length = '+list_length)
+  // console.log('list_length = '+list_length)
   
   for (i=0;i < list_length;i++)
   {
     children_list.pop()
-    console.log(children_list)
+    // console.log(children_list)
   }
   children_of_bottom = children_list.splice(children_list.length-2)
   
