@@ -24,6 +24,9 @@ main_div    = document.querySelector("#main_div");
  * si l'utlisateur est connecté et une variable pour savoir si l'utilisateur 
  * est sur la page d'Aperçu dont l'url contient le nom 'common'*/
 
+body.style.backgroundColor = "primary"
+
+
 let preview;
 preview = false;
 const url_preview = window.location.href;

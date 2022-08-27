@@ -33,7 +33,7 @@ const gray  = "gray"; // le gris est une nuance obtenue à partir du blanc ici.
  * ==============================*/
 var r = document.querySelector(':root');
 
-// Create a function for getting a variable value
+// Create a function to get a variable value
 function CSS_get(css_var='--blue') {
   // Get the styles (properties and values) for the root
   var rs = getComputedStyle(r);
@@ -405,7 +405,7 @@ if (portail) {
 
 /**===============COULEUR BACKGROUND PRINCIPAL======================*/
 const mybody = document.body
-mybody.classList.add("bg", bg_color0, bg_gradient2)
+mybody.classList.add("bg", bg_color1, bg_gradient2)
 
 /**===============STYLE FAVICON======================*/
 const favicon = document.querySelector('#favicon')
@@ -474,14 +474,15 @@ const class_list_h1 = ["display-2", "fw-bold",'bg','bg-primary',
                       "rounded", h1_color];
 const class_list_h2 = ["display-2", "fw-bold",'bg','bg-primary', "rounded",
                       h2_color];
-const class_list_h3 = ["font-weight-light", "p-4", "border-start", "border-5",
-                      'bg','bg-primary', border_color1_500,"col-11", "ms-4",
+const class_list_h3 = ["font-weight-light", "p-4", "border-start", "border-2",
+                      'bg','bg-primary', border_color1_500,"col-sm-auto", "ms-4",
                       "rounded", h3_color];
 const class_list_h4 = ["display-2", "fw-bold",'bg','bg-primary', "rounded",
                       h4_color];
-const class_list_h5 = ["text-center", "fw-bold",'bg','bg-primary', "rounded",
+const class_list_h5 = ["text-center", "fw-bold",'bg','bg-primary', 'border',
+                      'border-2', border_color1_500, "rounded",
                       h5_color];
-const class_list_p = ["lead", "p-4", "border-start", "border-5", "rounded",  
+const class_list_p = ["lead", "p-4", "border-start", "border-2", "rounded",  
                      'bg','bg-primary', border_color1_500,"col-sm-auto",
                      "ms-4-2", p_color];
 const class_list_img = ["display-2", "fw-bold", img_color,"rounded"];

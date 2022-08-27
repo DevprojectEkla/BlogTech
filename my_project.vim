@@ -13,14 +13,13 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +351 static/myJS/script.js
-badd +154 static/myJS/color_theme.js
-badd +83 common/templates/common/preview.html
-badd +88 templates/main.html
-badd +26 ~/AppData/Local/nvim/init.vim
-badd +503 style.scss
-badd +10 static/css/style.css
-badd +20 static/myJS/main.js
+badd +58 static/myJS/script.js
+badd +117 templates/main.html
+badd +36 ~/AppData/Local/nvim/init.vim
+badd +29 static/myJS/main.js
+badd +0 term://~/PycharmProjects/MyBlog//7516:cmd
+badd +45 articles/templates/articles/index.html
+badd +27 static/myJS/index_articles.js
 argglobal
 %argdel
 set stal=2
@@ -30,10 +29,8 @@ tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
-tabnew +setlocal\ bufhidden=wipe
-tabnew +setlocal\ bufhidden=wipe
 tabrewind
-edit static/myJS/script.js
+edit articles/templates/articles/index.html
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -45,34 +42,15 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 51 - ((11 * winheight(0) + 15) / 30)
+let s:l = 48 - ((29 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 51
-normal! 041|
-tabnext
-edit static/myJS/color_theme.js
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 136 - ((14 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 136
-normal! 0
+keepjumps 48
+normal! 018|
 lcd ~/PycharmProjects/MyBlog
 tabnext
-edit ~/PycharmProjects/MyBlog/common/templates/common/preview.html
+edit ~/PycharmProjects/MyBlog/static/myJS/index_articles.js
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -84,38 +62,36 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 41 - ((29 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 41
-normal! 024|
-lcd ~/PycharmProjects/MyBlog
-tabnext
-edit ~/PycharmProjects/MyBlog/static/myJS/main.js
-argglobal
-balt ~/PycharmProjects/MyBlog/static/myJS/color_theme.js
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 20 - ((17 * winheight(0) + 15) / 30)
+let s:l = 20 - ((19 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 20
-normal! 088|
+normal! 014|
+lcd ~/PycharmProjects/MyBlog
+tabnext
+edit ~/PycharmProjects/MyBlog/static/myJS/main.js
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 46 - ((14 * winheight(0) + 15) / 30)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 46
+normal! 0
 lcd ~/PycharmProjects/MyBlog
 tabnext
 edit ~/PycharmProjects/MyBlog/templates/main.html
 argglobal
-balt ~/PycharmProjects/MyBlog/common/templates/common/preview.html
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -126,36 +102,15 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 88 - ((14 * winheight(0) + 15) / 30)
+let s:l = 144 - ((14 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 88
-normal! 019|
+keepjumps 144
+normal! 010|
 lcd ~/PycharmProjects/MyBlog
 tabnext
-edit ~/PycharmProjects/MyBlog/static/myJS/main.js
-argglobal
-balt ~/PycharmProjects/MyBlog/templates/main.html
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 20 - ((16 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 20
-normal! 090|
-lcd ~/PycharmProjects/MyBlog
-tabnext
-edit ~/PycharmProjects/MyBlog/style.scss
+edit ~/PycharmProjects/MyBlog/static/myJS/script.js
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -167,17 +122,18 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 488 - ((12 * winheight(0) + 15) / 30)
+let s:l = 770 - ((3 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 488
-normal! 035|
-lcd ~/PycharmProjects/MyBlog
+keepjumps 770
+normal! 012|
 tabnext
-edit ~/PycharmProjects/MyBlog/static/css/style.css
 argglobal
-balt ~/PycharmProjects/MyBlog/style.scss
+if bufexists(fnamemodify("term://~/PycharmProjects/MyBlog//7516:cmd", ":p")) | buffer term://~/PycharmProjects/MyBlog//7516:cmd | else | edit term://~/PycharmProjects/MyBlog//7516:cmd | endif
+if &buftype ==# 'terminal'
+  silent file term://~/PycharmProjects/MyBlog//7516:cmd
+endif
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -186,48 +142,15 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 2934 - ((14 * winheight(0) + 15) / 30)
+let s:l = 10030 - ((29 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 2934
-normal! 029|
+keepjumps 10030
+normal! 0
 lcd ~/PycharmProjects/MyBlog
 tabnext
 edit ~/AppData/Local/nvim/init.vim
-let s:save_splitbelow = &splitbelow
-let s:save_splitright = &splitright
-set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
-let &splitbelow = s:save_splitbelow
-let &splitright = s:save_splitright
-wincmd t
-let s:save_winminheight = &winminheight
-let s:save_winminwidth = &winminwidth
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-exe 'vert 1resize ' . ((&columns * 31 + 73) / 146)
-exe 'vert 2resize ' . ((&columns * 114 + 73) / 146)
-argglobal
-enew
-file ~/PycharmProjects/MyBlog/NERD_tree_1
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal nofen
-lcd ~/PycharmProjects/MyBlog
-wincmd w
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -239,16 +162,13 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 25 - ((19 * winheight(0) + 15) / 30)
+let s:l = 38 - ((27 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 25
+keepjumps 38
 normal! 0
 lcd ~/PycharmProjects/MyBlog
-wincmd w
-exe 'vert 1resize ' . ((&columns * 31 + 73) / 146)
-exe 'vert 2resize ' . ((&columns * 114 + 73) / 146)
 tabnext 2
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
@@ -257,8 +177,6 @@ endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20
 let &shortmess = s:shortmess_save
-let &winminheight = s:save_winminheight
-let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
