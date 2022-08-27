@@ -55,13 +55,14 @@ function CSS_set(css_var='--blue',value) {
  * color3 pas encore implémentée */
 var color0 = white;
 var nuancebg = "300";
-var color1 = orange;
+var color1 = cyan;
 var nuance1 = "500";
-var color2 = orange;
+var color2 = blue;
 var nuance2 = "500"
 var color1_CSS = CSS_get('--bs-'+ color1 + "-" + nuance1)
+var color3 = "#0c3762";
 
-var color3 = dark;
+
 
 const border = "border";
 const border_color0 = "border-" + color0;
@@ -133,19 +134,6 @@ if(color0 == "gray"){
     bg_color0 = bg_color0_600
 }
 
-/**  ================= DEFINITION DE LA COULEUR DES BOUTONS =================
- * changer ici le style des boutons en passant par ex. secondary ============
- * ==========================================================================
-*/
-
-let theme_btn;
-if ((color1 == 'orange' && color0 == dark)) {
-    theme_btn = btn_box;
-} else {
-    theme_btn = btn_box_color2
-
-};
-
 
 /** =====================
  *  CONTRASTE POUR COLOR1
@@ -213,7 +201,7 @@ const bg_gradient2 = "bg-mygradient2";
 /** =========== VARIABLES DES COULEURS DE BCKGD ================ */
 const bg_color1 = "bg-" + color1
 const bg_color2 = "bg-" + color2
-
+const bg_primary = "bg-" + "primary"
 const bg_color2_nuancebg = "bg-" + color2 + "-" + nuancebg;
 const bg_color2_100 = "bg-" + color2 + "-100";
 const bg_color2_200 = "bg-" + color2 + "-200";
@@ -233,8 +221,22 @@ const bg_color1_700 = "bg-" + color1 + "-700";
 const bg_color1_800 = "bg-" + color1 + "-800";
 const bg_color1_900 = "bg-" + color1 + "-900";
 
+/**  ================= DEFINITION DE LA COULEUR DES BOUTONS =================
+ * changer ici le style des boutons en passant par ex. secondary ============
+ * ==========================================================================
+*/
+
+let theme_btn;
+if ((color1 == 'orange' && color0 == dark)) {
+    theme_btn = btn_box;
+} else {
+    theme_btn = btn_box_color1
+
+};
+
 /** ================== STYLE POUR LE PORTAIL DU SITE ===================== */
-const portail = document.querySelector('#portail')
+let portail;
+portail = document.querySelector('#portail')
 let btn_list;
 let i;
 
@@ -247,7 +249,7 @@ let nav_link;
 nav_link = document.querySelectorAll('.nav-link')
 let navbar, navbar_class_list;
 navbar = document.querySelector('#id_navbar')
-navbar_class_list = ['bg', bg_color1_800, 'navbar', 'navbar-expand-lg',
+navbar_class_list = ['bg', bg_primary, 'navbar', 'navbar-expand-lg',
 'fixed-top'];
 add_class_to_element_list([navbar], navbar_class_list)
 
@@ -283,7 +285,7 @@ function changeColorElementList(el_list,color)
         title_element.textContent = "";
         for (i = 0; i < splitTxt.length; i++) 
         {
-            if(sep=" ")
+            if(sep="")
         {
             title_element.innerHTML += "<span>" + splitTxt[i] + "</span>"+" "
         }else {
@@ -468,17 +470,21 @@ var img_color = text_color1_500
 /** ============ CREATION DES CLASSLIST POUR NOS TAGS ==================== */
 
 
-const class_list_h1 = ["display-2", "fw-bold", h1_color];
-const class_list_h2 = ["display-2", "fw-bold", h2_color];
-const class_list_h3 = [
-    "font-weight-light", "p-4", "border-start", "border-5", border_color1_500,
-    "col-11", "ms-4", h3_color
-];
-const class_list_h4 = ["display-2", "fw-bold", h4_color];
-const class_list_h5 = ["text-center", "fw-bold", h5_color];
-const class_list_p = ["lead", "p-4", "border-start", "border-5", border_color1_500,
-    "col-11", "ms-4-2", p_color];
-const class_list_img = ["display-2", "fw-bold", img_color];
+const class_list_h1 = ["display-2", "fw-bold",'bg','bg-primary',
+                      "rounded", h1_color];
+const class_list_h2 = ["display-2", "fw-bold",'bg','bg-primary', "rounded",
+                      h2_color];
+const class_list_h3 = ["font-weight-light", "p-4", "border-start", "border-5",
+                      'bg','bg-primary', border_color1_500,"col-11", "ms-4",
+                      "rounded", h3_color];
+const class_list_h4 = ["display-2", "fw-bold",'bg','bg-primary', "rounded",
+                      h4_color];
+const class_list_h5 = ["text-center", "fw-bold",'bg','bg-primary', "rounded",
+                      h5_color];
+const class_list_p = ["lead", "p-4", "border-start", "border-5", "rounded",  
+                     'bg','bg-primary', border_color1_500,"col-sm-auto",
+                     "ms-4-2", p_color];
+const class_list_img = ["display-2", "fw-bold", img_color,"rounded"];
 const class_list_a = ["text-decoration-none", a_color];
 
 
@@ -496,7 +502,8 @@ export default
         teal, cyan, gray, gray_drk, primary, secondary, success,
         warning, danger,
         info, light, dark, orange, white,
-        color1, color1_CSS, color2, color0,
+        
+        color0, color1, color1_CSS, color2, color3,
         color1_100, color1_200, color1_300,
         color2_100, color2_200, color2_300,
         color1_400, color1_500, color1_600,

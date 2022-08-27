@@ -3,7 +3,7 @@
 @import "static/scss/functions";
 $theme_bg             : white ;
 $pagination-color: red;
-$primary        :  blue;
+$primary        :#0c3762cf;
 $primary-100: tint-color($primary, 80%) ;
 $primary-200: tint-color($primary, 60%) ;
 $primary-300: tint-color($primary, 40%) ;
@@ -16,7 +16,7 @@ $primary-900: shade-color($primary, 80%);
 $primary_text_hover   : $primary-200;
 $primary_text_box_hover: $primary-200;    
 $primary_box_bg     : $primary;
-$primary_shadow_bg : $primary-600;
+$primary_shadow_bg : $primary;
 $primary_bg_500 : $primary_box_bg;
 
 $secondary      : rgb(81, 0, 255);
@@ -325,6 +325,23 @@ $utilities:
             
             )
         ),
+        "mt":
+        (
+            property: margin-top,
+            class: mt,
+            values:
+            (   
+                
+                6: 3.5rem, 
+                7: 4rem,   
+                8: 4.5rem, 
+                9: 7rem,
+                10:8rem,
+                20:15rem,
+                25:20rem,
+            )
+        ),
+
         "text-color":
         (
             property: color,
@@ -367,7 +384,8 @@ $utilities:
 @import "static/scss/bootstrap.scss";
 
 .btn-myhover {    
-    @extend .btn-outline-primary;   
+    @extend .btn-outline-primary; 
+    
     }
 
 .btn-myhover:hover {
@@ -375,7 +393,7 @@ $utilities:
         background-color: $primary;
         }
 .btn-myhover-box {
-    @extend .btn-myhover
+    @extend .btn-myhover;
     }
 
 .btn-myhover-box:hover {
@@ -445,7 +463,8 @@ $utilities:
         
         }
 .btn-myhover-cyan {    
-    @extend .btn-outline-cyan;   
+    @extend .btn-cyan;
+    color: $primary
     }
 .btn-myhover-cyan:hover {
         color: $cyan_text_hover;
@@ -460,7 +479,7 @@ $utilities:
 .btn-myhover-box-cyan:hover {
         color: $cyan_text_box_hover;
         background-color: $cyan_box_bg;
-        box-shadow: 5px 5px 5px $cyan_shadow_bg;
+        box-shadow: 5px 5px 5px $primary_shadow_bg;
         
         }
 

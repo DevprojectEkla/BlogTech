@@ -4,14 +4,13 @@
 {% load static %}
 
    
-    <div class="justify-content-center ">
         <div id= main_container class="">
-           <div class="col-12 text-center">
-               <h1 id = "mytitle1" class="" >{{ object.main_title }}</div>
-    
-        </div>            
-        
+    <div id="div_main_title" class="row justify-content-center">
+           <div class="text-center col-sm-auto rounded">
+               <h1 id = "mytitle1" class="" >{{ object.main_title }}</h1></div>
         <div id=badge></div>    
+        </div> 
+        
         <div id="d-flex" class="">
             <div id="container_main_image" class=""> 
                 <div  id="dflex1" class=""></div>           
@@ -20,8 +19,11 @@
                 <div  id="dflex2" class=""></div>   
             </div>
         </div>
-        <div id="div_legend"> <h5 id= "subtitle" class=""> {{object.main_img_legend}}</h5>
-        </div>  
+        <div class="row">
+
+         <div id="div_legend" class=""> <h5 id= "subtitle" class=""> {{object.main_img_legend}}</h5>
+        </div> 
+        </div> 
     </div>
     </section>
     <section id="section2">
@@ -68,7 +70,7 @@
     {% endif %}
     {% if user.is_authenticated %}<script type="text/javascript"> var user_authenticated = true </script>
     {% for block in blocks %}
-
+    <div id="block_div" class="container">
     <div class="text-center"> <h2> {{ block.date }} </h2>  </div>
 
     <div> <h3 class=""> {{ block.title1 }}</h3>
@@ -85,7 +87,7 @@
 
     </div>            
     {% endfor %}       
-
+    </div>
         {% endif %}
         {% block footer %}
     <div id="divbtt" class="invisible" >
