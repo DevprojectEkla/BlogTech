@@ -74,6 +74,17 @@ add_class_to_element_list(theme.p_list, theme.class_list_p)
  * obtenir un texte formaté html
  * =========================================================*/
 
+/**========================================
+ * ======== BACKGROUND IMAGE ==============
+ * ========================================
+*/
+let main_div;
+main_div = document.querySelector("#main_div");
+main_div.style.backgroundImage = theme.URL_BACKGROUND//"url('../static/img/cybersecurite.jpg')";
+
+main_div.style.backgroundSize = "contain";
+// main_div.style.backgroundRepeat = "no-repeat";
+
 
 
 /** ==============================
@@ -269,17 +280,6 @@ function removeClassOnDelay(el_list,className,dtime)
     }
 }
 
-/**========================================
- * ======== BACKGROUND IMAGE ==============
- * ========================================
-*/
-let main_div;
-main_div = document.querySelector("#main_div");
-main_div.style.backgroundImage = "url('../static/img/cybersecurite.jpg')";
-
-main_div.style.backgroundSize = "contain";
-// main_div.style.backgroundRepeat = "no-repeat";
-
 
 
 
@@ -356,7 +356,18 @@ add_class_to_element_list(div_list1.concat(div_list2), class_div);
  * changer le style.
  * ================================================
  */
- 
+let backgrounds, background, background_name;
+
+backgrounds = [];
+
+for (i=0; i<4;i++)
+    {   background_name = String("../static/img/background" + i + ".svg") 
+       backgrounds.push('url('+'"'+ background_name + '"'+')');
+    }
+console.log(backgrounds)
+function get_background_number () {return backgrounds.indexOf(main_div.style.backgroundImage);}
+console.log (get_background_number())
+
 let btn_style;
 let class_btn_style;
 let div_btn_style;
@@ -370,6 +381,47 @@ btn_style.textContent = 'Changer le style';
 add_class_to_element_list([btn_style], class_btn_style);
 append_children_el([btn_style],div_btn_style);
 add_class_to_element_list(btn_list, class_btn);
+
+/** Avant d'ajouter la fonctionnalité au bouton btn_style on met à jour
+ * la tag_list du module color_theme.js avec les nouveaux éléments que l'on
+ * a créer.*/
+theme.tag_list = Array.from(theme.tag_list);
+theme.tag_list.push(btn_list);
+
+btn_style.addEventListener('click',function()
+    {   console.log("current:",main_div.style.backgroundImage);
+        switch(background = get_background_number())
+        { // au départ le fond est une photo c'est le cas -1 si on veut...
+            case 0: // 1er clik: fond bleu
+                main_div.style.backgroundImage = backgrounds[background+1];
+
+                console.log("case 0: background change to background1.svg, URL"+ main_div.style.backgroundImage);
+                break;
+            case 1: // 2e clik: fond vert
+                console.log("case 1 previous URL was:"+ main_div.style.backgroundImage); 
+                main_div.style.backgroundImage = backgrounds[background+1]//"url('../static/img/cybersecurite.jpg')";
+                console.log("case1 NEW URL:" + main_div.style.backgroundImage);
+                theme.replace_style(theme.tag_list, theme.style0,theme.style1);
+                console.log("case2 NEW URL:" + main_div.style.backgroundImage);
+                
+                break;
+            case 2: //colorred
+                main_div.style.backgroundImage = backgrounds[background+1]
+                theme.replace_style(theme.tag_list, theme.style1, theme.style2)
+                break;
+            case backgrounds.length - 1:     
+                console.log('final case:'+background.length+"-1")
+                main_div.style.backgroundImage = backgrounds[0]
+                theme.replace_style(theme.tag_list, theme.style2, theme.style0)
+        }
+    });
+
+
+
+
+
+
+
 
 // theme.theme_primary = true;
 // btn_style.addEventListener('click',function()

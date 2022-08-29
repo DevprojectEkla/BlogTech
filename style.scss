@@ -19,7 +19,7 @@ $primary_box_bg     : $primary;
 $primary_shadow_bg : $primary;
 $primary_bg_500 : $primary_box_bg;
 
-$secondary      : rgb(81, 0, 255);
+$secondary      : #346911cf;
 
 $secondary-100: tint-color($secondary, 80%) ;
 $secondary-200: tint-color($secondary, 60%) ;
@@ -38,7 +38,7 @@ $secondary_box_bg: $secondary_bg;
 $secondary_shadow_bg: $secondary-600;
 $secondary_bg_500 : $secondary_bg;
 
-$tertiary       : purple;
+$tertiary       : #dc3545cf;
 $tertiary_text  : red;
 $tertiary_bg    : orange;
 
@@ -47,6 +47,7 @@ $tertiary_bg    : orange;
 $colors: (
   "theme_bg":       $theme_bg,
   "primary":        $primary,
+  "primary_text_box_hover":  $primary_text_box_hover,
   "primary_text_hover":   $primary_text_hover,
   "primary_box_bg":     $primary_box_bg,
   "primary_shadow_bg": $primary_shadow_bg,
@@ -56,7 +57,7 @@ $colors: (
   "secondary_box_bg":        $secondary_box_bg,
   "secondary_shadow_bg":        $secondary_shadow_bg,
   "secondary_text_hover":   $secondary_text_hover,
-  "primary_text_box_hover":  $secondary_text_box_hover,
+  "secondary_text_box_hover":  $secondary_text_box_hover,
   "tertiary":       $tertiary,
   "tertiary_text":  $tertiary_text,
   "tertiary_bg":    $tertiary_bg,
@@ -92,12 +93,21 @@ $transition-values: (
 
 @import "static/scss/variables";
 // Create your own map
-
+$bg-tertiary: #dc3545cf;
 $red_bg:$red-300;
 $red_box_bg : red ;
 $red_shadow_bg: $red;
 $red_text_hover: $white ;
 $red_text_box_hover: $white ;
+
+$tertiary_bg:$tertiary;
+$tertiary_box_bg : $tertiary ;
+$tertiary_shadow_bg: $tertiary;
+$tertiary_text_hover: $cyan ;
+$tertiary_text_box_hover: $cyan ;
+
+
+
 $green_bg:$green-300;
 $green_box_bg : green ;
 $green_shadow_bg: $green;
@@ -229,7 +239,7 @@ $custom-colors: (
     "gray-900":$gray-900,
     
     "custom-color": #f5cd8d, 
-
+    "tertiary": $tertiary,
     "red_text_box_hover" : $red_text_box_hover,
     "red_text_hover"     : $red_text_hover,
     "red_box_bg"         : $red_box_bg,
@@ -422,6 +432,27 @@ $utilities:
         box-shadow: 5px 5px 5px $red_shadow_bg;
         
         }
+        
+.btn-myhover-tertiary {    
+    @extend .btn-outline-tertiary;   
+    }
+.btn-myhover-tertiary:hover {
+        color: $tertiary_text_hover;
+        background-color: $tertiary;
+        }
+
+.btn-myhover-box-tertiary {
+    @extend .btn-myhover-tertiary
+    }
+
+
+.btn-myhover-box-tertiary:hover {
+        color: $tertiary_text_box_hover;
+        background-color: $tertiary_box_bg;
+        box-shadow: 5px 5px 5px $tertiary_shadow_bg;
+        
+        }
+
 
 .btn-myhover-green {    
     @extend .btn-outline-green;   
@@ -625,6 +656,21 @@ $utilities:
 {
     box-shadow: 5px 5px 5px ; //(décalage-x de l'ombre, décalage-y, effet-blur, couleur)
 }
+.mybox-primary
+{   @extend .mybox;
+    box-shadow: 5px 5px 5px $primary; //(décalage-x de l'ombre, décalage-y, effet-blur, couleur)
+}
+
+.mybox-secondary
+{   @extend .mybox;
+    box-shadow: 5px 5px 5px $secondary; //(décalage-x de l'ombre, décalage-y, effet-blur, couleur)
+}
+.mybox-tertiary
+{   @extend .mybox;
+    box-shadow: 5px 5px 5px $tertiary; //(décalage-x de l'ombre, décalage-y, effet-blur, couleur)
+}
+    
+
 .mybox-orange
 {   @extend .mybox;
     box-shadow: 5px 5px 5px orange; //(décalage-x de l'ombre, décalage-y, effet-blur, couleur)

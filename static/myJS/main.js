@@ -1,6 +1,5 @@
 import theme from './color_theme.js'
 
-let MAIN_IMG_FILE = '../static/img/cybersecurite.jpg'; 
 
 let body, favicon, banniere, navbar, div_title, portail_title, footer, btn_preview,
     portail, btn_signup, btn_login;
@@ -24,7 +23,6 @@ main_div    = document.querySelector("#main_div");
  * si l'utlisateur est connecté et une variable pour savoir si l'utilisateur 
  * est sur la page d'Aperçu dont l'url contient le nom 'common'*/
 
-body.style.backgroundColor = "primary"
 
 
 let preview;
@@ -38,7 +36,7 @@ if (btn_preview) {btn_preview.classList.add('theme_btn');
     }
 btn_preview.addEventListener('click', function () 
        {
-       main_div.style.backgroundImage = "url('../static/img/cybersecurite.jpg')";
+       main_div.style.backgroundImage = theme.URL_BACKGROUND//"url('../static/img/cybersecurite.jpg')";
        preview = true; 
        })
     };

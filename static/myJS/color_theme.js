@@ -5,7 +5,15 @@
  * ou 4 variables, sans avoir à changer =========
  * tout à la main dans les différents gabbartis.=
  * ==============================================
+ *
  */
+
+
+let IMAGE_NAME = 'background0.svg'
+let MAIN_IMG_FILE = String("../static/img/"+ IMAGE_NAME) 
+let URL_BACKGROUND = 'url('+'"'+ MAIN_IMG_FILE + '"'+')';   
+let style0, style1, style2;
+
 const blue = "blue";
 const indigo = "indigo";
 const purple = "purple";
@@ -362,6 +370,19 @@ function myScrollTrig(el_list)
  *  ===== basic for-loop function to add class style lists to elements===
  * */
 let el_list;
+
+function replace_class_to_element_list(el_list, oldClass = [''], newClass = [''])
+{ 
+    let i, j;
+    for (i = 0; i < el_list.length; i++) {
+        for (j = 0; j < oldClass.length; j++) {
+            el_list[i].classList.replace(oldClass[j], newClass[j]);
+        }
+
+    };
+    return (el_list);
+};
+
 function add_class_to_element_list(el_list, class_list = ['btn', 'btn-dark']) {
     let i, j;
     for (i = 0; i < el_list.length; i++) {
@@ -424,8 +445,20 @@ const h5_list = document.querySelectorAll('h5')
 const p_list = document.querySelectorAll('p')
 const a_list = document.querySelectorAll('a')
 const img_list = document.querySelectorAll('img')
-
+const button_list = document.querySelectorAll('button')
+const tag_list = [h1_list, h2_list, h3_list, h4_list, h5_list, p_list, a_list,
+    img_list, button_list, [navbar]];
 /** ========= ICI POUR CREER UNE FONCTION DE CHANGEMENT DE STYLE============*/
+style0 = ['btn-myhover-box-cyan','bg-primary']
+style1 = ['btn-myhover-box-green','bg-secondary']
+style2 = ['btn-myhover-box-tertiary', 'bg-tertiary']
+
+function replace_style(el_list, style1,style2)
+{       for (i=0; i<el_list.length; i++)
+    {
+        replace_class_to_element_list(el_list[i], style1, style2);
+    }
+}
 
 let theme_primary;
 theme_primary = true;
@@ -470,14 +503,14 @@ var img_color = text_color1_500
 /** ============ CREATION DES CLASSLIST POUR NOS TAGS ==================== */
 
 
-const class_list_h1 = ["display-2", "fw-bold",'bg','bg-primary',
+const class_list_h1 = ["display-4", "fw-bold",'bg','bg-primary',
                       "rounded", h1_color];
-const class_list_h2 = ["display-2", "fw-bold",'bg','bg-primary', "rounded",
+const class_list_h2 = ["display-4", "fw-bold",'bg','bg-primary', "rounded",
                       h2_color];
 const class_list_h3 = ["font-weight-light", "p-4", "border-start", "border-2",
                       'bg','bg-primary', border_color1_500,"col-sm-auto", "ms-4",
                       "rounded", h3_color];
-const class_list_h4 = ["display-2", "fw-bold",'bg','bg-primary', "rounded",
+const class_list_h4 = ["display-4", "fw-bold",'bg','bg-primary', "rounded",
                       h4_color];
 const class_list_h5 = ["text-center", "fw-bold",'bg','bg-primary', 'border',
                       'border-2', border_color1_500, "rounded",
@@ -499,6 +532,7 @@ const class_list_a = ["text-decoration-none", a_color];
  */
 export default
     {   r,
+        MAIN_IMG_FILE, IMAGE_NAME, URL_BACKGROUND,
         blue, indigo, purple, pink, red, yellow, green,
         teal, cyan, gray, gray_drk, primary, secondary, success,
         warning, danger,
@@ -554,8 +588,9 @@ export default
         text_color2_100, text_color2_200, text_color2_300, text_color2_400,
         text_color2_500, text_color2_600, text_color2_700, text_color2_800, text_color2_900,
 
+        tag_list, style0, style1, style2, replace_style,
         h1_list, h2_list, h3_list, h4_list, h5_list, p_list, img_list, a_list,
-
+        
         class_list_h1, class_list_h2, class_list_h3, class_list_h4, class_list_h5, class_list_p, class_list_a, class_list_img,
-        add_class_to_element_list, title_animation, myScrollTrig, changeColorElement, changeColorElementList,
+        replace_class_to_element_list, add_class_to_element_list, title_animation, myScrollTrig, changeColorElement, changeColorElementList,
     } 
