@@ -1,17 +1,20 @@
 import theme from './color_theme.js'
 
 
-let body, favicon, banniere, navbar, div_title, portail_title, footer, btn_preview,
+let body, favicon, banniere, img_banniere, navbar, div_title, portail_title, footer, btn_preview,
     portail, btn_signup, btn_login;
 body        = document.body;
 favicon     = document.querySelector('#favicon')
 
-div_title   = document.querySelector('#title')
+div_title   =       document.querySelector('#title')
 portail_title       = document.querySelector('h1');
+
 if (!user_authenticated){ 
 portail     = document.querySelector('#portail')
 }
+
 banniere    = document.querySelector('#banniere')
+img_banniere = document.querySelector('#img_banniere')
 btn_preview = document.querySelector('#preview')
 btn_signup  = document.querySelector('#signup')
 btn_login   = document.querySelector('#login')
@@ -22,8 +25,6 @@ main_div    = document.querySelector("#main_div");
  * qu'il clique sur preview. Pour cela on a besoin d'une variable qui indique
  * si l'utlisateur est connecté et une variable pour savoir si l'utilisateur 
  * est sur la page d'Aperçu dont l'url contient le nom 'common'*/
-
-
 
 let preview;
 preview = false;
@@ -52,12 +53,29 @@ main_div.style.Height = "auto";
 main_div.style.minHeight = "100vh";
 }
 
-
-
+let IMG_BANNIERE;
+IMG_BANNIERE = 'static/img/banniere.svg'
 banniere.classList.add('row','mt-6','width-100vh')
-if(div_title){div_title.classList.add("row","justify-content-center")};
-if(portail){theme.add_class_to_element_list([portail],['fw-bold','col-sm-auto', 'bg', 'bg-primary', 'rounded'])};
-if(btn_preview){theme.add_class_to_element_list([btn_login,btn_signup,btn_preview],['bg','bg-primary','text-cyan','rounded'])
+
+/** Suite de conditions pour l'affichage de certains éléments. Si l'utilisateur
+ * est sur le portail du site, s'il est sur l'aperçu mais sans être connecté
+ * etc.
+*/
+
+if(div_title)
+    {
+    div_title.classList.add("row","justify-content-center")
+};
+
+if(portail)
+{
+    theme.add_class_to_element_list([portail],['fw-bold','col-sm-auto', 'bg', 'bg-primary', 'rounded']);
+    // img_banniere.src = IMG_BANNIERE;
+};
+
+if(btn_preview)
+{
+    theme.add_class_to_element_list([btn_login,btn_signup,btn_preview],['bg','bg-primary','text-cyan','rounded'])
 }
 
 

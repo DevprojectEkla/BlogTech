@@ -26,6 +26,15 @@ import theme from './color_theme.js'
 let theme_btn;
 theme_btn = theme.theme_btn
 
+/** ATTENTION il faut redéfinir la variable IMG_BANNIERE pour chaque
+ * templates dont l'adresse n'est pas root, ici on est dans .../common/
+ * donc il faut remonter d'un dossier pour revenir à la racine puisse 
+ * aller dans /static/ ces erreurs de chemin sont empoisonnantes... */
+let IMG_BANNIERE_0, IMG_BANNIERE_1, IMG_BANNIERE_2;
+IMG_BANNIERE_0 = '../static/img/banniere.svg'
+IMG_BANNIERE_1 = '../static/img/banniere1.svg'
+IMG_BANNIERE_2 = '../static/img/banniere2.svg'
+theme.img_banniere.src = IMG_BANNIERE_0
 //fonction qui est sensé placé le scroll en position top de la page
 // à chaque  refresh: ça y est ça fonctionne !!
 
@@ -179,8 +188,7 @@ let badge_container = document.querySelector('#badge');
 badge_container.classList.add('row','justify-content-center');
 let badge = document.createElement('span');
 badge.innerHTML = "BLOG-TECH";
-badge.classList.add('btn', theme_btn,'btn-lg-auto','mb-5', theme.text_color1_800,'disabled','fs-2','fw-bold');
-main_title.appendChild(badge_container);
+badge.classList.add('btn', theme_btn,'btn-lg-auto','mb-5', 'bg','bg-primary', 'text-cyan-500','disabled','fs-2','fw-bold');
 badge_container.appendChild(badge);
 // console.log(badge_container);
 
@@ -298,7 +306,7 @@ var div_list2 = create_Taglist('div', 4);
 btn_list1 = create_Taglist('a', 4);
 btn_list2 = create_Taglist('a', 4);
 const btn_list = btn_list1.concat(btn_list2)
-class_btn = ["btn",theme_btn,"btn-lg","myZ-index-3", "col-lg-auto", "op-1", "text-center", "mt-2", "responsive"]
+class_btn = ["btn",theme_btn,"btn-lg","myZ-index-3", "col-lg-auto", "op-1", "text-center", "mt-2", "responsive", 'bg', 'bg-primary', 'text-cyan']
 class_div = ["col-lg-auto", "mx-1"]
 // ** Création d'un message d'alerte si l'utilisateur n'est pas connecté **
 const auth_alert = document.createElement("div");
@@ -375,7 +383,8 @@ div_legend = document.querySelector('#div_legend');
 div_legend.classList.add('row','justify-content-center');
 div_btn_style = document.createElement('div')
 append_children_el([div_btn_style],div_legend);
-class_btn_style = ['col-sm-auto','btn',theme_btn,'my-2','op-0'];
+class_btn_style = ['col-sm-auto','btn',theme_btn,'text-cyan-500','bg','bg-primary'
+    ,'my-2','op-0'];
 btn_style = document.createElement('button');
 btn_style.textContent = 'Changer le style';
 add_class_to_element_list([btn_style], class_btn_style);
@@ -386,16 +395,21 @@ add_class_to_element_list(btn_list, class_btn);
  * la tag_list du module color_theme.js avec les nouveaux éléments que l'on
  * a créer.*/
 theme.tag_list = Array.from(theme.tag_list);
-theme.tag_list.push(btn_list);
+theme.tag_list.push(btn_list)
+theme.tag_list.push([badge,btn_style]);
+
 
 btn_style.addEventListener('click',function()
     {   console.log("current:",main_div.style.backgroundImage);
         switch(background = get_background_number())
-        { // au départ le fond est une photo c'est le cas -1 si on veut...
+        { // au départ le fond est une photo et les boutons ont déjà un style
+        // c'est le cas -1 si on veut...
             case 0: // 1er clik: fond bleu
                 main_div.style.backgroundImage = backgrounds[background+1];
-
-                console.log("case 0: background change to background1.svg, URL"+ main_div.style.backgroundImage);
+                // on change juste l'image de fond le theme reste dans des tons
+                // bleus.
+                console.log("case 0: background change to background1.svg, URL"
+                    + main_div.style.backgroundImage);
                 break;
             case 1: // 2e clik: fond vert
                 console.log("case 1 previous URL was:"+ main_div.style.backgroundImage); 
@@ -403,16 +417,18 @@ btn_style.addEventListener('click',function()
                 console.log("case1 NEW URL:" + main_div.style.backgroundImage);
                 theme.replace_style(theme.tag_list, theme.style0,theme.style1);
                 console.log("case2 NEW URL:" + main_div.style.backgroundImage);
-                
+                theme.img_banniere.src =  IMG_BANNIERE_1;
                 break;
             case 2: //colorred
                 main_div.style.backgroundImage = backgrounds[background+1]
                 theme.replace_style(theme.tag_list, theme.style1, theme.style2)
+                theme.img_banniere.src =  IMG_BANNIERE_2;
                 break;
             case backgrounds.length - 1:     
                 console.log('final case:'+background.length+"-1")
                 main_div.style.backgroundImage = backgrounds[0]
                 theme.replace_style(theme.tag_list, theme.style2, theme.style0)
+                theme.img_banniere.src = IMG_BANNIERE_0;
         }
     });
 

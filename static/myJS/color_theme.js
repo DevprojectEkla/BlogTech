@@ -14,6 +14,13 @@ let MAIN_IMG_FILE = String("../static/img/"+ IMAGE_NAME)
 let URL_BACKGROUND = 'url('+'"'+ MAIN_IMG_FILE + '"'+')';   
 let style0, style1, style2;
 
+let img_banniere;
+img_banniere = document.querySelector('#img_banniere')
+
+let IMG_BANNIERE, IMG_BANNIERE_2;
+IMG_BANNIERE = 'static/img/banniere.svg'
+IMG_BANNIERE_2 = 'static/img/banniere2.svg'
+
 const blue = "blue";
 const indigo = "indigo";
 const purple = "purple";
@@ -238,7 +245,7 @@ let theme_btn;
 if ((color1 == 'orange' && color0 == dark)) {
     theme_btn = btn_box;
 } else {
-    theme_btn = btn_box_color1
+    theme_btn = btn_box
 
 };
 
@@ -289,6 +296,7 @@ function changeColorElementList(el_list,color)
    let strTxt, splitTxt;
    
         strTxt = title_element.textContent;
+     console.log("le titre à animer:"+title_element.textContent)
         splitTxt = strTxt.split(sep);
         title_element.textContent = "";
         for (i = 0; i < splitTxt.length; i++) 
@@ -296,8 +304,12 @@ function changeColorElementList(el_list,color)
             if(sep="")
         {
             title_element.innerHTML += "<span>" + splitTxt[i] + "</span>"+" "
+
+         console.log("le titre dans le span, inner_html:"+title_element.innerHTML);
         }else {
             title_element.innerHTML += "<span>" + splitTxt[i] + "</span>"
+
+         console.log("le titre dans le span deuxieme condition (ELSE), inner_html:"+title_element.innerHTML);
         };
         };
         const span_text = title_element.querySelectorAll('span')
@@ -449,10 +461,12 @@ const button_list = document.querySelectorAll('button')
 const tag_list = [h1_list, h2_list, h3_list, h4_list, h5_list, p_list, a_list,
     img_list, button_list, [navbar]];
 /** ========= ICI POUR CREER UNE FONCTION DE CHANGEMENT DE STYLE============*/
-style0 = ['btn-myhover-box-cyan','bg-primary']
-style1 = ['btn-myhover-box-green','bg-secondary']
-style2 = ['btn-myhover-box-tertiary', 'bg-tertiary']
+style0 = ['btn-myhover-box-cyan','bg-primary','mybox-cyan', 'text-cyan-500' ,'text-cyan-800','fw-bold']
+style1 = ['btn-myhover-box-green','bg-secondary', 'mybox-green','text-secondary_text','fw-bold']
+style2 = ['btn-myhover-box-tertiary', 'bg-tertiary', 'mybox-tertiary', 'text-cyan-500',]
 
+/**TODO faire une fonction replace or add, car on veut pouvoir ajouter
+ * certaines class dans certains cas ...*/
 function replace_style(el_list, style1,style2)
 {       for (i=0; i<el_list.length; i++)
     {
@@ -533,6 +547,7 @@ const class_list_a = ["text-decoration-none", a_color];
 export default
     {   r,
         MAIN_IMG_FILE, IMAGE_NAME, URL_BACKGROUND,
+        IMG_BANNIERE, IMG_BANNIERE_2, img_banniere, 
         blue, indigo, purple, pink, red, yellow, green,
         teal, cyan, gray, gray_drk, primary, secondary, success,
         warning, danger,
@@ -563,6 +578,7 @@ export default
 
         mybadge, mybadge_color0, mybadge_color1, mybadge_color2,
 
+        
         btn_box, btn_box_secondary, btn_box_tertiary, btn_box_color0,
         btn_box_color1, btn_box_color2,
 

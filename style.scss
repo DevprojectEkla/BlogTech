@@ -19,7 +19,7 @@ $primary_box_bg     : $primary;
 $primary_shadow_bg : $primary;
 $primary_bg_500 : $primary_box_bg;
 
-$secondary      : #346911cf;
+$secondary      : #225500cf;
 
 $secondary-100: tint-color($secondary, 80%) ;
 $secondary-200: tint-color($secondary, 60%) ;
@@ -37,6 +37,7 @@ $secondary_text_box_hover: $secondary;
 $secondary_box_bg: $secondary_bg;
 $secondary_shadow_bg: $secondary-600;
 $secondary_bg_500 : $secondary_bg;
+$secondary_text:#ff5555cf;
 
 $tertiary       : #dc3545cf;
 $tertiary_text  : red;
@@ -51,7 +52,8 @@ $colors: (
   "primary_text_hover":   $primary_text_hover,
   "primary_box_bg":     $primary_box_bg,
   "primary_shadow_bg": $primary_shadow_bg,
-  "secondary":              $secondary,  
+  "secondary":              $secondary,
+  "secondary_text": $secondary_text,
   "secondary_bg":           $secondary_bg,
   "secondary_bg_500":       $secondary_bg_500,
   "secondary_box_bg":        $secondary_box_bg,
@@ -94,6 +96,9 @@ $transition-values: (
 @import "static/scss/variables";
 // Create your own map
 $bg-tertiary: #dc3545cf;
+
+$secondary_text: $secondary_text;
+
 $red_bg:$red-300;
 $red_box_bg : red ;
 $red_shadow_bg: $red;
@@ -239,7 +244,11 @@ $custom-colors: (
     "gray-900":$gray-900,
     
     "custom-color": #f5cd8d, 
+    
     "tertiary": $tertiary,
+
+    "secondary_text": $secondary_text,
+
     "red_text_box_hover" : $red_text_box_hover,
     "red_text_hover"     : $red_text_hover,
     "red_box_bg"         : $red_box_bg,
