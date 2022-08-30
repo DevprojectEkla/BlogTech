@@ -1,4 +1,5 @@
 import theme from "./color_theme.js";
+
 var main_div = document.querySelector("#main_div")
 var section = document.getElementById('intro');
 var badge = document.querySelector('.badge');
@@ -7,11 +8,15 @@ var svg = document.querySelector('#svg_mouse');
 var svg_legend = document.querySelector('i')
 // var title = document.querySelectorAll('h2')
 // var subtitle = document.querySelectorAll('h5')
-theme.add_class_to_element_list(theme.h2_list,['bg',theme.text_color1_500,
-                                              'bg-primary','rounded'])
-theme.add_class_to_element_list(theme.h5_list,[theme.text_color1_900])
+theme.add_class_to_element_list(theme.h2_list,['bg',theme.text_color1,
+                                              'bg-primary','rounded','mt-10'])
+theme.add_class_to_element_list(theme.h5_list,[theme.text_color1, 'bg','bg-primary'])
+theme.add_class_to_element_list(theme.img_list,theme.class_list_img)
+
 svg.setAttribute('fill',theme.color1) //pour régler la couleur de l'icone en fonction du theme
 svg_legend.classList.add(theme.text_color1_nuance1)
+
+
 // console.log(section);
 // console.log(badge);
 // console.log(section.children.length);
@@ -20,11 +25,11 @@ svg_legend.classList.add(theme.text_color1_nuance1)
 let container;
 container = section.children
 
-main_div.style.zIndex = "-4"; 
-main_div.style.backgroundImage = "url('../static/img/fond_div.svg')";
-main_div.style.Height = "auto";
-main_div.style.minWidth = "100%";
-main_div.style.backgroundRepeat = "no-repeat";
+// main_div.style.zIndex = "-4"; 
+// main_div.style.backgroundImage = "url('../static/img/fond_div.svg')";
+// main_div.style.Height = "auto";
+// main_div.style.minWidth = "100%";
+// main_div.style.backgroundRepeat = "no-repeat";
 
 
 section.classList.replace("invisible","visible")
@@ -68,7 +73,7 @@ if ( scrollPos == 0){console.log(scrollPos);scrollAnimation;};
 */
 TweenMax.fromTo
   (
-    container[0],
+    container[1],
       {
         opacity: 0,
         x: -300,
@@ -77,11 +82,11 @@ TweenMax.fromTo
         x: 0,
         scrollTrigger:
         {
-          trigger: container[0],
+          trigger: container[1],
           container: "#section2",
           start: "top 30%",
-          end: "bottom 80%",
-          // markers: {fontSize: "2rem"},
+          end: "bottom-=80px 70%",
+          markers: {fontSize: "2rem"},
           scrub: .5, //or a number in second
           //toggleClass: "invisible",
           toggleActions: "restart none none none",
@@ -92,13 +97,13 @@ TweenMax.fromTo
 
         },
         opacity: 1,
-        duration: 2
+        duration: 1.25
       }
   );
 // === ANIMATION DES AUTRES ARTICLES  ====
 // nb: l'animation est différente à cause de la position des triggers start et end
 let i; 
-for (i = 1; i < section.children.length; i++) {
+for (i = 2; i < section.children.length; i++) {
   TweenMax.fromTo
     (
       container[i],

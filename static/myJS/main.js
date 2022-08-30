@@ -9,7 +9,7 @@ body        = document.body;
 favicon     = document.querySelector('#favicon')
 
 div_title   =       document.querySelector('#title')
-portail_title       = document.querySelector('h1');
+portail_title       = document.querySelector('#portail_titlte');
 
 if (!user_authenticated){ 
 portail     = document.querySelector('#portail')
@@ -29,6 +29,20 @@ main_div    = document.querySelector("#main_div");
  * qu'il clique sur preview. Pour cela on a besoin d'une variable qui indique
  * si l'utlisateur est connecté et une variable pour savoir si l'utilisateur 
  * est sur la page d'Aperçu dont l'url contient le nom 'common'*/
+
+/**================================== 
+ * STYLE POUR LES LIENS DE LA NAVBAR:
+ * ==================================
+ */
+let nav_link;
+nav_link = document.querySelectorAll('.nav-link')
+let navbar_class_list;
+navbar = document.querySelector('#id_navbar')
+navbar_class_list = ['bg', 'bg-primary', 'navbar', 'navbar-expand-lg',
+'fixed-top'];
+theme.add_class_to_element_list([navbar], navbar_class_list)
+theme.add_class_to_element_list(nav_link, [theme.text_color1])
+
 
 
 let preview;
@@ -82,10 +96,13 @@ if(btn_preview)
     theme.add_class_to_element_list([btn_login,btn_signup,btn_preview],
         theme.class_color_theme)
 }
+
 theme.add_class_to_element_list(theme.button_list, theme.class_color_theme)
+if(btn_publications)
+{
 theme.add_class_to_element_list([btn_publications, btn_boutique,btn_retourPA],
     theme.class_color_theme)
-
+}
 /**========================================= 
  * ============= Title Animation =========== 
  * =========================================*/

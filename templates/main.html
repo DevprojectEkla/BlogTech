@@ -29,7 +29,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'home'%}">Page d'Accueil</a>
         </li>
-          {% if user.is_superuser %}
+{% if user.is_superuser %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'main'%}admin">Admin</a>
         </li>
@@ -46,7 +46,7 @@
             <li><a class="dropdown-item" href="">Editer le Post</a></li>
           </ul>
         </li>
-          {% endif %}
+{% endif %}
         
         <li class="nav-item">
           {% if not user.is_authenticated %}
@@ -94,7 +94,7 @@
   <script type="text/javascript"> var user_authenticated = false 
         </script>
      <div id="title"> 
-          <div id="portail" class=""> <h1>Portail d'accès à mon site web</h1></div>
+          <div id="portail" class=""> <h1 id="portail_title">Portail d'accès à mon site web</h1></div>
       </div>
   {% endif %}
   
@@ -138,6 +138,7 @@
 <!--=====================================================================
 ================================= END OF SCRIPTS ========================
 =========================================================================-->
+ </div>
 
     {% block content %}
 
@@ -148,10 +149,9 @@
     {% block edit-post %}
 
     {% endblock %}
- </div>
 
  </body>
-<footer class="bg bg-primary position-sticky bottom-0 end-0"> {% block footer %}
+<footer class="bg position-sticky bottom-0 end-0"> {% block footer %}
   {% endblock%} <strong> Copyright © 2022,  Tous droits réservés. Auteur du site: Ekla HSV-MWF.</strong>
 </footer>
 

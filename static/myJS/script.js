@@ -89,12 +89,16 @@ add_class_to_element_list(theme.p_list, theme.class_list_p)
 */
 let main_div;
 main_div = document.querySelector("#main_div");
-main_div.style.backgroundImage = theme.URL_BACKGROUND//"url('../static/img/cybersecurite.jpg')";
-
+main_div.style.backgroundImage = theme.URL_BANNIERE//"url('../static/img/cybersecurite.jpg')";
 main_div.style.backgroundSize = "contain";
-// main_div.style.backgroundRepeat = "no-repeat";
+main_div.style.backgroundRepeat = "no-repeat";
+main_div.style.backgroundWidth = "100%";
+main_div.style.backgroundRepeat = "repeat";
 
-
+let slide_preview;
+slide_preview = document.querySelector('#slide_preview');
+slide_preview.style.backgroundImage = theme.URL_BACKGROUND;
+slide_preview.style.backgroundSize = "contain";
 
 /** ==============================
  * Ajout des ombres aux images ***
@@ -324,14 +328,15 @@ class_btn_position = ["btn","btn-lg-auto","myZ-index-3", "op-1", "text-center", 
 class_div = ["col-lg-auto", "mx-1"]
 // ** Création d'un message d'alerte si l'utilisateur n'est pas connecté **
 const auth_alert = document.createElement("div");
-auth_alert.classList.add("alert","alert-"+theme.color1_200)
+auth_alert.classList.add("alert","alert-"+theme.color1)
 auth_alert.setAttribute('role','alert');
 auth_alert.style.zIndex = 3;
 auth_alert.textContent = "Il faut être connecté pour lire les articles"
 
 // ** Bouton close pour fermer la fenêtre d'alerte
 const close_btn = document.createElement('button');
-close_btn.classList.add("mybtn-close", theme.theme_btn);// il y a aussi "btn-close-white"
+close_btn.classList.add("mybtn-close");// il y a aussi "btn-close-white"
+add_class_to_element_list([close_btn],theme.class_color_theme)
 close_btn.setAttribute("data-bs-dismiss","alert");
 close_btn.setAttribute("aria-label","Close");
 
@@ -343,11 +348,11 @@ const redirect_link2 = document.createElement("a");
 
 redirect_link1.style.zIndex = 3;
 redirect_link1.textContent = "Cliquez ici pour vous inscrire"
-redirect_link1.classList.add(theme.mybadge_color1,"bg",theme.bg_color0_600, "text-decoration-none","border", theme.border_color2)
+redirect_link1.classList.add(theme.mybadge_color1,"bg",'bg-primary', "text-decoration-none","border", theme.border_color1)
 redirect_link1.setAttribute('href','/signup');
 redirect_link2.style.zIndex = 3;
 redirect_link2.textContent = "ou ici pour vous connecter"
-redirect_link2.classList.add(theme.mybadge_color1, "bg",theme.bg_color0_600,"text-decoration-none", "border",theme.border_color2)
+redirect_link2.classList.add(theme.mybadge_color1, "bg",'bg-primary',"text-decoration-none", "border",theme.border_color1)
 redirect_link2.setAttribute('href','/login');
 
 //ajout des classes sur les différents éléments:
@@ -387,7 +392,7 @@ for (i=0; i<4;i++)
        backgrounds.push('url('+'"'+ background_name + '"'+')');
     }
 console.log(backgrounds)
-function get_background_number () {return backgrounds.indexOf(main_div.style.backgroundImage);}
+function get_background_number () {return backgrounds.indexOf(slide_preview.style.backgroundImage);}
 console.log (get_background_number())
 
 let btn_style;
@@ -397,7 +402,7 @@ div_legend = document.querySelector('#div_legend');
 div_legend.classList.add('row','justify-content-center');
 div_btn_style = document.createElement('div')
 append_children_el([div_btn_style],div_legend);
-class_btn_style = ['col-sm-auto','btn',theme_btn,'text-cyan-500','bg','bg-primary'
+class_btn_style = ['col-sm-auto','btn',theme_btn,'text-cyan','bg','bg-primary'
     ,'my-2','op-0'];
 btn_style = document.createElement('button');
 btn_style.textContent = 'Changer le style';
@@ -414,33 +419,33 @@ theme.tag_list.push([badge,btn_style]);
 
 
 btn_style.addEventListener('click',function()
-    {   console.log("current:",main_div.style.backgroundImage);
+    {   console.log("current:",slide_preview.style.backgroundImage);
         switch(background = get_background_number())
         { // au départ le fond est une photo et les boutons ont déjà un style
         // c'est le cas -1 si on veut...
             case 0: // 1er clik: fond bleu
-                main_div.style.backgroundImage = backgrounds[background+1];
+                slide_preview.style.backgroundImage = backgrounds[background+1];
                 // on change juste l'image de fond le theme reste dans des tons
                 // bleus.
                 console.log("case 0: background change to background1.svg, URL"
-                    + main_div.style.backgroundImage);
+                    + slide_preview.style.backgroundImage);
                 break;
             case 1: // 2e clik: fond vert
-                console.log("case 1 previous URL was:"+ main_div.style.backgroundImage); 
-                main_div.style.backgroundImage = backgrounds[background+1]//"url('../static/img/cybersecurite.jpg')";
-                console.log("case1 NEW URL:" + main_div.style.backgroundImage);
+                console.log("case 1 previous URL was:"+ slide_preview.style.backgroundImage); 
+                slide_preview.style.backgroundImage = backgrounds[background+1]//"url('../static/img/cybersecurite.jpg')";
+                console.log("case1 NEW URL:" + slide_preview.style.backgroundImage);
                 theme.replace_style(theme.tag_list, theme.style0,theme.style1);
-                console.log("case2 NEW URL:" + main_div.style.backgroundImage);
+                console.log("case2 NEW URL:" + slide_preview.style.backgroundImage);
                 theme.img_banniere.src =  IMG_BANNIERE_1;
                 break;
             case 2: //colorred
-                main_div.style.backgroundImage = backgrounds[background+1]
+                slide_preview.style.backgroundImage = backgrounds[background+1]
                 theme.replace_style(theme.tag_list, theme.style1, theme.style2)
                 theme.img_banniere.src =  IMG_BANNIERE_2;
                 break;
             case backgrounds.length - 1:     
                 console.log('final case:'+background.length+"-1")
-                main_div.style.backgroundImage = backgrounds[0]
+                slide_preview.style.backgroundImage = backgrounds[0]
                 theme.replace_style(theme.tag_list, theme.style2, theme.style0)
                 theme.img_banniere.src = IMG_BANNIERE_0;
         }
@@ -691,9 +696,9 @@ addAnimation(btn_list, 0);
 TweenMax.fromTo(btn_list1[0], 1, { rotation: 0, backgroundColor: "" },
   {
     rotation: 360,
-    backgroundColor: theme.color1_nuance1,
-    borderColor: theme.color1_800,
-    color : theme.color1_800
+    backgroundColor: theme.color1,
+    borderColor: 'red',
+    color : theme.color1
   }).delay(6);
 
 let angle1;

@@ -1,5 +1,14 @@
 import theme from "./color_theme.js";
 
+let slide_background = document.querySelector('#slide')
+slide_background.style.backgroundImage = theme.URL_BACKGROUND
+slide_background.style.backgroundSize = "cover";
+slide_background.style.backgroundPosition = "center";
+slide_background.style.Height = "auto";
+slide_background.style.minHeight = "100vh";
+
+theme.add_class_to_element_list(theme.h5_list, theme.class_list_h5)
+
 let p_el_list;
 p_el_list = theme.p_list
 console.log('myp_el_list:%s',p_el_list)
@@ -9,7 +18,9 @@ theme.add_class_to_element_list(p_el_list,theme.class_list_p)
 
 let btn_publish;
 btn_publish = document.querySelector('#btn_publish')
-btn_publish.classList.add(theme.theme_btn)
+theme.add_class_to_element_list([btn_publish],theme.class_color_theme)
+
+
 
 let card_com;
 card_com = document.querySelector('#card_container')
@@ -35,8 +46,8 @@ let btn_pagination_list;
 btn_pagination_list = document.querySelectorAll(".page-link")
 console.log(theme.color1_CSS)
 console.log(theme.r)
-theme.changeColorElementList(btn_pagination_list,theme.color1_CSS)
-theme.add_class_to_element_list(btn_pagination_list,['btn',theme.theme_btn])
+theme.changeColorElementList(btn_pagination_list,theme.color1)
+theme.add_class_to_element_list(btn_pagination_list,theme.class_color_theme)
 
 
 /**========================================================
@@ -57,30 +68,35 @@ p_list = Array.from(theme.p_list)
 console.log(img_list)
 theme.myScrollTrig(img_list.splice(2).concat(p_list).concat(card_com));
 
-
-
-let commentaire; 
-let class_style_commentaire;
-commentaire = document.querySelectorAll('h5')
-if (commentaire)
-{
-class_style_commentaire = [theme.text_color1_500,theme.bg_color0, 'rounded',theme.border.bg_color1_500];
-theme.add_class_to_element_list(commentaire,class_style_commentaire);
-}
+// let commentaire; 
+// let class_style_commentaire;
+// commentaire = document.querySelectorAll('h5')
+// if (commentaire)
+// {
+// class_style_commentaire = [theme.text_color1_500,theme.bg_color0, 'rounded',theme.border.bg_color1];
+// theme.add_class_to_element_list(commentaire,class_style_commentaire);
+// }
 let span_com; 
 let span_com_list;
+console.log(head_article[0].textContent)
 span_com = document.querySelectorAll('span')
-span_com_list = [theme.text_color0_500,'rounded']
+span_com = Array.from(span_com)
+// une expression un peu compliquee... il y a des spans dans le titre h1
+// ici span com fait référence au champ de la card-commentaire
+// qui correspond au nom d'utilisateur et on veut seulement ce span.
+span_com = span_com.splice(head_article[0].textContent.split(" ").length)
+
+span_com_list = [theme.text_color1,'bg','bg-primary','rounded']
 theme.add_class_to_element_list(span_com,span_com_list)
 
 let card_body;
 let card_body_list;
 card_body = document.querySelectorAll('.card-body')
-card_body_list = [theme.text_color0_500,theme.bg_color1_200, 'rounded','myshadow-box']
+card_body_list = [theme.text_color1,'bg','bg-primary', 'rounded','myshadow-box']
 theme.add_class_to_element_list(card_body,card_body_list)
 
 let card_container;
 let card_container_list;
 card_container = document.querySelectorAll('#card_container')
-card_container_list = [theme.text_color0_500,theme.bg_color1_200, 'rounded','myshadow-box']
+card_container_list = [theme.text_color1,theme.bg_color1,'bg', 'bg-primary', 'rounded','myshadow-box']
 theme.add_class_to_element_list(card_container,card_container_list)

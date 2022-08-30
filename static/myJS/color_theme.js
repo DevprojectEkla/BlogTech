@@ -17,9 +17,11 @@ let style0, style1, style2;
 let img_banniere;
 img_banniere = document.querySelector('#img_banniere')
 
-let IMG_BANNIERE, IMG_BANNIERE_2;
+let IMG_BANNIERE, IMG_BANNIERE_2, IMG_BANNIERE_3;
 IMG_BANNIERE = 'static/img/banniere.svg'
 IMG_BANNIERE_2 = 'static/img/banniere2.svg'
+IMG_BANNIERE_3 = '../static/img/fond_div.svg'
+let URL_BANNIERE = 'url('+ '"' + IMG_BANNIERE_3
 
 const blue = "blue";
 const indigo = "indigo";
@@ -261,18 +263,6 @@ let btn_list;
 let i;
 
 
-/**================================== 
- * STYLE POUR LES LIENS DE LA NAVBAR:
- * ==================================
- */
-let nav_link;
-nav_link = document.querySelectorAll('.nav-link')
-let navbar, navbar_class_list;
-navbar = document.querySelector('#id_navbar')
-navbar_class_list = ['bg', bg_primary, 'navbar', 'navbar-expand-lg',
-'fixed-top'];
-add_class_to_element_list([navbar], navbar_class_list)
-
 /**============================
  * Fonctions simples à exporter
  * ============================
@@ -303,16 +293,17 @@ function changeColorElementList(el_list,color)
         strTxt = title_element.textContent;
      console.log("le titre à animer:"+title_element.textContent)
         splitTxt = strTxt.split(sep);
+     console.log(splitTxt)
         title_element.textContent = "";
         for (i = 0; i < splitTxt.length; i++) 
         {
-            if(sep="")
+            if(sep == "")
         {
-            title_element.innerHTML += "<span>" + splitTxt[i] + "</span>"+" "
+            title_element.innerHTML += "<span>" + splitTxt[i] + "</span>"
 
          console.log("le titre dans le span, inner_html:"+title_element.innerHTML);
-        }else {
-            title_element.innerHTML += "<span>" + splitTxt[i] + "</span>"
+        } else {
+            title_element.innerHTML += "<span>" + splitTxt[i] + "</span>"+ " "
 
          console.log("le titre dans le span deuxieme condition (ELSE), inner_html:"+title_element.innerHTML);
         };
@@ -411,10 +402,9 @@ function add_class_to_element_list(el_list, class_list = ['btn', 'btn-dark']) {
     return (el_list);
 };
 
-add_class_to_element_list(nav_link, [text_color1_400])
-
-
-
+let navbar, nav_link;
+nav_link = document.querySelectorAll('.nav-link')
+navbar = document.querySelector('#id_navbar')
 
 let logout;
 logout = document.querySelector('#logout')
@@ -425,7 +415,7 @@ if (logout) {
 
 
 let footer = document.querySelector('footer')
-footer.classList.add(text_color1_400)
+footer.classList.add(text_color1,'bg-primary')
 
 btn_list = document.querySelectorAll('.btn')
 
@@ -439,7 +429,7 @@ if (portail) {
 
 /**===============COULEUR BACKGROUND PRINCIPAL======================*/
 const mybody = document.body
-mybody.classList.add("bg", bg_color1, bg_gradient2)
+mybody.classList.add("bg", "bg-primary", bg_gradient2)
 
 /**===============STYLE FAVICON======================*/
 const favicon = document.querySelector('#favicon')
@@ -449,7 +439,6 @@ if (favicon) {
 }
 
 /** ============== DECLARATION DES VARIABLES POUR LES TAGS ================ */
-
 const h1_list = document.querySelectorAll('h1')
 const h2_list = document.querySelectorAll('h2')
 const h3_list = document.querySelectorAll('h3')
@@ -460,12 +449,13 @@ const a_list = document.querySelectorAll('a')
 const img_list = document.querySelectorAll('img')
 const button_list = document.querySelectorAll('button')
 const label_list = document.querySelectorAll('label')
+const span_list = document.querySelectorAll('span')
 const tag_list = [h1_list, h2_list, h3_list, h4_list, h5_list, p_list, a_list,
-    img_list, button_list, [navbar]];
+    img_list, button_list, span_list, [navbar],[footer],[mybody]];
 /** ========= ICI POUR CREER UNE FONCTION DE CHANGEMENT DE STYLE============*/
-style0 = ['btn-myhover-box-cyan','bg-primary','mybox-cyan',"border-cyan", "text-cyan", 'text-cyan-500' ,'text-cyan-800','fw-bold']
+style0 = ['btn-myhover-box-cyan','bg-primary','mybox-cyan',"border-cyan", "text-cyan",'fw-bold']
 style1 = ['btn-myhover-box-green','bg-secondary', 'mybox-green', 'border-tertiary','text-secondary_text','fw-bold']
-style2 = ['btn-myhover-box-tertiary', 'bg-tertiary', 'mybox-tertiary', 'text-cyan-500',]
+style2 = ['btn-myhover-box-tertiary', 'bg-tertiary', 'mybox-tertiary', 'border-primary','text-cyan']
 
 /**TODO faire une fonction replace or add, car on veut pouvoir ajouter
  * certaines class dans certains cas ...*/
@@ -503,18 +493,18 @@ console.log('theme primary:%s', theme_primary)
  * certains titre à color2 ou color3 (cette dernière couleur n'est 
  * pas encore implémentée)
 */
-var h1_color = text_color1_nuance1
-var h2_color = text_color1_nuance1
-var h3_color = text_color1_nuance1
-var h4_color = text_color1_nuance1
-var h5_color = text_color1_nuance1
-var p_color = text_color1_nuance1
-var a_color = text_color1_nuance1
+var h1_color = text_color1
+var h2_color = text_color1
+var h3_color = text_color1
+var h4_color = text_color1
+var h5_color = text_color1
+var p_color = text_color1
+var a_color = text_color1
 if (color0 == dark)
 {
- p_color = text_color1_200
+ p_color = text_color1
 };
-var img_color = text_color1_500
+var img_color = text_color1
 
 /** ============ CREATION DES CLASSLIST POUR NOS TAGS ==================== */
 
@@ -524,16 +514,16 @@ const class_list_h1 = ["display-4", "fw-bold",'bg','bg-primary',
 const class_list_h2 = ["display-4",'bg','bg-primary', "rounded",
                       h2_color];
 const class_list_h3 = ['col-sm-auto',"font-weight-light", "p-4", "border", "border-2",
-                      'bg','bg-primary', border_color1_500, "ms-4",
+                      'bg','bg-primary', border_color1, "ms-4",
                       "rounded", h3_color];
 const class_list_h4 = ["display-4", 'col-sm-auto', 'bg','bg-primary', "rounded",
                       h4_color];
-const class_list_h5 = ["text-center", "fw-bold",'bg','bg-primary', 'border',
-                      'border-2', border_color1_500, "rounded", 'col-sm-auto',
+const class_list_h5 = ['col-sm-auto', "text-center", "fw-bold",'bg','bg-primary', 'border',
+                      'border-2', border_color1, "rounded",
                       h5_color];
-const class_list_p = ["lead", "p-4", "border-start", "border-2", "rounded",  
-                     'bg','bg-primary', border_color1_500,"col-sm-auto",
-                     "ms-4-2", p_color];
+const class_list_p = ["col-sm-auto","lead", "p-4", "border-start", "border-2", "rounded",  
+                     'bg','bg-primary', border_color1,
+                     "ms-4-2", p_color,'fw-bold'];
 const class_list_img = ["display-2", "fw-bold", img_color,"rounded"];
 const class_list_a = ["text-decoration-none", a_color];
 const class_list_label = ["bg", 'bg-primary', 'rounded', "border",
@@ -550,7 +540,7 @@ const class_list_label = ["bg", 'bg-primary', 'rounded', "border",
 export default
     {   r,
         MAIN_IMG_FILE, IMAGE_NAME, URL_BACKGROUND,
-        IMG_BANNIERE, IMG_BANNIERE_2, img_banniere, 
+        IMG_BANNIERE, IMG_BANNIERE_2, URL_BANNIERE, img_banniere, 
         blue, indigo, purple, pink, red, yellow, green,
         teal, cyan, gray, gray_drk, primary, secondary, success,
         warning, danger,

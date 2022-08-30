@@ -1,18 +1,27 @@
 {% extends 'main.html'  %}
 {% load static %}
 {% block content %}
-
+<div id="slide">
 <div id="container" class="container">
     <div class="row justify-content-center">
-<h1 class="col-12 text-center pb-1"> {{article.title}}</h1>
+        <div> 
+            <h1 class="col-12 text-center pb-1"> {{article.title}}</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-auto text-center"> 
+                <h5>{{article.date}}</h5>
+            </div>
+        </div>
+    </div>
 <!--<img class=" figure col-6 img-thumbnail mb-5" src="{{article.image.url}}" alt="image de l'article {{article.slug}}">
  cette ligne vaut dans le cas où l'on a uploadé une image dans la database mais heroku supprime les images uploadés
   par les utilisateurs (à moins de payer un addon) en attendant mieux je fais pointer la source vers une image statique
   qui va avec l'application-->
-<img id="id_img" class=" figure w-50 h-50 rounded my-5 img-fluid" src="{% static '' %}{{article.image}}" alt="image:{{article.image}}">
-
-
-<div class="col-12 justify-content-start"><p id="id_texte" class="border-start border-4 fs-40 p-2"> {{article.text}}</p> </div>
+  <div class="text-center mt-5">  
+  <img id="id_img" class=" col-sm-6" src="{% static '' %}{{article.image}}" alt="image:{{article.image}}">
+  </div>
+ 
+<div class="col-12 justify-content-start mt-2"><p id="id_texte" class="border-start border-4 fs-40 p-2"> {{article.text}}</p> </div>
 {% if user.is_superuser %}
 <div class="text-center">
 <a class="btn btn-outline-warning my-2" href="{% url 'edit-post' article.slug %}">Editer cet article</a>
@@ -21,7 +30,6 @@
     </div>
 {% endif %}
     </div>
- </div>
 
  {% if all_article_comments %}
     <div id="card_container" class="">
@@ -47,11 +55,11 @@
     <div class="container text-center">
         <form method="POST">
             {% csrf_token %}
-
-            <div class="col-auto btn btn-myhover-box mt-3 mb-2">
-                <label class="lead" for="commentaire">Ajouter un commentaire:</label>
+            <div class="row justify-content-center">
+            <div id="add_comment" class="col-sm-auto mt-3 mb-2">
+                <button class="btn" for="commentaire">Ajouter un commentaire:</button>
             </div>
-
+            </div>
             <div class="input-group row justify-content-center" >
                 <div class="container col-4 mb-2"><div class="input-group-prepend ">
                     <span class="input-group-text fw-bold">{{user.username}}</span>
@@ -88,4 +96,6 @@
 </nav>
 </div>
 <script type = "module" src="{%static '/myJS/detail_article.js' %}"></script>
+
+</div>
 {% endblock %}
