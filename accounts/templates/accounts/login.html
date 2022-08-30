@@ -1,22 +1,25 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block content %}
-<div class="row text-center">
-<h1 class="login-text">Se connecter</h1>
+<div class="row justify-content-center">
+    <h4 class="login-text">Se connecter</h4> </div>
 <form method = "POST">
   {% csrf_token %}
   <div class="row justify-content-center">
-  <p class="col-sm-6">
+  <p class="col-sm-auto">
     <!--<label for="username"> Nom d'utilisateur: </label>-->
     <input id="username" class="" type="text" name="username" placeholder="Username">
   </p>
     </div>
-  <p>
+    <div class="row justify-content-center">
+  <p class="col-sm-auto">
      <!--<label for="password"> Mot de Passe:  </label>-->
     <input id="password" type="password" name="password" placeholder="password">
-  </p>
-  <button class= "btn" type="submit"> Connexion </button>
-</form>
+  </p>  </div> 
+  
+  <div class= "row justify-content-center" > <button class= "btn col-sm-auto" type="submit"> Connexion </button>
+</div>   
+  </form>
 <a class="" href="{% url 'signup' %}">pas encore inscrit?</a>
   </div>
 <script type="module" src="{% static '/myJS/login.js' %}"> </script>

@@ -25,10 +25,11 @@
         </div> 
         </div> 
     </div>
+    <div class="mt-5"></div>
     </section>
     <section id="section2">
         <div></div>
-        <div id="demo" class="carousel slide card-title text-center" data-bs-ride="carousel"> {{object.carousel_name}}
+        <div id="demo" class="carousel slide card-title text-center" data-bs-ride="carousel"> <span id="carousel_name">{{object.carousel_name}}</span>
             <div id="carousel" class="carousel-inner"> <div class="carousel-item active" data-bs-interval="4000">
                         <img src="{% static 'img/python-django3.png' %}" alt="Carrousel slide 1" class="text-center">
                 </div><div class="carousel-item card-img-top" data-bs-interval="3000">
@@ -46,10 +47,10 @@
                 </div><div class="carousel-item" data-bs-interval="2000">
                         <img src="{% static 'img/heroku2.png' %}" alt="Carrousel slide 7" class="text-center">
                 </div></div>
-        </div>  <div>
+        </div>  <div class="row justify-content-center">
                 <h3 id="title1" class=" "> {{object.first_title_h3}} </h3>
         </div>
-            <div>
+            <div class='row'>
             <div class="p"> {{object.first_p |safe |linebreaks }} <a class="a-color" href="{{object.first_link}}">{{object.first_link}}</a></div>
                 <div class="a-color text-inline"> 
                 </div>
@@ -64,7 +65,7 @@
         <script type="text/javascript"> var user_authenticated = false 
         </script>
         <div id="signup" class="justify-content-center text-center">
-            <a href="{% url 'main' %}login" class="btn btn-lg col-sm-5 btn-myhover-box text-center position-relative bottom-0 visible">
+            <a id="btn_signup" href="{% url 'main' %}login" class="btn btn-lg col-sm-5 position-relative bottom-0 visible">
                 Inscrivez-vous et/ou connectez-vous pour lire la suite. </a>
         </div>
     {% endif %}

@@ -241,13 +241,18 @@ const bg_color1_900 = "bg-" + color1 + "-900";
  * ==========================================================================
 */
 
-let theme_btn;
-if ((color1 == 'orange' && color0 == dark)) {
-    theme_btn = btn_box;
-} else {
-    theme_btn = btn_box
+// let 
+// theme_btn;
+// if ((color1 == 'orange' && color0 == dark)) {
+//     theme_btn = btn_box;
+// } else {
+//     theme_btn = btn_box
 
-};
+// };
+
+//NB: btn_box = 'btn-myhover-box'
+let class_color_theme;
+class_color_theme = [btn_box, 'rounded','bg','bg-primary', 'text-cyan']
 
 /** ================== STYLE POUR LE PORTAIL DU SITE ===================== */
 let portail;
@@ -424,10 +429,6 @@ footer.classList.add(text_color1_400)
 
 btn_list = document.querySelectorAll('.btn')
 
-for (i = 0; i < btn_list.length; i++) {
-    btn_list[i].classList.add(theme_btn)
-}
-
 if (portail) {
     let img;
     img = document.querySelector('#banniere');
@@ -458,11 +459,12 @@ const p_list = document.querySelectorAll('p')
 const a_list = document.querySelectorAll('a')
 const img_list = document.querySelectorAll('img')
 const button_list = document.querySelectorAll('button')
+const label_list = document.querySelectorAll('label')
 const tag_list = [h1_list, h2_list, h3_list, h4_list, h5_list, p_list, a_list,
     img_list, button_list, [navbar]];
 /** ========= ICI POUR CREER UNE FONCTION DE CHANGEMENT DE STYLE============*/
-style0 = ['btn-myhover-box-cyan','bg-primary','mybox-cyan', 'text-cyan-500' ,'text-cyan-800','fw-bold']
-style1 = ['btn-myhover-box-green','bg-secondary', 'mybox-green','text-secondary_text','fw-bold']
+style0 = ['btn-myhover-box-cyan','bg-primary','mybox-cyan',"border-cyan", "text-cyan", 'text-cyan-500' ,'text-cyan-800','fw-bold']
+style1 = ['btn-myhover-box-green','bg-secondary', 'mybox-green', 'border-tertiary','text-secondary_text','fw-bold']
 style2 = ['btn-myhover-box-tertiary', 'bg-tertiary', 'mybox-tertiary', 'text-cyan-500',]
 
 /**TODO faire une fonction replace or add, car on veut pouvoir ajouter
@@ -518,23 +520,24 @@ var img_color = text_color1_500
 
 
 const class_list_h1 = ["display-4", "fw-bold",'bg','bg-primary',
-                      "rounded", h1_color];
-const class_list_h2 = ["display-4", "fw-bold",'bg','bg-primary', "rounded",
+                      "rounded", h1_color,'col-sm-auto'];
+const class_list_h2 = ["display-4",'bg','bg-primary', "rounded",
                       h2_color];
-const class_list_h3 = ["font-weight-light", "p-4", "border-start", "border-2",
-                      'bg','bg-primary', border_color1_500,"col-sm-auto", "ms-4",
+const class_list_h3 = ['col-sm-auto',"font-weight-light", "p-4", "border", "border-2",
+                      'bg','bg-primary', border_color1_500, "ms-4",
                       "rounded", h3_color];
-const class_list_h4 = ["display-4", "fw-bold",'bg','bg-primary', "rounded",
+const class_list_h4 = ["display-4", 'col-sm-auto', 'bg','bg-primary', "rounded",
                       h4_color];
 const class_list_h5 = ["text-center", "fw-bold",'bg','bg-primary', 'border',
-                      'border-2', border_color1_500, "rounded",
+                      'border-2', border_color1_500, "rounded", 'col-sm-auto',
                       h5_color];
 const class_list_p = ["lead", "p-4", "border-start", "border-2", "rounded",  
                      'bg','bg-primary', border_color1_500,"col-sm-auto",
                      "ms-4-2", p_color];
 const class_list_img = ["display-2", "fw-bold", img_color,"rounded"];
 const class_list_a = ["text-decoration-none", a_color];
-
+const class_list_label = ["bg", 'bg-primary', 'rounded', "border",
+'border-primary','text-cyan'];
 
 
 /** ========== EXPORTATION DES VARIABLES DE COULEUR ========
@@ -561,7 +564,7 @@ export default
         color1_700, color1_800, color1_900,
         color2_700, color2_800, color2_900,
 
-        theme_primary, theme_btn,
+        theme_primary,
 
         border, border_color0, 
         border_color1, border_color1_nuance1 ,
@@ -606,7 +609,11 @@ export default
 
         tag_list, style0, style1, style2, replace_style,
         h1_list, h2_list, h3_list, h4_list, h5_list, p_list, img_list, a_list,
-        
-        class_list_h1, class_list_h2, class_list_h3, class_list_h4, class_list_h5, class_list_p, class_list_a, class_list_img,
-        replace_class_to_element_list, add_class_to_element_list, title_animation, myScrollTrig, changeColorElement, changeColorElementList,
+        label_list, button_list,
+
+        class_list_h1, class_list_h2, class_list_h3, class_list_h4, class_list_h5,
+        class_list_p, class_list_a, class_list_img, class_list_label,
+        class_color_theme,
+        replace_class_to_element_list, add_class_to_element_list, title_animation,
+        myScrollTrig, changeColorElement, changeColorElementList,
     } 

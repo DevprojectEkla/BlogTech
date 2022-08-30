@@ -171,6 +171,13 @@ if (btnbtt) {//cf.com plus haut pour le if.
   });
 };
 
+let btn_signup;
+btn_signup = document.querySelector('#btn_signup')
+if(btn_signup)
+{
+    theme.add_class_to_element_list([btn_signup],theme.class_color_theme);
+}
+
 /** =========================================================
  *          ANIMATION TITRE BIENVENUE SUR MON BLOG
  * ==========================================================
@@ -188,7 +195,14 @@ let badge_container = document.querySelector('#badge');
 badge_container.classList.add('row','justify-content-center');
 let badge = document.createElement('span');
 badge.innerHTML = "BLOG-TECH";
-badge.classList.add('btn', theme_btn,'btn-lg-auto','mb-5', 'bg','bg-primary', 'text-cyan-500','disabled','fs-2','fw-bold');
+// On crée deux listes de classe distinctes pour le théme et pour ce qui 
+// est spécifique à ce bouton en particulier.
+let class_badge_position;
+class_badge_position = ['btn-lg-auto','mb-5', 'disabled']
+theme.add_class_to_element_list([badge],class_badge_position.concat(theme.class_color_theme))
+
+
+badge.classList.add('btn', 'fs-2','fw-bold');
 badge_container.appendChild(badge);
 // console.log(badge_container);
 
@@ -233,8 +247,8 @@ const main_img = document.querySelector('#main_image');
 const my_legend = document.querySelector('#subtitle');
 my_legend.classList.add("op-0",'col-sm-auto');
 let carousel_name;
-carousel_name = document.querySelector('#demo')
-carousel_name.classList.add('container','rounded',theme.p_color,'my-5')
+carousel_name = document.querySelector('#carousel_name')
+theme.add_class_to_element_list([carousel_name],['bg','bg-primary','rounded','text-cyan','p-2','mt-5']);
 let carousel_img_list;
 carousel_img_list = document.querySelectorAll('.carousel-item')
 console.log(carousel_img_list)
@@ -297,7 +311,7 @@ function removeClassOnDelay(el_list,className,dtime)
 */
 let btn_list1;
 let btn_list2;
-let class_btn;
+let class_btn_position;
 let class_div;
 
 
@@ -306,7 +320,7 @@ var div_list2 = create_Taglist('div', 4);
 btn_list1 = create_Taglist('a', 4);
 btn_list2 = create_Taglist('a', 4);
 const btn_list = btn_list1.concat(btn_list2)
-class_btn = ["btn",theme_btn,"btn-lg","myZ-index-3", "col-lg-auto", "op-1", "text-center", "mt-2", "responsive", 'bg', 'bg-primary', 'text-cyan']
+class_btn_position = ["btn","btn-lg-auto","myZ-index-3", "op-1", "text-center", "mt-2", "responsive", 'bg', 'bg-primary', 'text-cyan']
 class_div = ["col-lg-auto", "mx-1"]
 // ** Création d'un message d'alerte si l'utilisateur n'est pas connecté **
 const auth_alert = document.createElement("div");
@@ -355,7 +369,7 @@ let class_div_main_title;
 
 
 // ajout des classes sur les boutons et les div
-add_class_to_element_list(btn_list, class_btn);
+add_class_to_element_list(btn_list, class_btn_position);
 add_class_to_element_list(div_list1.concat(div_list2), class_div);
 
 /** =========== BOUTON CHANGE STYLE: ==============
@@ -389,7 +403,7 @@ btn_style = document.createElement('button');
 btn_style.textContent = 'Changer le style';
 add_class_to_element_list([btn_style], class_btn_style);
 append_children_el([btn_style],div_btn_style);
-add_class_to_element_list(btn_list, class_btn);
+// DOUBLON? add_class_to_element_list(btn_list, class_btn_position);
 
 /** Avant d'ajouter la fonctionnalité au bouton btn_style on met à jour
  * la tag_list du module color_theme.js avec les nouveaux éléments que l'on
