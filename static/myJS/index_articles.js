@@ -90,7 +90,7 @@ TweenMax.fromTo
           container: "#section2",
           start: "top 30%",
           end: "bottom-=80px 70%",
-          markers: {fontSize: "2rem"},
+          // markers: {fontSize: "2rem"},
           scrub: .5, //or a number in second
           //toggleClass: "invisible",
           toggleActions: "restart none none none",
