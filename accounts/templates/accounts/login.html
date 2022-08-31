@@ -20,7 +20,8 @@
   <div class= "row justify-content-center" > <button class= "btn col-sm-auto" type="submit"> Connexion </button>
 </div>   
   </form>
-<a class="" href="{% url 'signup' %}">pas encore inscrit?</a>
+  <div class="row justify-content-center">
+<a class="col-sm-auto" href="{% url 'signup' %}">pas encore inscrit?</a>
   </div>
 <script type="module" src="{% static '/myJS/login.js' %}"> </script>
 {% endblock %}
