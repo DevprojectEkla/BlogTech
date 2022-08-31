@@ -1,5 +1,27 @@
 import theme from "./color_theme.js";
 
+
+/**============================================================================ 
+ * les chemins de fichier pointant vers les images des background et des
+ * bannières doit être mis à jour à chaque fois que l'url s'étend d'un dossier
+ * supplémentaire. 
+ * ============================================================================*/
+
+
+theme.MAIN_IMG_FILE = String("../../static/img/"+ theme.IMAGE_NAME)
+theme.URL_BACKGROUND = theme.format_URL(theme.MAIN_IMG_FILE)
+
+let prefix = '../../';
+theme.IMG_BANNIERE = prefix + 'static/img/banniere.svg'
+theme.IMG_BANNIERE_2 = prefix + 'static/img/banniere2.svg'
+
+
+theme.IMG_BANDE = prefix + 'static/img/bande0.svg'
+theme.URL_BANDE = theme.format_URL(theme.IMG_BANDE) 
+
+let fond_div = document.querySelector('#fond_div')
+fond_div.style.backgroundImage = theme.URL_BANDE
+
 let slide_background = document.querySelector('#slide')
 slide_background.style.backgroundImage = theme.URL_BACKGROUND
 slide_background.style.backgroundSize = "cover";
@@ -7,7 +29,11 @@ slide_background.style.backgroundPosition = "center";
 slide_background.style.Height = "auto";
 slide_background.style.minHeight = "100vh";
 
-theme.add_class_to_element_list(theme.h5_list, theme.class_list_h5)
+theme.add_class_to_element_list(theme.h5_list, theme.class_list_h5.concat('p-2'))
+
+let date;
+date = document.querySelector('#date')
+date.classList.remove('border')
 
 let p_el_list;
 p_el_list = theme.p_list

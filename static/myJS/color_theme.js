@@ -9,6 +9,11 @@
  */
 
 
+function format_URL(mystring)
+{
+    return 'url('+ '"' + mystring + '"' + ')'
+
+}
 let IMAGE_NAME = 'background0.svg'
 let MAIN_IMG_FILE = String("../static/img/"+ IMAGE_NAME) 
 let URL_BACKGROUND = 'url('+'"'+ MAIN_IMG_FILE + '"'+')';   
@@ -17,11 +22,16 @@ let style0, style1, style2;
 let img_banniere;
 img_banniere = document.querySelector('#img_banniere')
 
-let IMG_BANNIERE, IMG_BANNIERE_2, IMG_BANNIERE_3;
+let IMG_BANNIERE, IMG_BANNIERE_2;
 IMG_BANNIERE = 'static/img/banniere.svg'
 IMG_BANNIERE_2 = 'static/img/banniere2.svg'
-IMG_BANNIERE_3 = '../static/img/fond_div.svg'
-let URL_BANNIERE = 'url('+ '"' + IMG_BANNIERE_3
+
+let IMG_BANDE_PATH, IMG_BANDE_NAME, IMG_BANDE_FILE, URL_BANDE;
+IMG_BANDE_NAME = 'bande0.svg'
+IMG_BANDE_PATH = 'static/img/'
+IMG_BANDE_FILE = IMG_BANDE_PATH + IMG_BANDE_NAME 
+URL_BANDE = 'url('+ '"' + IMG_BANDE_FILE + '"' + ')';
+console.log('Color_theme => URL_BANDE:'+URL_BANDE)
 
 const blue = "blue";
 const indigo = "indigo";
@@ -540,7 +550,8 @@ const class_list_label = ["bg", 'bg-primary', 'rounded', "border",
 export default
     {   r,
         MAIN_IMG_FILE, IMAGE_NAME, URL_BACKGROUND,
-        IMG_BANNIERE, IMG_BANNIERE_2, URL_BANNIERE, img_banniere, 
+        IMG_BANDE_NAME, IMG_BANDE_PATH, URL_BANDE, IMG_BANDE_FILE,
+        IMG_BANNIERE, IMG_BANNIERE_2, img_banniere, 
         blue, indigo, purple, pink, red, yellow, green,
         teal, cyan, gray, gray_drk, primary, secondary, success,
         warning, danger,
@@ -604,6 +615,6 @@ export default
         class_list_h1, class_list_h2, class_list_h3, class_list_h4, class_list_h5,
         class_list_p, class_list_a, class_list_img, class_list_label,
         class_color_theme,
-        replace_class_to_element_list, add_class_to_element_list, title_animation,
+        format_URL, replace_class_to_element_list, add_class_to_element_list, title_animation,
         myScrollTrig, changeColorElement, changeColorElementList,
     } 

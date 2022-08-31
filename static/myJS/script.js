@@ -30,11 +30,22 @@ theme_btn = theme.theme_btn
  * templates dont l'adresse n'est pas root, ici on est dans .../common/
  * donc il faut remonter d'un dossier pour revenir à la racine puisse 
  * aller dans /static/ ces erreurs de chemin sont empoisonnantes... */
+let prefix;
+
+prefix = '../'
+
 let IMG_BANNIERE_0, IMG_BANNIERE_1, IMG_BANNIERE_2;
-IMG_BANNIERE_0 = '../static/img/banniere.svg'
-IMG_BANNIERE_1 = '../static/img/banniere1.svg'
-IMG_BANNIERE_2 = '../static/img/banniere2.svg'
+IMG_BANNIERE_0 = prefix +'static/img/banniere.svg'
+IMG_BANNIERE_1 = prefix + 'static/img/banniere1.svg'
+IMG_BANNIERE_2 = prefix + 'static/img/banniere2.svg'
 theme.img_banniere.src = IMG_BANNIERE_0
+
+let fond_div;
+theme.IMG_BANDE_FILE = prefix + theme.IMG_BANDE_FILE
+theme.URL_BANDE = theme.format_URL(prefix + theme.IMG_BANDE_FILE) 
+console.log('script.js theme.URL_BANDE =>'+theme.URL_BANDE)
+fond_div = document.querySelector('#fond_div')  
+fond_div.style.backgroundImage = theme.URL_BANDE 
 //fonction qui est sensé placé le scroll en position top de la page
 // à chaque  refresh: ça y est ça fonctionne !!
 
@@ -87,14 +98,6 @@ add_class_to_element_list(theme.p_list, theme.class_list_p)
  * ======== BACKGROUND IMAGE ==============
  * ========================================
 */
-let main_div;
-main_div = document.querySelector("#main_div");
-main_div.style.backgroundImage = theme.URL_BANNIERE//"url('../static/img/cybersecurite.jpg')";
-main_div.style.backgroundSize = "contain";
-main_div.style.backgroundRepeat = "no-repeat";
-main_div.style.backgroundWidth = "100%";
-main_div.style.backgroundRepeat = "repeat";
-
 let slide_preview;
 slide_preview = document.querySelector('#slide_preview');
 slide_preview.style.backgroundImage = theme.URL_BACKGROUND;
@@ -130,7 +133,6 @@ scrollPos, docHeight;
 docHeight = Math.max(body.scrollHeight, body.offsetHeight,
 docElem.clientHeight, docElem.scrollHeight, docElem.offsetHeight);
 // AJOUT DE LA CLASSE DE STYLE
-btnbtt.classList.add(theme.theme_btn)
 
 /** ====================================
  * CODE DE LA CONDITION DU BOUTON BTT   
@@ -383,6 +385,14 @@ add_class_to_element_list(div_list1.concat(div_list2), class_div);
  * changer le style.
  * ================================================
  */
+let bandeImage,bande_name;
+bandeImage = [];
+for (i=0; i< 1; i++)
+{
+       bande_name = String("../static/img/bande" + i + ".svg") 
+       bandeImage.push('url('+'"'+ bande_name + '"'+')');
+};
+
 let backgrounds, background, background_name;
 
 backgrounds = [];
@@ -395,14 +405,12 @@ console.log(backgrounds)
 function get_background_number () {return backgrounds.indexOf(slide_preview.style.backgroundImage);}
 console.log (get_background_number())
 
-let btn_style;
-let class_btn_style;
-let div_btn_style;
+let btn_style, class_btn_style, div_btn_style, div_legend;
 div_legend = document.querySelector('#div_legend');
 div_legend.classList.add('row','justify-content-center');
 div_btn_style = document.createElement('div')
 append_children_el([div_btn_style],div_legend);
-class_btn_style = ['col-sm-auto','btn',theme_btn,'text-cyan','bg','bg-primary'
+class_btn_style = ['col-sm-auto','btn','text-cyan','bg','bg-primary'
     ,'my-2','op-0'];
 btn_style = document.createElement('button');
 btn_style.textContent = 'Changer le style';
@@ -424,6 +432,7 @@ btn_style.addEventListener('click',function()
         { // au départ le fond est une photo et les boutons ont déjà un style
         // c'est le cas -1 si on veut...
             case 0: // 1er clik: fond bleu
+
                 slide_preview.style.backgroundImage = backgrounds[background+1];
                 // on change juste l'image de fond le theme reste dans des tons
                 // bleus.
@@ -502,8 +511,9 @@ for (i=0; i<btn_list.length; i++)
 * ================================================
 */
 // la liste des noms à assigner à nos  boutons:
-const button_names = ['nouveautés', 'info-geek', 'tutos', 'échecs', 'faire un don',
-  'vos réactions', 'contactez-moi', 'téléchargements']
+let button_names;
+button_names = ['nouveautés', 'info-geek', 'tutos', 'échecs', 'faire un don',
+  'vos réactions', 'contactez-moi', 'téléchargements'];
 
 /** ======= FONCTION CUSTOMIZE ============
  * les boutons de la d-flex1:

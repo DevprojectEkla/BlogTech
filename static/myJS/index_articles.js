@@ -1,6 +1,6 @@
 import theme from "./color_theme.js";
 
-var main_div = document.querySelector("#main_div")
+var fond_div = document.querySelector("#fond_div")
 var section = document.getElementById('intro');
 var badge = document.querySelector('.badge');
 var scroll = document.querySelector('#scroll');
@@ -25,11 +25,15 @@ svg_legend.classList.add(theme.text_color1_nuance1)
 let container;
 container = section.children
 
-// main_div.style.zIndex = "-4"; 
-// main_div.style.backgroundImage = "url('../static/img/fond_div.svg')";
-// main_div.style.Height = "auto";
-// main_div.style.minWidth = "100%";
-// main_div.style.backgroundRepeat = "no-repeat";
+let prefix;
+prefix = '../'
+theme.IMG_BANDE_FILE = prefix + theme.IMG_BANDE_FILE
+console.log(theme.IMG_BANDE_FILE)
+fond_div.style.backgroundImage = theme.format_URL(theme.IMG_BANDE_FILE); 
+fond_div.style.Height = "auto";
+fond_div.style.backgroundRepeat = "no-repeat";
+fond_div.style.backgroundPosition = "center";
+
 
 
 section.classList.replace("invisible","visible")

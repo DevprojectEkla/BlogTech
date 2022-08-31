@@ -99,7 +99,7 @@
   {% endif %}
   
     {% if user.is_authenticated %}
-    <div class="row text-center">
+    <div id="fond_div" class="row text-center">
         <div class="col-md-4">
 
             <a id="btn_publications" class="btn my-2 offset-lg-3" href="{% url 'articles-index' %}">Mes dernières publications </a>
@@ -112,7 +112,7 @@
         </div>
     </div>
     {% else %}
-    <div class="text-center">
+    <div id="fond_div" class="text-center">
         <div>
         <a id="preview" class="btn btn-myhover-box my-2 " href="{% url 'home' %}">Aperçu de mon blog</a>
         </div>
@@ -138,7 +138,6 @@
 <!--=====================================================================
 ================================= END OF SCRIPTS ========================
 =========================================================================-->
- </div>
 
     {% block content %}
 
@@ -149,6 +148,7 @@
     {% block edit-post %}
 
     {% endblock %}
+ </div>
 
  </body>
 <footer class="bg position-sticky bottom-0 end-0"> {% block footer %}
