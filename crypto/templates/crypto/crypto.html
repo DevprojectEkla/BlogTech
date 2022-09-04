@@ -1,0 +1,47 @@
+{% extends 'common/preview.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-auto">
+            <h3> CryptoNet </h3>
+        </div>
+    </div>
+
+    <div class= "row justify-content-center">
+        <div class="col-sm-auto">
+            <h5> Crypter un message avec CryptoNet </h2> 
+        </div>
+
+    </div>
+    <div>
+  <form method="POST" action=""> 
+{% csrf_token %} 
+    <div class="container"> 
+        <div class="row justify-content-center"> 
+          <div class="col-sm-4">
+            <label for="message">
+                Votre message à crypter:
+            </label>
+            </div>
+            <div class="row justify-content-center">
+            <div class="col-sm-4"> 
+            <textarea id="message" name="message" rows="10" cols="60"> 
+            </textarea>
+            </div>
+            </div>
+          </div>
+       </div>
+    </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-auto">
+                <input id="id_btn" class="btn" type="submit" value="Crypter">
+            </div>
+
+        </div>   
+  </form>
+</div>
+</div>
+<script type="module" src="{% static '/myJS/crypto.js' %}"></script>
+{% endblock %}

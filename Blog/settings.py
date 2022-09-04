@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'accounts',
     'common',
     'chess',
+    'crypto',
 ]
 
 MIDDLEWARE = [
