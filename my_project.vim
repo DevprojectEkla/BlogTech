@@ -14,28 +14,16 @@ else
   set shortmess=aoO
 endif
 badd +135 ~/AppData/Local/nvim/init.vim
-badd +1 term://~/PycharmProjects/MyBlog//9892:cmd
+badd +6 term://~/PycharmProjects/MyBlog//9892:cmd
 badd +1 term://~/PycharmProjects/MyBlog//1116:cmd
-badd +22 Blog/urls.py
-badd +22 crypto/views.py
 badd +1 crypto/templates/crypto/crypto.html
-badd +1 crypto/models.py
-badd +1 articles/models.py
-badd +862 static/myJS/script.js
-badd +532 static/myJS/color_theme.js
-badd +23 common/templates/common/preview.html
-badd +0 templates/main.html
-badd +0 style.scss
+badd +642 static/myJS/script.js
+badd +17 common/templates/common/preview.html
+badd +1 templates/main.html
+badd +1 articles/templates/articles/detail.html
 argglobal
 %argdel
 set stal=2
-tabnew +setlocal\ bufhidden=wipe
-tabnew +setlocal\ bufhidden=wipe
-tabnew +setlocal\ bufhidden=wipe
-tabnew +setlocal\ bufhidden=wipe
-tabnew +setlocal\ bufhidden=wipe
-tabnew +setlocal\ bufhidden=wipe
-tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
@@ -75,14 +63,14 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 52 - ((28 * winheight(0) + 15) / 30)
+let s:l = 120 - ((0 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 52
-normal! 027|
+keepjumps 120
+normal! 07|
 tabnext
-edit static/myJS/script.js
+edit common/templates/common/preview.html
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -94,14 +82,14 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 862 - ((15 * winheight(0) + 15) / 30)
+let s:l = 14 - ((12 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 862
-normal! 031|
+keepjumps 14
+normal! 017|
 tabnext
-edit common/templates/common/preview.html
+edit static/myJS/script.js
 argglobal
 balt common/templates/common/preview.html
 setlocal fdm=manual
@@ -114,16 +102,15 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 19 - ((17 * winheight(0) + 15) / 30)
+let s:l = 689 - ((11 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 19
-normal! 027|
+keepjumps 689
+normal! 065|
 tabnext
-edit static/myJS/color_theme.js
+edit articles/templates/articles/detail.html
 argglobal
-balt static/myJS/color_theme.js
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -134,146 +121,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 532 - ((15 * winheight(0) + 15) / 30)
+let s:l = 5 - ((4 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 532
-normal! 054|
-tabnext
-edit style.scss
-argglobal
-balt static/myJS/color_theme.js
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 57 - ((29 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 57
+keepjumps 5
 normal! 030|
-tabnext
-edit crypto/views.py
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 24 - ((23 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 24
-normal! 0
-tabnext
-edit crypto/models.py
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 17 - ((16 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 17
-normal! 028|
-tabnext
-edit Blog/urls.py
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 42 - ((24 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 42
-normal! 033|
-tabnext
-edit articles/models.py
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 18 - ((14 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 18
-normal! 0
-tabnext
-edit articles/models.py
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 7 - ((0 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 7
-normal! 0
-tabnext
-edit Blog/urls.py
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 59 - ((26 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 59
-normal! 0
 tabnext
 edit crypto/templates/crypto/crypto.html
 argglobal
@@ -295,6 +148,36 @@ keepjumps 28
 normal! 044|
 tabnext
 edit ~/AppData/Local/nvim/init.vim
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 31 + 73) / 146)
+exe 'vert 2resize ' . ((&columns * 114 + 73) / 146)
+argglobal
+enew
+file NERD_tree_1
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal nofen
+wincmd w
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -348,6 +231,9 @@ keepjumps exe s:l
 normal! zt
 keepjumps 125
 normal! 011|
+wincmd w
+exe 'vert 1resize ' . ((&columns * 31 + 73) / 146)
+exe 'vert 2resize ' . ((&columns * 114 + 73) / 146)
 tabnext
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
@@ -380,11 +266,11 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 3301 - ((13 * winheight(0) + 7) / 14)
+let s:l = 1541 - ((13 * winheight(0) + 7) / 14)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 3301
+keepjumps 1541
 normal! 0
 wincmd w
 argglobal
@@ -409,7 +295,7 @@ normal! 0
 wincmd w
 exe '1resize ' . ((&lines * 14 + 16) / 33)
 exe '2resize ' . ((&lines * 15 + 16) / 33)
-tabnext 14
+tabnext 4
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

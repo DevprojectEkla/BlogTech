@@ -252,8 +252,7 @@ const main_container = document.querySelector("#main_container");
 const img_container = document.querySelector('#container_main_image');
 const dflex = document.querySelector('#d-flex')
 const dflexAll = document.querySelectorAll('.d-flex')
-const dflex1 = document.querySelector('#dflex1')
-const dflex2 = document.querySelector('#dflex2')
+const btn_group = document.querySelector('#btn_group')
 // console.log(dflexAll)
 // Pour l'image HSV j'assigne une classe 'invisible'
 // et je la supprime plus loin grâce la fonction delay_x() définie plus bas.
@@ -333,10 +332,11 @@ let class_div;
 
 var div_list1 = create_Taglist('div', 4); //par défaut création de 4 élément 'div'
 var div_list2 = create_Taglist('div', 4);
-btn_list1 = create_Taglist('a', 4);
-btn_list2 = create_Taglist('a', 4);
+btn_list1 = create_Taglist('button', 4);
+btn_list2 = create_Taglist('button', 4);
 const btn_list = btn_list1.concat(btn_list2)
 class_btn_position = ["btn","btn-lg-auto","myZ-index-3", "op-1", "text-center", "mt-2", "responsive", 'bg', 'bg-primary', 'text-cyan']
+setAttribute_to_el_list(btn_list, 'type', 'button')
 class_div = ["col-lg-auto", "mx-1"]
 // ** Création d'un message d'alerte si l'utilisateur n'est pas connecté **
 const auth_alert = document.createElement("div");
@@ -369,12 +369,12 @@ redirect_link2.setAttribute('href','/login');
 
 //ajout des classes sur les différents éléments:
 let class_d_flex_main;
-let class_d_flex;
+let class_btn_group;
 class_d_flex_main = ['d-flex', 'justify-content-center', 'op-0']
 add_class_to_element_list([dflex],class_d_flex_main)
-class_d_flex = ['d-flex', 'img-fluid', 'justify-content-around', 'op-0']
-add_class_to_element_list([dflex1],class_d_flex)
-add_class_to_element_list([dflex2],class_d_flex)
+class_btn_group = ['btn-group', 'op-0']
+btn_group.setAttribute('role', 'group')
+add_class_to_element_list([btn_group],class_btn_group)
 let class_img_container;
 class_img_container = ["d-flex", "justify-content-center", "rounded", "op-0"]
 add_class_to_element_list([img_container],class_img_container)
@@ -514,11 +514,15 @@ btn_style.addEventListener('click',function()
 // console.log('color1:%s',theme.color1)
 // console.log('color2:%s',theme.color2)
 //on ajoute des ID pour les boutons en vue des animations:
-for (i=0; i<btn_list.length; i++)
+function setAttribute_to_el_list(list,attribute,value)
 {
-  btn_list[i].setAttribute("id","all_buttons")
+for (i=0; i<list.length; i++)
+{
+  list[i].setAttribute(attribute,value)
 };
 
+}
+setAttribute_to_el_list(btn_list, 'id', 'all_btns')
 /*================================================
 * =======CUSTOMIZATION DES BOUTTONS et ANIMATIONS:
 * ================================================
@@ -558,7 +562,7 @@ function Animations() { delay_x(dflex,"op-0", 1);
         .fromTo(img_container, 1, { width: "0%" }, { width: "50%", ease: Power2.easeInOut }, "-=1");
     // delay_x ci-dessous va supprimer la class indiquée pour laisser apparaitre les éléments en question
     //delay_x(IMG, "invisible", 1) devenu inutile quand j'ai réussi à faire disparaitre le conteneur.
-    removeClassOnDelay([img_container, dflex1, dflex2], "op-0", 1);
+    removeClassOnDelay([img_container, btn_group], "op-0", 1);
     
     //},300);
     // animation de la légende de l'image
@@ -682,7 +686,7 @@ let btn_chess;
     //btni2.style.backgroundColor = 'rgba(' + 255 + ',' + 0 + ',' + random(400) + ',' + 1 + ')';
     //Les Animations sur les boutons:
     TweenMax.fromTo(btn_list1, 3, { x: 0, rotation: 0 }, { x: "5vw", rotation: 360})
-    TweenMax.fromTo(btn_list2, 3, { x: 0, rotation: 0 }, { x: "-30vw", rotation: 360})
+    TweenMax.fromTo(btn_list2, 3, { x: 0, rotation: 0 }, { x: "20vw", rotation: 360})
   };
 };
 
@@ -706,10 +710,8 @@ function tl4_append_elements() {
     }
   );
   customize();
-  append_children_el(btn_list1, dflex1);
-  append_children_el(btn_list2, dflex2);
-  append_children_el(div_list1, dflex1);
-  append_children_el(div_list2, dflex2);
+  append_children_el(div_list1, btn_group);
+  append_children_el(div_list2, btn_group);
   append_children_list(btn_list1, div_list1);
   append_children_list(btn_list2, div_list2);
 
