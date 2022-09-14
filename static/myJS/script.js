@@ -414,10 +414,11 @@ for (i=0; i<4;i++)
 console.log(backgrounds)
 function get_background_number () {return backgrounds.indexOf(slide_preview.style.backgroundImage);}
 console.log (get_background_number())
+let div_legend;
+div_legend = document.querySelector('#div_legend');
+div_legend.classList.add('row','justify-content-center','my-2');
 /**
 let btn_style, class_btn_style, div_btn_style, div_legend;
-div_legend = document.querySelector('#div_legend');
-div_legend.classList.add('row','justify-content-center');
 div_btn_style = document.createElement('div')
 div_btn_style.classList.add('text-center')
 append_children_el([div_btn_style],div_legend);
@@ -562,7 +563,7 @@ function Animations() { delay_x(dflex,"op-0", 1);
         .fromTo(img_container, 1, { width: "0%" }, { width: "50%", ease: Power2.easeInOut }, "-=1");
     // delay_x ci-dessous va supprimer la class indiquée pour laisser apparaitre les éléments en question
     //delay_x(IMG, "invisible", 1) devenu inutile quand j'ai réussi à faire disparaitre le conteneur.
-    removeClassOnDelay([img_container, btn_group], "op-0", 1);
+    removeClassOnDelay([img_container,my_legend, btn_group], "op-0", 1);
     
     //},300);
     // animation de la légende de l'image
@@ -611,11 +612,11 @@ let btn_chess;
     //btni1.style.backgroundColor = 'rgba(' + 255 + ',' + 0 + ',' + random(400) + ',' + 1 + ')';
     if (user_authenticated)
     {
-      btn_news.href = "/articles/index"
+      btn_news.setAttribute('onclick','location.href="/articles/index"')
       btni1.classList.add("disable")
       if (btn_chess)
       {
-        btn_chess.href = "/chess/"
+      btn_chess.setAttribute('onclick','location.href="/chess/"')
       };
     }
     else 
@@ -680,7 +681,8 @@ let btn_chess;
     
     if (button_names[i+4] == "contactez-moi")
     { 
-      btni2.href = "/common/contact";
+      
+      btni2.setAttribute('onclick','location.href="/common/contact/"');
     };
     // pour jouer sur la couleur (mais pas encore au point):
     //btni2.style.backgroundColor = 'rgba(' + 255 + ',' + 0 + ',' + random(400) + ',' + 1 + ')';
@@ -880,7 +882,7 @@ children_list = Array.from(block_div.children)
     console.log(children_list)
   }
   children_of_bottom = children_list.splice(children_list.length-2)
-console.log(children_of_bottom)  
+console.log('children of bottom'+children_of_bottom)  
 //ANIMATION SCROLLTRIGGER: fonction qui fait apparaître les éléments un par un 
 // à chaque cran de la molette de la souris (et pas tout en même temps)
   function scrollTrig(el_list, container="#container", start="-230 60%",
