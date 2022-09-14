@@ -83,7 +83,7 @@ main_div.style.minHeight = "100vh";
  * est connecté. On lui met une image de fond.
  * ATTENTION: Les chemins d'accès à l'image doivent changer en même temps
  * que l'on change de page c'est pourquoi on les redéfini au début de 
- * chaque fichier .js quand l'adresse de la page que l'on afficher
+ * chaque fichier .js quand l'adresse de la page que l'on affiche
  * s'étend au delà d'un seul dossier root/../../.. (ex: detail_articles.js)
  * ============================================================================
  * */

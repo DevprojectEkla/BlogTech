@@ -433,7 +433,6 @@ if (portail) {
     let img;
     img = document.querySelector('#banniere');
     console.log(img)
-    img.classList.add(mybox_color1);
     portail.classList.add("display-4", text_color1_500, "text-center")
 }
 
@@ -503,12 +502,12 @@ console.log('theme primary:%s', theme_primary)
  * certains titre à color2 ou color3 (cette dernière couleur n'est 
  * pas encore implémentée)
 */
-var h1_color = text_color1
-var h2_color = text_color1
-var h3_color = text_color1
-var h4_color = text_color1
-var h5_color = text_color1
-var p_color = text_color1
+var h1_color = text_color1_800
+var h2_color = text_color1_800
+var h3_color = text_color1_800
+var h4_color = text_color1_800
+var h5_color = text_color1_800
+var p_color = text_color1_800
 var a_color = text_color1
 if (color0 == dark)
 {
@@ -519,21 +518,18 @@ var img_color = text_color1
 /** ============ CREATION DES CLASSLIST POUR NOS TAGS ==================== */
 
 
-const class_list_h1 = ["display-4", "fw-bold",'bg','bg-primary',
+const class_list_h1 = ["display-4", "text-center", "fw-bold",
                       "rounded", h1_color,'col-sm-auto'];
-const class_list_h2 = ["display-4",'bg','bg-primary', "rounded",
+const class_list_h2 = ["display-4","text-center", "rounded",
                       h2_color];
-const class_list_h3 = ['col-sm-auto',"font-weight-light", "p-4", "border", "border-2",
-                      'bg','bg-primary', border_color1, "ms-4",
+const class_list_h3 = ['col-sm-auto',"text-center", "font-weight-light", "p-4", "ms-4",
                       "rounded", h3_color];
-const class_list_h4 = ["display-4", 'col-sm-auto', 'bg','bg-primary', "rounded",
+const class_list_h4 = ["display-4", 'col-sm-auto',"text-center",  "rounded",
                       h4_color];
-const class_list_h5 = ['col-sm-auto', "text-center", "fw-bold",'bg','bg-primary', 'border',
-                      'border-2', border_color1, "rounded",
+const class_list_h5 = ['col-sm-auto', "text-center", "fw-bold", "rounded",
                       h5_color];
-const class_list_p = ["col-sm-auto","lead", "p-4", "border-start", "border-2", "rounded",  
-                     'bg','bg-primary', border_color1,
-                     "ms-4-2", p_color,'fw-bold'];
+const class_list_p = ["col-sm-auto","lead", "p-4", "rounded",  
+                     'bg', "ms-4", p_color,'fw-weight-normal'];
 const class_list_img = ["display-2", "fw-bold", img_color,"rounded"];
 const class_list_a = ["text-decoration-none", a_color];
 const class_list_label = ["bg", 'bg-primary', 'rounded', "border",

@@ -46,9 +46,9 @@ theme.URL_BANDE = theme.format_URL(prefix + theme.IMG_BANDE_FILE)
 console.log('script.js theme.URL_BANDE =>'+theme.URL_BANDE)
 fond_div = document.querySelector('#fond_div')  
 fond_div.style.backgroundImage = theme.URL_BANDE 
+
 //fonction qui est sensé placé le scroll en position top de la page
 // à chaque  refresh: ça y est ça fonctionne !!
-
 var body = document.body
 document.onreadystatechange = function () {
   if (document.readyState == "complete") {//nb: il y a d'autres états comme 'interactive' ou 'load'
@@ -102,6 +102,7 @@ let slide_preview;
 slide_preview = document.querySelector('#slide_preview');
 slide_preview.style.backgroundImage = theme.URL_BACKGROUND;
 slide_preview.style.backgroundSize = "contain";
+slide_preview.style.backgroundRepeat = "no-repeat";
 
 /** ==============================
  * Ajout des ombres aux images ***
@@ -111,7 +112,16 @@ let img_list;
 img_list = document.querySelectorAll('img')
 for (var i = 0; i < img_list.length; i++ )
 {
-  img_list[i].classList.add('rounded','border',theme.border_color1, theme.mybox_color1)
+    if (img_list[i].getAttribute('id','img_banniere'))
+    {
+      //je supprime la box-shadow de la banniere
+      img_list[i].classList.add('rounded','border',theme.border_color1) 
+    } 
+    else
+    { //toutes les autres img de la page ont une box shadow
+      img_list[i].classList.add('rounded','border',theme.border_color1, theme.mybox_color1)
+    }
+    
 }
 
 
@@ -362,14 +372,14 @@ let class_d_flex_main;
 let class_d_flex;
 class_d_flex_main = ['d-flex', 'justify-content-center', 'op-0']
 add_class_to_element_list([dflex],class_d_flex_main)
-class_d_flex = ['d-flex', 'col-sm-6', 'op-0']
+class_d_flex = ['d-flex', 'img-fluid', 'justify-content-around', 'op-0']
 add_class_to_element_list([dflex1],class_d_flex)
 add_class_to_element_list([dflex2],class_d_flex)
 let class_img_container;
 class_img_container = ["d-flex", "justify-content-center", "rounded", "op-0"]
 add_class_to_element_list([img_container],class_img_container)
 let class_main_container;
-class_main_container = ["w-100", "justify-content-center","text-center"]
+class_main_container = ["w-100", "justify-content-center"]
 add_class_to_element_list([main_container],class_main_container)
 
 let class_div_main_title;
@@ -404,11 +414,12 @@ for (i=0; i<4;i++)
 console.log(backgrounds)
 function get_background_number () {return backgrounds.indexOf(slide_preview.style.backgroundImage);}
 console.log (get_background_number())
-
+/**
 let btn_style, class_btn_style, div_btn_style, div_legend;
 div_legend = document.querySelector('#div_legend');
 div_legend.classList.add('row','justify-content-center');
 div_btn_style = document.createElement('div')
+div_btn_style.classList.add('text-center')
 append_children_el([div_btn_style],div_legend);
 class_btn_style = ['col-sm-auto','btn','text-cyan','bg','bg-primary'
     ,'my-2','op-0'];
@@ -416,11 +427,13 @@ btn_style = document.createElement('button');
 btn_style.textContent = 'Changer le style';
 add_class_to_element_list([btn_style], class_btn_style);
 append_children_el([btn_style],div_btn_style);
+*/
 // DOUBLON? add_class_to_element_list(btn_list, class_btn_position);
 
 /** Avant d'ajouter la fonctionnalité au bouton btn_style on met à jour
  * la tag_list du module color_theme.js avec les nouveaux éléments que l'on
  * a créer.*/
+/**
 theme.tag_list = Array.from(theme.tag_list);
 theme.tag_list.push(btn_list)
 theme.tag_list.push([badge,btn_style]);
@@ -461,7 +474,7 @@ btn_style.addEventListener('click',function()
     });
 
 
-
+*/
 
 
 
@@ -549,7 +562,7 @@ function Animations() { delay_x(dflex,"op-0", 1);
     
     //},300);
     // animation de la légende de l'image
-    
+   /** 
     tl3.fromTo([my_legend,btn_style], { opacity: 0, y:"1000px"}, 
         { 
                        opacity: 1,
@@ -568,6 +581,7 @@ function Animations() { delay_x(dflex,"op-0", 1);
     );
     removeClassOnDelay([my_legend, btn_style], "op-0",5);
 
+*/
 };
 Animations();
 
@@ -692,6 +706,8 @@ function tl4_append_elements() {
     }
   );
   customize();
+  append_children_el(btn_list1, dflex1);
+  append_children_el(btn_list2, dflex2);
   append_children_el(div_list1, dflex1);
   append_children_el(div_list2, dflex2);
   append_children_list(btn_list1, div_list1);
@@ -710,11 +726,8 @@ TweenMax.fromTo(btn_list1[0], 1, { rotation: 0, backgroundColor: "" },
     borderColor: 'red',
     color : theme.color1
   }).delay(6);
+let angle1, angle2, delay;
 
-let angle1;
-let angle2;
-let rotation;
-let delay;
 function Rotation(elem, t1, angle1 = 0, angle2 = 360,delay=0)
 {
   TweenMax.fromTo(elem, t1, { rotation: angle1 }, { rotation: angle2 }).delay(delay);
@@ -806,6 +819,7 @@ function append_children_el(list_child = [], el) {
 
 // On commence par rendre invisible toute la section2 de l'HTML:
 const section2 = document.getElementById("section2");
+const text_container = document.getElementById('text-container')
 // if (section2){
 //   section2.classList.add("bg", theme.bg_color0)
 // }
@@ -813,7 +827,7 @@ const section2 = document.getElementById("section2");
 var text_visible = false
 // console.log('text_visible au départ ' + String(text_visible))
 
-// création d'une fonction rendant invisible chaque élément de la section2
+// création d'une fonction rendant invisible chaque élément de la text_container
 function mkInvisible(el_list) {
   for (i = 0; i < el_list.length; i++) {
     el_list[i].classList.add('op-0');
@@ -831,6 +845,7 @@ let tl6;
 tl6 = new TimelineMax()
 
 // On ajoute l'Enregistreur d'événement à l'objet window ici !! 
+//
 // ATTENTION: l'événement de souris 'wheel' ne s'attage pas à un élément, 'mousewheel' oui 'but is deprecated'.
 
   // do stuff here.
@@ -842,9 +857,11 @@ tl6 = new TimelineMax()
   // pour pouvoir créer notre animation sur les seuls objets qui nous intéressent.
   // les elements en bas de page font chier il faut créer des scroll trigger
   // avec des scrollstart et des startpoint differents....FAIT VRAIMENT CHIER!!!
-  let children_list, children_of_bottom, list_length;
-  children_list = Array.from(section2.children)
-  // console.log(children_list)
+  
+let block_div, children_list, children_of_bottom, list_length;
+block_div = document.querySelector('#block_div')  
+children_list = Array.from(block_div.children)
+  console.log(children_list)
   if (user_authenticated)
   {
     list_length = 4
@@ -858,13 +875,13 @@ tl6 = new TimelineMax()
   for (i=0;i < list_length;i++)
   {
     children_list.pop()
-    // console.log(children_list)
+    console.log(children_list)
   }
   children_of_bottom = children_list.splice(children_list.length-2)
-  
+console.log(children_of_bottom)  
 //ANIMATION SCROLLTRIGGER: fonction qui fait apparaître les éléments un par un 
 // à chaque cran de la molette de la souris (et pas tout en même temps)
-  function scrollTrig(el_list, container="#section2", start="-230 60%",
+  function scrollTrig(el_list, container="#container", start="-230 60%",
   end="-275 50%",duration=1,markers=true)
   {
     for (i = 0; i < el_list.length; i++) 
@@ -899,8 +916,8 @@ tl6 = new TimelineMax()
     };
   }
   
-scrollTrig(children_list, "#section2", "-230 60%", "-275 50%", 1, false);
-scrollTrig(children_of_bottom, "#section2", "-350 75%", "-395 40%", 1, false);
+scrollTrig(children_list, "#text-container", "-230 60%", "-275 50%", 1, false);
+scrollTrig(children_of_bottom, "#text-container", "-350 75%", "-395 40%", 1, false);
 
 function mkvisible(el) {
   tl5.fromTo(el, .5, { opacity: 0 }, { opacity: 1, ease: Power2.easeInOut })
