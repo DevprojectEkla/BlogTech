@@ -348,40 +348,74 @@ function changeColorElementList(el_list,color)
 function myScrollTrig(el_list)
 {
     for(i=0; i< el_list.length; i++)
+    {
+        TweenMax.fromTo
+        (
+          el_list[i],
+          {
+            opacity: 0,
+            x: (-1) ** (i + 1) * 300,
+          },
+          {
+            x: (-1) ** (i + 1) * (-40),
+            scrollTrigger:
+            {
+              trigger: el_list[i],
+              container: "container",
+              start: "top 60%",
+              end: "300px 50%",
+              //markers: {fontSize: "2rem"},
+              scrub: 1, //or a number in second
+              //toggleClass: "invisible",
+              toggleActions: "restart none none none",
+              //            onenter onLeave  onEnterback   onLeaveBack
+              onToggle: self => console.log(container.className),
+              //pinSpacing: false,
+              //pin: true          
+            },
+            opacity: 1,
+            duration: 3
+          }
+        )
+        ;
+
+    }
+
+}
+
+function myScrollTrigOpacity(el_list)
+{
+    for(i=0; i< el_list.length; i++)
 {
     TweenMax.fromTo
     (
       el_list[i],
       {
         opacity: 0,
-        x: (-1) ** (i + 1) * 300,
       },
       {
-        x: (-1) ** (i + 1) * (-40),
         scrollTrigger:
-        {
-          trigger: el_list[i],
-          container: "container",
-          start: "top 60%",
-          end: "300px 50%",
-          //markers: {fontSize: "2rem"},
-          scrub: 1, //or a number in second
-          //toggleClass: "invisible",
-          toggleActions: "restart none none none",
-          //            onenter onLeave  onEnterback   onLeaveBack
-          onToggle: self => console.log(container.className),
-          //pinSpacing: false,
-          //pin: true          
-        },
-        opacity: 1,
-        duration: 3
+            {
+              trigger: el_list[i],
+              container: "container",
+              start: "top 60%",
+              end: "300px 50%",
+              //markers: {fontSize: "2rem"},
+              scrub: 1, //or a number in second
+              //toggleClass: "invisible",
+              toggleActions: "restart none none none",
+              //            onenter onLeave  onEnterback   onLeaveBack
+              onToggle: self => console.log(container.className),
+              //pinSpacing: false,
+              //pin: true          
+            },
+            opacity: 1,
+            duration: 3
       }
-    )
-    ;
-
+     );
+    }
 }
 
-}
 
 
 /** =====================================================================
@@ -389,7 +423,7 @@ function myScrollTrig(el_list)
  * */
 let el_list;
 
-function replace_class_to_element_list(el_list, oldClass = [''], newClass = [''])
+function replace_classList_of_el_list(el_list, oldClass = [''], newClass = [''])
 { 
     let i, j;
     for (i = 0; i < el_list.length; i++) {
@@ -471,7 +505,7 @@ style2 = ['btn-myhover-box-tertiary', 'bg-tertiary', 'mybox-tertiary', 'border-p
 function replace_style(el_list, style1,style2)
 {       for (i=0; i<el_list.length; i++)
     {
-        replace_class_to_element_list(el_list[i], style1, style2);
+        replace_classList_of_el_list(el_list[i], style1, style2);
     }
 }
 
@@ -502,7 +536,7 @@ console.log('theme primary:%s', theme_primary)
  * certains titre à color2 ou color3 (cette dernière couleur n'est 
  * pas encore implémentée)
 */
-var h1_color = text_color1_800
+var h1_color = text_color1_700
 var h2_color = text_color1_800
 var h3_color = text_color1_800
 var h4_color = text_color1_800
@@ -522,14 +556,14 @@ const class_list_h1 = ["display-4", "text-center", "fw-bold",
                       "rounded", h1_color,'col-sm-auto'];
 const class_list_h2 = ["display-4","text-center", "rounded",
                       h2_color];
-const class_list_h3 = ['col-sm-auto',"text-center", "font-weight-light", "p-4", "ms-4",
+const class_list_h3 = ['col-sm-auto',"text-center", "font-weight-light", "mx-2",
                       "rounded", h3_color];
 const class_list_h4 = ["display-4", 'col-sm-auto',"text-center",  "rounded",
                       h4_color];
 const class_list_h5 = ['col-sm-auto', "text-center", "fw-bold", "rounded",
                       h5_color];
-const class_list_p = ["col-sm-auto","lead", "p-4", "rounded",  
-                     'bg', "ms-4", p_color,'fw-weight-normal'];
+const class_list_p = ["lead", 'px-5', 'text-justify',
+                     p_color,'fw-weight-normal'];
 const class_list_img = ["display-2", "fw-bold", img_color,"rounded"];
 const class_list_a = ["text-decoration-none", a_color];
 const class_list_label = ["bg", 'bg-primary', 'rounded', "border",
@@ -590,7 +624,7 @@ export default
 
         bg_color1,
         bg_color1_100, bg_color1_200, bg_color1_300, bg_color1_400,
-        bg_color1_500, bg_color1_600,
+        bg_color1_500, bg_color1_600,bg_color1_700,bg_color1_800, bg_color1_900,
         bg_color2, bg_color2_100, bg_color2_200, bg_color2_300, bg_color2_400,
         bg_color2_500, bg_color2_600,
 
@@ -611,6 +645,6 @@ export default
         class_list_h1, class_list_h2, class_list_h3, class_list_h4, class_list_h5,
         class_list_p, class_list_a, class_list_img, class_list_label,
         class_color_theme,
-        format_URL, replace_class_to_element_list, add_class_to_element_list, title_animation,
-        myScrollTrig, changeColorElement, changeColorElementList,
+        format_URL, replace_classList_of_el_list, add_class_to_element_list, title_animation,
+        myScrollTrig,myScrollTrigOpacity, changeColorElement, changeColorElementList,
     } 

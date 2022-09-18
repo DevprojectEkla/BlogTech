@@ -60,6 +60,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'htmlmin.middleware.HtmlMinifyMiddleware',
+    'htmlmin.middleware.MarkRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'Blog.urls'
@@ -123,6 +125,9 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+# htmlmin sert à supprimer les lignes vides dans un template.
+HTML_MINIFY = True
 
 
 # Static files (CSS, JavaScript, Images)
