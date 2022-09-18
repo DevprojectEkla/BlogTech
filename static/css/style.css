@@ -7,7 +7,7 @@
  */
 :root {
   --bs-theme_bg: white;
-  --bs-text_container: #33ffff;
+  --bs-text_container: #b3ffff;
   --bs-primary: rgba(12, 55, 98, 0.8117647059);
   --bs-primary_text_box_hover: rgba(179, 192, 206, 0.9247058824);
   --bs-primary_text_hover: rgba(179, 192, 206, 0.9247058824);
@@ -15825,52 +15825,84 @@ textarea.form-control-lg {
   position: sticky !important;
 }
 
-.top-0 {
-  top: 0 !important;
+.t-1 {
+  top: 1em !important;
 }
 
-.top-5 {
-  top: 5% !important;
+.t-2 {
+  top: 2em !important;
 }
 
-.top-10 {
-  top: 10% !important;
+.t-3 {
+  top: 3em !important;
 }
 
-.top-15 {
-  top: 15% !important;
+.t-4 {
+  top: 4em !important;
 }
 
-.top-50 {
-  top: 50% !important;
+.t-5 {
+  top: 5em !important;
 }
 
-.top-100 {
-  top: 100% !important;
+.t-6 {
+  top: 6em !important;
 }
 
-.bottom-0 {
-  bottom: 0 !important;
+.t-7 {
+  top: 7em !important;
 }
 
-.bottom-5 {
-  bottom: 5% !important;
+.t-8 {
+  top: 8em !important;
 }
 
-.bottom-10 {
-  bottom: 10% !important;
+.t-9 {
+  top: 9em !important;
 }
 
-.bottom-15 {
-  bottom: 15% !important;
+.t-10 {
+  top: 10em !important;
 }
 
-.bottom-50 {
-  bottom: 50% !important;
+.b-1 {
+  bottom: 1em !important;
 }
 
-.bottom-100 {
-  bottom: 100% !important;
+.b-2 {
+  bottom: 2em !important;
+}
+
+.b-3 {
+  bottom: 3em !important;
+}
+
+.b-4 {
+  bottom: 4em !important;
+}
+
+.b-5 {
+  bottom: 5em !important;
+}
+
+.b-6 {
+  bottom: 6em !important;
+}
+
+.b-7 {
+  bottom: 7em !important;
+}
+
+.b-8 {
+  bottom: 8em !important;
+}
+
+.b-9 {
+  bottom: 9em !important;
+}
+
+.b-10 {
+  bottom: 10em !important;
 }
 
 .start-0 {
@@ -18346,6 +18378,246 @@ textarea.form-control-lg {
   transition: transition-values !important;
 }
 
+.off-l-1 {
+  left: -1em !important;
+}
+
+.off-l-2 {
+  left: -2em !important;
+}
+
+.off-l-3 {
+  left: -3em !important;
+}
+
+.off-l-4 {
+  left: -4em !important;
+}
+
+.off-l-5 {
+  left: -5em !important;
+}
+
+.off-l-6 {
+  left: -6em !important;
+}
+
+.off-l-7 {
+  left: -7em !important;
+}
+
+.off-l-8 {
+  left: -8em !important;
+}
+
+.off-l-9 {
+  left: -9em !important;
+}
+
+.off-l-10 {
+  left: -10em !important;
+}
+
+.l-1 {
+  left: 1em !important;
+}
+
+.l-2 {
+  left: 2em !important;
+}
+
+.l-3 {
+  left: 3em !important;
+}
+
+.l-4 {
+  left: 4em !important;
+}
+
+.l-5 {
+  left: 5em !important;
+}
+
+.l-6 {
+  left: 6em !important;
+}
+
+.l-7 {
+  left: 7em !important;
+}
+
+.l-8 {
+  left: 8em !important;
+}
+
+.l-9 {
+  left: 9em !important;
+}
+
+.l-10 {
+  left: 10em !important;
+}
+
+.off-t-1 {
+  top: -1em !important;
+}
+
+.off-t-2 {
+  top: -2em !important;
+}
+
+.off-t-3 {
+  top: -3em !important;
+}
+
+.off-t-4 {
+  top: -4em !important;
+}
+
+.off-t-5 {
+  top: -5em !important;
+}
+
+.off-t-6 {
+  top: -6em !important;
+}
+
+.off-t-7 {
+  top: -7em !important;
+}
+
+.off-t-8 {
+  top: -8em !important;
+}
+
+.off-t-9 {
+  top: -9em !important;
+}
+
+.off-t-10 {
+  top: -10em !important;
+}
+
+.off-r-1 {
+  right: -1em !important;
+}
+
+.off-r-2 {
+  right: -2em !important;
+}
+
+.off-r-3 {
+  right: -3em !important;
+}
+
+.off-r-4 {
+  right: -4em !important;
+}
+
+.off-r-5 {
+  right: -5em !important;
+}
+
+.off-r-6 {
+  right: -6em !important;
+}
+
+.off-r-7 {
+  right: -7em !important;
+}
+
+.off-r-8 {
+  right: -8em !important;
+}
+
+.off-r-9 {
+  right: -9em !important;
+}
+
+.off-r-10 {
+  right: -10em !important;
+}
+
+.r-1 {
+  right: 1em !important;
+}
+
+.r-2 {
+  right: 2em !important;
+}
+
+.r-3 {
+  right: 3em !important;
+}
+
+.r-4 {
+  right: 4em !important;
+}
+
+.r-5 {
+  right: 5em !important;
+}
+
+.r-6 {
+  right: 6em !important;
+}
+
+.r-7 {
+  right: 7em !important;
+}
+
+.r-8 {
+  right: 8em !important;
+}
+
+.r-9 {
+  right: 9em !important;
+}
+
+.r-10 {
+  right: 10em !important;
+}
+
+.off-b-1 {
+  bottom: -1em !important;
+}
+
+.off-b-2 {
+  bottom: -2em !important;
+}
+
+.off-b-3 {
+  bottom: -3em !important;
+}
+
+.off-b-4 {
+  bottom: -4em !important;
+}
+
+.off-b-5 {
+  bottom: -5em !important;
+}
+
+.off-b-6 {
+  bottom: -6em !important;
+}
+
+.off-b-7 {
+  bottom: -7em !important;
+}
+
+.off-b-8 {
+  bottom: -8em !important;
+}
+
+.off-b-9 {
+  bottom: -9em !important;
+}
+
+.off-b-10 {
+  bottom: -10em !important;
+}
+
 .op-100 {
   opacity: 1 !important;
 }
@@ -18360,6 +18632,50 @@ textarea.form-control-lg {
 
 .op-25 {
   opacity: 0.25 !important;
+}
+
+.pe-0 {
+  padding-right: 0 !important;
+}
+
+.pe-1 {
+  padding-right: 0.5rem !important;
+}
+
+.pe-2 {
+  padding-right: 1rem !important;
+}
+
+.pe-3 {
+  padding-right: 1.5rem !important;
+}
+
+.pe-4 {
+  padding-right: 2rem !important;
+}
+
+.pe-5 {
+  padding-right: 3rem !important;
+}
+
+.pe-6 {
+  padding-right: 4rem !important;
+}
+
+.pe-7 {
+  padding-right: 5rem !important;
+}
+
+.pe-8 {
+  padding-right: 6rem !important;
+}
+
+.pe-9 {
+  padding-right: 7rem !important;
+}
+
+.pe-10 {
+  padding-right: 8rem !important;
 }
 
 .mt-6 {
@@ -18388,6 +18704,62 @@ textarea.form-control-lg {
 
 .mt-25 {
   margin-top: 20rem !important;
+}
+
+.abs-width-1 {
+  width: 10em !important;
+}
+
+.abs-width-11 {
+  width: 11em !important;
+}
+
+.abs-width-12 {
+  width: 12em !important;
+}
+
+.abs-width-13 {
+  width: 13em !important;
+}
+
+.abs-width-14 {
+  width: 14em !important;
+}
+
+.abs-width-15 {
+  width: 15em !important;
+}
+
+.abs-width-2 {
+  width: 20em !important;
+}
+
+.abs-width-21 {
+  width: 21em !important;
+}
+
+.abs-width-22 {
+  width: 22em !important;
+}
+
+.abs-width-23 {
+  width: 23em !important;
+}
+
+.abs-width-24 {
+  width: 24em !important;
+}
+
+.abs-width-25 {
+  width: 25em !important;
+}
+
+.abs-width-3 {
+  width: 30em !important;
+}
+
+.abs-width-4 {
+  width: 40em !important;
 }
 
 .mycolor-white {
@@ -20932,8 +21304,12 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.text-justify {
+  text-align: justify;
+}
+
 .text-container {
-  background-color: #33ffff;
+  background-color: #b3ffff;
 }
 
 .btn-myhover:hover, .btn-myhover-box:hover {
@@ -21130,7 +21506,7 @@ textarea.form-control-lg {
 }
 
 .mybox-cyan {
-  box-shadow: 5px 5px 5px #0aa2c0;
+  box-shadow: 5px 5px 5px #055160;
 }
 
 .mybox-red {

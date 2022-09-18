@@ -85,10 +85,10 @@ for (i=0;i<theme.h1_list.length; i++){test = theme.h1_list[i]; console.log(test)
 add_class_to_element_list(theme.h1_list,theme.class_list_h1)
 
 add_class_to_element_list(theme.h2_list,theme.class_list_h2)
-add_class_to_element_list(theme.h3_list,theme.class_list_h3)
+add_class_to_element_list(theme.h3_list,theme.class_list_h3.concat('pb-3'))
 add_class_to_element_list(theme.h4_list,theme.class_list_h4)
 add_class_to_element_list(theme.h5_list,theme.class_list_h5)
-add_class_to_element_list(theme.p_list, theme.class_list_p)
+add_class_to_element_list(theme.p_list, theme.class_list_p.concat(['pt-5','pb-3']))
 /** =======================================================
  * Tentative pour insérer des tags dans un texte brut pour
  * obtenir un texte formaté html
@@ -276,15 +276,14 @@ function scrollTrig(el_list, container="#container", start="",
     for (i = 0; i < el_list.length; i++) 
     {
     const child = el_list[i];
-    const trigger = el_list[i]
-    TweenMax.fromTo
+    gsap.fromTo
     (child,
          {opacity: 0},
          {
             opacity: 1,
             scrollTrigger:
             {
-                trigger: trigger,
+                trigger: child,
                 container: container,
                 start: start,
                 end: end,
@@ -306,16 +305,20 @@ function scrollTrig(el_list, container="#container", start="",
     };
   }
 
-
+let children_list;
+children_list = []
 for (i=1; i<=number_of_block; i++)
-{let block_div_i, list_length_i, children_list_i;
-block_div_i = document.querySelector('#block_div' + i)  
-children_list_i = Array.from(block_div_i.children)
-console.log("children_list_"+i,children_list_i)
-console.log("block div "+i, block_div_i)
-list_length_i = children_list_i.length
-scrollTrig(children_list_i, "#block_div"+i, "-400 60%", "-475 50%", 1, true);
+{
+    let block_div_i, children_list_i;
+    block_div_i = document.querySelector('#block_div' + i)  
+    children_list_i = Array.from(block_div_i.children)
+    console.log("children_list_"+i,children_list_i)
+    console.log("block div "+i, block_div_i)
+    children_list = children_list.concat(children_list_i)
 }
+console.log("children_list = ", children_list)
+scrollTrig(children_list, "#section2", "-400 -800", "-475 50%", 1, false);
+
 /**==========================
  * Ajout des triangles animés
  * ==========================
@@ -383,19 +386,19 @@ var div_list2 = create_Taglist('div', 4);
 btn_list1 = create_Taglist('button', 4);
 btn_list2 = create_Taglist('button', 4);
 const btn_list = btn_list1.concat(btn_list2)
-class_btn_position = ["btn","btn-lg-auto","myZ-index-3", "op-1", "text-center", "mt-2", "responsive", 'bg', 'bg-primary', 'text-cyan']
+class_btn_position = ["btn","btn-lg-auto","myZ-index-3", "op-1", "text-center", "mt-2", "responsive", 'bg', 'bg-primary', 'text-cyan', 'position-relative']
 setAttribute_to_el_list(btn_list, 'type', 'button')
-class_div = ["col-lg-auto", "mx-1"]
+class_div = ["col-lg-auto", "mx-1", "position-relative"]
 // ** Création d'un message d'alerte si l'utilisateur n'est pas connecté **
 const auth_alert = document.createElement("div");
-auth_alert.classList.add("alert","alert-"+theme.color1)
+auth_alert.classList.add("alert","alert-"+theme.color1,"position-absolute","abs-width-22")
 auth_alert.setAttribute('role','alert');
 auth_alert.style.zIndex = 3;
 auth_alert.textContent = "Il faut être connecté pour lire les articles"
 
 // ** Bouton close pour fermer la fenêtre d'alerte
 const close_btn = document.createElement('button');
-close_btn.classList.add("mybtn-close");// il y a aussi "btn-close-white"
+close_btn.classList.add("mybtn-close","position-relative","off-t-1","off-r-1");// il y a aussi "btn-close-white"
 add_class_to_element_list([close_btn],theme.class_color_theme)
 close_btn.setAttribute("data-bs-dismiss","alert");
 close_btn.setAttribute("aria-label","Close");
@@ -731,7 +734,7 @@ let btn_chess;
     if (button_names[i+4] == "contactez-moi")
     { 
       
-      btni2.setAttribute('onclick','location.href="/common/contact/"');
+      btni2.setAttribute('onclick','location.href="/common/contact"');
     };
     // pour jouer sur la couleur (mais pas encore au point):
     //btni2.style.backgroundColor = 'rgba(' + 255 + ',' + 0 + ',' + random(400) + ',' + 1 + ')';
@@ -776,7 +779,7 @@ TweenMax.fromTo(btn_list1[0], 1, { rotation: 0, backgroundColor: "" },
   {
     rotation: 360,
     backgroundColor: theme.color1,
-    borderColor: 'red',
+    borderColor: "cyan",
     color : theme.color1
   }).delay(6);
 let angle1, angle2, delay;

@@ -2,26 +2,65 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
+<div class="container text-container">
     <div class="row justify-content-center">
-        <div class="col-sm-auto">
-            <h3> Voici mes parties d'échecs </h3>
+        <div class="card p-5 bg bg-cyan-800 w-50 mx-5"> <div class="col-sm-auto">
+            <h3> Lichess TV </h3>
         </div>
-    </div>
 
     <div class= "row justify-content-center">
         <div class="col-sm-auto">
-            <h5> Cette partie a été joué tout récemment ...</h2> 
+            <h5> Regardez jouer des grands maîtres en direct</h5> 
         </div>
     </div>
     <div class= "row justify-content-center">
         <div class="col-sm-auto">
             <p>
-                <iframe src="https://lichess.org/embed/game/nSMjAUpL?theme=auto&bg=auto#8"
+<iframe src="https://lichess.org/tv/frame?theme=blue3&bg=dark" style="width: 400px; height: 444px;" allowtransparency="true" frameborder="0"></iframe>
+            </p>    
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-sm-auto">
+            <h3> Résolvez le <em>Puzzle du jour</em> proposé par Lichess </h3>
+        </div>
+    </div>
+
+    <div class= "row justify-content-center">
+        <div class="col-sm-auto">
+            <h5> Améliorez votre niveau en résolvant tous les jours de nouveaux problèmes.</h5> 
+        </div>
+    <div class= "row justify-content-center">
+        <div class="col-sm-auto">
+    <p>
+<iframe src="https://lichess.org/training/frame?theme=blue2&bg=dark&pieceSet=cburnett" style="width: 400px; height: 444px;" allowtransparency="true" frameborder="0"></iframe>
+    </p>
+    </div>
+    </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-sm-auto">
+            <h3> Voici une de mes parties sur Lichess </h3>
+        </div>
+    </div>
+
+    <div class= "row justify-content-center">
+        <div class="col-sm-auto">
+            <h5> J'ai très mal ouvert mais...</h5> 
+        </div>
+    </div>
+    <div class= "row justify-content-center">
+        <div class="col-sm-auto">
+            <p>
+                <iframe src="https://lichess.org/embed/game/9Fvlr8TE?theme=blue2&bg=auto"
                 width=600 height=397 frameborder=0></iframe>
             </p>    
         </div>
     </div>
+</div>
+
 </div>
 <script type="module" src="{% static '/myJS/chess.js' %}"></script>
 {% endblock %}

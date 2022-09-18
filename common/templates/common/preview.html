@@ -70,13 +70,17 @@
                 Inscrivez-vous et/ou connectez-vous pour lire la suite. </a>
         </div>
     {% endif %}
- 
-    <script type="text/javascript"> var user_authenticated = true
-    var number_of_block = 0 </script>
+    <!-- ====== DEFINTION DE LA VARIABLE NUMBER_OF_BLOCK ===============-->
+    <script type="text/javascript"> var number_of_block = 0 </script>
+    <!-- ===============================================================-->
     {% if user.is_authenticated %}
+    
+    <script type="text/javascript"> var user_authenticated = true </script>
+    
     {% for block in blocks %}
-     <script type="text/javascript">
-    number_of_block++ </script>
+    <!-- ========== INCREMENTATION DE LA VARIABLE NUMBER_OF_BLOCK ======-->
+    <script type="text/javascript"> number_of_block++ </script>
+    <!--================================================================-->
     <div id="block_div{{block.id}}" class="container">
     <div class="text-center"> <h2> {{ block.date }} </h2>  </div>
 
