@@ -2,8 +2,6 @@ import theme from "./color_theme.js";
 
 theme.add_class_to_element_list(theme.h3_list,theme.class_list_h3)
 theme.add_class_to_element_list(theme.h5_list,theme.class_list_h5)
-theme.replace_classList_of_el_list(theme.h3_list,['text-cyan-800'],['text-cyan-100'])
-theme.replace_classList_of_el_list(theme.h5_list,['text-cyan-800'],['text-cyan-100'])
 let container;
 container = document.querySelector('.container')
 container.style.backgroundImage = "url('../static/img/background-chess.svg')"
