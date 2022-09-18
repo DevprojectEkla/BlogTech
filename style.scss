@@ -43,10 +43,11 @@ $tertiary       : #dc3545cf;
 $tertiary_text  : red;
 $tertiary_bg    : orange;
 
-
+$text_container : tint-color(cyan, 70%);
 
 $colors: (
   "theme_bg":       $theme_bg,
+  "text_container": $text_container,
   "primary":        $primary,
   "primary_text_box_hover":  $primary_text_box_hover,
   "primary_text_hover":   $primary_text_hover,
@@ -331,6 +332,171 @@ $utilities:
             )
 
         ),
+"offset-left":
+        (
+          property: left,
+          class: off-l,
+          values:
+        (
+            1:-1em,
+            2:-2em,
+            3:-3em,
+            4:-4em,
+            5:-5em,
+            6:-6em,
+            7:-7em,
+            8:-8em,
+            9:-9em,
+            10:-10em,
+
+
+        ) 
+        ),
+
+        "left":
+        (
+            property: left,
+            class: l,
+            values:
+        (
+            1:1em,
+            2:2em,
+            3:3em,
+            4:4em,
+            5:5em,
+            6:6em,
+            7:7em,
+            8:8em,
+            9:9em,
+            10:10em,
+
+
+        )
+        ),
+"offset-top":
+        (
+          property: top,
+          class: off-t,
+          values:
+        (
+            1:-1em,
+            2:-2em,
+            3:-3em,
+            4:-4em,
+            5:-5em,
+            6:-6em,
+            7:-7em,
+            8:-8em,
+            9:-9em,
+            10:-10em,
+
+
+        ) 
+        ),
+
+    "offset-right":
+        (
+          property: right,
+          class: off-r,
+          values:
+        (
+            1:-1em,
+            2:-2em,
+            3:-3em,
+            4:-4em,
+            5:-5em,
+            6:-6em,
+            7:-7em,
+            8:-8em,
+            9:-9em,
+            10:-10em,
+
+
+        ) 
+        ),
+        "right":
+        (
+          property: right,
+          class: r,
+          values:
+        (
+            1:1em,
+            2:2em,
+            3:3em,
+            4:4em,
+            5:5em,
+            6:6em,
+            7:7em,
+            8:8em,
+            9:9em,
+            10:10em,
+
+
+        ) 
+        ),
+"offset-bottom":
+        (
+          property: bottom,
+          class: off-b,
+          values:
+        (
+            1:-1em,
+            2:-2em,
+            3:-3em,
+            4:-4em,
+            5:-5em,
+            6:-6em,
+            7:-7em,
+            8:-8em,
+            9:-9em,
+            10:-10em,
+
+
+        ) 
+        ),
+
+        "bottom":
+        (
+            property: bottom,
+            class: b,
+            values:
+        (
+            1:1em,
+            2:2em,
+            3:3em,
+            4:4em,
+            5:5em,
+            6:6em,
+            7:7em,
+            8:8em,
+            9:9em,
+            10:10em,
+
+
+        )
+        ),
+        "top":
+        (
+        property: top,
+        class: t,
+        values:
+        (
+            1:1em,
+            2:2em,
+            3:3em,
+            4:4em,
+            5:5em,
+            6:6em,
+            7:7em,
+            8:8em,
+            9:9em,
+            10:10em,
+
+
+        )
+
+
+        ),
         "opacity":
         (
             property: opacity,
@@ -344,6 +510,30 @@ $utilities:
             
             )
         ),
+        "pe":
+        (
+            property: padding-right,
+            class: pe,
+            values:
+            (
+                0: 0,
+                1: .5rem,
+                2: 1rem,
+                3: 1.5rem,
+                4: 2rem,
+                5: 3rem,
+                6: 4rem,
+                7: 5rem,
+                8: 6rem,
+                9: 7rem,
+                10: 8rem,
+                
+                
+                
+
+            )
+        ),
+
         "mt":
         (
             property: margin-top,
@@ -359,6 +549,29 @@ $utilities:
                 20:15rem,
                 25:20rem,
             )
+        ),
+        
+        "abs-width":
+        ( property:width,
+        class: abs-width,
+        values:
+        (
+        1: 10em,
+        11: 11em,
+        12: 12em,
+        13: 13em,
+        14: 14em,
+        15: 15em,
+        2:20em,
+        21:21em,
+        22:22em,
+        23: 23em,
+        24: 24em,
+        25: 25em,
+        3:30em,
+        4:40em,
+        )
+
         ),
 
         "text-color":
@@ -393,14 +606,51 @@ $utilities:
                 25:25%,
                 30:30%,
                 50:50%,
+                55:55%,
+                60:60%,
+                65:65%,
+                70:70%,
                 75:75%,
+                80:80%,
+                85:85%,
+                90:90%,
+                95:95%,
+                100:100%,
+                auto:auto
+            )
+        ),
+    
+ "min-width": 
+        (
+            property:min-width,
+            class: min-w,
+            values: 
+            (
+                25:25%,
+                30:30%,
+                50:50%,
+                75:75%,
+                79:79%,
+                80:80%,
                 100:100%,
                 auto:auto
             )
         )
     );
 
+
 @import "static/scss/bootstrap.scss";
+
+
+.text-justify {
+    text-align: justify;
+}
+.text-container {
+@extend .container, .mybox, .rounded, .mt-5; 
+background-color: $text_container;
+
+}
+
 
 .btn-myhover {    
     @extend .btn-outline-primary; 
@@ -442,7 +692,7 @@ $utilities:
         
         }
         
-.btn-myhover-tertiary {    
+.btn-myhover-tertiary { 
     @extend .btn-outline-tertiary;   
     }
 .btn-myhover-tertiary:hover {
@@ -696,7 +946,7 @@ $utilities:
 
 .mybox-cyan
 {   @extend .mybox;
-    box-shadow: 5px 5px 5px $cyan-600; //(décalage-x de l'ombre, décalage-y, effet-blur, couleur)
+    box-shadow: 5px 5px 5px $cyan-800; //(décalage-x de l'ombre, décalage-y, effet-blur, couleur)
 }
 
 .mybox-red

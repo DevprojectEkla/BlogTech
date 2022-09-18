@@ -85,10 +85,10 @@ for (i=0;i<theme.h1_list.length; i++){test = theme.h1_list[i]; console.log(test)
 add_class_to_element_list(theme.h1_list,theme.class_list_h1)
 
 add_class_to_element_list(theme.h2_list,theme.class_list_h2)
-add_class_to_element_list(theme.h3_list,theme.class_list_h3)
+add_class_to_element_list(theme.h3_list,theme.class_list_h3.concat('pb-3'))
 add_class_to_element_list(theme.h4_list,theme.class_list_h4)
 add_class_to_element_list(theme.h5_list,theme.class_list_h5)
-add_class_to_element_list(theme.p_list, theme.class_list_p)
+add_class_to_element_list(theme.p_list, theme.class_list_p.concat(['pt-5','pb-3']))
 /** =======================================================
  * Tentative pour insérer des tags dans un texte brut pour
  * obtenir un texte formaté html
@@ -102,7 +102,7 @@ let slide_preview;
 slide_preview = document.querySelector('#slide_preview');
 slide_preview.style.backgroundImage = theme.URL_BACKGROUND;
 slide_preview.style.backgroundSize = "contain";
-slide_preview.style.backgroundRepeat = "no-repeat";
+slide_preview.style.backgroundRepeat = "repeat";
 
 /** ==============================
  * Ajout des ombres aux images ***
@@ -201,6 +201,7 @@ if(btn_signup)
  *"Bienvenue sur mon" qui apparaît lettre par lettre 
 */
 const main_title = document.getElementById("mytitle1");
+main_title.classList.add('bg','bg-cyan-200','my-2')
 theme.title_animation(main_title);
 
 //creation d'un element bootstrap badge pour insérer
@@ -263,11 +264,61 @@ const my_legend = document.querySelector('#subtitle');
 my_legend.classList.add("op-0",'col-sm-auto');
 let carousel_name;
 carousel_name = document.querySelector('#carousel_name')
-theme.add_class_to_element_list([carousel_name],['bg','bg-primary','rounded','text-cyan','p-2','mt-5']);
+theme.add_class_to_element_list([carousel_name],['bg','bg-cyan-800','rounded','text-cyan-200','p-2','mt-5']);
 let carousel_img_list;
 carousel_img_list = document.querySelectorAll('.carousel-item')
 console.log(carousel_img_list)
 add_class_to_element_list(carousel_img_list,['my-3'])
+
+function scrollTrig(el_list, container="#container", start="",
+  end="",duration=1,markers=true)
+  {
+    for (i = 0; i < el_list.length; i++) 
+    {
+    const child = el_list[i];
+    gsap.fromTo
+    (child,
+         {opacity: 0},
+         {
+            opacity: 1,
+            scrollTrigger:
+            {
+                trigger: child,
+                container: container,
+                start: start,
+                end: end,
+                markers: markers, //{ fontSize: "2rem" },
+                scrub: true,
+                // toggleClass: "op-0",
+                // toggleActions: 'play, none, none, restart',
+                //            onenter onLeave  onEnterback   onLeaveBack
+                // onToggle: self => console.log(child.className),
+                // onEnterBack: self => child.classList.add(togclass),
+                // onLeaveback: () => child.classList.add(togclass),
+                //pinSpacing: false,
+                //pin: true          
+                // onEnter: child.classList.add('invisible'),
+                // onLeaveBack: child.classList.remove('invisible'),  
+              },
+          }
+      );
+    };
+  }
+
+let children_list;
+children_list = []
+for (i=1; i<=number_of_block; i++)
+{
+    let block_div_i, children_list_i;
+    block_div_i = document.querySelector('#block_div' + i)  
+    children_list_i = Array.from(block_div_i.children)
+    console.log("children_list_"+i,children_list_i)
+    console.log("block div "+i, block_div_i)
+    children_list = children_list.concat(children_list_i)
+}
+console.log("children_list = ", children_list)
+scrollTrig(children_list, "#section2", "-400 -800", "-475 50%", 1, false);
+
 /**==========================
  * Ajout des triangles animés
  * ==========================
@@ -335,19 +386,19 @@ var div_list2 = create_Taglist('div', 4);
 btn_list1 = create_Taglist('button', 4);
 btn_list2 = create_Taglist('button', 4);
 const btn_list = btn_list1.concat(btn_list2)
-class_btn_position = ["btn","btn-lg-auto","myZ-index-3", "op-1", "text-center", "mt-2", "responsive", 'bg', 'bg-primary', 'text-cyan']
+class_btn_position = ["btn","btn-lg-auto","myZ-index-3", "op-1", "text-center", "mt-2", "responsive", 'bg', 'bg-primary', 'text-cyan', 'position-relative']
 setAttribute_to_el_list(btn_list, 'type', 'button')
-class_div = ["col-lg-auto", "mx-1"]
+class_div = ["col-lg-auto", "mx-1", "position-relative"]
 // ** Création d'un message d'alerte si l'utilisateur n'est pas connecté **
 const auth_alert = document.createElement("div");
-auth_alert.classList.add("alert","alert-"+theme.color1)
+auth_alert.classList.add("alert","alert-"+theme.color1,"position-absolute","abs-width-22")
 auth_alert.setAttribute('role','alert');
 auth_alert.style.zIndex = 3;
 auth_alert.textContent = "Il faut être connecté pour lire les articles"
 
 // ** Bouton close pour fermer la fenêtre d'alerte
 const close_btn = document.createElement('button');
-close_btn.classList.add("mybtn-close");// il y a aussi "btn-close-white"
+close_btn.classList.add("mybtn-close","position-relative","off-t-1","off-r-1");// il y a aussi "btn-close-white"
 add_class_to_element_list([close_btn],theme.class_color_theme)
 close_btn.setAttribute("data-bs-dismiss","alert");
 close_btn.setAttribute("aria-label","Close");
@@ -389,12 +440,6 @@ let class_div_main_title;
 add_class_to_element_list(btn_list, class_btn_position);
 add_class_to_element_list(div_list1.concat(div_list2), class_div);
 
-/** =========== BOUTON CHANGE STYLE: ==============
- * Creation du bouton et ajout des classes de style
- * // TODO: A finir d'implémenter pour la fonction
- * changer le style.
- * ================================================
- */
 let bandeImage,bande_name;
 bandeImage = [];
 for (i=0; i< 1; i++)
@@ -417,7 +462,14 @@ console.log (get_background_number())
 let div_legend;
 div_legend = document.querySelector('#div_legend');
 div_legend.classList.add('row','justify-content-center','my-2');
-/**
+
+/** =========== BOUTON CHANGE STYLE: ==============
+ * Creation d'un bouton pour changer les couleurs du site
+ * par clique successif on passe du bleu au vert au rouge etc.
+ * le bouton fonctionne mais pour l'instant on n'en a pas 
+ * l'utilité, il faut dire que c'est un peu moche...
+ * ================================================
+
 let btn_style, class_btn_style, div_btn_style, div_legend;
 div_btn_style = document.createElement('div')
 div_btn_style.classList.add('text-center')
@@ -682,7 +734,7 @@ let btn_chess;
     if (button_names[i+4] == "contactez-moi")
     { 
       
-      btni2.setAttribute('onclick','location.href="/common/contact/"');
+      btni2.setAttribute('onclick','location.href="/common/contact"');
     };
     // pour jouer sur la couleur (mais pas encore au point):
     //btni2.style.backgroundColor = 'rgba(' + 255 + ',' + 0 + ',' + random(400) + ',' + 1 + ')';
@@ -727,7 +779,7 @@ TweenMax.fromTo(btn_list1[0], 1, { rotation: 0, backgroundColor: "" },
   {
     rotation: 360,
     backgroundColor: theme.color1,
-    borderColor: 'red',
+    borderColor: "cyan",
     color : theme.color1
   }).delay(6);
 let angle1, angle2, delay;
@@ -824,6 +876,7 @@ function append_children_el(list_child = [], el) {
 // On commence par rendre invisible toute la section2 de l'HTML:
 const section2 = document.getElementById("section2");
 const text_container = document.getElementById('text-container')
+text_container.classList.add('text-container');
 // if (section2){
 //   section2.classList.add("bg", theme.bg_color0)
 // }
@@ -837,9 +890,6 @@ function mkInvisible(el_list) {
     el_list[i].classList.add('op-0');
   };
 };
-// appel de la fonction:
-// mkInvisible(section2.children)
-//console.log(section2.children)
 
 // On aura besoin d'un effet d'animation pour faire apparaitre les éléments masqués:
 if (tl3.isActive()) { alert('timeline is ACTIVE') };
@@ -861,68 +911,8 @@ tl6 = new TimelineMax()
   // pour pouvoir créer notre animation sur les seuls objets qui nous intéressent.
   // les elements en bas de page font chier il faut créer des scroll trigger
   // avec des scrollstart et des startpoint differents....FAIT VRAIMENT CHIER!!!
-  
-let block_div, children_list, children_of_bottom, list_length;
-block_div = document.querySelector('#block_div')  
-children_list = Array.from(block_div.children)
-  console.log(children_list)
-  if (user_authenticated)
-  {
-    list_length = 4
-  } else 
-  {
-    list_length = 7;
-    
-  };
-  // console.log('list_length = '+list_length)
-  
-  for (i=0;i < list_length;i++)
-  {
-    children_list.pop()
-    console.log(children_list)
-  }
-  children_of_bottom = children_list.splice(children_list.length-2)
-console.log('children of bottom'+children_of_bottom)  
 //ANIMATION SCROLLTRIGGER: fonction qui fait apparaître les éléments un par un 
 // à chaque cran de la molette de la souris (et pas tout en même temps)
-  function scrollTrig(el_list, container="#container", start="-230 60%",
-  end="-275 50%",duration=1,markers=true)
-  {
-    for (i = 0; i < el_list.length; i++) 
-    {
-    const child = el_list[i]; 
-    TweenMax.fromTo
-    (child,
-         {opacity: 0},
-         {
-            opacity: 1,
-            scrollTrigger:
-            {
-                trigger: child,
-                container: container,
-                start: start,
-                end: end,
-                markers: markers, //{ fontSize: "2rem" },
-                scrub: true,
-                // toggleClass: "op-0",
-                // toggleActions: 'play, none, none, restart',
-                //            onenter onLeave  onEnterback   onLeaveBack
-                // onToggle: self => console.log(child.className),
-                // onEnterBack: self => child.classList.add(togclass),
-                // onLeaveback: () => child.classList.add(togclass),
-                //pinSpacing: false,
-                //pin: true          
-                // onEnter: child.classList.add('invisible'),
-                // onLeaveBack: child.classList.remove('invisible'),  
-              },
-          }
-      );
-    };
-  }
-  
-scrollTrig(children_list, "#text-container", "-230 60%", "-275 50%", 1, false);
-scrollTrig(children_of_bottom, "#text-container", "-350 75%", "-395 40%", 1, false);
-
 function mkvisible(el) {
   tl5.fromTo(el, .5, { opacity: 0 }, { opacity: 1, ease: Power2.easeInOut })
   gsap.to("div", { scrollTrigger: "div" });

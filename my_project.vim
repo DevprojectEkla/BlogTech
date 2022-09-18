@@ -13,14 +13,15 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +135 ~/AppData/Local/nvim/init.vim
 badd +6 term://~/PycharmProjects/MyBlog//9892:cmd
 badd +1 term://~/PycharmProjects/MyBlog//1116:cmd
-badd +1 crypto/templates/crypto/crypto.html
-badd +642 static/myJS/script.js
-badd +17 common/templates/common/preview.html
-badd +1 templates/main.html
+badd +317 static/myJS/script.js
+badd +75 common/templates/common/preview.html
 badd +1 articles/templates/articles/detail.html
+badd +1 static/myJS/color_theme.js
+badd +357 style.scss
+badd +16511 static/css/style.css
+badd +0 term://~/PycharmProjects/MyBlog//12524:cmd
 argglobal
 %argdel
 set stal=2
@@ -30,124 +31,8 @@ tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
-tabnew +setlocal\ bufhidden=wipe
 tabrewind
-edit crypto/templates/crypto/crypto.html
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 31 - ((20 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 31
-normal! 0
-tabnext
-edit templates/main.html
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 120 - ((0 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 120
-normal! 07|
-tabnext
-edit common/templates/common/preview.html
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 14 - ((12 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 14
-normal! 017|
-tabnext
 edit static/myJS/script.js
-argglobal
-balt common/templates/common/preview.html
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 689 - ((11 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 689
-normal! 065|
-tabnext
-edit articles/templates/articles/detail.html
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 5 - ((4 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 5
-normal! 030|
-tabnext
-edit crypto/templates/crypto/crypto.html
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 28 - ((25 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 28
-normal! 044|
-tabnext
-edit ~/AppData/Local/nvim/init.vim
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -188,52 +73,157 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-1,21fold
-1,28fold
-1,34fold
-35,35fold
-35,35fold
-35,36fold
-35,36fold
-35,37fold
-38,39fold
-46,47fold
-51,65fold
-51,65fold
-215,234fold
-215,236fold
 let &fdl = &fdl
-1
-normal! zo
-1
-normal! zo
-1
-normal! zo
-35
-normal! zo
-35
-normal! zo
-35
-normal! zo
-35
-normal! zo
-38
-normal! zo
-46
-normal! zo
-51
-normal! zo
-215
-normal! zo
-let s:l = 125 - ((8 * winheight(0) + 15) / 30)
+let s:l = 317 - ((21 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 125
-normal! 011|
+keepjumps 317
+normal! 041|
 wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 31 + 73) / 146)
 exe 'vert 2resize ' . ((&columns * 114 + 73) / 146)
+tabnext
+edit common/templates/common/preview.html
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 59 - ((5 * winheight(0) + 15) / 30)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 59
+normal! 051|
+tabnext
+edit static/css/style.css
+argglobal
+balt static/myJS/color_theme.js
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 17066 - ((2 * winheight(0) + 15) / 30)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 17066
+normal! 02|
+tabnext
+edit style.scss
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe '1resize ' . ((&lines * 15 + 16) / 33)
+exe '2resize ' . ((&lines * 14 + 16) / 33)
+argglobal
+if bufexists(fnamemodify("term://~/PycharmProjects/MyBlog//12524:cmd", ":p")) | buffer term://~/PycharmProjects/MyBlog//12524:cmd | else | edit term://~/PycharmProjects/MyBlog//12524:cmd | endif
+if &buftype ==# 'terminal'
+  silent file term://~/PycharmProjects/MyBlog//12524:cmd
+endif
+balt style.scss
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 25 - ((0 * winheight(0) + 7) / 15)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 25
+normal! 049|
+wincmd w
+argglobal
+balt term://~/PycharmProjects/MyBlog//12524:cmd
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 354 - ((1 * winheight(0) + 7) / 14)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 354
+normal! 021|
+wincmd w
+exe '1resize ' . ((&lines * 15 + 16) / 33)
+exe '2resize ' . ((&lines * 14 + 16) / 33)
+tabnext
+edit articles/templates/articles/detail.html
+argglobal
+balt common/templates/common/preview.html
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 48 - ((26 * winheight(0) + 15) / 30)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 48
+normal! 014|
+tabnext
+edit static/myJS/color_theme.js
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 266 - ((14 * winheight(0) + 15) / 30)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 266
+normal! 05|
 tabnext
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
@@ -266,11 +256,11 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 1541 - ((13 * winheight(0) + 7) / 14)
+let s:l = 3748 - ((13 * winheight(0) + 7) / 14)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1541
+keepjumps 3748
 normal! 0
 wincmd w
 argglobal
@@ -286,16 +276,16 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 15 - ((14 * winheight(0) + 7) / 15)
+let s:l = 46 - ((12 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 15
-normal! 0
+keepjumps 46
+normal! 047|
 wincmd w
 exe '1resize ' . ((&lines * 14 + 16) / 33)
 exe '2resize ' . ((&lines * 15 + 16) / 33)
-tabnext 4
+tabnext 1
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

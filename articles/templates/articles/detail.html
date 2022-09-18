@@ -2,10 +2,10 @@
 {% load static %}
 {% block content %}
 <div id="slide">
-<div id="container" class="container">
+<div id="container" class="">
     <div class="row justify-content-center">
         <div> 
-            <h1 class="col-12 text-center pb-1"> {{article.title}}</h1>
+            <h1 class="col-12 pb-1"> {{article.title}}</h1>
         </div>
         <div class="row justify-content-center">
             <div class="col-sm-auto text-center"> 
@@ -21,7 +21,7 @@
   <img id="id_img" class=" col-sm-6" src="{% static '' %}{{article.image}}" alt="image:{{article.image}}">
   </div>
  
-<div class="col-12 justify-content-start mt-2"><p id="id_texte" class="border-start border-4 fs-40 p-2"> {{article.text}}</p> </div>
+<div class="col-12 justify-content-start mt-2"><p id="id_texte" class="fs-40"> {{article.text | safe | linebreaks }}</p> </div>
 {% if user.is_superuser %}
 <div class="text-center">
 <a class="btn btn-outline-warning my-2" href="{% url 'edit-post' article.slug %}">Editer cet article</a>
@@ -34,13 +34,13 @@
  {% if all_article_comments %}
     <div id="card_container" class="">
         <div class="card-body">
-            <h5 class="card-title text-center w-50 justify-content-center"> Commentaires des lecteurs</h5>
+            <h5 class="card-title w-50 justify-content-center"> Commentaires des lecteurs</h5>
                 {% for comment in all_article_comments  %}
-                    <div class="justify-content-sm-start">
+                    <div class="justify-content-sm-center">
                         <div class="card-text col-sm-6 ">
                                Posté par:  <span class="fw-bold">{{comment.user}}</span>
                           le: <span class="fw-bold"> {{comment.date}}</span>
-                        <h5 class="col-sm-auto text-justify p-2">
+                        <h5 class="col-sm-auto">
                          {{comment.text}}</h5>
                         </div>
                     </div>
