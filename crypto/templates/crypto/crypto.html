@@ -20,6 +20,12 @@
 {% csrf_token %} 
     <div class="container"> 
         <div class="row justify-content-center"> 
+          <div class="col-sm-4 my-2">
+              <button class="mb-1" type="button" action="">Générer une clé de cryptage</button>
+              <input id="key_input" name = "key_input" value="clé auto:{{key}}"> <button id="load_key" class="">charger un fichier clé</button></input>
+            </div>
+            </div>
+        <div class="row justify-content-center"> 
           <div class="col-sm-4">
             <label for="message">
                 Votre message à crypter:
@@ -27,8 +33,7 @@
             </div>
             <div class="row justify-content-center">
             <div class="col-sm-4"> 
-            <textarea id="message" name="message" rows="10" cols="60"> 
-            </textarea>
+                <textarea id="message" name="message" rows="10" cols="60">{{message}}</textarea>
             </div>
             </div>
           </div>

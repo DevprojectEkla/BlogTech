@@ -264,7 +264,7 @@ const bg_color1_900 = "bg-" + color1 + "-900";
 
 //NB: btn_box = 'btn-myhover-box'
 let class_color_theme;
-class_color_theme = [btn_box, 'rounded','bg','bg-primary', 'text-cyan']
+class_color_theme = [btn_box, 'rounded','bg','bg-primary', 'text-cyan-200']
 
 /** ================== STYLE POUR LE PORTAIL DU SITE ===================== */
 let portail;
@@ -601,8 +601,8 @@ const class_list_p = ["lead", 'px-5', 'text-justify',
                      p_color,'fw-weight-normal'];
 const class_list_img = ["display-2", "fw-bold", img_color,"rounded"];
 const class_list_a = ["text-decoration-none", a_color];
-const class_list_label = ["bg", 'bg-primary', 'rounded', "border",
-'border-primary','text-cyan'];
+const class_list_label = ["bg", bg_color1_800, 'rounded', "border",
+border_color1_600, text_color1_200, 'p-2'];
 
 
 /** ========== EXPORTATION DES VARIABLES DE COULEUR ========

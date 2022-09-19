@@ -383,7 +383,7 @@ let class_div;
 
 var div_list1 = create_Taglist('div', 4); //par défaut création de 4 élément 'div'
 var div_list2 = create_Taglist('div', 4);
-btn_list1 = create_Taglist('button', 4);
+btn_list1 = create_Taglist('button', 5);
 btn_list2 = create_Taglist('button', 4);
 const btn_list = btn_list1.concat(btn_list2)
 class_btn_position = ["btn","btn-lg-auto","myZ-index-3", "op-1", "text-center", "mt-2", "responsive", 'bg', 'bg-primary', 'text-cyan', 'position-relative']
@@ -582,7 +582,7 @@ setAttribute_to_el_list(btn_list, 'id', 'all_btns')
 */
 // la liste des noms à assigner à nos  boutons:
 let button_names;
-button_names = ['nouveautés', 'info-geek', 'tutos', 'échecs', 'faire un don',
+button_names = ['nouveautés','CryptoNET', 'info-geek', 'tutos', 'échecs', 'faire un don',
   'vos réactions', 'contactez-moi', 'téléchargements'];
 
 /** ======= FONCTION CUSTOMIZE ============
@@ -644,8 +644,7 @@ Animations();
 
 
 function customize() 
-{let btn_news;
-let btn_chess;
+{let btn_news, btn_chess, btn_crypto;
   for (i = 0; i < 4; i++) 
   {
     
@@ -656,6 +655,10 @@ let btn_chess;
       { 
         btn_news = btni1 ;        
       };
+    if (button_names[i]== "CryptoNET")
+    {
+        btn_crypto = btni1;
+    }
     if(button_names[i] == "échecs")
     {
       btn_chess = btni1;
@@ -670,9 +673,13 @@ let btn_chess;
       {
       btn_chess.setAttribute('onclick','location.href="/chess/"')
       };
+      if (btn_crypto)  
+        {
+            btn_crypto.setAttribute('onclick', 'location.href="/crypto/"')
+        };
     }
     else 
-    {/**================= BOUTON NOUVEAUTES =========================
+    {/**================= ALERT SUR LE BOUTON NOUVEAUTES =============
     * ajout d'une Alert bootstrap avec des liens vers signup ou login 
     * si la variable django user_is_authenticated= false
     =================================================================*/
