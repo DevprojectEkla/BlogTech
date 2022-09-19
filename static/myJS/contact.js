@@ -6,8 +6,7 @@ theme.URL_BACKGROUND = theme.format_URL(theme.MAIN_IMG_FILE)
 
 let prefix = '../../';
 theme.IMG_BANNIERE = prefix + 'static/img/banniere.svg'
-theme.IMG_BANNIERE_2 = prefix + 'static/img/banniere2.svg'
-
+theme.img_banniere.src = theme.IMG_BANNIERE
 
 theme.IMG_BANDE = prefix + 'static/img/bande0.svg'
 theme.URL_BANDE = theme.format_URL(theme.IMG_BANDE) 
@@ -31,7 +30,7 @@ let titles;
 let class_titles;
 
 titles = theme.p_list;
-class_titles = ["my-2",theme.text_color1_200,'bg', 'bg-cyan-800','rounded', 'me-5','w-90']
+class_titles = ["my-2",theme.text_color1_200,'bg', 'bg-cyan-800','rounded', 'me-5','w-100']
 theme.add_class_to_element_list(titles,class_titles)
 
 let labels, class_labels;

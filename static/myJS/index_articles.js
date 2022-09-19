@@ -13,8 +13,8 @@ theme.add_class_to_element_list(theme.h2_list,['bg',theme.text_color1,
 theme.add_class_to_element_list(theme.h5_list,[theme.text_color1, 'bg','bg-primary'])
 theme.add_class_to_element_list(theme.img_list,theme.class_list_img)
 
-svg.setAttribute('fill',theme.color1) //pour régler la couleur de l'icone en fonction du theme
-svg_legend.classList.add(theme.text_color1_nuance1)
+svg.setAttribute('fill','#055160') //pour régler la couleur de l'icone en fonction du theme
+svg_legend.classList.add(theme.text_color1_200)
 
 
 // console.log(section);
@@ -53,10 +53,12 @@ var scrollAnimation = TweenMax.fromTo
 
     },
     {
-      y: 500,
-      opacity: 0,
+      y: 1000,
+      opacity: .5,
       scale:4,
-      duration: 5,
+      
+      repeat:2,
+      duration: 15,
       ease: Power1.easeOut
 
     }

@@ -52,12 +52,12 @@
 
 <section>
 
-    <div class="container text-center">
+    <div id="new_comment" class="container text-center">
         <form method="POST">
             {% csrf_token %}
             <div class="row justify-content-center">
             <div id="add_comment" class="col-sm-auto mt-3 mb-2">
-                <button class="btn" for="commentaire">Ajouter un commentaire:</button>
+                Ajouter un commentaire:
             </div>
             </div>
             <div class="input-group row justify-content-center" >
@@ -83,7 +83,7 @@
 {% block commentaire %}
 {% endblock %}
 
-<div class="container mt-4">
+<div class="p-5">
     <div class="row justify-content-center"></div>
 <nav aria-label="Page navigation example">
   <ul class="pagination pagination-lg justify-content-center">

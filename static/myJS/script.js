@@ -430,7 +430,7 @@ let class_img_container;
 class_img_container = ["d-flex", "justify-content-center", "rounded", "op-0"]
 add_class_to_element_list([img_container],class_img_container)
 let class_main_container;
-class_main_container = ["w-100", "justify-content-center"]
+class_main_container = ["p-5", "justify-content-center"]
 add_class_to_element_list([main_container],class_main_container)
 
 let class_div_main_title;

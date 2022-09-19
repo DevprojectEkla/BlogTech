@@ -357,7 +357,7 @@ function myScrollTrig(el_list)
             x: (-1) ** (i + 1) * 300,
           },
           {
-            x: (-1) ** (i + 1) * (-40),
+            x: (-1) ** (i + 1) * (0),
             scrollTrigger:
             {
               trigger: el_list[i],
@@ -382,6 +382,42 @@ function myScrollTrig(el_list)
     }
 
 }
+
+function myScrollTrigTranslationY(el_list)
+{
+    for(i=0; i< el_list.length; i++)
+    {
+        TweenMax.fromTo
+        (
+          el_list[i],
+          {
+            opacity: 0,
+            y: 0,
+          },
+          {
+            y: (-50),
+            scrollTrigger:
+            {
+              trigger: el_list[i],
+              container: "container",
+              start: "-200vh 60%",
+              end: "-100vh 50%",
+              // markers: {fontSize: "2rem"},
+              scrub: 1, //or a number in second
+              //toggleClass: "invisible",
+              toggleActions: "restart none none none",
+              //            onenter onLeave  onEnterback   onLeaveBack
+              onToggle: self => console.log(container.className),
+              //pinSpacing: false,
+              //pin: true          
+            },
+            opacity: 1,
+            duration: 3
+          }
+        );
+    }
+}
+
 
 function myScrollTrigOpacity(el_list)
 {
@@ -421,7 +457,6 @@ function myScrollTrigOpacity(el_list)
 /** =====================================================================
  *  ===== basic for-loop function to add class style lists to elements===
  * */
-let el_list;
 
 function replace_classList_of_el_list(el_list, oldClass = [''], newClass = [''])
 { 
@@ -646,5 +681,5 @@ export default
         class_list_p, class_list_a, class_list_img, class_list_label,
         class_color_theme,
         format_URL, replace_classList_of_el_list, add_class_to_element_list, title_animation,
-        myScrollTrig,myScrollTrigOpacity, changeColorElement, changeColorElementList,
+        myScrollTrig, myScrollTrigTranslationY, myScrollTrigOpacity, changeColorElement, changeColorElementList,
     } 

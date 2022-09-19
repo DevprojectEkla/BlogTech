@@ -13,15 +13,14 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +6 term://~/PycharmProjects/MyBlog//9892:cmd
-badd +1 term://~/PycharmProjects/MyBlog//1116:cmd
-badd +317 static/myJS/script.js
-badd +75 common/templates/common/preview.html
-badd +1 articles/templates/articles/detail.html
-badd +1 static/myJS/color_theme.js
-badd +357 style.scss
-badd +16511 static/css/style.css
-badd +0 term://~/PycharmProjects/MyBlog//12524:cmd
+badd +1 term://~/PycharmProjects/MyBlog//9736:cmd
+badd +1 term://~/PycharmProjects/MyBlog//15396:cmd\ git
+badd +67 Blog/settings.py
+badd +0 term://~/PycharmProjects/MyBlog//2352:cmd
+badd +86 articles/templates/articles/detail.html
+badd +404 static/myJS/color_theme.js
+badd +59 static/myJS/index_articles.js
+badd +0 articles/templates/articles/index.html
 argglobal
 %argdel
 set stal=2
@@ -32,13 +31,17 @@ tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabrewind
-edit static/myJS/script.js
+edit Blog/settings.py
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
 1wincmd h
+wincmd w
+wincmd _ | wincmd |
+split
+1wincmd k
 wincmd w
 let &splitbelow = s:save_splitbelow
 let &splitright = s:save_splitright
@@ -50,7 +53,10 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 exe 'vert 1resize ' . ((&columns * 31 + 73) / 146)
+exe '2resize ' . ((&lines * 6 + 16) / 33)
 exe 'vert 2resize ' . ((&columns * 114 + 73) / 146)
+exe '3resize ' . ((&lines * 23 + 16) / 33)
+exe 'vert 3resize ' . ((&columns * 114 + 73) / 146)
 argglobal
 enew
 file NERD_tree_1
@@ -64,91 +70,10 @@ setlocal fdn=20
 setlocal nofen
 wincmd w
 argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 317 - ((21 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 317
-normal! 041|
-wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 31 + 73) / 146)
-exe 'vert 2resize ' . ((&columns * 114 + 73) / 146)
-tabnext
-edit common/templates/common/preview.html
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 59 - ((5 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 59
-normal! 051|
-tabnext
-edit static/css/style.css
-argglobal
-balt static/myJS/color_theme.js
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 17066 - ((2 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 17066
-normal! 02|
-tabnext
-edit style.scss
-let s:save_splitbelow = &splitbelow
-let s:save_splitright = &splitright
-set splitbelow splitright
-wincmd _ | wincmd |
-split
-1wincmd k
-wincmd w
-let &splitbelow = s:save_splitbelow
-let &splitright = s:save_splitright
-wincmd t
-let s:save_winminheight = &winminheight
-let s:save_winminwidth = &winminwidth
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-exe '1resize ' . ((&lines * 15 + 16) / 33)
-exe '2resize ' . ((&lines * 14 + 16) / 33)
-argglobal
-if bufexists(fnamemodify("term://~/PycharmProjects/MyBlog//12524:cmd", ":p")) | buffer term://~/PycharmProjects/MyBlog//12524:cmd | else | edit term://~/PycharmProjects/MyBlog//12524:cmd | endif
+if bufexists(fnamemodify("term://~/PycharmProjects/MyBlog//15396:cmd\ git", ":p")) | buffer term://~/PycharmProjects/MyBlog//15396:cmd\ git | else | edit term://~/PycharmProjects/MyBlog//15396:cmd\ git | endif
 if &buftype ==# 'terminal'
-  silent file term://~/PycharmProjects/MyBlog//12524:cmd
+  silent file term://~/PycharmProjects/MyBlog//15396:cmd\ git
 endif
-balt style.scss
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -157,15 +82,14 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 25 - ((0 * winheight(0) + 7) / 15)
+let s:l = 6 - ((5 * winheight(0) + 3) / 6)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 25
-normal! 049|
+keepjumps 6
+normal! 0
 wincmd w
 argglobal
-balt term://~/PycharmProjects/MyBlog//12524:cmd
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -176,19 +100,22 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 354 - ((1 * winheight(0) + 7) / 14)
+let s:l = 67 - ((15 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 354
-normal! 021|
+keepjumps 67
+normal! 026|
 wincmd w
-exe '1resize ' . ((&lines * 15 + 16) / 33)
-exe '2resize ' . ((&lines * 14 + 16) / 33)
+exe 'vert 1resize ' . ((&columns * 31 + 73) / 146)
+exe '2resize ' . ((&lines * 6 + 16) / 33)
+exe 'vert 2resize ' . ((&columns * 114 + 73) / 146)
+exe '3resize ' . ((&lines * 23 + 16) / 33)
+exe 'vert 3resize ' . ((&columns * 114 + 73) / 146)
 tabnext
-edit articles/templates/articles/detail.html
 argglobal
-balt common/templates/common/preview.html
+enew
+file NERD_tree_2
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -196,15 +123,7 @@ setlocal fdi=#
 setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 48 - ((26 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 48
-normal! 014|
+setlocal nofen
 tabnext
 edit static/myJS/color_theme.js
 argglobal
@@ -218,12 +137,71 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 266 - ((14 * winheight(0) + 15) / 30)
+let s:l = 406 - ((0 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 266
-normal! 05|
+keepjumps 406
+normal! 015|
+tabnext
+edit static/myJS/index_articles.js
+argglobal
+balt static/myJS/color_theme.js
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 59 - ((19 * winheight(0) + 15) / 30)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 59
+normal! 07|
+tabnext
+edit articles/templates/articles/index.html
+argglobal
+balt static/myJS/index_articles.js
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 15) / 30)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+tabnext
+edit articles/templates/articles/detail.html
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 30 - ((29 * winheight(0) + 15) / 30)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 30
+normal! 010|
 tabnext
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
@@ -241,13 +219,14 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 14 + 16) / 33)
-exe '2resize ' . ((&lines * 15 + 16) / 33)
+exe '1resize ' . ((&lines * 15 + 16) / 33)
+exe '2resize ' . ((&lines * 14 + 16) / 33)
 argglobal
-if bufexists(fnamemodify("term://~/PycharmProjects/MyBlog//9892:cmd", ":p")) | buffer term://~/PycharmProjects/MyBlog//9892:cmd | else | edit term://~/PycharmProjects/MyBlog//9892:cmd | endif
+if bufexists(fnamemodify("term://~/PycharmProjects/MyBlog//2352:cmd", ":p")) | buffer term://~/PycharmProjects/MyBlog//2352:cmd | else | edit term://~/PycharmProjects/MyBlog//2352:cmd | endif
 if &buftype ==# 'terminal'
-  silent file term://~/PycharmProjects/MyBlog//9892:cmd
+  silent file term://~/PycharmProjects/MyBlog//2352:cmd
 endif
+balt term://~/PycharmProjects/MyBlog//9736:cmd
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -256,36 +235,37 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 3748 - ((13 * winheight(0) + 7) / 14)
+let s:l = 1466 - ((0 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 3748
+keepjumps 1466
+normal! 052|
+wincmd w
+argglobal
+if bufexists(fnamemodify("term://~/PycharmProjects/MyBlog//9736:cmd", ":p")) | buffer term://~/PycharmProjects/MyBlog//9736:cmd | else | edit term://~/PycharmProjects/MyBlog//9736:cmd | endif
+if &buftype ==# 'terminal'
+  silent file term://~/PycharmProjects/MyBlog//9736:cmd
+endif
+balt term://~/PycharmProjects/MyBlog//2352:cmd
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 14 - ((13 * winheight(0) + 7) / 14)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 14
 normal! 0
 wincmd w
-argglobal
-if bufexists(fnamemodify("term://~/PycharmProjects/MyBlog//1116:cmd", ":p")) | buffer term://~/PycharmProjects/MyBlog//1116:cmd | else | edit term://~/PycharmProjects/MyBlog//1116:cmd | endif
-if &buftype ==# 'terminal'
-  silent file term://~/PycharmProjects/MyBlog//1116:cmd
-endif
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-let s:l = 46 - ((12 * winheight(0) + 7) / 15)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 46
-normal! 047|
-wincmd w
-exe '1resize ' . ((&lines * 14 + 16) / 33)
-exe '2resize ' . ((&lines * 15 + 16) / 33)
-tabnext 1
+exe '1resize ' . ((&lines * 15 + 16) / 33)
+exe '2resize ' . ((&lines * 14 + 16) / 33)
+tabnext 4
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

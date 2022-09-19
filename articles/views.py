@@ -17,7 +17,7 @@ def article_detail(request, slug):
         context = {"article": new_comment.article, "all_article_comments": all_article_comments,
                    "new_comment": new_comment}
 
-        return render(request, 'articles/detail.html', context={"article": article})
+        return render(request, 'articles/detail.html', context)
     else:
         print("lecture de l'article'")
         article = get_object_or_404(Article, slug=slug)

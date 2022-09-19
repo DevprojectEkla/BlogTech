@@ -90,6 +90,8 @@
 
   <div id="banniere" class=""> <img id="img_banniere" class="" src="" alt=""> </div>
   <div id="main_div" >
+
+    <div id="fond_div" class="row text-center">
       {% if not user.is_authenticated %}
   <script type="text/javascript"> var user_authenticated = false 
         </script>
@@ -99,7 +101,6 @@
   {% endif %}
   
     {% if user.is_authenticated %}
-    <div id="fond_div" class="row text-center">
         <div class="col-md-4">
 
             <a id="btn_publications" class="btn my-2 offset-lg-3" href="{% url 'articles-index' %}">Mes dernières publications </a>
@@ -112,7 +113,6 @@
         </div>
     </div>
     {% else %}
-    <div id="fond_div" class="text-center">
         <div>
         <a id="preview" class="btn btn-myhover-box my-2 " href="{% url 'home' %}">Aperçu de mon blog</a>
         </div>
