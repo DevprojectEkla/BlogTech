@@ -419,7 +419,7 @@ function myScrollTrigTranslationY(el_list)
 }
 
 
-function myScrollTrigOpacity(el_list)
+function myScrollTrigOpacity(el_list,container,start,end)
 {
     for(i=0; i< el_list.length; i++)
 {
@@ -433,10 +433,10 @@ function myScrollTrigOpacity(el_list)
         scrollTrigger:
             {
               trigger: el_list[i],
-              container: "container",
-              start: "top 60%",
-              end: "300px 50%",
-              //markers: {fontSize: "2rem"},
+              container: container,
+              start: start, 
+              end: end,
+              // markers: {fontSize: "2rem"},
               scrub: 1, //or a number in second
               //toggleClass: "invisible",
               toggleActions: "restart none none none",

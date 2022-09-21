@@ -386,7 +386,7 @@ var div_list2 = create_Taglist('div', 4);
 btn_list1 = create_Taglist('button', 5);
 btn_list2 = create_Taglist('button', 4);
 const btn_list = btn_list1.concat(btn_list2)
-class_btn_position = ["btn","btn-lg-auto","myZ-index-3", "op-1", "text-center", "mt-2", "responsive", 'bg', 'bg-primary', 'text-cyan', 'position-relative']
+class_btn_position = ["btn","btn-lg-auto","myZ-index-3", "op-1", "text-center", "mt-2", "responsive", 'bg', 'bg-primary', 'text-cyan-200', 'position-relative']
 setAttribute_to_el_list(btn_list, 'type', 'button')
 class_div = ["col-lg-auto", "mx-1", "position-relative"]
 // ** Création d'un message d'alerte si l'utilisateur n'est pas connecté **
@@ -749,8 +749,8 @@ function customize()
     // pour jouer sur la couleur (mais pas encore au point):
     //btni2.style.backgroundColor = 'rgba(' + 255 + ',' + 0 + ',' + random(400) + ',' + 1 + ')';
     //Les Animations sur les boutons:
-    TweenMax.fromTo(btn_list1, 3, { x: 0, rotation: 0 }, { x: "5vw", rotation: 360})
-    TweenMax.fromTo(btn_list2, 3, { x: 0, rotation: 0 }, { x: "10vw", rotation: 360})
+    TweenMax.fromTo(btn_list1, 2, { x: 0, rotation: 0 }, { x: "5vw", rotation: 360})
+    TweenMax.fromTo(btn_list2, 2, { x: 0, rotation: 0 }, { x: "10vw", rotation: 360})
   };
 
 
@@ -886,7 +886,9 @@ function append_children_el(list_child = [], el) {
 // On commence par rendre invisible toute la section2 de l'HTML:
 const section2 = document.getElementById("section2");
 const text_container = document.getElementById('text-container')
+const journal = document.querySelector('#journal')
 text_container.classList.add('text-container');
+theme.myScrollTrigOpacity([text_container,journal],main_container,"400px 70%","700px 20%");
 // if (section2){
 //   section2.classList.add("bg", theme.bg_color0)
 // }

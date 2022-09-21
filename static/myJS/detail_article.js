@@ -104,7 +104,7 @@ img_list = Array.from(theme.img_list)
 p_list = Array.from(theme.p_list)
 console.log(img_list)
 theme.myScrollTrig(img_list.splice(2).concat([p_list, card_com, new_comment]));
-theme.myScrollTrigOpacity([head_article, date]);
+theme.myScrollTrigOpacity([text_container, head_article, date],'container',"50px 60%","200px 30%");
 theme.myScrollTrigTranslationY(btn_pagination_list)
 
 let commentaire, class_style_commentaire;
