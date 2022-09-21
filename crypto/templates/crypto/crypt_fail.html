@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<div>
+    <div class="container p-5">
+      <div class="row justify-content-center">
+        <div class="col-sm-6 text-center">
+            <h1 class="display1"> ATTENTION </h1>
+        <h2 class="display2"> Le Message n'a pas pu être crypté</h2>
+        </div>
+
+        </div>
+            <div class="text-container">
+
+                <p>
+                The encryption failed due to a wrong import of a key file.
+                see error: {{key}}
+                </p>
+            </div>
+        <div class="row justify-content-center text-center">
+            <a href="{% url 'crypto' %}"> <div  id="link_ok" class="btn m-2">Retour à CryptoNET</div></a>
+        </div>
+</div>
+<script type="module" src="{% static 'myJS/crypto.js' %}"> </script> 
+{% endblock %}

@@ -62,11 +62,11 @@
     <img class="col-sm-auto rounded " src="{% static '' %}{{object.second_img_source}}" alt="{{object.second_img_alt}}" >
     </div>
     <div class="row">
-        <p class="col-sm-auto">{{object.preview_text |safe | linebreaks }}</p>
+        <p class="col-sm-auto">{{object.preview_text |safe}}</p>
         </div>
 
         <div id="signup" class="justify-content-center text-center">
-            <a id="btn_signup" href="{% url 'main' %}login" class="btn btn-lg col-sm-5 position-relative bottom-0 visible">
+            <a id="btn_signup" href="{% url 'main' %}login" class="btn btn-lg col-sm-auto mb-3">
                 Inscrivez-vous et/ou connectez-vous pour lire la suite. </a>
         </div>
     {% endif %}

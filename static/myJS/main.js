@@ -1,10 +1,24 @@
 import color_theme from './color_theme.js';
 import theme from './color_theme.js'
+// BOOTSTRAP ToolTip initialisation. cf.https://getbootstrap.com/docs/5.0/components/tooltips/ 
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+});
+console.log(tooltipTriggerList)
+// BOOTSTRAP Popover initialisation. cf.https://getbootstrap.com/docs/5.0/components/popovers/ 
+var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl)
+})
+
+
+
 
 
 let body, favicon, banniere, img_banniere, navbar, div_title, portail_title,
     footer, btn_preview, links, portail, btn_signup, btn_login, btn_publications,
-    btn_boutique, btn_retourPA, main_div;
+    btn_boutique, btn_retourPA, main_div, btn_copy;
 body        = document.body;
 favicon     = document.querySelector('#favicon')
 
@@ -17,12 +31,47 @@ portail     = document.querySelector('#portail')
 
 banniere    = document.querySelector('#banniere')
 img_banniere = document.querySelector('#img_banniere')
+
 btn_preview = document.querySelector('#preview')
 btn_signup  = document.querySelector('#signup')
 btn_login   = document.querySelector('#login')
 btn_publications = document.querySelector('#btn_publications')
 btn_boutique = document.querySelector('#btn_boutique')
 btn_retourPA = document.querySelector('#btn_retourPA')
+btn_copy = document.querySelector('#btn_copy')
+if (btn_copy)
+{
+    let mypopover, options, copyico, okico ;
+    
+    copyico = document.querySelector('#copyico')
+    okico = document.querySelector('#okico')
+    options = 
+        {
+            animation:true, placement:'top', trigger:'click', container:btn_load, offset: [790,340], 
+        title:'copié',viewport: { selector: '#btn_copy', padding: 5 }, html:true, template:'<div class="mypopover text-cyan" role="tooltip"><div class="mypopover-arrow"></div><h3 class="mypopover-header" >Copié</h3>'
+        }
+    mypopover = new bootstrap.Popover(copyico,options)
+    btn_copy.classList.add('btn','p-0','col-sm-auto');
+//=========== OPTION CLICK BTN_COPY=========================
+    btn_copy.addEventListener('click',function CopyText() 
+        {
+    resetPop(mypopover, copyico, okico) 
+    // Get the text field
+    var copyText = document.getElementById("key_input");
+
+  // Select the text field
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobile devices
+     // Copy the text inside the text field
+    navigator.clipboard.writeText(copyText.value);
+    
+  // Alert the copied text
+  // alert("Copied the text: " + copyText.value);
+})
+    
+}
+
+
 footer      = document.querySelector('#footer');
 main_div    = document.querySelector("#main_div");
 /** on veut changer l'image de fond dès que l'utilistateur se connecte ou 
@@ -134,6 +183,11 @@ if(btn_preview)
 }
 
 theme.add_class_to_element_list(theme.button_list, theme.class_color_theme)
+if(btn_copy)
+{
+    btn_copy.classList.remove('btn-myhover-box','bg','bg-primary','rounded','text-cyan-200')
+}
+
 if(btn_publications)
 {
 theme.add_class_to_element_list([btn_publications, btn_boutique,btn_retourPA],
@@ -145,6 +199,18 @@ theme.add_class_to_element_list([btn_publications, btn_boutique,btn_retourPA],
 if(portail_title){theme.title_animation(portail_title,"",50)}
 
 
+function resetIco(pop,ico1,ico2){
+    ico1.classList.remove('d-sm-none')
+    ico1.classList.add('d-inline-block')
+    ico2.classList.add('d-sm-none')
+    pop.hide()
+}
+function resetPop(pop,ico1,ico2){
+ico1.classList.add('d-sm-none')
+ico1.classList.remove('d-inline-block')
+ico2.classList.remove('d-sm-none')
+setTimeout(resetIco, 2000, pop, ico1, ico2)    
+}
 
 
 
