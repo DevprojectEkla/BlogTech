@@ -3,7 +3,7 @@
 @import "static/scss/functions";
 $theme_bg             : white ;
 $pagination-color: red;
-$primary        :#0c3762cf;
+$primary        : rgba(14,25,37,.8);//#0c3762cf;
 $primary-100: tint-color($primary, 80%) ;
 $primary-200: tint-color($primary, 60%) ;
 $primary-300: tint-color($primary, 40%) ;
@@ -19,7 +19,7 @@ $primary_box_bg     : $primary;
 $primary_shadow_bg : $primary;
 $primary_bg_500 : $primary_box_bg;
 
-$secondary      : #225500cf;
+$secondary      : rgba(14,25,37,.8);
 
 $secondary-100: tint-color($secondary, 80%) ;
 $secondary-200: tint-color($secondary, 60%) ;
@@ -642,6 +642,59 @@ $utilities:
 @import "static/scss/bootstrap.scss";
 
 
+.mypopover {
+    @extend .popover;
+  position: relative;
+  top: 0;
+  left: 0 /* rtl:ignore */;
+  z-index: 1070;
+  display: block;
+  max-width: 276px;
+  font-family: var(--bs-font-sans-serif);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-break: normal;
+  word-spacing: normal;
+  white-space: normal;
+  line-break: auto;
+  font-size: 0.875rem;
+  word-wrap: break-word;
+  background-color: $primary;
+  background-clip: padding-box;
+  border: 1px solid $cyan-800;
+  border-radius: 0.3rem;
+}
+.mypopover-arrow {
+    @extend .popover-arrow;
+  position: relative;
+  display: block;
+  width: 1rem;
+  height: 0.5rem;
+  color: $primary;
+}
+.mypopover-arrow::before, .mypopover-arrow::after {
+  position: relative;
+  display: block;
+  content: "";
+  border-style: solid;
+}
+.mypopover-header {
+    @extend .popover-header;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0;
+  font-size: 1rem;
+  background-color:$primary;
+  border-bottom: 1px solid $cyan-700;
+  border-top-left-radius: calc(0.3rem - 1px);
+  border-top-right-radius: calc(0.3rem - 1px);
+}
 .text-justify {
     text-align: justify;
 }

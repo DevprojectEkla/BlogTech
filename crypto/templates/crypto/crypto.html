@@ -1,4 +1,4 @@
-{% extends 'common/preview.html' %}
+{% extends 'main.html' %}
 {% load static %}
 
 {% block content %}
@@ -20,11 +20,24 @@
 {% csrf_token %} 
     <div class="container"> 
         <div class="row justify-content-center"> 
-          <div class="col-sm-4 my-2">
-              <button class="mb-1" type="button" action="">Générer une clé de cryptage</button>
-              <input id="key_input" name = "key_input" value="clé auto:{{key}}"> <button id="load_key" class="">charger un fichier clé</button></input>
-            </div>
-            </div>
+          <div class="col-sm-auto my-2">
+              <button class="mb-1 p-1" type="submit" name="genkey" value="genkey" action="">Générer une clé de cryptage</button>
+              <div id=key_div class="row"> <div class="col-sm-auto"> <input id="key_input" name = "key_input" value="clé auto:{{key}}"></input> 
+        </div>
+            <!-- The button used to copy the text -->
+            <button class= "" id="btn_copy" data-bs-toggle="tooltip" title="paste to clipboard" data-bs-placement="right"  class="mb-1 p-1" type="button" action="onclick"><svg id="copyico" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon d-inline-block">
+    <path fill="cyan" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill="cyan" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+</svg><svg id="okico" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-inline-block d-sm-none">
+    <path fill="cyan" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
+</svg></button>
+
+        </div>
+            <div class="my-2">
+      <label id= "btn_load" for="load_key" class="form-label "> charger un fichier Fernet clé(.key)</label>
+      <input class="form-control" type="file" id="load_key" name="keyfile" style="">
+        </div>
+        </div>
+          </div>
         <div class="row justify-content-center"> 
           <div class="col-sm-4">
             <label for="message">
@@ -33,17 +46,17 @@
             </div>
             <div class="row justify-content-center">
             <div class="col-sm-4"> 
-                <textarea id="message" name="message" rows="10" cols="60">{{message}}</textarea>
+                <textarea id="message" name="message" rows="5" cols="60">{{message}}</textarea>
             </div>
             </div>
           </div>
-       </div>
-    </div>
         <div class="row justify-content-center">
             <div class="col-sm-auto">
                 <input id="id_btn" class="btn" type="submit" value="Crypter">
             </div>
 
+    </div>
+    </div>
         </div>   
   </form>
 </div>

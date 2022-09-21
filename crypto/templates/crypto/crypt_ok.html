@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<div>
+    <div class="container p-5">
+      <div class="row justify-content-center">
+        <div class="col-sm-6 text-center">
+        <h2 class="display2 text-white"> Le Message a bien été crypté</h2>
+        </div>
+
+        </div>
+            <div class="text-container">
+
+                <p>
+                    {{encrypted_msg}}
+                </p>
+            </div>
+        <div class="row justify-content-center text-center">
+            <a href="{% url 'crypto' %}"> <div  id="link_back" class="btn m-2">Retour à CryptoNET</div></a>
+        </div>
+        <div class="row justify-content-center text-center">
+            <a href="{% url 'home' %}"> <div  id="link_PA" class="btn m-2">Retour à la page d'Accueil</div></a>
+        </div>
+</div>
+<script type="module" src="{% static 'myJS/crypto.js' %}"> </script> 
+{% endblock %}

@@ -19,7 +19,7 @@ from django.http import HttpResponseRedirect
 from django.template.defaulttags import url
 from django.urls import path
 from chess.views import ChessView
-from crypto.views import cryptMsg, CryptoView
+from crypto.views import cryptMsg, CryptoViewOk, CryptoViewFail
 
 import store.views
 from articles.views import article_detail, articles_index, new_post, edit_post, ArticleDeleteView
@@ -59,6 +59,7 @@ urlpatterns = [
     path('chess/', ChessView.as_view(), name="chess"),
     
     path('crypto/', cryptMsg, name='crypto'),
-    path('crypto/', CryptoView.as_view(), name='crypt_ok')
+    path('crypto/', CryptoViewOk.as_view(), name='crypt_ok'),
+    path('crypto/', CryptoViewFail.as_view(), name='crypt_fail')
 
 ] + static(settings.MEDIA_URL,document_root= settings.MEDIA_ROOT)

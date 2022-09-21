@@ -381,7 +381,7 @@ let class_btn_position;
 let class_div;
 
 
-var div_list1 = create_Taglist('div', 4); //par défaut création de 4 élément 'div'
+var div_list1 = create_Taglist('div', 5); //par défaut création de 4 élément 'div'
 var div_list2 = create_Taglist('div', 4);
 btn_list1 = create_Taglist('button', 5);
 btn_list2 = create_Taglist('button', 4);
@@ -645,7 +645,7 @@ Animations();
 
 function customize() 
 {let btn_news, btn_chess, btn_crypto;
-  for (i = 0; i < 4; i++) 
+  for (i = 0; i < btn_list1.length; i++) 
   {
     
     let btni1;
@@ -657,29 +657,27 @@ function customize()
       };
     if (button_names[i]== "CryptoNET")
     {
-        btn_crypto = btni1;
+      btn_crypto = btni1;
+      btn_crypto.setAttribute('onclick', 'location.href="/crypto/"')
     }
     if(button_names[i] == "échecs")
     {
       btn_chess = btni1;
+      btn_chess.setAttribute('onclick','location.href="/chess/"');
     };
+
+    btni1.classList.add("disable")
     // pour jouer sur la couleur (mais pas encore au point):
     //btni1.style.backgroundColor = 'rgba(' + 255 + ',' + 0 + ',' + random(400) + ',' + 1 + ')';
     if (user_authenticated)
     {
+      btni1.classList.remove("disable")
       btn_news.setAttribute('onclick','location.href="/articles/index"')
-      btni1.classList.add("disable")
-      if (btn_chess)
-      {
-      btn_chess.setAttribute('onclick','location.href="/chess/"')
-      };
-      if (btn_crypto)  
-        {
-            btn_crypto.setAttribute('onclick', 'location.href="/crypto/"')
-        };
     }
     else 
-    {/**================= ALERT SUR LE BOUTON NOUVEAUTES =============
+    {
+
+    /**================= ALERT SUR LE BOUTON NOUVEAUTES =============
     * ajout d'une Alert bootstrap avec des liens vers signup ou login 
     * si la variable django user_is_authenticated= false
     =================================================================*/
@@ -730,26 +728,31 @@ function customize()
       
       
     };    
+  }
     // *- suite de la boucle FOR -*
+    for (i = 0; i< btn_list2.length; i++)
+    {
     /**==========================  
      * les boutons de la d-flex2: 
      * ==========================
      * */
-    const btni2 = btn_list2[i]
-    btni2.textContent = button_names[i + 4];
+    let btni2;
+    btni2 = btn_list2[i]
+    btni2.textContent = button_names[i + btn_list1.length];
     
     if (button_names[i+4] == "contactez-moi")
     { 
       
       btni2.setAttribute('onclick','location.href="/common/contact"');
     };
+    }
     // pour jouer sur la couleur (mais pas encore au point):
     //btni2.style.backgroundColor = 'rgba(' + 255 + ',' + 0 + ',' + random(400) + ',' + 1 + ')';
     //Les Animations sur les boutons:
     TweenMax.fromTo(btn_list1, 3, { x: 0, rotation: 0 }, { x: "5vw", rotation: 360})
-    TweenMax.fromTo(btn_list2, 3, { x: 0, rotation: 0 }, { x: "20vw", rotation: 360})
+    TweenMax.fromTo(btn_list2, 3, { x: 0, rotation: 0 }, { x: "10vw", rotation: 360})
   };
-};
+
 
 //  Function triggered by the Timeline tl4:
 //  accroche les éléments divs aux classes dflex1 parentes
