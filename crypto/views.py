@@ -2,23 +2,30 @@ from django.shortcuts import render
 from django.views.generic import CreateView, TemplateView 
 from django.shortcuts import redirect, render
 from crypto.models import CryptoNet, Key
-
+from pathlib import Path
 
 
 def cryptMsg(request):
     if request.method == "POST":
         print("post request here")
         user = request.user
+        slug = len(CryptoNet.objects.all()) + 1
         message = request.POST.get('message')
         genkey = request.POST.get('genkey')
-        keyfile = request.POST.get('keyfile')
+        keyfile = None
+        if request.FILES:
+            keyfile = request.FILES['keyfile']
+            filename = str(keyfile)
+            print("filename",filename)
+            keypath = Path.cwd()/Path('media/keyfiles')/filename
+            print(keypath)
         if genkey:
             print("genkey pressed")
             key = CryptoNet.generateKey()
             test = CryptoNet.checkKey(key)
         elif keyfile:
-            print(f'using a keyfile:{keyfile}')
-            key = Key(keyfile).key
+            key = keyfile.read()
+            print(f'using a keyfile:{keyfile} containing key:{key}')
             print('checking key in backend server')
             try:
                 test = CryptoNet.checkKey(key)
@@ -36,7 +43,7 @@ def cryptMsg(request):
             print(key, test)
 
         if test and (message!="" and message!="ce champ ne doit pas être vide ou contenir ce message d'erreur"):
-            crypt_result = crypt_op(user,message,key)
+            crypt_result = crypt_op(user,message,key, keyfile)
             encrypted_msg = crypt_result[0]
             context = crypt_result[1]
             print(f"something posted:{message}, encrypted_msg:{encrypted_msg}")
@@ -60,20 +67,21 @@ def cryptMsg(request):
         return render(request, 'crypto/crypto.html',context)
 
 
-def crypt_op(user, message, key):
-    
+def crypt_op(user, message, key, keyfile):
     cryptMSG = CryptoNet()
+    cryptMSG.slug = len(CryptoNet.objects.all()) + 1
+    cryptMSG.user = user
     cryptMSG.key = key
     encrypted_msg = cryptMSG.crypter_message(key)
-    cryptMSG.user = user
-    cryptMSG.slug = len(CryptoNet.objects.all()) + 1
+    if keyfile:
+        cryptMSG.keyfile = keyfile
     cryptMSG.message = message
     cryptMSG.save()
     context = { "message": message,
                     "encrypted_msg":encrypted_msg,
                     "user": user,
                     "id":cryptMSG.slug,
-                    "key":cryptMSG.key
+                    "key":cryptMSG.key,
                     }
     return encrypted_msg, context 
 

@@ -7,12 +7,13 @@ from cryptography.exceptions import InvalidKey
 default_key = Key('secret.key').key
 
 
+
 class CryptoNet(models.Model):
     slug = models.SlugField(max_length=128) 
     user = models.ForeignKey(AUTH_USER_MODEL,on_delete=models.CASCADE)
     message = models.TextField(max_length=255, blank=False)
     key = models.CharField(max_length=255,default=default_key)
-    keyFile = models.FileField(upload_to='keyfiles', blank=True, null=True)
+    keyfile = models.FileField(upload_to='keyfiles', blank=True, null=True)
     
     def crypter_message(self, key):
         encrypted_msg = encrypt_message(self.message, key)

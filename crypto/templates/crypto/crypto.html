@@ -16,7 +16,7 @@
 
     </div>
     <div>
-  <form method="POST" action=""> 
+  <form method="POST" enctype="multipart/form-data" action=""> 
 {% csrf_token %} 
     <div class="container"> 
         <div class="row justify-content-center"> 
@@ -34,7 +34,7 @@
         </div>
             <div class="my-2">
       <label id= "btn_load" for="load_key" class="form-label "> charger un fichier Fernet clé(.key)</label>
-      <input class="form-control" type="file" id="load_key" name="keyfile" style="">
+      <input class="form-control" type="file" id="load_key" name="keyfile" style=""></input>
         </div>
         </div>
           </div>

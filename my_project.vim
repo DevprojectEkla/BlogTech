@@ -13,26 +13,37 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +231 static/myJS/color_theme.js
+badd +438 static/myJS/color_theme.js
 badd +30 term://~/PycharmProjects/MyBlog//2180:cmd
 badd +1 term://~/PycharmProjects/MyBlog//11816:cmd\ git
-badd +40 static/myJS/crypto.js
-badd +25 crypto/templates/crypto/crypto.html
-badd +24 ./crypto/views.py
-badd +33 crypto/models.py
-badd +19 crypto/templates/crypto/crypt_ok.html
-badd +26 static/myJS/script.js
+badd +28 crypto/templates/crypto/crypto.html
+badd +31 ./crypto/views.py
+badd +891 static/myJS/script.js
 badd +1 crypto/_02_KeyFile.py
-badd +20 crypto/templates/crypto/crypt_fail.html
 badd +63 Blog/urls.py
-badd +683 style.scss
-badd +58 static/myJS/main.js
-badd +0 term://~/PycharmProjects/MyBlog//5236:cmd
-badd +0 term://~/PycharmProjects/MyBlog//12904:cmd
-badd +0 static/css/style.css
+badd +1 style.scss
+badd +50 static/myJS/main.js
+badd +1 static/css/style.css
+badd +0 term://~/PycharmProjects/MyBlog//7844:cmd
+badd +0 term://~/PycharmProjects/MyBlog//6984:cmd
+badd +0 term://~/PycharmProjects/MyBlog//7024:cmd
+badd +0 term://~/PycharmProjects/MyBlog//11248:cmd\ git
+badd +0 chess/models.py
+badd +9 chess/views.py
+badd +1 articles/templates/articles/index.html
+badd +107 static/myJS/detail_article.js
+badd +118 common/templates/common/preview.html
+badd +0 static/myJS/index_articles.js
+badd +92 templates/main.html
 argglobal
 %argdel
 set stal=2
+tabnew +setlocal\ bufhidden=wipe
+tabnew +setlocal\ bufhidden=wipe
+tabnew +setlocal\ bufhidden=wipe
+tabnew +setlocal\ bufhidden=wipe
+tabnew +setlocal\ bufhidden=wipe
+tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
@@ -61,16 +72,16 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 45 - ((14 * winheight(0) + 15) / 30)
+let s:l = 439 - ((16 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 45
-normal! 018|
+keepjumps 439
+normal! 015|
 tabnext
 edit static/myJS/script.js
 argglobal
-balt crypto/templates/crypto/crypt_ok.html
+balt static/myJS/color_theme.js
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -81,14 +92,94 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 479 - ((14 * winheight(0) + 15) / 30)
+let s:l = 930 - ((29 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 479
-normal! 037|
+keepjumps 930
+normal! 043|
 tabnext
-edit crypto/templates/crypto/crypt_fail.html
+edit common/templates/common/preview.html
+argglobal
+balt static/myJS/script.js
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 25 - ((14 * winheight(0) + 15) / 30)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 25
+normal! 045|
+tabnext
+edit templates/main.html
+argglobal
+balt common/templates/common/preview.html
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 138 - ((8 * winheight(0) + 15) / 30)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 138
+normal! 0
+tabnext
+edit articles/templates/articles/index.html
+argglobal
+balt static/myJS/index_articles.js
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 5 - ((4 * winheight(0) + 15) / 30)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 5
+normal! 0
+tabnext
+edit static/myJS/detail_article.js
+argglobal
+balt static/myJS/script.js
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 109 - ((16 * winheight(0) + 15) / 30)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 109
+normal! 0
+tabnext
+edit static/myJS/index_articles.js
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -100,35 +191,15 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 20 - ((19 * winheight(0) + 15) / 30)
+let s:l = 17 - ((16 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 20
-normal! 035|
-tabnext
-edit crypto/templates/crypto/crypt_ok.html
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 19 - ((18 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 19
-normal! 076|
+keepjumps 17
+normal! 0
 tabnext
 edit crypto/_02_KeyFile.py
 argglobal
-balt crypto/models.py
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -139,11 +210,11 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 30 - ((5 * winheight(0) + 15) / 30)
+let s:l = 58 - ((29 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 30
+keepjumps 58
 normal! 023|
 tabnext
 edit Blog/urls.py
@@ -159,14 +230,14 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 53 - ((11 * winheight(0) + 15) / 30)
+let s:l = 63 - ((17 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 53
-normal! 02|
+keepjumps 63
+normal! 063|
 tabnext
-edit crypto/models.py
+edit ./crypto/views.py
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -178,14 +249,96 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 30 - ((17 * winheight(0) + 15) / 30)
+let s:l = 29 - ((13 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 30
-normal! 024|
+keepjumps 29
+normal! 013|
 tabnext
-edit ./crypto/views.py
+edit crypto/templates/crypto/crypto.html
+argglobal
+balt term://~/PycharmProjects/MyBlog//2180:cmd
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 28 - ((14 * winheight(0) + 15) / 30)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 28
+normal! 061|
+tabnext
+edit static/myJS/color_theme.js
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe '1resize ' . ((&lines * 15 + 16) / 33)
+exe '2resize ' . ((&lines * 14 + 16) / 33)
+argglobal
+if bufexists(fnamemodify("term://~/PycharmProjects/MyBlog//11248:cmd\ git", ":p")) | buffer term://~/PycharmProjects/MyBlog//11248:cmd\ git | else | edit term://~/PycharmProjects/MyBlog//11248:cmd\ git | endif
+if &buftype ==# 'terminal'
+  silent file term://~/PycharmProjects/MyBlog//11248:cmd\ git
+endif
+balt static/myJS/color_theme.js
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 184 - ((14 * winheight(0) + 7) / 15)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 184
+normal! 041|
+wincmd w
+argglobal
+balt term://~/PycharmProjects/MyBlog//11248:cmd\ git
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 266 - ((6 * winheight(0) + 7) / 14)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 266
+normal! 05|
+wincmd w
+exe '1resize ' . ((&lines * 15 + 16) / 33)
+exe '2resize ' . ((&lines * 14 + 16) / 33)
+tabnext
+edit static/myJS/main.js
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -227,79 +380,20 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 30 - ((20 * winheight(0) + 15) / 30)
+let s:l = 50 - ((11 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 30
-normal! 013|
+keepjumps 50
+normal! 093|
 wincmd w
 exe 'vert 1resize ' . ((&columns * 31 + 73) / 146)
 exe 'vert 2resize ' . ((&columns * 114 + 73) / 146)
 tabnext
-edit crypto/templates/crypto/crypto.html
 argglobal
-balt term://~/PycharmProjects/MyBlog//2180:cmd
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 25 - ((11 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 25
-normal! 029|
-tabnext
-edit static/myJS/main.js
-argglobal
-balt static/myJS/crypto.js
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 68 - ((23 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 68
-normal! 08|
-tabnext
-edit static/myJS/crypto.js
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 30 - ((9 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 30
-normal! 0
-tabnext
-argglobal
-if bufexists(fnamemodify("term://~/PycharmProjects/MyBlog//2180:cmd", ":p")) | buffer term://~/PycharmProjects/MyBlog//2180:cmd | else | edit term://~/PycharmProjects/MyBlog//2180:cmd | endif
+if bufexists(fnamemodify("term://~/PycharmProjects/MyBlog//7024:cmd", ":p")) | buffer term://~/PycharmProjects/MyBlog//7024:cmd | else | edit term://~/PycharmProjects/MyBlog//7024:cmd | endif
 if &buftype ==# 'terminal'
-  silent file term://~/PycharmProjects/MyBlog//2180:cmd
+  silent file term://~/PycharmProjects/MyBlog//7024:cmd
 endif
 setlocal fdm=manual
 setlocal fde=0
@@ -309,14 +403,14 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 144 - ((27 * winheight(0) + 15) / 30)
+let s:l = 119 - ((29 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 144
-normal! 04|
+keepjumps 119
+normal! 0
 tabnext
-edit style.scss
+edit chess/views.py
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -338,7 +432,6 @@ exe 'vert 2resize ' . ((&columns * 114 + 73) / 146)
 argglobal
 enew
 file NERD_tree_2
-balt style.scss
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -349,7 +442,7 @@ setlocal fdn=20
 setlocal nofen
 wincmd w
 argglobal
-balt crypto/templates/crypto/crypto.html
+balt ./crypto/views.py
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -360,15 +453,158 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 293 - ((17 * winheight(0) + 15) / 30)
+let s:l = 9 - ((8 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 293
-normal! 0
+keepjumps 9
+normal! 07|
 wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 31 + 73) / 146)
 exe 'vert 2resize ' . ((&columns * 114 + 73) / 146)
+tabnext
+edit ./crypto/views.py
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 41 - ((28 * winheight(0) + 15) / 30)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 41
+normal! 037|
+tabnext
+edit chess/models.py
+argglobal
+balt chess/models.py
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 15) / 30)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+tabnext
+argglobal
+if bufexists(fnamemodify("term://~/PycharmProjects/MyBlog//2180:cmd", ":p")) | buffer term://~/PycharmProjects/MyBlog//2180:cmd | else | edit term://~/PycharmProjects/MyBlog//2180:cmd | endif
+if &buftype ==# 'terminal'
+  silent file term://~/PycharmProjects/MyBlog//2180:cmd
+endif
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 3299 - ((29 * winheight(0) + 15) / 30)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 3299
+normal! 0
+tabnext
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe '1resize ' . ((&lines * 14 + 16) / 33)
+exe '2resize ' . ((&lines * 15 + 16) / 33)
+argglobal
+if bufexists(fnamemodify("term://~/PycharmProjects/MyBlog//6984:cmd", ":p")) | buffer term://~/PycharmProjects/MyBlog//6984:cmd | else | edit term://~/PycharmProjects/MyBlog//6984:cmd | endif
+if &buftype ==# 'terminal'
+  silent file term://~/PycharmProjects/MyBlog//6984:cmd
+endif
+balt term://~/PycharmProjects/MyBlog//7844:cmd
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 11 - ((10 * winheight(0) + 7) / 14)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 11
+normal! 0
+wincmd w
+argglobal
+if bufexists(fnamemodify("term://~/PycharmProjects/MyBlog//7844:cmd", ":p")) | buffer term://~/PycharmProjects/MyBlog//7844:cmd | else | edit term://~/PycharmProjects/MyBlog//7844:cmd | endif
+if &buftype ==# 'terminal'
+  silent file term://~/PycharmProjects/MyBlog//7844:cmd
+endif
+balt term://~/PycharmProjects/MyBlog//6984:cmd
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 10 - ((9 * winheight(0) + 7) / 15)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 10
+normal! 0
+wincmd w
+exe '1resize ' . ((&lines * 14 + 16) / 33)
+exe '2resize ' . ((&lines * 15 + 16) / 33)
+tabnext
+edit style.scss
+argglobal
+balt term://~/PycharmProjects/MyBlog//7844:cmd
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 46 - ((14 * winheight(0) + 15) / 30)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 46
+normal! 026|
 tabnext
 edit static/css/style.css
 argglobal
@@ -383,100 +619,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 14348 - ((29 * winheight(0) + 15) / 30)
+let s:l = 14315 - ((12 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 14348
+keepjumps 14315
 normal! 0
-tabnext
-edit style.scss
-let s:save_splitbelow = &splitbelow
-let s:save_splitright = &splitright
-set splitbelow splitright
-wincmd _ | wincmd |
-split
-wincmd _ | wincmd |
-split
-2wincmd k
-wincmd w
-wincmd w
-let &splitbelow = s:save_splitbelow
-let &splitright = s:save_splitright
-wincmd t
-let s:save_winminheight = &winminheight
-let s:save_winminwidth = &winminwidth
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-exe '1resize ' . ((&lines * 4 + 16) / 33)
-exe '2resize ' . ((&lines * 3 + 16) / 33)
-exe '3resize ' . ((&lines * 21 + 16) / 33)
-argglobal
-if bufexists(fnamemodify("term://~/PycharmProjects/MyBlog//12904:cmd", ":p")) | buffer term://~/PycharmProjects/MyBlog//12904:cmd | else | edit term://~/PycharmProjects/MyBlog//12904:cmd | endif
-if &buftype ==# 'terminal'
-  silent file term://~/PycharmProjects/MyBlog//12904:cmd
-endif
-balt term://~/PycharmProjects/MyBlog//5236:cmd
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-let s:l = 40 - ((3 * winheight(0) + 2) / 4)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 40
-normal! 0
-wincmd w
-argglobal
-if bufexists(fnamemodify("term://~/PycharmProjects/MyBlog//5236:cmd", ":p")) | buffer term://~/PycharmProjects/MyBlog//5236:cmd | else | edit term://~/PycharmProjects/MyBlog//5236:cmd | endif
-if &buftype ==# 'terminal'
-  silent file term://~/PycharmProjects/MyBlog//5236:cmd
-endif
-balt term://~/PycharmProjects/MyBlog//12904:cmd
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-let s:l = 41 - ((2 * winheight(0) + 1) / 3)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 41
-normal! 0
-wincmd w
-argglobal
-balt term://~/PycharmProjects/MyBlog//5236:cmd
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 687 - ((20 * winheight(0) + 10) / 21)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 687
-normal! 0
-wincmd w
-exe '1resize ' . ((&lines * 4 + 16) / 33)
-exe '2resize ' . ((&lines * 3 + 16) / 33)
-exe '3resize ' . ((&lines * 21 + 16) / 33)
 tabnext
 edit crypto/templates/crypto/crypto.html
 let s:save_splitbelow = &splitbelow
@@ -537,7 +685,7 @@ normal! 016|
 wincmd w
 exe '1resize ' . ((&lines * 10 + 16) / 33)
 exe '2resize ' . ((&lines * 19 + 16) / 33)
-tabnext 10
+tabnext 15
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

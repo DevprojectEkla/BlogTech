@@ -47,15 +47,21 @@ if (btn_copy)
     okico = document.querySelector('#okico')
     options = 
         {
-            animation:true, placement:'top', trigger:'click', container:btn_load, offset: [790,340], 
+        animation:true, placement:'right', container:btn_copy, //offset: [790,340], 
         title:'copié',viewport: { selector: '#btn_copy', padding: 5 }, html:true, template:'<div class="mypopover text-cyan" role="tooltip"><div class="mypopover-arrow"></div><h3 class="mypopover-header" >Copié</h3>'
         }
-    mypopover = new bootstrap.Popover(copyico,options)
     btn_copy.classList.add('btn','p-0','col-sm-auto');
+    mypopover = new bootstrap.Popover(copyico,options)
+console.log(tooltipList)
+    let mytooltip;
+    mytooltip = tooltipList[0] 
 //=========== OPTION CLICK BTN_COPY=========================
     btn_copy.addEventListener('click',function CopyText() 
-        {
-    resetPop(mypopover, copyico, okico) 
+        {   mytooltip.hide()
+            mytooltip.disable()
+            mypopover.show()
+            setTimeout(resetPop,1000, mypopover, copyico, okico)
+            setTimeout(resetIco, 2000, mytooltip, copyico, okico)    
     // Get the text field
     var copyText = document.getElementById("key_input");
 
@@ -199,17 +205,17 @@ theme.add_class_to_element_list([btn_publications, btn_boutique,btn_retourPA],
 if(portail_title){theme.title_animation(portail_title,"",50)}
 
 
-function resetIco(pop,ico1,ico2){
+function resetIco(tooltip,ico1,ico2){
     ico1.classList.remove('d-sm-none')
     ico1.classList.add('d-inline-block')
     ico2.classList.add('d-sm-none')
-    pop.hide()
+    tooltip.enable()
 }
 function resetPop(pop,ico1,ico2){
-ico1.classList.add('d-sm-none')
+pop.hide()
 ico1.classList.remove('d-inline-block')
+ico1.classList.add('d-sm-none')
 ico2.classList.remove('d-sm-none')
-setTimeout(resetIco, 2000, pop, ico1, ico2)    
 }
 
 
