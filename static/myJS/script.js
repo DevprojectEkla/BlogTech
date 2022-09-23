@@ -740,7 +740,7 @@ function customize()
     btni2 = btn_list2[i]
     btni2.textContent = button_names[i + btn_list1.length];
     
-    if (button_names[i+4] == "contactez-moi")
+    if (button_names[i+ btn_list1.length] == "contactez-moi")
     { 
       
       btni2.setAttribute('onclick','location.href="/common/contact"');

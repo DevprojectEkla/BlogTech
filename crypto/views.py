@@ -6,9 +6,12 @@ from pathlib import Path
 
 
 def cryptMsg(request):
+
+    user = request.user
+    if not user.is_authenticated:
+        return redirect('login')
     if request.method == "POST":
         print("post request here")
-        user = request.user
         slug = len(CryptoNet.objects.all()) + 1
         message = request.POST.get('message')
         genkey = request.POST.get('genkey')

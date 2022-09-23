@@ -300,17 +300,8 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 
 $utilities:
 (   
-    "nav-link": (
-        
-    display: block,
-    padding: 0.5rem 1rem,
-    color: orange,
-    text-color: orange,
-    //text-decoration: none,
-    transition: color 0.15s ease-in-out background-color 0.15s ease-in-out border-color 0.15s ease-in-out,
-    ),   
 
-        "span":
+    "span":
         (
             class: "myfade",
             property: transition,
@@ -640,6 +631,12 @@ $utilities:
 
 
 @import "static/scss/bootstrap.scss";
+
+
+.lead {
+ font-size: 1.25rem;
+ font-weight: 400;
+}
 
 
 .mypopover {

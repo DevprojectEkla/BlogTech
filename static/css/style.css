@@ -7,7 +7,7 @@
  */
 :root {
   --bs-theme_bg: white;
-  --bs-text_container: #b3ffff;
+  --bs-text_container: #e2fbfb;
   --bs-primary: rgba(14, 25, 37, 0.8);
   --bs-primary_text_box_hover: rgba(181, 184, 188, 0.92);
   --bs-primary_text_hover: rgba(181, 184, 188, 0.92);
@@ -21368,10 +21368,15 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.lead {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
 .mypopover {
   position: relative;
-  top: 450px;
-  left: 750px;
+  top: 0;
+  left: 0;
   z-index: 1070;
   display: block;
   max-width: 276px;
@@ -21395,7 +21400,6 @@ textarea.form-control-lg {
   background-clip: padding-box;
   border: 1px solid #055160;
   border-radius: 0.3rem;
-  transform: translate3d(750px, 350px, 0px);
 }
 
 .mypopover-arrow {
@@ -21428,7 +21432,7 @@ textarea.form-control-lg {
 }
 
 .text-container {
-  background-color: #b3ffff;
+  background-color: #e2fbfb;
 }
 
 .btn-myhover:hover, .btn-myhover-box:hover {
