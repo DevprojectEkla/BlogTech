@@ -19,6 +19,13 @@ import theme from './color_theme.js'
 // console.log('color0:%s',theme.color0)
 // console.log('color1:%s',theme.color1)
 // console.log('color2:%s',theme.color2)
+//INITIALISATION DES TOASTS BOOTSTRAP see: https://getbootstrap.com/docs/5.1/components/toasts/
+let option;
+option = {animation:true,autohide:true,delay:5000}
+var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+var toastList = toastElList.map(function (toastEl) {
+  return new bootstrap.Toast(toastEl, option)
+})
 
 /** ==== CLASSE DE STYLE POUR LES BOUTONS ==========
  *  ==== theme_btn est importée de notre module ====
@@ -750,9 +757,12 @@ function customize()
     //btni2.style.backgroundColor = 'rgba(' + 255 + ',' + 0 + ',' + random(400) + ',' + 1 + ')';
     //Les Animations sur les boutons:
     TweenMax.fromTo(btn_list1, 2, { x: 0, rotation: 0 }, { x: "5vw", rotation: 360})
-    TweenMax.fromTo(btn_list2, 2, { x: 0, rotation: 0 }, { x: "10vw", rotation: 360})
+    TweenMax.fromTo(btn_list2, 2, { x: 0, rotation: 0 }, { x: "10vw", rotation: 360,onComplete:triggerToast})
   };
-
+console.log(toastList)
+function triggerToast(){
+    toastList[0].show()
+}
 
 //  Function triggered by the Timeline tl4:
 //  accroche les éléments divs aux classes dflex1 parentes

@@ -7,11 +7,24 @@
         <div id= main_container class="">
     <div id="div_main_title" class="row justify-content-center">
            <div class="text-center col-sm-auto rounded">
-               <h1 id = "mytitle1" class="" >{{ object.main_title }}</h1></div>
+               <h1 id = "mytitle1" class="" >{{ object.main_title | safe }}</h1></div>
            <div id=badge></div> 
         </div> 
         
-                <div  id="btn_group" class=""></div>           
+                <div  id="btn_group" class="position-relative"></div>
+
+                <div class="toast bg bg-primary m-3 position-absolute" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header bg bg-cyan-100">
+    <img src="" class="rounded me-1" alt="">
+    <strong class="me-auto text-cyan-800">Nouvelle Application CryptoNet</strong>
+    <small>11 mins ago</small>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+  <div class="toast-body  text-cyan-100">
+    L'Application CryptoNet est désormais disponible. Connectez-vous pour l'utiliser.
+    <a href="../login" class="text-cyan-100">login</a>
+  </div>
+</div>
         <div id="d-flex" class="">
 
             <div id="container_main_image" class=""> 
@@ -20,6 +33,7 @@
                    
 
             </div>
+
         </div>
 
         <div id= "journal" class="display-2 bg bg-primary text-center text-cyan-200"> Mon Journal de bord
@@ -52,19 +66,20 @@
                 </div></div>
         </div>  
         {% if not user.is_authenticated %}
+
         <script type="text/javascript"> var user_authenticated = false 
         </script>
 <div class="row justify-content-center">
-                <h3 id="title1" class=" ">{{object.first_title_h3}}</h3>
+                <h3 id="title1" class=" ">{{object.first_title_h3 | safe}}</h3>
         </div>
             <div class='row justify-content-between'>
-                <p id="first_p" class="">{{object.first_p |safe }}<p> 
+                <p id="first_p" class="">{{object.first_p | safe }}<p> 
              </div> 
         <div class="text-center">
     <img class="col-sm-auto rounded " src="{% static '' %}{{object.second_img_source}}" alt="{{object.second_img_alt}}" >
     </div>
     <div class="row">
-        <p class="col-sm-auto">{{object.preview_text |safe}}</p>
+        <p class="col-sm-auto">{{object.preview_text | safe}}</p>
         </div>
 
         <div id="signup" class="justify-content-center text-center">
@@ -86,11 +101,11 @@
     <div id="block_div{{block.id}}" class="container">
     <div class="text-center"> <h2> {{ block.date }} </h2>  </div>
 
-    <div> <h3 class=""> {{ block.title1 }}</h3> </div>
+    <div> <h3 class=""> {{ block.title1 |safe}}</h3> </div>
         <div class="text-center "><img class=" col-sm-auto rounded " src="{%static ''%}{{block.image1}}" alt=""></div>
     <div class="p"> {{ block.paragraph1 |safe | linebreaks }}</div>
    <div class="text-center"> 
-        <h3 class=""> {{block.title2}}</h3>
+        <h3 class=""> {{block.title2|safe}}</h3>
             </div>
         <div class="text-center">
 
@@ -100,7 +115,7 @@
             </div>
 
             <div class="text-center">
-                <h3 class=""> {{block.title3}}</h3>
+                <h3 class=""> {{block.title3|safe}}</h3>
             </div> 
         <div class="text-center">
             <img id = "" class="col-sm-auto rounded img-fluid" src="{% static '' %}{{block.image3}}" alt=""> 
