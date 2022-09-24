@@ -1,9 +1,10 @@
-from crypto.crypt_message import Key, encrypt_message
+import sys
+from crypto.crypt_message import Key, encrypt_message, decrypt_message
 from django.db import models
 from django import forms
 from Blog.settings import AUTH_USER_MODEL
-from cryptography.fernet import Fernet
-from cryptography.exceptions import InvalidKey
+from cryptography.fernet import Fernet, InvalidToken
+from cryptography.exceptions import InvalidKey, InvalidSignature
 default_key = Key('secret.key').key
 
 
@@ -15,9 +16,23 @@ class CryptoNet(models.Model):
     key = models.CharField(max_length=255,default=default_key)
     keyfile = models.FileField(upload_to='keyfiles', blank=True, null=True)
     
+    
     def crypter_message(self, key):
         encrypted_msg = encrypt_message(self.message, key)
         return encrypted_msg
+    
+
+    def decrypter_message(self, key):
+        try:
+            decrypt_msg = decrypt_message(self.message, key)
+            return decrypt_msg.decode()
+        except (InvalidSignature, InvalidToken) as exception:
+            tb = sys.exc_info()[2]
+            print(f'the excetion is {exception.with_traceback(tb),exception}')
+
+            return exception, tb
+
+
     @staticmethod
     def generateKey():
         key = Fernet.generate_key()

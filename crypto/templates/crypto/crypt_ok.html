@@ -5,14 +5,15 @@
     <div class="container p-5">
       <div class="row justify-content-center">
         <div class="col-sm-6 text-center">
-        <h2 class="display2 text-white"> Le Message a bien été crypté</h2>
+            <h2 class="display2 text-white"> {{result_title}}</h2>
         </div>
 
         </div>
-            <div class="text-container">
+            <div class="text-container w-auto">
 
                 <p>
-                    {{encrypted_msg}}
+                {{msg_key}}
+                {{result_op|linebreaks}}
                 </p>
             </div>
         <div class="row justify-content-center text-center">

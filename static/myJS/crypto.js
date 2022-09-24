@@ -20,12 +20,14 @@ fond_div.style.backgroundImage = theme.URL_BANDE
 //html file where the script is running, hence the "if" before each call to
 // the add_class function.
 
-let btn_send;
-btn_send = document.querySelector('#id_btn')
+let btn_crypt,btn_decrypt;
+btn_crypt = document.querySelector('#btn_crypt')
+btn_decrypt = document.querySelector('#btn_decrypt')
 
-if (btn_send) 
+if (btn_crypt) 
 { 
-    btn_send.classList.add('my-2','offset-10')
+    btn_crypt.classList.add('my-2')
+    btn_decrypt.classList.add('my-2')
 }
 
 let btn_crypt_ok;

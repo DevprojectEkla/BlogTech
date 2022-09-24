@@ -41,7 +41,7 @@
         <div class="row justify-content-center"> 
           <div class="col-sm-4">
             <label for="message">
-                Votre message à crypter:
+                Votre message à (dé)crypter:
             </label>
             </div>
             <div class="row justify-content-center">
@@ -50,16 +50,18 @@
             </div>
             </div>
           </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center offset-2">
             <div class="col-sm-auto">
-                <input id="id_btn" class="btn" type="submit" value="Crypter">
+                <input id="btn_crypt" class="btn" type="submit" value="Crypter">
+            </div>
+            <div class="col-sm-auto">
+                <input id="btn_decrypt" class="btn" type="submit" name=decrypt value="Décrypter">
             </div>
 
-    </div>
+        </div>
     </div>
         </div>   
   </form>
-</div>
 </div>
 <script type="module" src="{% static '/myJS/crypto.js' %}"></script>
 {% endblock %}
