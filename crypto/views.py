@@ -133,7 +133,7 @@ def crypt_op(user, message, key, keyfile):
         cryptMSG.keyfile = keyfile
         path = MEDIA_URL + f'/keyfiles/{filename}'
     else:
-        with open(MEDIA_URL+f'downloads/key_{slug}.key','wb') as k_file: 
+        with open(MEDIA_ROOT/f'downloads/key_{slug}.key','wb') as k_file: 
             k_file.write(key)
             k_file.close()
             path = MEDIA_URL + f'/downloads/{filename}'
