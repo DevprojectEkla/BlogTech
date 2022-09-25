@@ -35,6 +35,7 @@ btn_crypt_ok = document.querySelector('#btn_crypt_ok');
 if (btn_crypt_ok)
 {
     theme.add_class_to_element_list([btn_crypt_ok],theme.class_color_theme)
+    theme.add_class_to_element_list(theme.p_list,theme.class_list_p)
 }
 
 

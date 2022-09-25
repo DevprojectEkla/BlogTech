@@ -136,11 +136,21 @@ def crypt_op(user, message, key, keyfile):
         cryptMSG.keyfile = keyfile
         path = MEDIA_URL + f'/keyfiles/{filename}'
     else:
-       with open(MEDIA_URL+f'downloads/key_{slug}.key','wb') as k_file:
-            k_file.write(key)
-            k_file.close()
-            path = MEDIA_URL + f'/downloads/{filename}' 
-   cryptMSG.save()
+        with tempfile.NamedTemporaryFile(delete=True) as tmp_file:
+            tmp_file.write(key)
+            tmp_file = File(tmp_file)
+            print(tmp_file.file)
+            print(tmp_file.name)
+            cryptMSG.keyfile.save(filename,tmp_file)
+            tmp_file.close()
+            keyfile = cryptMSG.keyfile
+       # with open(MEDIA_URL+f'downloads/key_{slug}.key','wb') as k_file:
+       #      k_file.write(key)
+       #      k_file.close()
+            # path = MEDIA_URL + f'/downloads/{filename}' 
+            path = MEDIA_URL + keyfile.name
+            print(f'path keyfile {path}')
+    cryptMSG.save()
     context = { "message": message,
                     "result_op":encrypted_msg.decode(),
                     "result_title": "Le Message a bien été crypté",
