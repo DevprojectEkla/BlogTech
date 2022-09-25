@@ -140,7 +140,7 @@ def crypt_op(user, message, key, keyfile):
             k_file.write(key)
             k_file.close()
             path = MEDIA_URL + f'/downloads/{filename}' 
-    cryptMSG.save()
+   cryptMSG.save()
     context = { "message": message,
                     "result_op":encrypted_msg.decode(),
                     "result_title": "Le Message a bien été crypté",
