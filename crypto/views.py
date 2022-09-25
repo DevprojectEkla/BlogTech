@@ -1,7 +1,10 @@
+import shutil
+import tempfile
+from django.core.files import File
 from django.shortcuts import render, redirect, render
 from django.views.generic import CreateView, TemplateView 
 from django.template import Template, Context
-from Blog.settings import MEDIA_ROOT, MEDIA_URL
+from Blog.settings import MEDIA_URL
 from crypto.models import CryptoNet, Key
 from cryptography.exceptions import InvalidSignature
 from cryptography.fernet import InvalidToken
@@ -133,10 +136,10 @@ def crypt_op(user, message, key, keyfile):
         cryptMSG.keyfile = keyfile
         path = MEDIA_URL + f'/keyfiles/{filename}'
     else:
-        with open(MEDIA_ROOT/f'downloads/key_{slug}.key','wb') as k_file: 
+       with open(MEDIA_URL+f'downloads/key_{slug}.key','wb') as k_file:
             k_file.write(key)
             k_file.close()
-            path = MEDIA_URL + f'/downloads/{filename}'
+            path = MEDIA_URL + f'/downloads/{filename}' 
     cryptMSG.save()
     context = { "message": message,
                     "result_op":encrypted_msg.decode(),
@@ -149,7 +152,7 @@ def crypt_op(user, message, key, keyfile):
                         "btn_title": "Voir la clé de cryptage utilisée",
                         "key":key.decode(),
                         "filename": filename,
-                        "path":path
+                        "path": path 
                         })),  # f"clé de cryptage à conserver : {key.decode()}",
                     "key":key,
                     "f_decrypt":False
