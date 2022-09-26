@@ -25,13 +25,11 @@ The full name of the program is Cryptoman.
 NEW 1.2: This new release of Cryptoman allows you to do a full directory encryption and/or decryption.
          At the end of the en/de-cryption an archive of the directory is automatically generated.
 	 Beware not to try to encrypt too big datas because of high memory usage.
-
 Ancient options remain:
     Crypto can also both encrypt and decrypt a text file. 
 A file of the encrypt (resp. decrypt) text is saved in the format "Crypt_Filename.txt"(resp. "Decrypt_Filename.txt").
 In a soon future we hope Crypto will be able to encrypt all kind of data and to automatically generate a mail to 
 be sent to the user define contact under the pseudo of his choice.
-
 Have fun using it and please report any bugs or share your own view with us at Crypto_Support@gmail.com (fictive mail)
 </code></div></div></div></div><div><p class="lead px-5 text-justify text-cyan-800 fw-weight-normal pt-5 pb-3">Cette version est déjà une version améliorée de ce qui n'était au départ qu'un programme écrit en un seul script avec des boucles imbriquées à n'en plus finir ! <samp>&nbsp;crypt_message.py&nbsp;</samp>est, en effet le premier script <em>python</em> que j'ai écrit et qui constitue en soi un petit programme de cryptage de message.
 La version <strong>CryptoMail</strong> de ce programme me permettait d'avoir un petit client smtp pour envoyer des messages cryptés (avec des pièces jointes cryptées aussi !) via un compte googleMail, par exemple. Ce programme est en cours de maintenance et CryptoNet permettra bientôt de faire la même chose de toute façon.
