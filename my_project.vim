@@ -13,20 +13,18 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +38 crypto/templates/crypto/crypto.html
-badd +1 term://~/PycharmProjects/MyBlog//7024:cmd
-badd +1 Blog/urls.py
+badd +82 term://~/PycharmProjects/MyBlog//7024:cmd
 badd +16 common/templates/common/preview.html
-badd +17 ./crypto/models.py
-badd +18 crypto/templates/crypto/crypt_ok.html
-badd +145 Blog/settings.py
-badd +0 term://~/PycharmProjects/MyBlog//11164:cmd
-badd +38 static/myJS/crypto.js
-badd +0 static/css/style.css
-badd +0 term://~/PycharmProjects/MyBlog//2588:git\ push\ heroku\ main
-badd +0 articles/models.py
-badd +8 rédaction/journal\ de\ bord.vim
-badd +0 term://~/PycharmProjects/MyBlog//10636:git\ push\ heroku\ main
+badd +18 ./crypto/models.py
+badd +2 crypto/templates/crypto/crypt_ok.html
+badd +1 Blog/settings.py
+badd +15 term://~/PycharmProjects/MyBlog//11164:cmd
+badd +39 static/myJS/crypto.js
+badd +887 static/css/style.css
+badd +1 articles/models.py
+badd +145 crypto/views.py
+badd +60 common/models.py
+badd +293 ~/AppData/Local/nvim/init.vim
 argglobal
 %argdel
 set stal=2
@@ -40,50 +38,9 @@ tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
-tabnew +setlocal\ bufhidden=wipe
 tabrewind
 edit common/templates/common/preview.html
-let s:save_splitbelow = &splitbelow
-let s:save_splitright = &splitright
-set splitbelow splitright
-wincmd _ | wincmd |
-split
-1wincmd k
-wincmd w
-let &splitbelow = s:save_splitbelow
-let &splitright = s:save_splitright
-wincmd t
-let s:save_winminheight = &winminheight
-let s:save_winminwidth = &winminwidth
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-exe '1resize ' . ((&lines * 15 + 16) / 33)
-exe '2resize ' . ((&lines * 14 + 16) / 33)
 argglobal
-if bufexists(fnamemodify("term://~/PycharmProjects/MyBlog//10636:git\ push\ heroku\ main", ":p")) | buffer term://~/PycharmProjects/MyBlog//10636:git\ push\ heroku\ main | else | edit term://~/PycharmProjects/MyBlog//10636:git\ push\ heroku\ main | endif
-if &buftype ==# 'terminal'
-  silent file term://~/PycharmProjects/MyBlog//10636:git\ push\ heroku\ main
-endif
-balt common/templates/common/preview.html
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-let s:l = 50 - ((14 * winheight(0) + 7) / 15)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 50
-normal! 0
-wincmd w
-argglobal
-balt term://~/PycharmProjects/MyBlog//10636:git\ push\ heroku\ main
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -94,35 +51,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 16 - ((7 * winheight(0) + 7) / 14)
+let s:l = 16 - ((1 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 16
-normal! 017|
-wincmd w
-exe '1resize ' . ((&lines * 15 + 16) / 33)
-exe '2resize ' . ((&lines * 14 + 16) / 33)
-tabnext
-edit crypto/templates/crypto/crypto.html
-argglobal
-balt common/templates/common/preview.html
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 19 - ((12 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 19
-normal! 04|
+normal! 018|
 tabnext
 edit articles/models.py
 argglobal
@@ -141,8 +75,112 @@ if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
+normal! 019|
+tabnext
+edit ~/AppData/Local/nvim/init.vim
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 293 - ((14 * winheight(0) + 15) / 30)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 293
 normal! 0
 tabnext
+edit common/models.py
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 31 + 72) / 144)
+exe 'vert 2resize ' . ((&columns * 112 + 72) / 144)
+argglobal
+enew
+file NERD_tree_23
+balt common/models.py
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal nofen
+wincmd w
+argglobal
+balt common/models.py
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 60 - ((27 * winheight(0) + 15) / 30)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 60
+normal! 048|
+wincmd w
+exe 'vert 1resize ' . ((&columns * 31 + 72) / 144)
+exe 'vert 2resize ' . ((&columns * 112 + 72) / 144)
+tabnext
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 31 + 72) / 144)
+exe 'vert 2resize ' . ((&columns * 112 + 72) / 144)
+argglobal
+enew
+file NERD_tree_21
+balt term://~/PycharmProjects/MyBlog//7024:cmd
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal nofen
+wincmd w
 argglobal
 if bufexists(fnamemodify("term://~/PycharmProjects/MyBlog//7024:cmd", ":p")) | buffer term://~/PycharmProjects/MyBlog//7024:cmd | else | edit term://~/PycharmProjects/MyBlog//7024:cmd | endif
 if &buftype ==# 'terminal'
@@ -156,55 +194,18 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 1951 - ((17 * winheight(0) + 15) / 30)
+let s:l = 82 - ((25 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1951
-normal! 0
+keepjumps 82
+normal! 02|
+wincmd w
+exe 'vert 1resize ' . ((&columns * 31 + 72) / 144)
+exe 'vert 2resize ' . ((&columns * 112 + 72) / 144)
 tabnext
 edit crypto/templates/crypto/crypt_ok.html
-let s:save_splitbelow = &splitbelow
-let s:save_splitright = &splitright
-set splitbelow splitright
-wincmd _ | wincmd |
-split
-1wincmd k
-wincmd w
-let &splitbelow = s:save_splitbelow
-let &splitright = s:save_splitright
-wincmd t
-let s:save_winminheight = &winminheight
-let s:save_winminwidth = &winminwidth
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-exe '1resize ' . ((&lines * 15 + 16) / 33)
-exe '2resize ' . ((&lines * 14 + 16) / 33)
 argglobal
-if bufexists(fnamemodify("term://~/PycharmProjects/MyBlog//2588:git\ push\ heroku\ main", ":p")) | buffer term://~/PycharmProjects/MyBlog//2588:git\ push\ heroku\ main | else | edit term://~/PycharmProjects/MyBlog//2588:git\ push\ heroku\ main | endif
-if &buftype ==# 'terminal'
-  silent file term://~/PycharmProjects/MyBlog//2588:git\ push\ heroku\ main
-endif
-balt crypto/templates/crypto/crypt_ok.html
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-let s:l = 22 - ((0 * winheight(0) + 7) / 15)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 22
-normal! 0
-wincmd w
-argglobal
-balt term://~/PycharmProjects/MyBlog//2588:git\ push\ heroku\ main
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -215,15 +216,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 18 - ((8 * winheight(0) + 7) / 14)
+let s:l = 2 - ((1 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 18
-normal! 042|
-wincmd w
-exe '1resize ' . ((&lines * 15 + 16) / 33)
-exe '2resize ' . ((&lines * 14 + 16) / 33)
+keepjumps 2
+normal! 014|
 tabnext
 edit static/css/style.css
 argglobal
@@ -242,7 +240,7 @@ if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 887
-normal! 03|
+normal! 06|
 tabnext
 edit static/myJS/crypto.js
 argglobal
@@ -257,12 +255,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 38 - ((13 * winheight(0) + 15) / 30)
+let s:l = 39 - ((14 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 38
-normal! 068|
+keepjumps 39
+normal! 0
 tabnext
 edit ./crypto/models.py
 argglobal
@@ -276,12 +274,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 17 - ((16 * winheight(0) + 15) / 30)
+let s:l = 18 - ((17 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 17
-normal! 075|
+keepjumps 18
+normal! 0
 tabnext
 edit Blog/settings.py
 let s:save_splitbelow = &splitbelow
@@ -316,11 +314,11 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 75 - ((14 * winheight(0) + 7) / 15)
+let s:l = 15 - ((14 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 75
+keepjumps 15
 normal! 0
 wincmd w
 argglobal
@@ -342,11 +340,10 @@ normal! zt
 keepjumps 142
 normal! 021|
 wincmd w
-2wincmd w
 exe '1resize ' . ((&lines * 15 + 16) / 33)
 exe '2resize ' . ((&lines * 14 + 16) / 33)
 tabnext
-edit rédaction/journal\ de\ bord.vim
+edit crypto/views.py
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -358,51 +355,13 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 33 - ((17 * winheight(0) + 15) / 30)
+let s:l = 145 - ((14 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 33
-normal! 0
-tabnext
-edit Blog/urls.py
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 65 - ((29 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 65
-normal! 0
-tabnext
-edit crypto/templates/crypto/crypto.html
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 27 - ((26 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 27
-normal! 09|
-tabnext 9
+keepjumps 145
+normal! 023|
+tabnext 3
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
