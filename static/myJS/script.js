@@ -295,7 +295,7 @@ function scrollTrig(el_list, container="#container", start="",
                 start: start,
                 end: end,
                 markers: markers, //{ fontSize: "2rem" },
-                scrub: true,
+                // scrub: true,
                 // toggleClass: "op-0",
                 // toggleActions: 'play, none, none, restart',
                 //            onenter onLeave  onEnterback   onLeaveBack
@@ -608,7 +608,7 @@ function Animations() { delay_x(dflex,"op-0", 1);
                 start: "top 50%",
                 end: "top 30%",
                 // markers: true, //{ fontSize: "2rem" },
-                scrub: true,
+                // scrub: true,
                 // toggleClass: "op-0",
                 // toggleActions: 'play, none, none, restart',
                 //            onenter onLeave  onEnterback   onLeaveBack
