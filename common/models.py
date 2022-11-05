@@ -39,24 +39,15 @@ class NewBlock(models.Model):
     date = models.DateTimeField('date de publication')   
 
     title1 = models.CharField(max_length=255, blank=True)    
-    title2 = models.CharField(max_length=255, blank=True)    
-    title3 = models.CharField(max_length=255, blank=True)
     
     paragraph1 = models.TextField(blank=True)    
-    paragraph2 = models.TextField(blank=True)
-    paragraph3 = models.TextField(blank=True)
     
-    link1 = models.TextField(blank=True)
-    link_text1 =models.TextField(blank=True)    
-    link2 = models.TextField(blank=True)
-    link_text2 = models.TextField(blank=True)    
-    link3 = models.TextField(blank=True)
-    link_text3 = models.TextField(blank=True)
+    link1 = models.TextField(blank=True, null=True)
+    link_text1 =models.TextField(blank=True, null=True)    
     
-    image1 = models.CharField(max_length=255, blank=True)
-    image2 = models.CharField(max_length=255, blank=True)
-    image3 = models.CharField(max_length=255, blank=True)
-
+    image1 = models.CharField(max_length=255, blank=True, null=True)
+    video_title = models.CharField(max_length=128)
+    title_btn_display = models.CharField(max_length=128)
     video = models.FileField(upload_to='videos', blank=True, null=True) 
     
 

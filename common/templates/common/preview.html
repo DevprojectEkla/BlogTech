@@ -98,32 +98,45 @@
     <!-- ========== INCREMENTATION DE LA VARIABLE NUMBER_OF_BLOCK ======-->
     <script type="text/javascript"> number_of_block++ </script>
     <!--================================================================-->
-    <div id="block_div{{block.id}}" class="container">
-    <div class="text-center"> <h2> {{ block.date }} </h2>  </div>
+<div id="block_div{{block.id}}" class="container justify-content-center">
+<div class="text-center"> <h2> {{ block.date }} </h2>  </div>
 
-    <div> <h3 class=""> {{ block.title1 |safe}}</h3> </div>
-        <div class="text-center "><img class=" col-sm-auto rounded " src="{%static ''%}{{block.image1}}" alt=""></div>
+<div> <h3 class=""> {{ block.title1 |safe}}</h3> </div>
+<div class="text-center "><img class=" col-sm-auto img-fluid rounded" src="{%static ''%}{{block.image1}}" alt=""></div>
     <div class="p"> {{ block.paragraph1 |safe | linebreaks }}</div>
-   <div class="text-center"> 
-        <h3 class=""> {{block.title2|safe}}</h3>
-            </div>
-        <div class="text-center">
+    {% if block.video %}
+<!-- Button trigger modal -->
+ <div class= "row justify-content-center mx-5">
 
-                <img id = "" class="col-sm-auto rounded" src="{% static '' %}{{block.image2}}" alt="">
+<button type="button" class="btn btn-primary col-lg-auto text-center bg bg-cyan-900 mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  {{block.title_btn_display}}
+</button>
+      </div>
+<!-- Modal -->
+<div class="row">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content bg bg-primary">
+      <div class="modal-header">
+          <h5 class="modal-title text-cyan-100" id="exampleModalLabel">{{block.video_title}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body"> <video width="1024" height="768" controls playsinline id="video-{{id}}" class="my-1 text-cyan-100 img-fluid" src="{{block.video.url}}">
+      </video>
         </div>
-            <div class="p" > {{block.paragraph2 |safe | linebreaks  }}
-            </div>
-
-            <div class="text-center">
-                <h3 class=""> {{block.title3|safe}}</h3>
-            </div> 
-        <div class="text-center">
-            <img id = "" class="col-sm-auto rounded img-fluid" src="{% static '' %}{{block.image3}}" alt=""> 
-        </div> 
-    <div class="p" > {{block.paragraph3 |safe | linebreaks}}
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        {{btn_copy}}
+        <a download="{{block.video_title}}" href="{{block.video.url}}">
+        <button type="button" class="btn btn-primary">download</button>
+        </a>
+      </div>
     </div>
-
+  </div>
+ </div>
+</div>
     </div>
+{% endif %}
     {% endfor %}       
 </div>
     </section>

@@ -57,11 +57,11 @@ fond_div.style.backgroundImage = theme.URL_BANDE
 //fonction qui est sensé placé le scroll en position top de la page
 // à chaque  refresh: ça y est ça fonctionne !!
 var body = document.body
-document.onreadystatechange = function () {
-  if (document.readyState == "complete") {//nb: il y a d'autres états comme 'interactive' ou 'load'
-    window.scrollTo(0,0);
-  }
-};
+// document.onreadystatechange = function () {
+//   if (document.readyState == "complete") {//nb: il y a d'autres états comme 'interactive' ou 'load'
+//     window.scrollTo(0,0);
+//   }
+// };
 
 // fonctions basiques
 function random(number) 
@@ -311,7 +311,9 @@ function scrollTrig(el_list, container="#container", start="",
       );
     };
   }
-
+/**============================================================================
+ * =============== ANIMATIONS SUR LES BLOCK DE TITRES ET DE PARAGRAPHES =======
+ * ==========================================================================*/ 
 let children_list;
 children_list = []
 for (i=1; i<=number_of_block; i++)
@@ -324,7 +326,7 @@ for (i=1; i<=number_of_block; i++)
     children_list = children_list.concat(children_list_i)
 }
 console.log("children_list = ", children_list)
-scrollTrig(children_list, "#section2", "-400 -800", "-475 50%", 1, false);
+// scrollTrig(children_list, "#section2", "-500 -800", "-475 50%", 1, false);
 
 /**==========================
  * Ajout des triangles animés
