@@ -1,11 +1,13 @@
-/** ============= THEME COLOR ===================
- * l'interet de ce fichier est de pouvoir =======
- * facilement changer la couleur des styles =====
- * en jouant uniquement sur la valeur de 3 ======
- * ou 4 variables, sans avoir à changer =========
- * tout à la main dans les différents gabbartis.=
- * ==============================================
- *
+/** ============= THEME COLOR =========================
+ * OUTDATED: l'interet de ce fichier est de ===========
+ * pouvoir facilement changer la couleur des ==========
+ * styles en jouant uniquement sur la valeur de 3 =====
+ * ou 4 variables, sans avoir à changer ===============
+ * tout à la main dans les différents gabbaris.========
+ * ====================================================
+ * This module provides acces to all CSS color and img
+ * variables as well as many animation functions and more.
+ * It is mainlys used to set the color of the different widgets.
  */
 
 
