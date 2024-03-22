@@ -1,7 +1,0 @@
-replace: ctrl+shit+h 
-or look the arrow on the left of search field
-ctrl+alt+UpDownArrow = cursor on line up
-ATTENTION: pas left et right arrow (=split)
-shift+alt+UpDownArrow = duplicate selection
-newer versions of VS Code uses the Ctrl+] shortcut
-to indent a block of code once, and Ctrl+[ to remove indentation.
