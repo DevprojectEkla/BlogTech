@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-cm1ugx=-w_5v7-l0c6$7kt82-d@73%ib9@ekj)n7#n2h$-3gfg
 DEBUG = True
 
 # ALLOWED_HOSTS = ['devprojectmyfirstblog.herokuapp.com']
-ALLOWED_HOSTS = ['BlogTech.onrender.com']
+ALLOWED_HOSTS = ['blogtech-devekla.onrender.com']
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.mailtrap.io'
