@@ -9,13 +9,18 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
+import dj_database_url
 from pathlib import Path
-import django_heroku
+# import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+GET_VAR = os.environ.get("DATABASE_URL")
+print(f"GET_VAR: {GET_VAR}")
+DATABASE_URL = GET_VAR if GET_VAR != None else "default" 
+DATABASES = {"default" : dj_database_url.parse(DATABASE_URL),
+             }
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -88,12 +93,12 @@ WSGI_APPLICATION = 'Blog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -144,6 +149,6 @@ MEDIA_ROOT = BASE_DIR / "media"
 AUTH_USER_MODEL = "accounts.BlogVisitor"
 STATICFILES_DIRS = [BASE_DIR/'static',BASE_DIR/'media']
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
 
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']

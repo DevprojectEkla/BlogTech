@@ -123,7 +123,7 @@ console.log("url:"+url_preview+"preview:"+preview)
 // main_img.setAttribute('src',MAIN_IMG_FILE);
 if(!user_authenticated & !preview){
 main_div.style.zIndex = "-4";
-main_div.style.backgroundImage = "url('https://solulan.com/wp-content/uploads/2021/07/Solulan-post-gestion-informatique.jpg')";
+main_div.style.backgroundImage = "url('../static/img/portail.webp')";
 main_div.style.backgroundSize = "cover";
 main_div.style.backgroundPosition = "center";
 main_div.style.Height = "auto";
