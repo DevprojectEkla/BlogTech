@@ -17,23 +17,19 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 GET_VAR = os.environ.get("DATABASE_URL")
-print(f"GET_VAR: {GET_VAR}")
 DATABASE_URL = GET_VAR if GET_VAR != None else "default" 
-DATABASES = {"default" : dj_database_url.parse(DATABASE_URL),
-             }
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY") 
-print(f"secret_key: {SECRET_KEY}")
+DJANGO_ENV = os.environ.get("DJANGO_ENV")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 # ALLOWED_HOSTS = ['devprojectmyfirstblog.herokuapp.com']
-ALLOWED_HOSTS = ['blogtech-devekla.onrender.com']
+ALLOWED_HOSTS = ['127.0.0.1','blogtech-devekla.onrender.com']
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.mailtrap.io'
@@ -95,13 +91,19 @@ WSGI_APPLICATION = 'Blog.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+if DJANGO_ENV == "development": 
+    DEBUG = True
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+    DATABASES = {"default" : dj_database_url.parse(DATABASE_URL),
+             }
 
 
 # Password validation
@@ -142,7 +144,6 @@ HTML_MINIFY = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
