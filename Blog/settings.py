@@ -29,7 +29,7 @@ DJANGO_ENV = os.environ.get("DJANGO_ENV")
 # SECURITY WARNING: don't run with debug turned on in production!
 
 # ALLOWED_HOSTS = ['devprojectmyfirstblog.herokuapp.com']
-ALLOWED_HOSTS = ['127.0.0.1','blogtech-devekla.onrender.com']
+ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1','blogtech-devekla.onrender.com']
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.mailtrap.io'
