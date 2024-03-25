@@ -101,6 +101,7 @@ if DJANGO_ENV == "development":
     }
 else:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    DEBUG=True
 
     DATABASES = {"default" : dj_database_url.parse(DATABASE_URL),
              }
