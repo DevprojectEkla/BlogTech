@@ -14,6 +14,8 @@ import dj_database_url
 from pathlib import Path
 # import django_heroku
 
+
+DEBUG = os.environ.get("DEBUG")
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 GET_VAR = os.environ.get("DATABASE_URL")
@@ -31,11 +33,7 @@ DJANGO_ENV = os.environ.get("DJANGO_ENV")
 # ALLOWED_HOSTS = ['devprojectmyfirstblog.herokuapp.com']
 ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1','blogtech-devekla.onrender.com']
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_HOST_USER = '77ac3a46ebd265'
-EMAIL_HOST_PASSWORD = '2a682bfb02283b'
-EMAIL_PORT = '25'
+
 
 
 # Application definition
@@ -92,19 +90,32 @@ WSGI_APPLICATION = 'Blog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 if DJANGO_ENV == "development": 
-    DEBUG = True
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_PORT = 587 
+    EMAIL_USE_TLS = True
+
+    EMAIL_HOST_USER = os.environ.get("GOOGLE_USER")
+    EMAIL_HOST_PASSWORD = os.environ.get("GOOGLE_PASS")
+
 else:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-    DEBUG=True
 
     DATABASES = {"default" : dj_database_url.parse(DATABASE_URL),
              }
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_PORT = 587
+
+    EMAIL_HOST_USER = os.environ.get("GOOGLE_USER")
+    EMAIL_HOST_PASSWORD = os.environ.get("GOOGLE_PASS")
 
 
 # Password validation

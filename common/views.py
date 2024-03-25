@@ -1,3 +1,4 @@
+from os import environ as env
 from django.http import HttpResponse, HttpResponseRedirect, request
 from django.shortcuts import redirect, render, get_object_or_404
 from django.template.defaulttags import url
@@ -90,16 +91,16 @@ def send_email(request):
     if objet and message and email:
         try:
             print ('trying function send_mail')
-            send_mail(objet, message, email, ['admin@example.com'],html_message=html)
+            send_mail(objet, message, email, [env.get("DJANGO_SUPERUSER_EMAIL")], html_message=html)
         except BadHeaderError:
             print ('failed function send_mail')
-            return HttpResponse('Invalid header found.')
+            return HttpResponse(b'Invalid header found.')
         return render(request,'common/thanks.html')
     else:
         print("echec")
         # In reality we'd use a form class
         # to get proper validation errors.
-        return HttpResponse('Make sure all fields are entered and valid.')
+        return HttpResponse(b'Make sure all fields are entered and valid.')
 
 class ThanksView(TemplateView):
     template_name = 'common/thanks.html'
