@@ -1,15 +1,16 @@
 {% extends 'main.html' %}
 
 {% block content %}
-
+{% load static %}
+<div id="intro" class="invisible">
 {% for product in products %}
 <div class="container">
     <div class="row justify-content-center text-center">
 
-            <h4 class="col-sm-3  border rounded shadow border-3 border-muted content-center text-center pb-2">{{product.name}}</h4>
+            <h4 class="col-sm-3  border rounded shadow border-3 border-cyan content-center text-center pb-2">{{product.name}}</h4>
  </div>
     <div class="text-center">
-            <img class= "col-sm-4 shadow border rounded  border-4 img-fluid" src="{{ product.thumbnail.url}}" alt="{{product.name}}">
+            <img class= "col-sm-4 shadow border border-cyan rounded  border-4 img-fluid" src="{{ product.thumbnail.url}}" alt="{{product.name}}">
         </div>
      <div class="row justify-content-center text-center">
         <p> <a class="btn btn-lg btn-light btn-outline-success mt-2" href="{% url 'product' product.slug %}">Voir l'article
@@ -21,4 +22,8 @@
 
 
 {% endfor %}
+</div>
+</div>
+<script type="module" src="{% static 'myJS/index_store.js' %}"></script>
+
 {% endblock %}

@@ -33,7 +33,7 @@ IMG_BANDE_NAME = 'bande0.svg'
 IMG_BANDE_PATH = 'static/img/'
 IMG_BANDE_FILE = IMG_BANDE_PATH + IMG_BANDE_NAME 
 URL_BANDE = 'url('+ '"' + IMG_BANDE_FILE + '"' + ')';
-console.log('Color_theme => URL_BANDE:'+URL_BANDE)
+// console.log('Color_theme => URL_BANDE:'+URL_BANDE)
 
 const blue = "blue";
 const indigo = "indigo";
@@ -303,9 +303,9 @@ function changeColorElementList(el_list,color)
    let strTxt, splitTxt;
    
         strTxt = title_element.textContent;
-     console.log("le titre à animer:"+title_element.textContent)
+     // console.log("le titre à animer:"+title_element.textContent)
         splitTxt = strTxt.split(sep);
-     console.log(splitTxt)
+     // console.log(splitTxt)
         title_element.textContent = "";
         for (i = 0; i < splitTxt.length; i++) 
         {
@@ -313,11 +313,11 @@ function changeColorElementList(el_list,color)
         {
             title_element.innerHTML += "<span>" + splitTxt[i] + "</span>"
 
-         console.log("le titre dans le span, inner_html:"+title_element.innerHTML);
+         // console.log("le titre dans le span, inner_html:"+title_element.innerHTML);
         } else {
             title_element.innerHTML += "<span>" + splitTxt[i] + "</span>"+ " "
 
-         console.log("le titre dans le span deuxieme condition (ELSE), inner_html:"+title_element.innerHTML);
+         // console.log("le titre dans le span deuxieme condition (ELSE), inner_html:"+title_element.innerHTML);
         };
         };
         const span_text = title_element.querySelectorAll('span')
@@ -503,7 +503,7 @@ btn_list = document.querySelectorAll('.btn')
 if (portail) {
     let img;
     img = document.querySelector('#banniere');
-    console.log(img)
+    // console.log(img)
     portail.classList.add("display-4", text_color1_500, "text-center")
 }
 
@@ -548,7 +548,7 @@ function replace_style(el_list, style1,style2)
 
 let theme_primary;
 theme_primary = true;
-console.log('theme primary:%s', theme_primary)
+// console.log('theme primary:%s', theme_primary)
 
 // if  (!theme_primary)
 // {   

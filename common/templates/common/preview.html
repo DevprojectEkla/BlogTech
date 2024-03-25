@@ -121,11 +121,14 @@
           <h5 class="modal-title text-cyan-100" id="exampleModalLabel">{{block.video_title}}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body"> <video width="1024" height="768" controls playsinline id="video-{{id}}" class="my-1 text-cyan-100 img-fluid" src="{{block.video.url}}">
-      </video>
+      <div class="modal-body"> 
+          <div id="player"></div>
+          <!-- <video preload="metadata" width="1024" height="768" controls playsinline id="video-{{block.id}}" class="my-1 text-cyan-100 img-fluid" src="{{block.video.url}}"> -->
+
+      <!-- </video> -->
         </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button id="close_button" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         {{btn_copy}}
         <a download="{{block.video_title}}" href="{{block.video.url}}">
         <button type="button" class="btn btn-primary">download</button>
