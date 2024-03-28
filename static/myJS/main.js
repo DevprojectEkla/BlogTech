@@ -130,6 +130,8 @@ main_div.style.Height = "auto";
 main_div.style.minHeight = "100vh";
 }
 
+// main_div.classList.add("container")
+
 /**============================================================================
  * fond_div est dans main.html l'élément qui encadre
  * les boutons d'en-tête 'aperçu de mon blog' 's'inscrire' et 'connexion' si 
@@ -156,6 +158,8 @@ fond_div.style.backgroundPosition = "center";
 fond_div.style.minHeight = "auto";
 fond_div.style.backgroundRepeat = "no-repeat"
 fond_div.style.backgroundColor = '#80e5ffff'
+fond_div.style.setProperty('--bs-gutter-x', '0');
+fond_div.classList.add("row","text-center")
 }
 
 
@@ -165,6 +169,7 @@ fond_div.style.backgroundColor = '#80e5ffff'
 let IMG_BANNIERE;
 IMG_BANNIERE = 'static/img/banniere.svg'
 banniere.classList.add('row','mt-6','width-100vh')
+img_banniere.classList.add('p-0')
 
 /** Suite de conditions pour l'affichage de certains éléments. Si l'utilisateur
  * est sur le portail du site, s'il est sur l'aperçu mais sans être connecté

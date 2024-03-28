@@ -4,7 +4,6 @@ var banniere = document.querySelector("#img_banniere")
 var fond_div = document.querySelector("#fond_div")
 var section = document.getElementById('intro');
 var badge = document.querySelector('.badge');
-var scroll = document.querySelector('#scroll');
 // var title = document.querySelectorAll('h2')
 // var subtitle = document.querySelectorAll('h5')
 theme.add_class_to_element_list(theme.h2_list,['bg',theme.text_color1,
@@ -45,32 +44,9 @@ section.style.Height = "auto";
 section.style.minHeight = "100vh";
 
 // === ANIMATION DU BOUTON " FAITES DEFILER" ====
-var scrollAnimation = TweenMax.fromTo
-  (scroll,
-    {
-      opacity: 1,
-      y: 15,     
-      scale:2,
-
-    },
-    {
-      y: 1000,
-      opacity: .5,
-      scale:4,
-      
-      repeat:2,
-      duration: 15,
-      ease: Power1.easeOut
-
-    }
-  );
-
 
 const body = document.body;
 const docElem = document.documentElement;
-var scrollPos = (body.scrollTop || docElem.scrollTop)
-console.log(scrollPos)
-if ( scrollPos == 0){console.log(scrollPos);scrollAnimation;};
   
 
 /**
@@ -78,7 +54,7 @@ if ( scrollPos == 0){console.log(scrollPos);scrollAnimation;};
 * NB: l'animation est différente à cause de la position des triggers Start et end
 * ===============================================================================
 */
-TweenMax.fromTo
+var scrollAnimation = TweenMax.fromTo
   (
     container[0],
       {
@@ -90,11 +66,11 @@ TweenMax.fromTo
         scrollTrigger:
         {
           trigger: container[0],
-          container: "#section2",
-          start: "top 30%",
-          end: "bottom-=80px 60%",
-          // markers: {fontSize: "2rem"},
-          scrub: .5, //or a number in second
+          container: "#main_div",
+          start: "top-=160px 10%",
+          end: "100px 10%",   
+        // markers: {fontSize: "2rem"},
+          scrub: .25, //or a number in second
           //toggleClass: "invisible",
           toggleActions: "restart none none none",
           //            onenter onLeave  onEnterback   onLeaveBack
@@ -104,13 +80,12 @@ TweenMax.fromTo
 
         },
         opacity: 1,
-        duration: 1.25
-      }
+        duration: 1.25      }
   );
 // === ANIMATION DES AUTRES ARTICLES  ====
 // nb: l'animation est différente à cause de la position des triggers start et end
 let i; 
-for (i = 0; i < section.children.length; i++) {
+for (i = 1; i < section.children.length; i++) {
   TweenMax.fromTo
     (
       container[i],
@@ -123,10 +98,10 @@ for (i = 0; i < section.children.length; i++) {
         scrollTrigger:
         {
           trigger: container[i],
-          container: "#section2",
-          start: "top-=160px 50%",
+          container: "#main_div",
+          start: "top=30px 50%",
           end: "2px 40%",
-          markers: {fontSize: "2rem"},
+          // markers: {fontSize: "2rem"},
           scrub: 1, //or a number in second
           //toggleClass: "invisible",
           toggleActions: "restart none none none",

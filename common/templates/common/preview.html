@@ -98,10 +98,10 @@
     <!-- ========== INCREMENTATION DE LA VARIABLE NUMBER_OF_BLOCK ======-->
     <script type="text/javascript"> number_of_block++ </script>
     <!--================================================================-->
-<div id="block_div{{block.id}}" class="container justify-content-center">
+<div id="block_div{{ block.id }}" class="container justify-content-center">
 <div class="text-center"> <h2> {{ block.date }} </h2>  </div>
 
-<div> <h3 class=""> {{ block.title1 |safe}}</h3> </div>
+<div> <h3 class=""> {{ block.title1 |safe }}</h3> </div>
 <div class="text-center "><img class=" col-sm-auto img-fluid rounded" src="{%static ''%}{{block.image1}}" alt=""></div>
     <div class="p"> {{ block.paragraph1 |safe | linebreaks }}</div>
     {% if block.video %}
