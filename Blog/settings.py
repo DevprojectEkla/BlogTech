@@ -31,8 +31,8 @@ DJANGO_ENV = os.environ.get("DJANGO_ENV")
 # SECURITY WARNING: don't run with debug turned on in production!
 
 # ALLOWED_HOSTS = ['devprojectmyfirstblog.herokuapp.com']
-ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1','blogtech-devekla.onrender.com']
-
+ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1','blogtech-devekla.onrender.com',"blog.devekla.com",'172.232.32.10']
+CSRF_TRUSTED_ORIGINS = ['https://blog.devekla.com','https://172.232.32.10']
 
 
 
